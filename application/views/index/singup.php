@@ -27,7 +27,6 @@
 
    .menu__content{position:relative;margin:20px auto;width:80%;height:40px}
    .menu__content img{
-    width: 208px;
     height: 68px;
     position: relative;
     top: -14px;
@@ -70,12 +69,8 @@ float: right; */
 
      <div class="menu">
     <div class="menu__content">
-        <img src="/Public/yousihaodian.png">
-      
-       
-        <a href="/user/singin" role="button" class="btn_share" id="login-btn">商家中心</a>
-       </a>
-
+        <img src="/Public/cloud-hotspot.png">
+        <a href="/user/singin" role="button" class="btn_share" id="login-btn">商家中心</a>      
     </div>
   </div>
 
@@ -418,6 +413,22 @@ float: right; */
 
     } 
   }
+
+ function testEmail(str){
+
+     var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+
+     if(reg.test(str)){
+
+         return true;
+
+     }else{
+
+         return false;
+
+     }
+
+ }
 
 </script>
 </body>

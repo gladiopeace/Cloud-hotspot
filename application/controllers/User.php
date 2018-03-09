@@ -19,11 +19,9 @@
 			
 		}
 
-
-		
-
-
-
+        public function index(){
+            redirect('user/singin');
+        }
 
 		public function resetpwd(){
 
@@ -199,9 +197,8 @@
 		public function singin(){
 			
 	       	if(empty($this->_saler['username']) || empty($this->_saler['salt']) || empty($this->_saler['id'])){
-				
-				$this->load->library('twig');	
-				$this->twig->display('index/index.php',[' $data']);
+
+                $this->load->view('index/singin.php',array($this->_saler),FALSE);
 			}else{				
 				redirect('manage');
 			}
@@ -211,18 +208,70 @@
 		public function singup(){
 			
 			if(!empty($this->_saler['username']) && empty($this->_saler['salt']) && empty($this->_saler['id']))	redirect('manage');
+
+
+            if($this->input->post()){
+
+                $email = $this->input->post('email');
+                $password = md5($this->input->post('password'));
+                $this->db->select('id,username,password,email,salt');
+                $flag = false;
+                $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+                if (preg_match($pattern,$email)){
+                    //$query = $this->db->get_where('user', array('password' => $password,"email" =>$email,'level >=' => '4','vip' => '1'), 1);
+                    $query = $this->db->get_where('user', array('password' => $password,"email" =>$email), 1);
+                    $flag = true;
+                }else{
+                    $query = $this->db->get_where('user', array('password' => $password,"username" =>$email), 1);
+
+                }
+
+                $data = $query->result_array();
+                var_dump($data);
+                if(!empty($data) && $data['0']['password']==$password){
+                    if($flag==true && $data['0']['email']!==$email && $data['0']['username']!==$email){
+                        echo json_encode(array("status"=>"false","message"=>"用户名或密码错误!"));
+                        exit();
+                    }elseif($flag==false && $data['0']['username']!==$email){
+                        echo json_encode(array("status"=>"false","message"=>"用户名或密码错误!"));
+                        exit();
+                    }
+
+
+                    $salt = sha1($data['0']['username'] . $data['0']['password']);//生成加密的票据
+
+                    if($salt!=$data['0']['salt']){
+
+                        $this->db->where('id',$data['0']['id']);
+                        $this->db->update('user', array('salt'=>$salt));
+                    }
+
+
+                    $this->load->library('session');
+
+                    $newdata = array(
+                        'username'  => $data['0']['username'],
+                        'salt'     =>  $salt,
+                        'id' => $data['0']['id']
+                    );
+
+                    $this->session->set_userdata($newdata);
+
+                    echo json_encode(array("status"=>"ok","message"=>"success!"));
+                }else{
+                    echo json_encode(array("status"=>"false","message"=>"用户名或密码错误!"));
+                }
+                exit();
+            }
 			$from = $this->input->get('from');
 			$salt = $this->input->get('salt');
 			$data = array(
 					'from' 	=> 	$from,
 					'salt'	=>	$salt,
 				);
-			$this->load->library('user_agent');
-			if ($from=='auth' && $this->agent->is_mobile()){
-			 	$this->load->view('user/SingupM', $data, FALSE);
-			}else{
-			    $this->load->view('index/login',$data,FALSE);
-			}
+
+            $this->load->view('index/singup',$data,FALSE);
+
 			
 		}
 
@@ -562,11 +611,6 @@
 						echo json_encode(array('status' =>'success' ,'url'=>$to));
 						exit();
 					}
-							
-
-
-					
-
 
 					$this->load->view('user/email/change');
 							
