@@ -70,7 +70,7 @@ float: right; */
      <div class="menu">
     <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">
-        <a href="/user/singin" role="button" class="btn_share" id="login-btn">商家中心</a>      
+        <a href="/user/sigin" role="button" class="btn_share" id="login-btn">商家中心</a>      
     </div>
   </div>
 
@@ -83,20 +83,18 @@ float: right; */
 
     <div class="block special-block">
       
-      <form method="POST" id="singup" class="login-form" action="?" onsubmit="return check(this)">
+      <form method="POST" id="sigup" class="login-form" action="?" onsubmit="return check(this)">
         
          <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/singin"><h3>登录</h3></a></li>
-            <li><a href="/user/singup"><h3>注册</a></h3></li>
+            <li><a href="/user/sigin"><h3>登录</h3></a></li>
+            <li><a href="/user/sigup"><h3>注册</a></h3></li>
           </ul>
         </div>
         <input type="hidden" name="goto" value="">
         <div style="position: static;">
-          <input type="text" name="account" id="account" placeholder="邮箱/手机号码" value="">
-      
+          <input type="text" name="account" id="account" placeholder="邮箱/手机号码" value="">      
           <i class="email"></i> 
-
         </div>
         <div style="position: static;">
             <input type="text" name="code" id="code" placeholder="验证码">
@@ -177,7 +175,7 @@ float: right; */
         return false;
       }
       $.ajax({
-        url: "/component/ajax/singup",
+        url: "/component/ajax/sigup",
         type: 'POST',
         dataType: 'json',
         data: {'account':account},

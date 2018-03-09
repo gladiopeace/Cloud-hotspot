@@ -57,7 +57,7 @@
       <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">
        
-        <a href="/user/singin" role="button" class="btn_share" id="login-btn">商家中心</a>
+        <a href="/user/sigin" role="button" class="btn_share" id="login-btn">商家中心</a>
       
     </div>
   </div>
@@ -75,8 +75,8 @@
 
         <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/singin"><h3>登录</h3></a></li>
-            <li><a href="/user/singup"><h3>注册</a></h3></li>
+            <li><a href="/user/sigin"><h3>登录</h3></a></li>
+            <li><a href="/user/sigup"><h3>注册</a></h3></li>
           </ul>
         </div>
 
@@ -178,7 +178,7 @@
 
           $.ajax({
 
-              url: "<?php echo site_url('component/ajax/singup');?>",
+              url: "<?php echo site_url('component/ajax/sigup');?>",
 
               type: 'POST',
               dataType: 'json',

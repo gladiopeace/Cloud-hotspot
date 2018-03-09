@@ -20,7 +20,7 @@
 		}
 
         public function index(){
-            redirect('user/singin');
+            redirect('user/sigin');
         }
 
 		public function resetpwd(){
@@ -194,18 +194,18 @@
 		}
 
 
-		public function singin(){
+		public function sigin(){
 			
 	       	if(empty($this->_saler['username']) || empty($this->_saler['salt']) || empty($this->_saler['id'])){
 
-                $this->load->view('index/singin.php',array($this->_saler),FALSE);
+                $this->load->view('index/sigin.php',array($this->_saler),FALSE);
 			}else{				
 				redirect('manage');
 			}
 		}
 	
 	
-		public function singup(){
+		public function sigup(){
 			
 			if(!empty($this->_saler['username']) && empty($this->_saler['salt']) && empty($this->_saler['id']))	redirect('manage');
 
@@ -270,7 +270,7 @@
 					'salt'	=>	$salt,
 				);
 
-            $this->load->view('index/singup',$data,FALSE);
+            $this->load->view('index/sigup',$data,FALSE);
 
 			
 		}

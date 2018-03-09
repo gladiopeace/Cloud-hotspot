@@ -289,7 +289,7 @@
 			$model = $this->uri->segment(3);
 
 			switch ($model) {
-				case 'singup': //用户注册
+				case 'sigup': //用户注册
 
 				$type = $this->input->post('type');
 
