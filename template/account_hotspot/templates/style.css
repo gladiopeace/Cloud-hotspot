@@ -1,0 +1,1821 @@
+﻿@charset "UTF-8";
+
+#login-b, #login {
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  //background-image: url("../images/fallback_login_mobile.jpg");
+}
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  #login-b, #login {
+    //background-image: url("../images/fallback_login_tablet.jpg");
+  }
+ }
+@media screen and (min-width: 1024px) {
+  #login-b, #login {
+    //background-image: url("../images/fallback_login_desktop.jpg");
+  }
+}
+
+#debug {
+  display: none;
+  padding: 20px;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.3);
+  color: black;
+  top: 0px;
+  right: 0px;
+  z-index: 100000;
+  font-size: 12px; }
+
+select::-ms-expand {
+    display: none;
+}
+
+.hidden {
+  display: none; }
+
+.float {
+  float: left; }
+
+.clear {
+  clear: both; }
+
+.page {
+  display: none; }
+
+.page.active {
+  display: block; }
+
+#mobile-selector,
+#other-selector,
+.form-switcher,
+button,
+.close,
+.footer-link {
+  cursor: pointer; }
+
+input,
+button {
+  font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif; }
+
+.roboto {
+  font-family: "robotolight";
+  font-weight: 200; }
+
+@media screen and (max-width: 767px) {
+  .preload-mobile {
+    display: block; }
+
+  .preload-tablet {
+    display: none; }
+
+  .preload-desktop {
+    display: none; } }
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  .preload-mobile {
+    display: none; }
+
+  .preload-tablet {
+    display: block; }
+
+  .preload-desktop {
+    display: none; } }
+@media screen and (min-width: 1024px) {
+  .preload-mobile {
+    display: none; }
+
+  .preload-tablet {
+    display: none; }
+
+  .preload-desktop {
+    display: block; } }
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif;
+  font-weight: 400; }
+
+div,
+input,
+select,
+button {
+  outline: none;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6, p {
+  outline: none;
+  font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif;
+  font-weight: 300;
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat; }
+
+input::-webkit-input-placeholder {
+  font-family: "roboto", sans-serif;
+  visibility: visible !important; }
+
+.placeholder {
+  position: absolute;
+  color: grey;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none; }
+
+.filled + .placeholder,
+input:focus + .placeholder,
+input:hover + .placeholder {
+  -webkit-transform: translateY(-12px);
+  transform: translateY(-12px);
+  font-size: 10px !important; }
+
+.fade {
+  -webkit-transition: opacity 0.3s ease-in;
+  -moz-transition: opacity 0.3s ease-in;
+  -o-transition: opacity 0.3s ease-in;
+  -ms-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in; }
+
+.fade.in {
+  opacity: 1 !important; }
+
+.fade.out {
+  opacity: 0; }
+
+.compatibility-mode .flip-container .front,
+.compatibility-mode .flip-container .back {
+  height: 100vh !important;
+  width: 100vw !important; }
+.compatibility-mode .flip-container .back {
+  display: none; }
+
+.full-mode .flip-container {
+  perspective: 1000; }
+.full-mode .flip-container.flipped .flipper {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+.full-mode .flip-container,
+.full-mode .front,
+.full-mode .back {
+  height: 100vh !important;
+  width: 100vw !important; }
+.full-mode .flipper {
+  transition: 1.5s;
+  transform-style: preserve-3d;
+  position: relative; }
+.full-mode .front,
+.full-mode .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0; }
+.full-mode .front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+.full-mode .back {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+button.green.anim.disabled,
+button.white.anim.disabled {
+  background: none;
+  border: 1px #b1afaf solid; }
+  button.green.anim.disabled .text,
+  button.white.anim.disabled .text {
+    color: #b1afaf; }
+
+button.white.anim {
+  background: white; }
+  button.white.anim .text {
+    color: black; }
+
+button.green.anim {
+  background: #8CC63E; }
+  button.green.anim .text {
+    color: white; }
+  button.green.anim .counter {
+    color: white; }
+
+button.green.anim.loading {
+  background: #8CC63E; }
+
+button.anim {
+  position: relative;
+  padding: 7px 13px;
+  border-radius: 15px;
+  border: 1px solid white;
+  background: none;
+  height: 32px !important; }
+  button.anim .counter {
+    display: none; }
+  button.anim .text {
+    color: white;
+    position: absolute;
+    line-height: 0px;
+    width: 100%;
+    left: 0px; }
+  button.anim .loader {
+    display: none;
+    position: absolute;
+    top: 1px;
+    left: 1px; }
+
+.compatibility-mode #login-b button.anim.green .circular {
+  background-image: url("../images/ellipse-white.png");
+  background-repeat: no-repeat;
+  background-size: 23px;
+  width: 23px;
+  height: 23px; }
+.compatibility-mode #login-b button.anim.green .path {
+  stroke: transparent; }
+.compatibility-mode #login button.anim .circular {
+  background-image: url("../images/ellipse-black.png");
+  background-repeat: no-repeat;
+  background-size: 23px;
+  width: 23px;
+  height: 23px;
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite; }
+.compatibility-mode #login button.anim .path {
+  stroke: white; }
+
+button.anim.loading {
+  background: white;
+  border: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  width: 32px !important;
+  height: 32px !important; }
+  button.anim.loading .counter {
+    position: absolute;
+    width: 100%;
+    line-height: 0px;
+    left: 0px;
+    font-size: 10px; }
+  button.anim.loading .loader {
+    display: block; }
+
+.anim {
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out; }
+
+.slow-anim {
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out; }
+
+body {
+  background-color: transparent; }
+
+.loader {
+  position: relative;
+  margin: 0px auto;
+  width: 30px; }
+  .loader:before {
+    content: "";
+    display: block;
+    padding-top: 100%; }
+
+.circular {
+  -webkit-animation: rotate 2s linear infinite;
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke: black;
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round; }
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px; }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px; } }
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px; }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px; } }
+@media screen and (min-width: 600px) {
+  #postroll .wrapper_loading #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/postroll_background_tablet.jpg"); } }
+@font-face {
+  font-family: "robotolight";
+  src: url("../fonts/roboto-light-webfont.eot");
+  src: url("../fonts/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-light-webfont.woff2") format("woff2"), url("../fonts/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto-light-webfont.svg#robotolight") format("svg"); }
+@font-face {
+  font-family: "roboto-condensed-reg";
+  src: url("../fonts/RobotoCondensed-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Regular.woff") format("woff"), url("../fonts/RobotoCondensed-Regular.ttf") format("truetype"), url("../fonts/RobotoCondensed-Regular.svg#RobotoCondensed-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+#home #bg {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("../images/home-bg.jpeg"); }
+#home #top {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  top: 4px; }
+#home #plane-wrapper {
+  position: absolute;
+  top: 11%;
+  width: 100%; }
+  #home #plane-wrapper #plane {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("../images/flight.png");
+    background-repeat: no-repeat;
+    background-size: 40px;
+    width: 40px;
+    height: 40px; }
+  #home #plane-wrapper #plane-infos {
+    position: absolute;
+    top: 22px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #04ffd9;
+    font-size: 48px; }
+  #home #plane-wrapper #terminal {
+    position: absolute;
+    top: 82px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-size: fontSize1; }
+#home #ctas {
+  position: absolute;
+  top: 42%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 260px; }
+  #home #ctas .button-wrapper {
+    width: 120px;
+    min-height: 1px;
+    padding-left: 10px;
+    position: relative; }
+    #home #ctas .button-wrapper button {
+      width: 100%; }
+#home #weather {
+  position: absolute;
+  top: 68%;
+  width: 100%; }
+  #home #weather #icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("../images/sun.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px; }
+  #home #weather #temperature {
+    position: absolute;
+    top: 22px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #04ffd9;
+    font-size: 48px; }
+  #home #weather #situation {
+    position: absolute;
+    top: 82px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-size: 30px; }
+
+.preloader {
+  color: white; }
+  .preloader .button-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    top: 50%;
+    transform: translateY(-50%); }
+  .preloader .topreload {
+    width: 0px;
+    height: 0px;
+    display: inline;
+    background-image: url("../images/fallback_login_tablet.jpg");
+    background-image: url("../images/portal-bg.jpg");
+    background-image: url("../images/preroll-ad.jpeg");
+    background-image: url("../images/splashscreen-bg.jpeg");
+    background-image: url("../images/wifi.png");
+    background-image: url("../images/grid.png");
+    background-image: url("../images/login-button-1.png");
+    background-image: url("../images/login-button-2.png");
+    background-image: url("../images/phone.png");
+    background-image: url("../images/portal-icon-1.png");
+    background-image: url("../images/portal-icon-2.png");
+    background-image: url("../images/portal-icon-3.png");
+    background-image: url("../images/portal-icon-4.png");
+    background-image: url("../images/separator.png");
+    background-image: url("../images/logo-hq.png");
+    background-image: url("../images/logo-pudong.png"); }
+  .preloader .topreload2 {
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+    overflow: hidden; }
+
+.flip-container #preroll {
+  height: 100%; }
+  .flip-container #preroll .wrapper_loading {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0px; }
+    .flip-container #preroll .wrapper_loading .loading {
+      background-color: #12F3D3;
+      height: 5px;
+      width: 0px; }
+    .flip-container #preroll .wrapper_loading .skip {
+      background-color: rgba(201, 201, 202, 0.61);
+      position: absolute;
+      top: 10px;
+      padding: 6px 3px;
+      font-size: 9px;
+      border-radius: 100px;
+      color: white;
+      right: 10px; }
+  .flip-container #preroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/preroll-ad.jpeg"); }
+
+@media screen and (min-width: 600px) {
+  .flip-container #preroll .wrapper_loading .skip {
+    font-size: 12px;
+    padding: 14px 7px; }
+  .flip-container #preroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/preroll_background_tablet.jpg"); } }
+@media screen and (min-width: 1024px) {
+  .flip-container #preroll .wrapper_loading .skip {
+    cursor: pointer0;
+    font-size: 12px;
+    padding: 7px 3px;
+    border-radius: 1000; }
+  .flip-container #preroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/preroll_background_desktop.jpg"); } }
+.overlay {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: none; }
+  .overlay .popup {
+    width: 85%;
+    position: absolute;
+    top: 20%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 1px #3F3F3F;
+    background: #1c1c1c;
+    background: -moz-linear-gradient(45deg, #1c1c1c 0%, #415764 53%, #6f817e 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, #1c1c1c), color-stop(53%, #415764), color-stop(100%, #6f817e));
+    background: -webkit-linear-gradient(45deg, #1c1c1c 0%, #415764 53%, #6f817e 100%);
+    background: -o-linear-gradient(45deg, #1c1c1c 0%, #415764 53%, #6f817e 100%);
+    background: -ms-linear-gradient(45deg, #1c1c1c 0%, #415764 53%, #6f817e 100%);
+    background: linear-gradient(45deg, #1c1c1c 0%, #415764 53%, #6f817e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#6f817e', GradientType=1 ); }
+  .overlay .popup.wifi-wrapper {
+    height: 50%;
+    padding-bottom: 20px; }
+    .overlay .popup.wifi-wrapper .content {
+      height: 77%;
+      overflow-y: scroll; }
+  .overlay .popup.hotline-wrapper .content {
+    margin-top: 20%;
+    margin-bottom: 20%; }
+  .overlay .popup.map-wrapper {
+    width: 70%; }
+  .overlay .content {
+    padding: 0 15px;
+    margin-top: 8%;
+    color: white;
+    overflow-y: auto;
+    padding-bottom: 45px; }
+    .overlay .content .wifi {
+      font-size: 12px;
+      line-height: 20px; }
+      .overlay .content .wifi h2 {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 400; }
+    .overlay .content .hotline {
+      text-align: center; }
+      .overlay .content .hotline .hotline-img {
+        width: 60%;
+        margin-top: 26px;
+        margin-bottom: 15px;
+        right: 16px;
+        position: relative; }
+      .overlay .content .hotline .popup-number {
+        font-size: 18px; }
+    .overlay .content .map {
+      line-height: 24px;
+      font-size: 14px;
+      width: 60%;
+      margin: 0 auto; }
+      .overlay .content .map h3 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: 400; }
+  .overlay .close {
+    position: absolute;
+    z-index: 100000;
+    right: 5px;
+    top: 5px;
+    background-image: url("../images/cross-black.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    width: 30px;
+    height: 30px; }
+  .overlay .popup-number {
+    color: #00ffdb;
+    font-size: 26px;
+    font-weight: 500; }
+
+#login {
+  height: 100%; }
+  #login .popover {
+    position: absolute;
+    display: none;
+    padding: 5px;
+    top: 0px;
+    background: white;
+    font-size: 11px;
+    position: absolute;
+    top: -18px;
+    left: 6px;
+    z-index: 1010;
+    max-width: 276px;
+    text-align: left;
+    white-space: normal;
+    border-radius: 1px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-clip: padding-box; }
+    #login .popover .arrow {
+      bottom: 15px;
+      left: 45px;
+      margin-left: -17px;
+      border-top-color: white;
+      border-bottom-width: 0;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 11px;
+      bottom: 1px;
+      border-top-color: white;
+      border-bottom-width: 0;
+      top: 22px; }
+  #login #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-image: url("../images/fallback_login_tablet.jpg"); }
+  #login #form-wrapper {
+    position: absolute;
+    bottom: 60px;
+    background-image: url(../images/background-login.png);
+    background-size: cover;
+    width: 100%; }
+    #login #form-wrapper .error-handler {
+      position: absolute;
+      height: 45px;
+      color: white;
+      background: #333333;
+      width: 90%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+      top: -60px;
+      font-size: 11px;
+      line-height: 33px; }
+      #login #form-wrapper .error-handler .error-displayer {
+        padding: 5px 10px;
+        font-weight: 400;
+        overflow: hidden;
+        font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif; }
+      #login #form-wrapper .error-handler .smiley {
+        background-image: url("../images/smiley-error.png");
+        background-repeat: no-repeat;
+        background-size: 25px;
+        width: 25px;
+        height: 25px;
+        padding: 10px;
+        background-position: center;
+        background-color: #FF5144; }
+    #login #form-wrapper .placeholder {
+      color: #b1afaf;
+      left: 0px;
+      top: 5px;
+      position: absolute;
+      font-size: 15px; }
+    #login #form-wrapper #step-1 {
+      padding: 15px 15px 0px 15px; }
+      #login #form-wrapper #step-1 div.border-bottom.error {
+        border-bottom: #FF5144 1px solid; }
+      #login #form-wrapper #step-1 div.border-bottom {
+        width: 70%;
+        border-bottom: #828282 1px solid;
+        margin-right: 7%; }
+        #login #form-wrapper #step-1 div.border-bottom select.country-indicator {
+          color: white;
+          border: none;
+          padding: 0px 5px 0px 14px;
+          margin: 5px 0px;
+          font-size: 12px;
+          height: 24px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: url(../images/arrow.png) 1px 10px no-repeat;
+          background-color: transparent;
+          background-size: 10px; }
+          #login #form-wrapper #step-1 div.border-bottom select.country-indicator option {
+            color: black;
+            background: white; }
+        #login #form-wrapper #step-1 div.border-bottom div.vertical-separator {
+          border-left: #828282 1px solid;
+          width: 1px;
+          height: 27px;
+          position: absolute;
+          top: 17px;
+          left: 60px; }
+        #login #form-wrapper #step-1 div.border-bottom .login-input-wrapper {
+          width: 78%;
+          position: absolute;
+          left: 69px;
+          top: 16px; }
+          #login #form-wrapper #step-1 div.border-bottom .login-input-wrapper input.phone {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 5px;
+            padding-left: 0px;
+            font-weight: 400;
+            font-size: 15px;
+            margin-left: 2px;
+            padding-left: 25px;
+            background: url(../images/phone.png) 1px 8px no-repeat;
+            background-size: 15px; }
+          #login #form-wrapper #step-1 div.border-bottom .login-input-wrapper .placeholder {
+            left: 25px; }
+      #login #form-wrapper #step-1 .button-wrapper {
+        top: 2px;
+        width: 23%;
+        position: relative; }
+        #login #form-wrapper #step-1 .button-wrapper button {
+          width: 100%;
+          font-size: 12px;
+          font-weight: 400; }
+    #login #form-wrapper #step-2 {
+      padding: 15px; }
+      #login #form-wrapper #step-2 #input-wrapper {
+        position: relative;
+        width: 70%;
+        height: 32px;
+        margin-right: 7%;
+        border-bottom: #828282 1px solid; }
+        #login #form-wrapper #step-2 #input-wrapper input.code {
+          color: white;
+          background: transparent;
+          border: none;
+          padding: 5px;
+          padding-left: 0px;
+          font-weight: 400;
+          font-size: 15px;
+          width: 97%; }
+      #login #form-wrapper #step-2 .button-wrapper {
+        top: 0px;
+        width: 23%;
+        position: relative; }
+        #login #form-wrapper #step-2 .button-wrapper button {
+          width: 100%;
+          font-size: 12px;
+          font-weight: 400; }
+        #login #form-wrapper #step-2 .button-wrapper .ripple-effect {
+          background: white; }
+    #login #form-wrapper .conditions-wrapper {
+      padding-top: 5px; }
+      #login #form-wrapper .conditions-wrapper label {
+        color: white;
+        text-decoration: underline;
+        font-size: 10px;
+        position: relative; }
+      #login #form-wrapper .conditions-wrapper input {
+        position: relative;
+        margin-left: 0px;
+        top: 3px; }
+    #login #form-wrapper #step-3 {
+      padding: 15px; }
+      #login #form-wrapper #step-3 h3 {
+        padding: 0px 0px 15px 0px;
+        color: white;
+        text-align: center;
+        font-size: 15px; }
+        #login #form-wrapper #step-3 h3 .arrow {
+          background-image: url("../images/arrow-id.png");
+          background-repeat: no-repeat;
+          background-size: 10px;
+          width: 10px;
+          height: 10px;
+          margin-left: 5px; }
+      #login #form-wrapper #step-3 #input-wrapper {
+        font-size: 15px;
+        border-bottom: #828282 1px solid;
+        position: relative;
+        width: 28%; }
+        #login #form-wrapper #step-3 #input-wrapper input {
+          color: white;
+          background: transparent;
+          border: none;
+          padding: 5px;
+          padding-left: 0px;
+          font-weight: 400;
+          font-size: 15px;
+          width: 100%; }
+      #login #form-wrapper #step-3 #input-wrapper.login-input-wrapper.float {
+        margin-right: 20px; }
+      #login #form-wrapper #step-3 #input-wrapper.login-input-wrapper.float {
+        margin-right: 5%; }
+      #login #form-wrapper #step-3 .button-wrapper.float {
+        position: relative;
+        width: 33%; }
+        #login #form-wrapper #step-3 .button-wrapper.float button.anim.white {
+          width: 100%; }
+    #login #form-wrapper .form-switcher {
+      margin-left: 25px;
+      font-size: 10px;
+      color: white;
+      text-decoration: underline; }
+  #login #footer-links {
+    position: absolute;
+    bottom: 18px;
+    font-size: 8px;
+    width: 70px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+    #login #footer-links .footer-link {
+      color: white;
+      background: rgba(140, 140, 140, 0.46);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 400;
+      padding: 3px;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 23px; }
+    #login #footer-links .footer-link.link-2 {
+      margin-left: 10px; }
+    #login #footer-links img {
+      width: 20px;
+      margin-top: 2px; }
+
+#en .overlay .popup .content .map {
+  width: 90%;
+  font-size: 12px;
+  line-height: 18px; }
+  #en .overlay .popup .content .map h3 {
+    margin-top: 20px;
+    font-size: 16px; }
+#en #login #form-wrapper #step-1 div.border-bottom select.country-indicator {
+  font-size: 12px; }
+#en #login #form-wrapper #step-1 div.border-bottom .login-input-wrapper {
+  font-size: 12px; }
+#en #login #form-wrapper #step-1 .button-wrapper {
+  font-size: 12px; }
+  #en #login #form-wrapper #step-1 .button-wrapper button {
+    font-size: 12px; }
+#en #login #form-wrapper #step-2 #input-wrapper {
+  font-size: 12px; }
+#en #login #form-wrapper #step-2 .button-wrapper button {
+  font-size: 12px; }
+#en #login #form-wrapper #step-3 h3 {
+  font-size: 15px; }
+#en #login #form-wrapper #step-3 #input-wrapper.login-input-wrapper.float {
+  font-size: 12px; }
+#en #login #form-wrapper #step-3 #input-wrapper.login-input-wrapper.float {
+  font-size: 12px; }
+
+@media screen and (min-width: 600px) {
+  #en .overlay .popup.map-wrapper .content .map {
+    width: 90%; }
+
+  .overlay .popup.wifi-wrapper {
+    width: 50%; }
+    .overlay .popup.wifi-wrapper .content {
+      margin-left: 40px;
+      margin-right: 40px;
+      height: 80%; }
+  .overlay .popup.hotline-wrapper {
+    width: 50%; }
+  .overlay .popup.map-wrapper {
+    top: 34%;
+    width: 35%; }
+
+  #login #bg {
+     }
+  #login #form-wrapper {
+    width: 60%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto; }
+    #login #form-wrapper .error-handler {
+      width: 100%; } }
+@media screen and (min-width: 1024px) {
+  #en .overlay .popup.map-wrapper .content .map {
+    width: 30%; }
+
+  .overlay .popup.wifi-wrapper .content {
+    height: 70%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 50px; }
+  .overlay .popup.hotline-wrapper {
+    top: 31%;
+    width: 52%; }
+    .overlay .popup.hotline-wrapper .content {
+      margin-top: 5%;
+      margin-bottom: 5%; }
+      .overlay .popup.hotline-wrapper .content .hotline-img {
+        width: 35%; }
+      .overlay .popup.hotline-wrapper .content .popup-number {
+        font-size: 27px; }
+  .overlay .popup.map-wrapper {
+    width: 52%; }
+    .overlay .popup.map-wrapper .content {
+      margin-top: 4%; }
+      .overlay .popup.map-wrapper .content .map {
+        width: 20%;
+        min-width: 160px; }
+
+  #login #bg {
+    background-image: url("../images/fallback_login_desktop.jpg"); }
+  #login #form-wrapper {
+    width: 30%; } }
+.ios #login #form-wrapper #step-2 .button-wrapper {
+  top: 1px; }
+.ios #login-b #form-wrapper #other-connect #step-other .button-wrapper {
+  top: 7px; }
+
+.overlay-btn {
+  cursor: pointer; }
+
+.error {
+  border-bottom: #FF5144 1px solid !important; }
+
+#login-b {
+  font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif;
+  height: 100%;
+  -moz-placeholder-color: #828282;
+  -moz-placeholder-opacity: 1;
+  -ms-input-placeholder-color: #828282; }
+  #login-b ::-webkit-input-placeholder {
+    color: #828282; }
+  #login-b ::-moz-placeholder {
+    color: #828282;
+    opacity: 1; }
+  #login-b div,
+  #login-b input,
+  #login-b select,
+  #login-b button {
+    font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif; }
+  #login-b .popover {
+    position: absolute;
+    display: none;
+    top: 5px;
+    padding: 5px;
+    left: 15px;
+    font-size: 12px;
+    background: #8CC63E;
+    position: absolute;
+    z-index: 1010;
+    max-width: 276px;
+    text-align: left;
+    white-space: normal;
+    border: 1px solid #8CC63E;
+    border-radius: 1px;
+    background-clip: padding-box; }
+    #login-b .popover .arrow {
+      left: 40px;
+      margin-left: -11px;
+      border-top-color: #8CC63E;
+      border-bottom-width: 0;
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 11px;
+      margin-left: -10px;
+      border-top-color: #8CC63E;
+      border-bottom-width: 0;
+      top: 25px; }
+  #login-b #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-position: 10% 10%;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-position: top;
+    background-size: cover; }
+  #login-b .green .path {
+    stroke: white; }
+  #login-b .placeholder {
+    font-size: 14px;
+    color: #828282;
+    left: 0px;
+    top: 1px;
+    position: absolute;
+    font-weight: 500; }
+  #login-b #form-wrapper {
+    position: absolute;
+    bottom: 0%;
+    background-color: white;
+    max-width: 425px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+    #login-b #form-wrapper .error-handler {
+      position: absolute;
+      height: 30px;
+      color: #FF5144;
+      background: white;
+      width: 100%;
+      font-size: 12px;
+      line-height: 19px;
+      display: none;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+      #login-b #form-wrapper .error-handler .error-displayer {
+        padding: 5px 10px;
+        font-weight: 400;
+        overflow: hidden;
+        font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif; }
+      #login-b #form-wrapper .error-handler .smiley {
+        background: #FF5144;
+        width: 31px;
+        height: 31px;
+        background: url(../images/smiley-error.png) 50%/70% no-repeat #FF5144; }
+    #login-b #form-wrapper #connect-selector {
+      height: 30px;
+      color: black;
+      width: 100%;
+      display: block;
+      font-size: 12px;
+      line-height: 21px;
+      font-weight: 600; }
+      #login-b #form-wrapper #connect-selector div {
+        width: 50%;
+        float: left;
+        background: #BAB7B8;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center; }
+      #login-b #form-wrapper #connect-selector .selected {
+        background: white; }
+    #login-b #form-wrapper #mobile-connect {
+      display: block; }
+    #login-b #form-wrapper #other-connect {
+      display: none; }
+      #login-b #form-wrapper #other-connect #step-1 {
+        text-align: center;
+        padding: 10px 15px 0px 15px; }
+        #login-b #form-wrapper #other-connect #step-1 a {
+          text-decoration: none;
+          color: black;
+          font-size: 12px;
+          padding-right: 25px; }
+          #login-b #form-wrapper #other-connect #step-1 a img {
+            width: 13px;
+            margin-left: 10px;
+            top: 3px;
+            position: relative; }
+      #login-b #form-wrapper #other-connect #step-other {
+        padding: 15px 15px 25px 15px; }
+        #login-b #form-wrapper #other-connect #step-other #input-wrapper {
+          position: relative;
+          width: 32%;
+          margin-right: 6%;
+          margin-top: 1.5%;
+          margin-left: 7px;
+          border-bottom: #b0b0b0 1px solid; }
+          #login-b #form-wrapper #other-connect #step-other #input-wrapper input.code {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 5px 5px 5px 0px;
+            font-weight: 400;
+            font-size: 15px;
+            color: #828282;
+            width: 97%; }
+          #login-b #form-wrapper #other-connect #step-other #input-wrapper input.name {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 5px 5px 5px 0px;
+            font-weight: 400;
+            font-size: 15px;
+            color: #828282;
+            width: 97%; }
+          #login-b #form-wrapper #other-connect #step-other #input-wrapper .error {
+            border-bottom: #FF5144 1px solid; }
+        #login-b #form-wrapper #other-connect #step-other .button-wrapper {
+          top: 6px;
+          width: 20%;
+          position: relative; }
+          #login-b #form-wrapper #other-connect #step-other .button-wrapper button {
+            width: 100%;
+            font-size: 11px; }
+          #login-b #form-wrapper #other-connect #step-other .button-wrapper .ripple-effect {
+            background: white; }
+        #login-b #form-wrapper #other-connect #step-other .align-3-element {
+          margin-right: 15px !important; }
+    #login-b #form-wrapper .conditions-wrapper {
+      padding-top: 5px; }
+      #login-b #form-wrapper .conditions-wrapper label {
+        color: #828282;
+        font-size: 12px;
+        position: relative; }
+        #login-b #form-wrapper .conditions-wrapper label input {
+          position: relative;
+          top: 3px; }
+      #login-b #form-wrapper .conditions-wrapper a {
+        color: black;
+        font-size: 12px;
+        text-decoration: underline;
+        margin-right: 15px; }
+      #login-b #form-wrapper .conditions-wrapper .overlay-btn.hotline img {
+        width: 20px;
+        position: relative;
+        top: 5px; }
+      #login-b #form-wrapper .conditions-wrapper .overlay-btn.wifi {
+        margin-right: 35px; }
+    #login-b #form-wrapper #step-1 {
+      font-family: "roboto-condensed-reg", "Microsoft Yahei", "σ╛«Φ╜»Θ¢àΘ╗æ", STXihei, "σìÄµûçτ╗åΘ╗æ", sans-serif;
+      padding: 15px 15px 0px 15px; }
+      #login-b #form-wrapper #step-1 div.border-bottom {
+        width: 70.5%;
+        margin-right: 6%;
+        margin-left: 7px;
+        border-bottom: #b0b0b0 1px solid; }
+        #login-b #form-wrapper #step-1 div.border-bottom select.country-indicator {
+          padding: 0px 5px 0px 15px;
+          font-weight: 500;
+          margin: 5px 0px;
+          font-size: 15px;
+          color: #828282;
+          border: none;
+          height: 24px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: url(../images/arrow-black.png) 1px 12px no-repeat transparent;
+          background-size: 10px; }
+        #login-b #form-wrapper #step-1 div.border-bottom div.vertical-separator {
+          border-left: #b0b0b0 1px solid;
+          width: 1px;
+          height: 27px;
+          position: absolute;
+          top: 50px;
+          left: 86px; }
+        #login-b #form-wrapper #step-1 div.border-bottom .login-input-wrapper {
+          width: 50%;
+          position: absolute;
+          left: 86px;
+          top: 50px; }
+          #login-b #form-wrapper #step-1 div.border-bottom .login-input-wrapper input.phone {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 5px 5px 5px 0px;
+            font-weight: 400;
+            font-size: 15px;
+            color: #828282;
+            padding-top: 3px;
+            padding-bottom: 0px;
+            margin-left: 10px;
+            padding-left: 30px;
+            background: url(../images/phone-black.png) 1px 3px no-repeat transparent;
+            background-size: 15px; }
+          #login-b #form-wrapper #step-1 div.border-bottom .login-input-wrapper .placeholder {
+            left: 40px; }
+      #login-b #form-wrapper #step-1 .button-wrapper {
+        top: 0px;
+        width: 20%;
+        position: relative; }
+        #login-b #form-wrapper #step-1 .button-wrapper button {
+          width: 100%;
+          font-size: 11px;
+          font-weight: 400; }
+    #login-b #form-wrapper #step-2 {
+      padding: 15px 15px 10px 14px; }
+      #login-b #form-wrapper #step-2 #input-wrapper {
+        position: relative;
+        width: 70.5%;
+        margin-right: 6%;
+        margin-top: 1.5%;
+        margin-left: 7px;
+        border-bottom: #b0b0b0 1px solid; }
+        #login-b #form-wrapper #step-2 #input-wrapper input.code {
+          color: white;
+          background: transparent;
+          border: none;
+          padding: 5px 5px 5px 0px;
+          font-weight: 400;
+          font-size: 15px;
+          color: #828282;
+          width: 97%; }
+        #login-b #form-wrapper #step-2 #input-wrapper input.name {
+          color: white;
+          background: transparent;
+          border: none;
+          padding: 5px 5px 5px 0px;
+          font-weight: 400;
+          font-size: 15px;
+          color: #828282;
+          width: 97%; }
+      #login-b #form-wrapper #step-2 .button-wrapper {
+        top: 4px;
+        width: 20%;
+        position: relative; }
+        #login-b #form-wrapper #step-2 .button-wrapper button {
+          width: 100%;
+          font-size: 11px;
+          font-weight: 100; }
+        #login-b #form-wrapper #step-2 .button-wrapper .ripple-effect {
+          background: white; }
+
+.en #login-b #form-wrapper #other-connect #step-1 a {
+  font-size: 11px; }
+.en #login-b #form-wrapper #other-connect #step-other #input-wrapper input.code {
+  font-size: 12px; }
+.en #login-b #form-wrapper #other-connect #step-other #input-wrapper input.name {
+  font-size: 12px; }
+.en #login-b #form-wrapper #other-connect #step-other .button-wrapper button {
+  font-size: 11px; }
+.en #login-b #form-wrapper #step-1 div.border-bottom select.country-indicator {
+  font-size: 12px; }
+.en #login-b #form-wrapper #step-1 div.border-bottom .login-input-wrapper input.phone {
+  font-size: 12px; }
+.en #login-b #form-wrapper #step-1 .button-wrapper button {
+  font-size: 11px; }
+.en #login-b #form-wrapper #step-2 .button-wrapper button {
+  font-size: 11px; }
+
+@media screen and (min-width: 600px) {
+  #login-b #bg {
+     }
+  #login-b #form-wrapper {
+    width: 425px; } }
+@media screen and (min-width: 1024px) {
+  #login-b #bg {
+     }
+  #login-b #form-wrapper #other-connect #step-1 a {
+    font-size: 14px; }
+
+  .en #login-b #form-wrapper #connect-selector #other-selector {
+    font-size: 12px; }
+  .en #login-b #form-wrapper #other-connect #step-other #input-wrapper input.code {
+    font-size: 15px; }
+  .en #login-b #form-wrapper #other-connect #step-other #input-wrapper input.name {
+    font-size: 15px; }
+  .en #login-b #form-wrapper #other-connect #step-other .button-wrapper button .text {
+    font-size: 15px; }
+  .en #login-b #form-wrapper .conditions-wrapper label {
+    font-size: 12px; } }
+#postroll {
+  height: 100%; }
+  #postroll .wrapper_loading {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0px; }
+    #postroll .wrapper_loading .loading {
+      background-color: #12F3D3;
+      height: 5px;
+      width: 0px;
+      display: none; }
+    #postroll .wrapper_loading .skip {
+      background-color: rgba(100, 100, 100, 0.15);
+      position: absolute;
+      top: 10px;
+      padding: 6px 5px;
+      font-size: 9px;
+      border-radius: 100px;
+      color: white;
+      right: 10px; }
+      #postroll .wrapper_loading .skip .counter {
+        color: #04ffd9; }
+  #postroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/postroll-ad.jpeg"); }
+
+@media screen and (min-width: 600px) {
+  #postroll .wrapper_loading .skip {
+    margin: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 50px; }
+  #postroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../images/postroll_background_tablet.jpg"); } }
+@media screen and (min-width: 1024px) {
+  #postroll .wrapper_loading .skip {
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 50px; }
+  #postroll #bg {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-image: url("../images/postroll_background_desktop.jpg"); } }
+#portal #bg {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("../images/portal-bg.jpg"); }
+#portal #grid {
+  position: absolute;
+  overflow: hidden;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none; }
+  #portal #grid .cross {
+    background-image: url("../images/cross.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%); }
+  #portal #grid .cross1 {
+    top: 22vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+  #portal #grid .cross2 {
+    top: 42vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+  #portal #grid .cross3 {
+    top: 70vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+  #portal #grid .cross4 {
+    top: 100vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+  #portal #grid .cross5 {
+    top: 70vh;
+    left: 100vw;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute; }
+  #portal #grid .cross6 {
+    top: 70vh;
+    left: 0px;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute; }
+#portal #portal-content-wrapper .portal-box {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  float: left; }
+#portal #portal-content-wrapper .portal-box.big {
+  height: 28vh; }
+#portal #portal-content-wrapper #flight-number {
+  height: 22vh;
+  color: #04ffd9;
+  position: relative; }
+  #portal #portal-content-wrapper #flight-number .text {
+    position: absolute;
+    top: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px; }
+#portal #portal-content-wrapper #flight-informations {
+  height: 22vh;
+  color: white;
+  font-size: 12px; }
+  #portal #portal-content-wrapper #flight-informations .departure {
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 15%; }
+    #portal #portal-content-wrapper #flight-informations .departure h3.airport {
+      font-weight: bold; }
+  #portal #portal-content-wrapper #flight-informations .flight-icon {
+    position: absolute;
+    top: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 44%;
+    background-image: url("../images/flight2.png");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    width: 15px;
+    height: 15px; }
+  #portal #portal-content-wrapper #flight-informations .arrival {
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 65%; }
+    #portal #portal-content-wrapper #flight-informations .arrival h3.airport {
+      font-weight: bold; }
+#portal #portal-content-wrapper #flight-departure {
+  height: 20vh;
+  color: white;
+  background: #353b47; }
+  #portal #portal-content-wrapper #flight-departure h3.title {
+    padding: 10px;
+    font-size: 13px; }
+  #portal #portal-content-wrapper #flight-departure .progress-bar-legend {
+    width: 100%;
+    position: absolute;
+    top: 38%;
+    font-size: 10px;
+    color: #d7d7d7; }
+    #portal #portal-content-wrapper #flight-departure .progress-bar-legend p.start {
+      position: absolute;
+      left: 10px; }
+    #portal #portal-content-wrapper #flight-departure .progress-bar-legend p.end {
+      position: absolute;
+      right: 10px; }
+  #portal #portal-content-wrapper #flight-departure .progress-bar {
+    position: absolute;
+    top: 54%;
+    height: 4px;
+    background: grey;
+    width: 88%;
+    margin: 0px 6%;
+    border-radius: 40px; }
+    #portal #portal-content-wrapper #flight-departure .progress-bar .progress {
+      position: absolute;
+      height: 4px;
+      border-radius: 40px;
+      background: #04ffd9;
+      width: 0%; }
+  #portal #portal-content-wrapper #flight-departure .other {
+    position: absolute;
+    top: 66%;
+    font-size: 12px;
+    width: 100%; }
+    #portal #portal-content-wrapper #flight-departure .other .terminal {
+      left: 10px;
+      position: absolute; }
+    #portal #portal-content-wrapper #flight-departure .other .time {
+      position: absolute;
+      color: #04ffd9;
+      right: 10px; }
+#portal #portal-content-wrapper #destination {
+  height: 20vh;
+  top: 0px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../images/portal-meteo-bg.jpeg");
+  color: white; }
+  #portal #portal-content-wrapper #destination h3.city {
+    padding: 7px 15px;
+    font-size: 15px; }
+  #portal #portal-content-wrapper #destination h3.temperature {
+    position: absolute;
+    bottom: 7px;
+    left: 15px;
+    font-size: 30px; }
+  #portal #portal-content-wrapper #destination h3.weather {
+    background-image: url("../images/sun.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    bottom: 12px;
+    left: 67px; }
+#portal #portal-content-wrapper .link-box {
+  position: relative; }
+
+.icon-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 90px; }
+  .icon-wrapper h3.title {
+    font-size: 12px;
+    color: #04ffd9;
+    text-align: center;
+    bottom: 10px;
+    position: absolute;
+    width: 100%; }
+
+.link1 .icon {
+  background-image: url("../images/portal-icon-1.png");
+  background-repeat: no-repeat;
+  background-size: 46px;
+  width: 46px;
+  height: 58px; }
+
+.link2 .icon {
+  background-image: url("../images/portal-icon-2.png");
+  background-repeat: no-repeat;
+  background-size: 46px;
+  width: 46px;
+  height: 58px; }
+
+.link3 .icon {
+  background-image: url("../images/portal-icon-3.png");
+  background-repeat: no-repeat;
+  background-size: 46px;
+  width: 46px;
+  height: 58px; }
+
+.link4 .icon {
+  background-image: url("../images/portal-icon-4.png");
+  background-repeat: no-repeat;
+  background-size: 46px;
+  width: 46px;
+  height: 58px; }
+
+#portal-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  top: 0px;
+  z-index: 10; }
+  #portal-overlay .icon-portal-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%; }
+
+#splashscreen #bg {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("../images/splashscreen-bg.jpeg"); }
+#splashscreen #plane {
+  position: absolute;
+  top: 22%;
+  left: 5%;
+  background-image: url("../images/flight3.png");
+  background-repeat: no-repeat;
+  background-size: 193px;
+  width: 193px;
+  height: 300px; }
+#splashscreen #content-wrapper {
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  height: 90px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 62%; }
+  #splashscreen #content-wrapper #wifi-logo {
+    background-image: url("../images/wifi.png");
+    background-repeat: no-repeat;
+    background-size: 50px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+    #splashscreen #content-wrapper #wifi-logo .ripple-effect {
+      background: #04ffd9; }
+  #splashscreen #content-wrapper #separator {
+    background-image: url("../images/separator.png");
+    background-repeat: no-repeat;
+    background-size: 185px;
+    width: 185px;
+    height: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 54px; }
+  #splashscreen #content-wrapper #tagline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 65px;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #c9c9ca; }
+#splashscreen #airport-logo {
+  position: absolute;
+  bottom: 0%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto; }
+
+.hongqiao #airport-logo {
+  background-image: url("../images/logo-hq.png");
+  background-repeat: no-repeat;
+  background-size: 75px;
+  width: 75px;
+  height: 75px; }
+
+.pudong #airport-logo {
+  background-image: url("../images/logo-pudong.png");
+  background-repeat: no-repeat;
+  background-size: 75px;
+  width: 75px;
+  height: 75px; }
+
+.en #splashscreen #content-wrapper #tagline {
+  font-size: 14px; }
+
+@media screen and (min-width: 600px) {
+  #splashscreen #bg {
+    background-image: url("../images/splashscreen-bg-tablet.jpeg"); }
+  #splashscreen #plane {
+    display: none; }
+  #splashscreen #content-wrapper #wifi-logo {
+    background-image: url("../images/wifi-1.png");
+    background-repeat: no-repeat;
+    background-size: 400px;
+    width: 400px;
+    height: 400px;
+    bottom: -85px;
+    right: 80px; }
+  #splashscreen #content-wrapper #separator {
+    display: none; }
+  #splashscreen #content-wrapper #tagline {
+    font-size: 35px; } }
+@media screen and (min-width: 1024px) {
+  #splashscreen #bg {
+    background-image: url("../images/splashscreen-bg-desktop.jpeg"); }
+  #splashscreen #content-wrapper #wifi-logo {
+    bottom: -105px; } }
+.ios #splashscreen #airport-logo {
+  position: absolute;
+  bottom: 0%; }
+
+.ios.wechat #splashscreen #airport-logo {
+  position: absolute;
+  bottom: 0%; }
+
+#leaving #bg {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: url("../images/portal-bg.jpg"); }
+#leaving .leaving-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  width: 200px;
+  text-align: center;
+  z-index: 10; }
+  #leaving .leaving-content .title {
+    font-size: 18px; }
+  #leaving .leaving-content .text {
+    font-size: 12px;
+    margin-bottom: 20px; }
+#leaving .en {
+  font-family: "roboto-condensed-reg"; }
+
+/*# sourceMappingURL=style.css.map */
