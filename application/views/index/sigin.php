@@ -102,7 +102,7 @@
         </div>
 
         <div class="align-center line">
-          <button class="btn login" id="loginBtn" type="button">确认登录</button>
+          <button class="btn login" id="loginBtn" type="submit">确认登录</button>
         </div>
       </form>
      
