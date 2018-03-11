@@ -302,7 +302,7 @@
             <div id="step-1">
                 <a class="overlay-btn">
                     <span class="m-wrapper" data-source="login.form_b.2.title">获取登录帐户</span>
-                    <img class="arrow" src="{{template}}templates/round-arrow-black.png">
+                
                 </a>
             </div>
             <div class="clear"></div>

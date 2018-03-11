@@ -720,7 +720,7 @@
 				$auth_salt = $this->session->userdata('auth_salt');
 
 				$mail = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
-		        $phone ='/^(1(([357][0-9])|(47)|[8][0126789]))\d{8}$/';
+		        $phone ='/^(1(([123456789][0-9])|(47)|[8][0126789]))\d{8}$/';
 		        $flag = false;		        
 		        if(preg_match($mail,$account)){
 		        	$type = 'email';
