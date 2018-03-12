@@ -48,9 +48,8 @@ $(window).load(function(){
 
     if(App.vars.debugMode == 1) $("#debug").show();
 
+    
     //which language should we display
-    console.log(App.vars.urlParams.l+'----------');
-
      //检测浏览器语言
     var currentLang = navigator.language;   //判断除IE外其他浏览器使用语言
     if(!currentLang){//判断IE浏览器使用语言
@@ -59,7 +58,7 @@ $(window).load(function(){
     currentLang = currentLang.substr(0, 2);//截取lang前2位字符  
     console.log('language is '+currentLang);
     $("body").attr('id',currentLang);
-     
+
     if(currentLang == "zh") App.functions.content.load("zh");
     if(currentLang == "en") App.functions.content.load("en");
     if(currentLang != "en" && currentLang!='zh') App.functions.content.load(App.vars.defaultLanguage);
