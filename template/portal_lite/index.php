@@ -159,7 +159,7 @@
         </div>
         <!-- /LOGIN A FORM 2 -->
         <div id="step-3" class="switchable-form hidden">
-            <h3 class="overlay-btn map">
+            <h3 class="overlay-btn">
                 <span class="m-wrapper" data-source="login.form_a.2.title">登录帐户</span>
 
             </h3>
@@ -296,7 +296,7 @@
         <!-- / LOGIN B FORM 2 -->
         <div id="other-connect">
             <div id="step-1">
-                <a class="overlay-btn map">
+                <a class="overlay-btn">
                     <span class="m-wrapper" data-source="login.form_b.2.title">登录帐户</span>
                 </a>
             </div>
@@ -326,7 +326,7 @@
                         <input class="conditions" type="checkbox" name="conditions" checked="">
                     </label>
                     <a class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_b.2.conditions">我已阅读并接受上网协议</span></a>
-                    <a class="language-switcher" href=""><span class="m-wrapper" data-source="login.form_b.2.lang_switcher">EN</span></a>
+                    <a class="language-switcher" href="javascript:void(0);"><span class="m-wrapper" data-source="login.form_b.2.lang_switcher">EN</span></a>
                 </div>
             </div>
         </div>

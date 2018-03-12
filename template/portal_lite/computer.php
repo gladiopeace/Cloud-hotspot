@@ -159,7 +159,7 @@
         </div>
         <!-- /LOGIN A FORM 2 -->
         <div id="step-3" class="switchable-form hidden">
-            <h3 class="overlay-btn map">
+            <h3 class="overlay-btn">
                 <span class="m-wrapper" data-source="login.form_a.2.title">登录帐户</span>
 
             </h3>
@@ -290,7 +290,7 @@
                         <input class="conditions" type="checkbox" name="conditions" checked="">
                     </label>
                     <a class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_b.1.conditions">我已阅读并接受上网协议</span></a>
-                    <a class="language-switcher" href="http://172.21.163.22:8990/portal?cmd=login&amp;mac=18:4f:32:d1:f1:3f&amp;ip=172.21.187.129&amp;essid=%23AirportPVG%2DFree%2DWiFi&amp;apname=T2-CL04-30-C81N&amp;apgroup=T2-CL04_08_0&amp;url=http%3A%2F%2Fgo%2Emicrosoft%2Ecom%28null%29#"><span class="m-wrapper" data-source="login.form_b.1.lang_switcher">EN</span></a>
+                    <a class="language-switcher" href="javascript:void(0);"><span class="m-wrapper" data-source="login.form_b.1.lang_switcher">EN</span></a>
                     <a class="overlay-btn hotline"><span class="m-wrapper" data-source="login.form_b.1.interrogation"><img src="{{template}}templates/hotline-black.png"></span></a>
                 </div>
             </div>
@@ -298,9 +298,8 @@
         <!-- / LOGIN B FORM 2 -->
         <div id="other-connect">
             <div id="step-1">
-                <a class="overlay-btn map" href="http://172.21.163.22:8990/portal?cmd=login&amp;mac=18:4f:32:d1:f1:3f&amp;ip=172.21.187.129&amp;essid=%23AirportPVG%2DFree%2DWiFi&amp;apname=T2-CL04-30-C81N&amp;apgroup=T2-CL04_08_0&amp;url=http%3A%2F%2Fgo%2Emicrosoft%2Ecom%28null%29#">
-                    <span class="m-wrapper" data-source="login.form_b.2.title">获取登录帐户</span>
-                    <img class="arrow" src="{{template}}templates/round-arrow-black.png">
+                <a class="overlay-btn" href="javascript:void(0);">
+                    <span class="m-wrapper" data-source="login.form_b.2.title">获取登录帐户</span>      
                 </a>
             </div>
             <div class="clear"></div>
@@ -329,7 +328,7 @@
                         <input class="conditions" type="checkbox" name="conditions" checked="">
                     </label>
                     <a class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_b.2.conditions">我已阅读并接受上网协议</span></a>
-                    <a class="language-switcher" href="http://172.21.163.22:8990/portal?cmd=login&amp;mac=18:4f:32:d1:f1:3f&amp;ip=172.21.187.129&amp;essid=%23AirportPVG%2DFree%2DWiFi&amp;apname=T2-CL04-30-C81N&amp;apgroup=T2-CL04_08_0&amp;url=http%3A%2F%2Fgo%2Emicrosoft%2Ecom%28null%29#"><span class="m-wrapper" data-source="login.form_b.2.lang_switcher">EN</span></a>
+                    <a class="language-switcher" href="javascript:void(0);"><span class="m-wrapper" data-source="login.form_b.2.lang_switcher">EN</span></a>
                     <a class="overlay-btn hotline"><span class="m-wrapper" data-source="login.form_b.2.interrogation"><img src="{{template}}templates/hotline-black.png"></span></a>
                 </div>
             </div>
