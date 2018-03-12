@@ -122,32 +122,41 @@ class Portal_model extends CI_Model {
 			$copyright= array('company'=>"宁波优思网络技术有限公司",'title'=>'热点Wi-Fi','number'=>"10",'type'=>"accept",'a_num'=>"4",'b_num'=>"4");
 		}	
 
-		$slider = $this->get(array('thumb'),'hotspot_slider',$where);
-		
+		$slider = $this->get(array('thumb'),'hotspot_slider',$where);		
 		$banner = $this->get(array('thumb'),'hotspot_banner',$where);
 
 		switch ($bech['type']) {
 			case 'wechat':
 			case 'wifi':
 				$tid = $bech['wechat_tid'];
+				$themeType = 2;
+			
 				break;
 
 			case 'normal':
-				$tid = $bech['normal_tid'];				
+				$tid = $bech['normal_tid'];		
+				$themeType = 1;
+
 				break;
 
 			case 'account':
-				$tid = $bech['account_tid'];				
+				$tid = $bech['account_tid'];		
+				$themeType = 3;				
+
 				break;
 			
 			default:
 				$tid = $bech['normal_tid'];	
+				$themeType = 1;			
+
 				break;
 		}
-
-		$themes = $this->first(array("style"),"themes",array('id'=>$tid));
-
-		if(empty($themes)) $themes['style'] = 'portal_lite';
+		
+		if($tid){
+			$themes = $this->first(array("style"),"themes",array('id'=>$tid,'type'=>$themeType));
+		}else{
+			$themes = $this->first(array("style"),"themes",array('type'=>$themeType));			
+		}
 	   	
 	   	$this->load->library('user_agent');
 

@@ -127,61 +127,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             }
             $this->load->model('Portal_model');
             $data = $this->Portal_model->textSaltToken($authCode,$salt,$mac);
-            echo json_encode($data);
-
-            //$where = array('salt'=>$salt);
-            //$data = $this->Portal_model->branch($where);
-            //$data = $this->Portal_model->textSaltToken($authCode,$salt,$mac);
-            //$data = $this->branch($where);
-            /*$this->load->library('Aes');
-            $ip = $data["access_info"]['ip'];
-            $pass  = md5('mikrotik');
-            $username = $this->aes->encrypt($data["access_info"]['username'],$pass);
-            $password = $this->aes->encrypt($data["access_info"]['password'],$pass);
-            $url = $data["access_info"]['url'];
-            $type = $data['type'];
-            $wechat = array();
-            if($type=='wechat'){
-                $where = array('accesskey'=>$salt);
-                $access_info = $this->Portal_model->wecaht_wifi($where);
-                $ssid=$access_info['ssid'];
-                $bssid =$access_info['bssid'];
-                $appid =$access_info['appid'];
-                $shopid =$access_info['shopid'];
-                $secretkey =$access_info['secretkey'];
-                $authurl  = site_url('portal/component/init/?mac='.$mac);
-                $extend = $ssid;
-                //生成时间截
-                $time = explode ( " ", microtime ());
-                $time = $time [1] . ($time [0] * 1000);
-                $time2 = explode ( ".", $time );
-                $timestamp = $time2 [0];
-                $sign = md5($appid.$extend.$timestamp.$shopid.$authurl.$mac.$ssid.$bssid.$secretkey);
-                $wechat = array(
-                    'authurl'=>$authurl,
-                    'sign'=>$sign,
-                    'extend'=>$extend,
-                    'timestamp'=>$timestamp,
-                    'appid'=>$appid,
-                    'shopid'=>$shopid,
-                    'secretkey'=>$secretkey,
-                    'ssid'=>$ssid,
-                    'mac'=>$mac,
-                    'bssid'=>$bssid,
-                );
-            }
-
-            $data = array(
-                'type'=> $type,
-                'wechat'=>$wechat,
-                'ip'=>$ip,
-                'username'=>$username,
-                'password'=>$password,
-                'url'=>$url,
-                'pass'=>$pass,
-            );*/
-
-            //echo json_encode($data);
+            echo json_encode($data);            
         }
 
         public function verify(){
