@@ -1,405 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class=" supports csstransforms csstransforms3d csstransitions preserve3d">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{{copyright['title']}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="{{template}}style/swiper.min.css">
-    <link href="{{template}}style/bootstrap.min.css" rel="stylesheet">
-    <link href="{{template}}style/jquery.toast.css" rel="stylesheet">
-
-
-
+    <script src="{{template}}templates/jquery-1.12.3.min.js"></script>
+    <script src="{{template}}templates/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="{{template}}templates/modernizr.min.js"></script>
+    <script src="{{template}}templates/jquery.easing.min.js"></script>
+    <script src="{{template}}templates/fastclick.js"></script>
+    <script src="{{template}}templates/polyfills.js"></script>
+    <script src="{{template}}templates/_bootstrap.js"></script>
+    <script src="{{template}}templates/_functions.js"></script>
+    <script src="{{template}}templates/_config.js"></script>
+    <script src="{{template}}templates/_content.js"></script>
+    <script src="{{template}}templates/callInfo.js"></script>
+    <script src="{{template}}templates/page-login.js"></script>
+    <script src="{{template}}templates/script.js"></script>
+    <script src="{{template}}templates/areaCode.js"></script>
+    <script src="{{template}}templates/ideal_portal.js"></script>
+    <link rel="stylesheet" href="{{template}}templates/jquery.mCustomScrollbar.min.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="{{template}}templates/style.css" type="text/css" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
     <style>
-
-    *{padding: 0;margin: 0;}
-      body {
-        padding: 0;
-        margin: 0;
-      }
-
-    #init_content{width: 100%;height: 100%;z-index: 200;position: fixed;top: 0px;}
-    .tips{
-        width: 100%;
-        margin: 0px auto;
-        position: fixed;
-        bottom: -20px;
-        text-align: center;
-        height: 50px;
-        z-index: 100;
-        position: fixed;top: 88px;right: -60px; 
-
-    }
-
-  #timeplace{width: 40px;height: 40px;border:1px solid white;border-radius:20px;display: block;    position: absolute;
-    top: 0px;
-    right: 98px;
-    line-height: 40px;
-    text-align: center;
-  }
-    .content{
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        margin: 0 auto;
-        padding: 0;
-        width: 100%;
-    }
-
-    .swiper-container {
-        width: 100%;
-        height: 200px;
-        margin: 0px auto;
-    }
-    .swiper{
-      width: 100%;
-      height: 100%;
-      margin: 0px auto;
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-    }
-
-    .swiper-slide img{width: 100%;/* height: auto; max-height: 300px; */ }
-    .login{
-       padding: 0px;
-        /*width: 100%;*/
-        height: 60%;
-       /* border: 1px solid #ccc;*/
-    }
-
-    .form-control{padding-left: 68px;}
-    .field-tips{
-      display: inline;
-      position: relative;
-      top: 28px;
-      left: 8px;
-    }
-    .field-tips input{padding-left: 12px;}
-    @media screen and (min-width: 767px){ 
-       /* //<=768的设备 */
-       .content {
-        width: 500px;
-        height: 700px;
+        #bg{
+            background-image: url({{template}}images/fallback_login_desktop.jpg);
         }
-    }
-    #notice{font-size: 6px;position: relative;top: -10px;color: red;}
-    #footer{
-        position: relative;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 12px;
-        margin-top: 28px;
-    }
-    #footer p{    color: #999;}
-    
+        /*area code start*/
+        #areacode {
+            color: white;
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            padding: 0 5px 0 12px;
+            margin: 5px 0;
+            font-size: 12px;
+            height: 24px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url({{template}}images/arrow.png) 1px 10px no-repeat;
+            background-color: transparent;
+            background-size: 10px;
+        }
+        #popup.hide{
+            display:none;
+        }
+        #popup {
+            font-size: 12px;
+            color: #999;
+            border: 1px #999;
+            width: 126px;
+            position: absolute;
+            top: 39px;
+            margin-left: 0;
+            z-index: 10;
+        }
+        #popup ul{ margin:0; padding:0; width:55px; border:1px solid #c8c8c8; background:#FFF; overflow-y:scroll;
+            overflow-x: hidden; max-height:65px;}
+        #popup ul li{ line-height:30px; width:50px; text-indent:5px;}
+        #popup ul li:hover{ background:#0168b7; color:#FFF}
+        .captcha_pic{width:60px;height:20px;}
+        /*area code end*/
     </style>
+
 </head>
-<body>
-  <div class="content">
-   
-        <!-- Swiper -->
-        <div class="swiper-container">
-             <div class="swiper-wrapper" id="banner" style="width: 368px;height: 260px;">
 
-                 {% for item in banner %}
-                     <div class="swiper-slide">
-                         <img src="{{item['thumb']}}" style="height:100%;width:100%;">
-                     </div>
-                 {% else %}
-                        No users have been found.
-                 {% endfor %}
+<body onload="bodyLoad()" class="pudong full-mode">
 
+<!-- / -->
+<!-- / PAGE LOGIN A -->
+<!-- / -->
+<input type="hidden" id="branchSalt" value="{{branch['salt']}}">
+<input type="hidden" id="deviceMac" value="{{config['mac']}}">
+<div id="login" class="page active" style="background-color: transparent;">
+    <div id="bg"></div>
+    <div id="form-wrapper">
+        <div class="error-handler">
+            <span class="smiley"></span>
+            <span class="error-displayer"></span>
+        </div>
+        <!-- / LOGIN A FORM 1 -->
+        <div id="step-1" class="switchable-form hidden">
+            <div class="border-bottom float">
+                <div class="popover code_tag" style="display: none;">
+                    <div class="arrow"></div>
+                    <div class="popover-content"><span class="m-wrapper" data-source="login.form_a.1.popover">国际及地区代码</span></div>
+                </div>
+                <!-- <span id="stopin">
+                    <input name="areacode" id="areacode" autocomplete="off" type="text" data="國際區號" value="+ 86" style="width:36px;" maxlength="6" class="" onclick="findCode(this.value)" onkeyup="findCode(this.value);" data-cip-id="areacode">
+                </span> -->
+                <div id="popup" class="hide">
+                    <ul id="colors_ul">   </ul>
+                </div>
+                <!--
+                <select class="country-indicator">
+                  <option>+ 86</option>
+                  <option>+ 1</option>
+                  <option>+ 33</option>
+                  <option>+ 23</option>
+                  <option>+ 20</option>
+                </select>
+                -->
+                <!-- area code start -->
+                <!-- <span id="stopin">
+                    <input name="areacode" id="areacode"  autocomplete="off" type="text" data="國際區號"
+                           value="+ 86" style="width:36px;" maxlength="6" class="" onclick="findCode(this.value)" onkeyup="findCode(this.value);" />
+                </span>
+                <div id="popup" class="hide">
+                  <ul id="colors_ul">
+                  </ul>
+                </div> -->
+                <!-- area code end -->
+                <div class="vertical-separator"></div>
+                <div class="login-input-wrapper">
+                    <input class="phone" type="text" name="phone" data-cip-id="cIPJQ342845639">
+                    <label class="placeholder"><span class="m-wrapper" data-source=" login.form_a.1.phone_placeholder ">请输入手机号码</span></label>
+                </div>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-        </div>
-     
-        <div class="login">
-            
-        <div style="padding-left:30px;padding-right:30px;padding-top:20px;">
-    
-        <fieldset>
-
-
-          <form id="mikrotik" data-status='false' method="post">
-              
-          
-
-              <div class="form-group">
-                <p class="field-tips">会员帐号:</p>
-                <input type="text" name="username" id="username" class="form-control"  placeholder="会员帐号">
-              </div>
-              <div class="form-group">
-                <p class="field-tips">帐号密码:</p>
-            
-                <input type="password" name="password" id="password" class="form-control" placeholder="验证密码">
-              </div>
-
-          
-              <span id="notice"></span>
-              <br/>
-              <div class="form-group text-center">
-                 <a href="javascript:void(0);" class="btn btn-success" onclick="post();" style="width:60%;position:relative;">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
-              </div>
-
-          </form>      
-                 
-        </fieldset>
-        </div>
-        </div>
-
-          <div id="footer">
-              <p class='text-center'>{{copyright['company']}}</p>
-              <br/>
-              <p class="text-center">Copyright © 2014-2018 Power by Cloud Hotspot</p>
-          </div>
-          
-  </div>
-
-
-  {% if copyright['screen'] == 'accept' %}
-  <div id="init">
-
-    <div id="init_content">
-      <div class="swiper">
-           <div class="swiper-wrapper">
-
-               {% for item in slider %}
-                   <div class="swiper-slide">
-                       <img src="{{item['thumb']}}" style="height:100%;width:100%;">
-                   </div>
-               {% else %}
-                    No users have been found.
-               {% endfor %}
-
-           </div>
-
-           <div class="tips" style="color:white;font-size:24px;font-fimaly:宋体,雅黑;">
-
-            <div id='timeplace'>
-
-              <span id="skip_time">{{ skip_time }}</span>s
-              {% if copyright['type'] == 'accept' %}
-              <a href="javascript:void(0);" style="color:white;font-size:10px;font-fimaly:宋体,雅黑;text-decoration:none;position:relative;top:-10px;" onclick="remove_skip();">跳过</a>
-              {% endif %}
+            <div class="button-wrapper float">
+                <button class="anim white">
+                    <span class="text"><span class="m-wrapper" data-source="login.form_a.1.button_1">获取验证码</span></span>
+                    <span class="counter"><span class="m-wrapper" data-source="login.form_a.1.counter_1">60</span></span>
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                        </svg>
+                    </div>
+                </button>
             </div>
-
-
-           </div>
-
-
-      </div>
+            <div class="clear"></div>
+        </div>
+        <div id="step-2" class="switchable-form hidden">
+            <div id="input-wrapper" class="login-input-wrapper float">
+                <input class="code" type="text" name="code" data-cip-id="cIPJQ342845640">
+                <label class="placeholder"><span class="m-wrapper" data-source="login.form_a.1.code_placeholder">请输入验证码</span></label>
+            </div>
+            <div class="button-wrapper float">
+                <button class="anim white disabled">
+                    <span class="text"><span class="m-wrapper" data-source="login.form_a.1.button_2">登录</span></span>
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="clear"></div>
+            <div class="conditions-wrapper">
+                <input class="conditions" type="checkbox" name="conditions" checked="">
+                <label class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_a.1.conditions">我已阅读并接受上网协议</span></label>
+                <span class="form-switcher"><span class="m-wrapper" data-source="login.form_a.1.form_switcher">其它登录方式</span></span>
+            </div>
+        </div>
+        <!-- /LOGIN A FORM 2 -->
+        <div id="step-3" class="switchable-form">
+            <h3 class="overlay-btn">
+                <span class="m-wrapper" data-source="login.form_a.2.title">帐户登录</span>
+               <!-- <img class="arrow" src="{{template}}templates/arrow-id.png">-->
+            </h3>
+            <div id="input-wrapper" class="login-input-wrapper float">
+                <input class="name" type="text" name="name">
+                <label class="placeholder"><span class="m-wrapper" data-source="login.form_a.2.name_placeholder">帐号</span></label>
+            </div>
+            <div id="input-wrapper" class="login-input-wrapper float">
+                <input class="code" type="text" name="code">
+                <label class="placeholder"><span class="m-wrapper" data-source="login.form_a.2.code_placeholder">密码</span></label>
+            </div>
+            <div class="button-wrapper float">
+                <button class="anim white">
+                    <span class="text"><span class="m-wrapper" data-source="login.form_a.2.button_1">登录</span></span>
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="clear"></div>
+            <div class="conditions-wrapper">
+                <label>
+                    <input class="conditions" type="checkbox" name="conditions" checked="">
+                </label>
+                <label class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_a.2.conditions">我已阅读并接受上网协议</span></label>
+                <span class="form-switcher"><span class="m-wrapper" data-source="login.form_a.2.switcher">手机号登录</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="footer-links">
+        <div class="footer-link link-1 float language-switcher"><span class="m-wrapper" data-source="login.form_a.2.lang_switcher">EN</span></div>
 
     </div>
 
-  </div>
-  {% endif %}
-
-  <!-- Swiper JS -->
-    
-
-
-  <!-- Link Swiper's CSS -->
-  <script src="{{template}}js/jquery.min.js"></script>
-  <script src="{{template}}js/bootstrap.min.js"></script>
-  <script src="{{template}}js/swiper.min.js"></script>
-  <script src="{{template}}js/jquery.toast.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-
-        var $_GET = (function(){
-          var url = window.document.location.href.toString();
-          var u = url.split("?");
-          if(typeof(u[1]) == "string"){
-            u = u[1].split("&");
-            var get = {};
-            for(var i in u){
-              var j = u[i].split("=");
-              get[j[0]] = j[1];
-            }
-            return get;
-          } else {
-            return {};
-          }
-
-        })();
+    <div class="overlay">
+        <div class="popup">
+            <span class="close"></span>
+            <div class="content"></div>
+        </div>
+    </div>
+</div>
 
 
-          //渲染Banner
-          var swiper = new Swiper('.swiper-container',{
-              pagination: '.swiper-pagination',
-              paginationClickable: true,
-              //autoplay: 2500,
-              autoplay:2000
-          });
+<!-- / -->
+<!-- / PAGE LOGIN B -->
+<!-- / -->
+<div id="login-b" class="page">
+    <div id="bg_b"></div>
+    <div id="form-wrapper">
+        <div class="error-handler">
+            <span class="smiley"></span>
+            <span class="error-displayer"></span>
+        </div>
+        <div id="connect-selector">
+            <div id="mobile-selector" class="connect-selector selected">
+                <span><span class="m-wrapper" data-source="login.form_b.1.tab_1">手机认证</span></span>
+            </div>
+            <div id="other-selector" class="connect-selector">
+                <span><span class="m-wrapper" data-source="login.form_b.1.tab_2">取号机认证</span></span>
+            </div>
+        </div>
+        <!-- / LOGIN B FORM 1 -->
+        <div id="mobile-connect">
+            <div id="step-1">
+                <div class="border-bottom float">
+                    <div class="popover code_tag" style="display: none;">
+                        <div class="arrow"></div>
+                        <div class="popover-content"><span class="m-wrapper" data-source="login.form_b.1.popover">国际及地区代码</span></div>
+                    </div>
+                    <!--
+                    <select class="country-indicator">
+                      <option>+ 86</option>
+                      <option>+ 1</option>
+                      <option>+ 33</option>
+                      <option>+ 23</option>
+                      <option>+ 20</option>
+                    </select>
+                    -->
+                    <!-- area code start -->
+                    <!-- <span id="stopin">
+                        <input name="areacode" id="areacode"  autocomplete="off" type="text" data="國際區號"
+                               value="+ 86" style="width:36px;" maxlength="6" class="" onclick="findCode(this.value)" onkeyup="findCode(this.value);" />
+                    </span>
+                    <div id="popup" class="hide">
+                      <ul id="colors_ul">
+                      </ul>
+                    </div> -->
+                    <!-- area code end -->
+                    <div class="vertical-separator"></div>
+                    <div class="login-input-wrapper">
+                        <input class="phone" type="text" name="phone">
 
-        {% if copyright['screen'] == 'accept' %}
+                        <label class="placeholder"><span class="m-wrapper" data-source="login.form_b.1.phone_placeholder">请输入手机号码</span></label>
+                    </div>
+                </div>
+                <div class="button-wrapper float">
+                    <button class="anim green">
+                        <span class="text"><span class="m-wrapper" data-source="login.form_b.1.button_1">获取验证码</span></span>
+                        <span class="counter">60</span>
+                        <div class="loader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div id="step-2">
+                <div id="input-wrapper" class="login-input-wrapper float">
+                    <input class="code" type="text" name="code">
 
-            var tickTime = 10;
-            var skip_control;
-            skip_control=setInterval('skip_time()',1000);
-            var swiper = new Swiper('.swiper',{
-              pagination: false,
-              paginationClickable: true,
-              autoplay: 3000,
-              //autoplay: 2000,
-            });
+                    <label class="placeholder"><span class="m-wrapper" data-source="login.form_b.1.code_placeholder">请输入验证码</span></label>
+                </div>
+                <div class="button-wrapper float">
+                    <button class="anim white disabled">
+                        <span class="text"><span class="m-wrapper" data-source="login.form_b.1.button_2">登录</span></span>
+                        <div class="loader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="conditions-wrapper">
+                    <label>
+                        <input class="conditions" type="checkbox" name="conditions" checked="">
+                    </label>
+                    <a class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_b.1.conditions">我已阅读并接受上网协议</span></a>
+                    <a class="language-switcher" href=""><span class="m-wrapper" data-source="login.form_b.1.lang_switcher">EN</span></a>
+                   <!-- <a class="overlay-btn hotline"><span class="m-wrapper" data-source="login.form_b.1.interrogation"><img src="{{template}}templates/hotline-black.png"></span></a>-->
+                </div>
+            </div>
+        </div>
+        <!-- / LOGIN B FORM 2 -->
+        <div id="other-connect">
+            <div id="step-1">
+                <a class="overlay-btn">
+                    <span class="m-wrapper" data-source="login.form_b.2.title">获取登录帐户</span>
+                
+                </a>
+            </div>
+            <div class="clear"></div>
+            <div id="step-other">
+                <div id="input-wrapper" class="login-input-wrapper float align-3-element">
+                    <input class="name" type="text" name="name">
+                    <label class="placeholder"><span class="m-wrapper" data-source="login.form_b.2.name_placeholder">帐号</span></label>
+                </div>
+                <div id="input-wrapper" class="login-input-wrapper float">
+                    <input class="code code-other" type="text" name="code">
+                    <label class="placeholder"><span class="m-wrapper" data-source="login.form_b.2.code_placeholder">密码</span></label>
+                </div>
+                <div class="button-wrapper float">
+                    <button class="anim green disabled">
+                        <span class="text"><span class="m-wrapper" data-source="login.form_b.2.button_1">提交</span></span>
+                        <div class="loader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="clear"></div>
+                <div class="conditions-wrapper">
+                    <label>
+                        <input class="conditions" type="checkbox" name="conditions" checked="">
+                    </label>
+                    <a class="overlay-btn wifi"><span class="m-wrapper" data-source="login.form_b.2.conditions">我已阅读并接受上网协议</span></a>
+                    <a class="language-switcher" href=""><span class="m-wrapper" data-source="login.form_b.2.lang_switcher">EN</span></a>
+                   <!-- <a class="overlay-btn hotline"><span class="m-wrapper" data-source="login.form_b.2.interrogation"><img src="{{template}}templates/hotline-black.png"></span></a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overlay">
+        <div class="popup">
+            <span class="close"></span>
+            <div class="content"></div>
+        </div>
+    </div>
+</div>
+<style>
+    #bg_b{
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-position: top;
+    }
+</style>
 
-            function skip_time(){
-                // alert(config['skip_time']);
-                var time = parseInt(tickTime);
-                if(time==0){
-                    //clearIntervel(skip_control);
-                    clearInterval(skip_control);
-                    remove_skip();
-                    return;
-                }
-                //alert(time);
-                //document.getElementById('skip_time').innerHtml='2';
-                $("#skip_time").text(time);
-                tickTime--;
-
-            }
-
-            {% if copyright['type'] == 'accept' %}
-                function remove_skip(){
-                    clearInterval(skip_control);
-                    $("#init").hide('fast/400');
-                }
-            {% endif %}
-
-        {% endif %}
+<script type="text/javascript">
 
 
-    function post(){
-        var username = $("#username").val();
-        var password = $("#password").val();
-        if(username =='' || password==''){
-            $.toast({
-                text:  '请输入用户和密码', // Text that is to be shown in the toast
-                icon: 'info', // Type of toast icon
-                showHideTransition: 'fade', // fade, slide or plain
-                allowToastClose: false, // Boolean value true or false
-                hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
-                stack: false, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
-                position: 'mid-center',
-                textAlign: 'center',  // Text alignment i.e. left, right or center
-            });
+    $(" .scrollBox .next").click(function () {
+        if( $(this).hasClass("dir01")){
 
-            return false;
+        }else{
+            $(this).addClass("dir01")
+            $(this).siblings("span").removeClass("dir")
         }
-        $.ajax({
-              url: "/portal/auth/fetch-member-account",
-              type: 'POST',
-              dataType: 'json',
-              data:{'username':username,'password':password,'accesskey':"{{config['salt']}}",'mac':"{{config['mac']}}"}
-          })
-        .done(function(info) {
 
-            if(info['status']=='success'){
-                startLogin(info);
+    })
 
-            }else{
-                console.log(info);
+    $(" .scrollBox .prev").click(function () {
+        if ($(this).hasClass("dir")) {
 
-                $.toast({
-                    text:  info['message'], // Text that is to be shown in the toast
-                    icon: 'info', // Type of toast icon
-                    showHideTransition: 'fade', // fade, slide or plain
-                    allowToastClose: false, // Boolean value true or false
-                    hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
-                    stack: false, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
-                    position: 'mid-center',
-                    textAlign: 'center',  // Text alignment i.e. left, right or center
-                });
+        } else {
+            $(this).addClass("dir")
+            $(this).siblings("span").removeClass("dir01")
+        }
 
-            }
-      });
-      return false;
+    })
 
-    }
-
-
-    function startLogin(json){
-
-        var verifyData = {
-            username : $("#username").val(),
-            password : $("#password").val(),
-            accesskey:"{{config['salt']}}",
-            mac:"{{config['mac']}}",
-            auth_code:json.access_code
-        };
-
-        $.ajax({
-          url: '/portal/verify/member-auth',
-          type: 'POST',
-          dataType: 'json',
-          data: verifyData
-        })
-        .done(function(ret) {
-          console.log("success");
-            if(ret.code=='-1'){
-                swal({
-                    title: "",
-                    text: "访问错误,请重试!",
-                    timer: 2000,
-                    showConfirmButton: false,
-                    showCancelButton: false,
-                    type:"info"
-                })
-
-                $.toast({
-                    text: "访问错误,请重试!", // Text that is to be shown in the toast
-
-                    icon: 'info', // Type of toast icon
-                    showHideTransition: 'fade', // fade, slide or plain
-                    allowToastClose: false, // Boolean value true or false
-                    hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
-                    stack: false, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
-                    position: 'mid-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
-
-                    textAlign: 'center',  // Text alignment i.e. left, right or center
-                    loader: true,  // Whether to show loader or not. True by default
-                    loaderBg: '#9EC600',  // Background color of the toast loader
-                });
-            }
-            if(ret.code=='1'){
-
-                var form = $('<form class="hide" action="http://'+ret.ip+'/login" method="get">\
-                    <input type="hidden" name="auth_code" value="'+json.access_code+'"/>\
-                    <input type="hidden" name="accesskey" value="'+ verifyData.accesskey +'" />\
-                    </form>');
-                console.log(form);
-                form.appendTo("body").submit();
-            }
-        });
-
-    }
-
-    </script>
-
+</script>
 </body>
 </html>

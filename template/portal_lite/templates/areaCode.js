@@ -411,6 +411,8 @@ $("#areacode").focus(function(){
 });
 
 var bodyLoad = function(){
+
+   
     document.getElementsByTagName('body').item(0).onclick=function(){document.getElementById('popup').className='hide';};
     document.getElementById('stopin').onclick=function(e){stopPropagation(e);};
 };

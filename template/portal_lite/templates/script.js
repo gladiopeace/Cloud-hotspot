@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 $(window).load(function(){
 
+    
     //Detect the airport version content
     if(typeof App.vars.airportVersion == "undefined"){
         console.log("Loading airport content from URL param: "+App.vars.urlParams.a);
@@ -48,10 +49,18 @@ $(window).load(function(){
     if(App.vars.debugMode == 1) $("#debug").show();
 
     //which language should we display
-    if(App.vars.urlParams.l == "zh") App.functions.content.load("zh");
-    if(App.vars.urlParams.l == "en") App.functions.content.load("en");
-    //fallback if no language detected in the Url
-    if(typeof App.vars.urlParams.l == "undefined") App.functions.content.load(App.vars.defaultLanguage);
+    console.log(App.vars.urlParams.l+'----------');
+
+     //检测浏览器语言
+    var currentLang = navigator.language;   //判断除IE外其他浏览器使用语言
+    if(!currentLang){//判断IE浏览器使用语言
+        currentLang = navigator.browserLanguage;
+    }
+    currentLang = currentLang.substr(0, 2);//截取lang前2位字符  
+
+    if(currentLang == "zh") App.functions.content.load("zh");
+    if(currentLang == "en") App.functions.content.load("en");
+    if(currentLang != "en" && currentLang!='zh') App.functions.content.load(App.vars.defaultLanguage);
 
     //which version should we display
     if(App.vars.urlParams.v == "v0"){

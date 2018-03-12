@@ -134,6 +134,7 @@ App.functions.content.fill = function (content){
 //load the content, here we have different content because of multilingual
 App.functions.content.load = function(lang_code) {
     //inform our namespacer to the currently used language content
+    console.log(lang_code);
    App.vars.language = lang_code;
    $("body").attr("id",lang_code);
    //init and fill, the init will only replace {{ }} the first time called

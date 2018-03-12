@@ -70,7 +70,7 @@
 
 </head>
 
-<body onload="bodyLoad()" class="pudong full-mode" id="zh">
+<body onload="bodyLoad()" class="pudong full-mode">
 
 <!-- / -->
 <!-- / PAGE LOGIN A -->
