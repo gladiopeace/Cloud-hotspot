@@ -83,14 +83,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $active_record = TRUE;
-if(!file_exists(FCPATH.'data/config.php')){
+/*if(!file_exists(FCPATH.'data/config.php')){
     header("Location:/install/");
     exit();
-}else{
-    $db = require_once(FCPATH.'data/config.php');
-    if(isset($db['base_url']))  unset($db['base_url']);
+}else{*/
+   /* $db = require_once(FCPATH.'data/config.php');
+    if(isset($db['base_url']))  unset($db['base_url']);*/
 
-}
+//}
 //var_dump($db);
 
 $db['default']['dbdriver'] = 'mysqli';

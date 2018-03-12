@@ -1,71 +1,25 @@
 <?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Initialize the database
- *
- * @category	Database
- * @author	EllisLab Dev Team
- * @link	https://codeigniter.com/user_guide/database/
- *
- * @param 	string|string[]	$params
- * @param 	bool		$query_builder_override
- *				Determines if query builder should be used or not
- */
+
 function &DB($params = '', $query_builder_override = NULL)
 {
 	// Load the DB config file if a DSN string wasn't passed
-	if (is_string($params) && strpos($params, '://') === FALSE)
-	{
+
+	if (is_string($params) && strpos($params, '://') === FALSE){
 		// Is the config file in the environment folder?
 		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
-			&& ! file_exists($file_path = APPPATH.'config/database.php'))
-		{
+			&& ! file_exists($file_path = APPPATH.'config/database.php')){
 			show_error('The configuration file database.php does not exist.');
 		}
 
 		include($file_path);
 
+
 		// Make packages contain database config files,
 		// given that the controller instance already exists
-		if (class_exists('CI_Controller', FALSE))
-		{
+		if (class_exists('CI_Controller', FALSE)){
 			foreach (get_instance()->load->get_package_paths() as $path)
 			{
 				if ($path !== APPPATH)
@@ -87,6 +41,17 @@ function &DB($params = '', $query_builder_override = NULL)
 			show_error('No database connection settings were found in the database config file.');
 		}
 
+	
+		$install_path = FCPATH.'data/config.php';
+		if(!file_exists($install_path)){				
+			header("Location:/install/");
+			exit('');
+		}
+	
+		$inConfig = require($install_path);
+
+		$db = array_merge_recursive($db,$inConfig);
+		
 		if ($params !== '')
 		{
 			$active_group = $params;
@@ -95,16 +60,15 @@ function &DB($params = '', $query_builder_override = NULL)
 		if ( ! isset($active_group))
 		{
 			show_error('You have not specified a database connection group via $active_group in your config/database.php file.');
-		}
-		elseif ( ! isset($db[$active_group]))
+		}elseif ( ! isset($db[$active_group]))
 		{
 			show_error('You have specified an invalid database connection group ('.$active_group.') in your config/database.php file.');
 		}
-
+		//var_dump($db);
+		//exit();
 		$params = $db[$active_group];
-	}
-	elseif (is_string($params))
-	{
+
+	}elseif (is_string($params)){
 		/**
 		 * Parse the URL from the DSN string
 		 * Database settings can be passed as discreet

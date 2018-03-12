@@ -3,8 +3,8 @@
 /**
  * 配置文件
  */
-$config = array();
- $config['default'] = array(
+$conf = array();
+$conf['default'] = array(
     'hostname' => '#DB_HOST#',
     'username' => '#DB_USER#',
 	'password' => '#DB_PWD#',
@@ -13,7 +13,6 @@ $config = array();
 	// 'swap_pre' => '#DB_PREFIX#',
  	'port'	   => '#DB_PORT#',  
 );
-//$config['base_url'] = '#SERVER_URL#';
-
- return $config;
+$conf['base_url'] = '#SERVER_URL#';
+return $conf;
 ?>

@@ -235,16 +235,16 @@ if ( ! function_exists('get_config'))
 	 * @param	array
 	 * @return	array
 	 */
-	function &get_config(Array $replace = array())
-	{
+	function &get_config(Array $replace = array()){
+	
 		static $config;
-
-		if (empty($config))
-		{
+	
+		if (empty($config)){
 			$file_path = APPPATH.'config/config.php';
+			
+
 			$found = FALSE;
-			if (file_exists($file_path))
-			{
+			if (file_exists($file_path)){
 				$found = TRUE;
 				require($file_path);
 			}
@@ -268,14 +268,24 @@ if ( ! function_exists('get_config'))
 				echo 'Your config file does not appear to be formatted correctly.';
 				exit(3); // EXIT_CONFIG
 			}
-		}
 
+			$install_path = FCPATH.'data/config.php';
+			if(!file_exists($install_path)){				
+				header("Location:/install/");
+    			exit('');
+			}
+			$inConfig = require($install_path);
+			//var_dump($inConfig);
+			$config['base_url'] = $inConfig['base_url'];
+		}
+		//echo 'This is the first config';
+		//var_dump($replace);
 		// Are any values being dynamically added or replaced?
 		foreach ($replace as $key => $val)
 		{
 			$config[$key] = $val;
 		}
-
+	
 		return $config;
 	}
 }
