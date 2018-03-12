@@ -111,9 +111,11 @@
               <button class="btn btn-xs btn-info" id="setting" type="button" data-do="change">
               <i class="fa fa-pencil-square-o"></i>&nbsp;修改资料</button>
               &nbsp;&nbsp;
-            <button class="btn btn-xs btn-info" id="system" type="button" data-do="system">
+              {% if bech['level']=='8' or bech['level']=='6' %}
+              <button class="btn btn-xs btn-info" id="system" type="button" data-do="system">
                 <i class="fa fa-setting"></i>&nbsp;系统配置</button>
-            &nbsp;&nbsp;
+              &nbsp;&nbsp;
+              {% endif %}
               <button class="btn btn-xs btn-primary" onclick="window.location.href='/manage/logout'" type="button">
               <i class="fa fa-sign-out"></i>&nbsp;退出系统</button>
         </div>

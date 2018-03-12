@@ -99,7 +99,6 @@ $(window).load(function(){
             App.functions.button.loadingState($(this));
         }
     });
-
     //output our namespacer
     console.log(App);
 });
