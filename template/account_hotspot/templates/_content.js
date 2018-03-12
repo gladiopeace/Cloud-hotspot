@@ -3,64 +3,25 @@ App.airportsContent = {
     airports : {
         pudong : {
             en : {
-                welcome : "Welcome to Pudong Airport",
-                hotline : "<div class='hotline'>\
-                <img class='hotline-img' src='./images/wifi-1.png'><br><br>\
-                <span class='title'>24hrs Service Line</span><br>\
-                <span class='popup-number'>400 6070 122</span>\
-                </div>",
-                map : "<div class='map'>\
-                <h3>Wi-Fi ticket machines can be found at</h3>\
-                T1 domestic boarding gate 8/9<br>\
-                T1 international boarding gate 19/20<br>\
-                T1 international info counter<br>\
-                T2 domestic boarding gate<br>\
-                C58 T2 international boarding gate<br>\
-                D75 T2 international info counter<br>\
-                T2 VIP Lounge 78<br>\
-                </div>",
+                welcome : "Welcome to Cloud-Hotspot",
+                hotline : "",
+                map : "",
             },
             zh : {
-                welcome : "浦东机场欢迎您",
-                hotline : "<div class='hotline'>\
-                <img class='hotline-img' src='./images/wifi-1.png'><br><br>\
-                <span class='title'>24小时客服热线</span><br>\
-                <span class='popup-number'>400 6070 122</span>\
-                </div>",
-                map : "<div class='map'>\
-                <h3>取号机位于</h3>\
-                T1国内8/9号登机口<br>\
-                T1国际19/20号登机口<br>\
-                T1国际问询台<br>\
-                T2国内C58登机口<br>\
-                T2国际D75登机口<br>\
-                T2国际问询台<br>\
-                T2国际78号贵宾室<br>\
-                </div>"
+                welcome : "Cloud-Hotspot欢迎您",
+                hotline : ""
             },
         },
         hongqiao : {
             en : {
-                welcome : "Welcome to Hongqiao Airport",
-                hotline : "<div class='hotline'>\
-                <img class='hotline-img' src='./images/wifi-1.png'><br><br>\
-                <span class='title'>24hrs Service Line</span><br>\
-                <span class='popup-number'>400 9217 105</span>\
-                </div>",
-                map : "<div class='map'>\
-                Wi-Fi ticket machines can be found at T1 boarding gate B9-B10.<br>\
-                </div>"
+                welcome : "Welcome to Cloud-Hotspot",
+                hotline : "",
+                map : ""
             },
             zh : {
-                welcome : "虹桥机场欢迎您",
-                hotline : "<div class='hotline'>\
-                <img class='hotline-img' src='./images/wifi-1.png'><br><br>\
-                <span class='title'>24小时客服热线</span><br>\
-                <span class='popup-number'>400 9217 105</span>\
-                </div>",
-                map : "<div class='map'>\
-                取号机位于T1航站楼B9-B10登机口<br>\
-                </div>"
+                welcome : "Cloud-Hotspot欢迎您",
+                hotline : "",
+                map : ""
             },
         },
     },
