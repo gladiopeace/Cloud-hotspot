@@ -57,7 +57,9 @@ $(window).load(function(){
         currentLang = navigator.browserLanguage;
     }
     currentLang = currentLang.substr(0, 2);//截取lang前2位字符  
-
+    console.log('language is '+currentLang);
+    $("body").attr('id',currentLang);
+     
     if(currentLang == "zh") App.functions.content.load("zh");
     if(currentLang == "en") App.functions.content.load("en");
     if(currentLang != "en" && currentLang!='zh') App.functions.content.load(App.vars.defaultLanguage);
