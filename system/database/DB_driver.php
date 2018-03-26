@@ -94,7 +94,7 @@ abstract class CI_DB_driver {
 	 */
 	public $dbdriver		= 'mysqli';
 
-	/**
+	/** 
 	 * Sub-driver
 	 *
 	 * @used-by	CI_DB_pdo_driver
