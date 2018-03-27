@@ -22,7 +22,7 @@
 
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span>(购买)短信余额</span>
+                            <span>短信验证</span>
 
                             <h2 class="font-bold"><span id="message_count"></span> </h2>
                          

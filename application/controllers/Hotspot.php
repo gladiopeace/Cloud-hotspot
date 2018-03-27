@@ -522,7 +522,6 @@
             $where =['bid'=>$bid,'accesskey'=>$accesskey];
             $this->load->model('Portal_model');
 
-
             if($this->input->post()){
 
                 $id = $this->input->post('id');
@@ -558,10 +557,87 @@
 
         }
 
+        public function init(){
+
+
+
+            $bid = $this->_organization['branch_id'];
+            $accesskey = $this->_organization['accesskey'];
+
+            $where =['bid'=>$bid,'accesskey'=>$accesskey];
+
+            $start_time = strtotime("-6 day");
+
+            $end_time = time();
+            $this->load->model('Portal_model');
+
+            $where =[
+                'and'=>[
+                    'addtime[<]'=>$end_time,
+                    'addtime[>]'=>$start_time,
+                    'accesskey'=>$accesskey,
+                    ]
+                ];
+            $data= $model->select('access_log',[
+                'type','addtime'],$where);
+        
+            $date = [];
+
+            $message = $model->first('hotspot_branch','message_total',['salt'=>$accesskey]);
+            
+            $date['message'] =  $message;
+            $date['total'] = count($data);
+            $date['wechat'] = 0;
+            $date['normal'] = 0;
+            
+            for ($i=0; $i <= 1 ; $i++) { 
+
+            /*  $date[$i]= ;*/
+                $index= date('Y-m-d',strtotime(date('Y-m-d',$start_time)."+ $i day"));
+                $date[$index]['total']= 0;
+                $date[$index]['wechat']= 0;
+                $date[$index]['normal']= 0;
+                
+                foreach ($data as $k => $v) {
+                    if(date('Y-m-d',$v['addtime'])==$index){
+                        switch ($v['type']) {
+                            case '2':
+                                $date['wechat'] = $date['wechat']+1;
+                                $date[$index]['wechat']= $date[$index]['wechat'] + 1;
+                                break;
+                            
+                            case '3':
+                                $date['normal'] = $date['normal']+1;
+                                $date[$index]['normal']= $date[$index]['normal'] + 1;
+                                
+                                break;
+
+                            
+                            
+                        }
+                        $date[$index]['total']= $date[$index]['total'] + 1;
+                    }
+                }
+
+
+                
+
+            }
+
+            echo json_encode(['status'=>'success','data'=>$date]);
+        }
+
  	}
+
+    public function preview(){
+
+        $accesskey = $this->input()->get_post('salt');
+
+
+    }
  	
  	/* End of file Hotspot.php */
- 	/* Location: ./application/models/Hotspot.php */	
+ 
 
 
 ?>
