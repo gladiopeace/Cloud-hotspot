@@ -115,19 +115,22 @@
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
-                              
-                                <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">   
-                                        <button class="btn btn-primary" id="saving" type="button">保  存</button>
+
+                                 <div class="form-group"><label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-5">
+
+                                       <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                       <button class="btn btn-success" onclick="preview();" type="button">预览</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                      <button class="btn btn-success" onclick="downloads();" type="button">下载节点</button>
                                     </div>
-
-
-                                    <div class="col-sm-4">   
-                                        <button class="btn btn-success" onclick="downloads();" type="button">下载节点</button>
+                                    <div class="col-sm-5">
+                                        
                                     </div>
+                                </div>
 
-
-                                  </div>
                             </form>
                         </div>
                     </div>
@@ -140,6 +143,8 @@
 {% block script %}
 <link href="//cdn.bootcss.com/toastr.js/2.1.2/toastr.min.css" rel="stylesheet">
 <script src="//cdn.bootcss.com/toastr.js/2.1.2/toastr.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.0.2/layer.min.js"></script>
+<link href="https://cdn.bootcss.com/layer/3.0.2/skin/default/layer.css" rel="stylesheet">
 <script type="text/javascript">
 
     $(function(){
@@ -179,13 +184,21 @@
 
     
   function downloads(){
+    var id  = $("#download_id").val();
+    $('body').append("<iframe style='display:none;' src='/hotspot/downtest?id="+id+"'></iframe>" );
+  }
 
-  var id  = $("#download_id").val();
-
-  $('body').append("<iframe style='display:none;' src='/hotspot/downtest?id="+id+"'></iframe>" );
-
-
-}
+  function preview(){
+    var url = "/hotspot/preview?salt={{bech['salt']}}"
+    layer.open({
+      type: 2,
+      title: 'Wi-Fi Portal --预览',
+      shadeClose: true,
+      shade: 0.8,
+      area: ['368px', '580px'],
+      content: url//iframe的url
+    }); 
+  }
           
                
 

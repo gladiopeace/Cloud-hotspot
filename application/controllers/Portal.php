@@ -258,8 +258,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             $this->load->model('Portal_model');
             $data = $this->Portal_model->branch(array('salt'=>$salt));
-
-            $ip = $data["access_info"]['ip'];
+            $ip ='http://'.$data["access_info"]['ip'].'/login';
+ 
+            if($mac=='hotspot-init-test') $ip = '/hotspot/preview';           
             $url = $data["access_info"]['url'];
             $data = array(
                 'type'=> $data['type'],

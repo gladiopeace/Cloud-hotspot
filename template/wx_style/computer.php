@@ -104,7 +104,7 @@
             .done(function(ret) {
                 console.log(ret);
                 if(ret.status=='success'){
-                    document.start.action='http://'+ret.ip+'/login';
+                    document.start.action=ret.ip; //'http://'+ret.ip+'/login';
                     document.start.submit();//=ret.ip;
                 }
             });

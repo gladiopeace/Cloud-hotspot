@@ -627,15 +627,21 @@
             echo json_encode(['status'=>'success','data'=>$date]);
         }
 
+
+
+        public function preview(){
+
+            $salt = $this->input->get_post('salt');
+            $data = array('salt'=>$salt);
+            $this->load->library('twig');
+            $this->twig->display('hotspot/init/init.php', $data);
+
+        }
+        
+
  	}
 
-    public function preview(){
 
-        $accesskey = $this->input()->get_post('salt');
-
-
-    }
- 	
  	/* End of file Hotspot.php */
  
 
