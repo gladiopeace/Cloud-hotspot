@@ -293,7 +293,8 @@ $(document).on("click","#step-2 button:not(.loading)",function(){
                         displayError(msg);
                     }
                     if(ret.code=='1'){
-                        var form = $('<form class="hide" action="'+ret.ip+'" method="get">\                 
+                       
+                        var form = $('<form class="hide" action="'+ret.ip+'" method="get">\
                         <input type="hidden" name="auth_code" value="'+json.access_code+'"/>\
                         <input type="hidden" name="accesskey" value="'+ verifyData.accesskey +'" />\
                         </form>');
@@ -468,11 +469,11 @@ $(document).on("click","#step-3 button:not(.loading)",function(){
                         displayError(msg);
                     }
                     if(ret.code=='1'){
-                        var form = $('<form class="hide" action="'+ret.ip+'" method="get">\                       
+                        var form = $('<form class="hide" action="'+ret.ip+'" method="get">\
                         <input type="hidden" name="auth_code" value="'+json.access_code+'"/>\
                         <input type="hidden" name="accesskey" value="'+ verifyData.accesskey +'" />\
                         </form>');
-                        console.log(form);
+                                           
                         form.appendTo("body").submit();
                     }
                 });

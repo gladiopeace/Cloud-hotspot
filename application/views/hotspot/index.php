@@ -192,7 +192,8 @@
             var rest=[];
             var rest_total=[];
             var rest_wechat=[];
-            var rest_normal=[];
+            var rest_account=[];
+            var rest_cellphone=[];
             var i =0;
            
             $.each(data,function(key,val){
@@ -220,7 +221,8 @@
                 rest[i]= key;
                 rest_total[i]= val['total'];
                 rest_wechat[i]= val['wechat'];
-                rest_normal[i]= val['normal'];
+                rest_cellphone[i]= val['cellphone'];
+                rest_account[i]= val['account'];
                 i++
             });
 
@@ -231,7 +233,7 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['总访问','微信连Wi-Fi','通用授权']
+                    data:['总访问','微信连Wi-Fi','手机认证','账号认证']
                 },
                 toolbox: {
                     show : true,
@@ -271,10 +273,16 @@
                     }
                     ,
                     {
-                        name:'通用授权',
+                        name:'手机认证',
                         type:'line',
                         stack: '总量',
-                        data:rest_normal
+                        data:rest_cellphone
+                    },
+                    {
+                        name:'账号认证',
+                        type:'line',
+                        stack: '总量',
+                        data:rest_account
                     }
                 ]
             };

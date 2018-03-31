@@ -357,6 +357,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 }else{
                     $status = 'notice';
                     $code ='-1';
+                    $access_code = '0000';
                 }
                 //echo -5;//
                 echo json_encode(array('status'=>$status,'access_code'=>$access_code,'code'=>$code));

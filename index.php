@@ -1,6 +1,6 @@
 <?php
 
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
+	define('ENVIRONMENT','production');
 	switch (ENVIRONMENT)
 	{
 		case 'development':

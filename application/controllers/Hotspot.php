@@ -566,18 +566,24 @@
 
             $where =['bid'=>$bid,'accesskey'=>$accesskey];
 
-            $start_time = strtotime("-6 day");
+            $start_time = date('Y-m-d H:i:s',strtotime("-7 day"));
 
-            $end_time = time();
+            $end_time = date('Y-m-d H:i:s',time());
             $this->load->model('Portal_model');
 
-            $where =[
-                'and'=>[
-                    'addtime[<]'=>$end_time,
-                    'addtime[>]'=>$start_time,
-                    'accesskey'=>$accesskey,
-                    ]
-                ];
+            $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."'";       
+            $data = $this->Portal_model->get([],'access_auth',$where);
+            
+/*
+            $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."' AND auth_type='fetch-member-account'";       
+            $account = $this->Portal_model->get(['count(id) as total'],'access_auth',$where);
+
+        
+            $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."' AND auth_type='verify-code-cellphone'";       
+            $normal = $this->Portal_model->get(['count(id) as total'],'access_auth',$where);*/
+
+         
+/*
             $data= $model->select('access_log',[
                 'type','addtime'],$where);
         
@@ -585,30 +591,39 @@
 
             $message = $model->first('hotspot_branch','message_total',['salt'=>$accesskey]);
             
-            $date['message'] =  $message;
+            $date['message'] =  $message;*/
             $date['total'] = count($data);
             $date['wechat'] = 0;
-            $date['normal'] = 0;
+            $date['cellphone'] = 0;
+            $date['account'] = 0;
             
-            for ($i=0; $i <= 1 ; $i++) { 
+            for ($i=0; $i <= 7 ; $i++) { 
 
             /*  $date[$i]= ;*/
-                $index= date('Y-m-d',strtotime(date('Y-m-d',$start_time)."+ $i day"));
+                $index= date('Y-m-d',strtotime($start_time."+ $i day"));
                 $date[$index]['total']= 0;
                 $date[$index]['wechat']= 0;
-                $date[$index]['normal']= 0;
+                $date[$index]['cellphone']= 0;
+                $date[$index]['account']= 0;
                 
                 foreach ($data as $k => $v) {
-                    if(date('Y-m-d',$v['addtime'])==$index){
-                        switch ($v['type']) {
-                            case '2':
+               
+                    if(date('Y-m-d',strtotime($v['addtime']))==$index){
+                        switch ($v['auth_type']) {
+                            case 'fetch-wechat-code':
                                 $date['wechat'] = $date['wechat']+1;
                                 $date[$index]['wechat']= $date[$index]['wechat'] + 1;
                                 break;
                             
-                            case '3':
-                                $date['normal'] = $date['normal']+1;
-                                $date[$index]['normal']= $date[$index]['normal'] + 1;
+                            case 'fetch-member-account':
+                                $date['account'] = $date['account']+1;
+                                $date[$index]['account']= $date[$index]['account'] + 1;
+                                
+                                break;
+
+                            case 'verify-code-cellphone':
+                                $date['cellphone'] = $date['cellphone']+1;
+                                $date[$index]['cellphone']= $date[$index]['cellphone'] + 1;
                                 
                                 break;
 

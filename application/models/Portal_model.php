@@ -58,11 +58,14 @@ class Portal_model extends CI_Model {
 	}
 
 	public function get($select=array(),$db,$where=array(),$keyfield=null,$order=array(),$limit=''){
-			
-		foreach ($where as $key => $value) {
-			$this->db->where($key,$value);
-		}
 
+		if(is_array($where)){
+			foreach ($where as $key => $value) {
+				$this->db->where($key,$value);
+			}
+		}else{
+			$this->db->where($where);
+		}
 			
 		foreach ($select as $value) {
 			$this->db->select("{$value}");
@@ -94,6 +97,8 @@ class Portal_model extends CI_Model {
 		}
 
 	}
+
+	
 
 	public function set($data=array(),$db,$where=array(),$type=false){
 
