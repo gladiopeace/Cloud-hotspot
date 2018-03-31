@@ -560,7 +560,6 @@
         public function init(){
 
 
-
             $bid = $this->_organization['branch_id'];
             $accesskey = $this->_organization['accesskey'];
 
@@ -573,17 +572,9 @@
 
             $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."'";       
             $data = $this->Portal_model->get([],'access_auth',$where);
-            
-/*
-            $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."' AND auth_type='fetch-member-account'";       
-            $account = $this->Portal_model->get(['count(id) as total'],'access_auth',$where);
-
-        
-            $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."' AND auth_type='verify-code-cellphone'";       
-            $normal = $this->Portal_model->get(['count(id) as total'],'access_auth',$where);*/
-
+ 
          
-/*
+            /*
             $data= $model->select('access_log',[
                 'type','addtime'],$where);
         
