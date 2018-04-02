@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-04-02 12:45:24
+Date: 2018-04-02 13:19:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -93,7 +93,7 @@ CREATE TABLE `zh_hotspot_branch` (
   `weibo` tinyint(1) NOT NULL,
   `wechat` tinyint(1) NOT NULL,
   `overdue` varchar(64) NOT NULL,
-  `salt` varchar(32) NOT NULL COMMENT '//密钥',
+  `salt` varchar(64) NOT NULL COMMENT '//密钥',
   `accesscode` varchar(64) NOT NULL,
   `message_total` int(10) NOT NULL DEFAULT '10' COMMENT '//短信余额',
   `notice` tinyint(1) DEFAULT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_branch
@@ -285,7 +285,7 @@ CREATE TABLE `zh_user` (
   `job` varchar(32) NOT NULL,
   `addtime` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_user

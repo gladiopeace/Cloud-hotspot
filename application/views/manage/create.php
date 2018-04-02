@@ -156,20 +156,25 @@
                 dataType: 'json',
                 data: data,
             })
-                .done(function(ret) {
-                    if(ret.status=='success'){
-
-                        $("#download").val(ret.id);
-                        $("#success").click();
-                    }else if(ret.status=='false'){
-                        alert(ret.message);
-                    }
-                });
+            .done(function(ret) {
+                if(ret.status=='success'){
+                    explode(ret.data);
+                    $("#download").val(ret.id);
+                    $("#success").click();
+                }else if(ret.status=='false'){
+                    alert(ret.message);
+                }
+            });
 
 
         });
     });
 
+
+    function explode(config){
+      var data = "<div class=\"col-md-3 col-sm-4 col-xs-6\"><div class=\"col-xs-12 choise_css\"><div class=\"panel text-center\"><div class=\"panel-body\"><i class=\"fa fa-dropbox fa-5x\" onclick=\"window.open('/hotspot/index?accesskey="+config['salt']+"','_blank')\"></i><h4>"+config['branch']+"</h4><span>"+config['overdue']+"</span></div></div></div></div>";
+      parent.$('.container-fluid').append(data)
+    } 
     function downloads(){
 
         var id  = $("#download").val();
