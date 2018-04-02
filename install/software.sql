@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-03-09 11:51:58
+Date: 2018-04-02 12:45:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,32 +26,13 @@ CREATE TABLE `zh_access_auth` (
   `device_mac` varchar(64) DEFAULT NULL,
   `request_data` text,
   `auth_type` varchar(32) DEFAULT NULL,
-  `auth_time` datetime DEFAULT NULL,
-  `addtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `auth_time` varchar(32) DEFAULT NULL,
+  `addtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '//update for the time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_access_auth
--- ----------------------------
-
--- ----------------------------
--- Table structure for zh_access_log
--- ----------------------------
-DROP TABLE IF EXISTS `zh_access_log`;
-CREATE TABLE `zh_access_log` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `bid` int(10) NOT NULL,
-  `accesskey` varchar(64) NOT NULL,
-  `mac` varchar(64) DEFAULT NULL,
-  `type` int(10) NOT NULL,
-  `accesstime` varchar(65) NOT NULL,
-  `addtime` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of zh_access_log
 -- ----------------------------
 
 -- ----------------------------
@@ -64,7 +45,7 @@ CREATE TABLE `zh_config` (
   `config_content` text,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_config
@@ -123,7 +104,7 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_branch
@@ -168,7 +149,7 @@ CREATE TABLE `zh_hotspot_users` (
   `status` tinyint(1) NOT NULL COMMENT '//备注',
   `addtime` varchar(32) NOT NULL COMMENT '//增加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_users
@@ -211,30 +192,10 @@ CREATE TABLE `zh_message_code` (
   `expired` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
   `addtime` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`,`bid`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_message_code
--- ----------------------------
-
--- ----------------------------
--- Table structure for zh_message_history
--- ----------------------------
-DROP TABLE IF EXISTS `zh_message_history`;
-CREATE TABLE `zh_message_history` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `sid` int(10) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `cellphone` varchar(32) NOT NULL,
-  `content` varchar(64) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `type` tinyint(1) NOT NULL,
-  `addtime` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of zh_message_history
 -- ----------------------------
 
 -- ----------------------------
@@ -249,16 +210,16 @@ CREATE TABLE `zh_themes` (
   `picture` varchar(128) NOT NULL,
   `note` varchar(64) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `addtime` varchar(64) NOT NULL,
+  `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_themes
 -- ----------------------------
-INSERT INTO `zh_themes` VALUES ('1', 'Portal主题', 'portal_lite', '1', 'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg', '', '1', '1434841921');
-INSERT INTO `zh_themes` VALUES ('2', '微信主题', 'wx_style', '2', 'http://image.cloudshotspot.com/20160108140229145223294947490.jpg', '微信主题', '1', '1452436128');
-INSERT INTO `zh_themes` VALUES ('3', '帐号认证主题', 'account_hotspot', '3', 'http://d.5857.com/shiyiuyue_151102/008.jpg', '', '1', '1434841921');
+INSERT INTO `zh_themes` VALUES ('1', 'Portal主题', 'portal_lite', '1', 'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg', '', '1', '0000-00-00 00:00:00');
+INSERT INTO `zh_themes` VALUES ('2', '微信主题', 'wx_style', '2', 'http://image.cloudshotspot.com/20160108140229145223294947490.jpg', '微信主题', '1', '0000-00-00 00:00:00');
+INSERT INTO `zh_themes` VALUES ('3', '帐号认证主题', 'account_hotspot', '3', 'http://d.5857.com/shiyiuyue_151102/008.jpg', '', '1', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for zh_themes_copyright
@@ -324,7 +285,7 @@ CREATE TABLE `zh_user` (
   `job` varchar(32) NOT NULL,
   `addtime` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_user
@@ -347,7 +308,7 @@ CREATE TABLE `zh_wifiapi` (
   `bssid` varchar(64) NOT NULL,
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_wifiapi

@@ -563,9 +563,9 @@
             $bid = $this->_organization['branch_id'];
             $accesskey = $this->_organization['accesskey'];
 
-            $where =['bid'=>$bid,'accesskey'=>$accesskey];
+            $where =['accesskey'=>$accesskey];
 
-            $start_time = date('Y-m-d H:i:s',strtotime("-7 day"));
+            $start_time = date('Y-m-d H:i:s',strtotime("-6 day"));
 
             $end_time = date('Y-m-d H:i:s',time());
             $this->load->model('Portal_model');
@@ -573,24 +573,15 @@
             $where = "addtime BETWEEN '".$start_time."' AND '" .$end_time."'";       
             $data = $this->Portal_model->get([],'access_auth',$where);
  
-         
-            /*
-            $data= $model->select('access_log',[
-                'type','addtime'],$where);
+            
+            $message_code = $this->Portal_model->get(['count(id) as total'],'message_code',array('salt'=>$accesskey));
+            
         
-            $date = [];
-
-            $message = $model->first('hotspot_branch','message_total',['salt'=>$accesskey]);
+            $summary = array('wechat'=>0,'account'=>0,'cellphone'=>0,'','total_message'=>$message_code[0]['total']);
             
-            $date['message'] =  $message;*/
-            $date['total'] = count($data);
-            $date['wechat'] = 0;
-            $date['cellphone'] = 0;
-            $date['account'] = 0;
-            
-            for ($i=0; $i <= 7 ; $i++) { 
+            $date = array();
+            for ($i=0; $i < 7 ; $i++) { 
 
-            /*  $date[$i]= ;*/
                 $index= date('Y-m-d',strtotime($start_time."+ $i day"));
                 $date[$index]['total']= 0;
                 $date[$index]['wechat']= 0;
@@ -602,18 +593,18 @@
                     if(date('Y-m-d',strtotime($v['addtime']))==$index){
                         switch ($v['auth_type']) {
                             case 'fetch-wechat-code':
-                                $date['wechat'] = $date['wechat']+1;
+                               $summary['wechat'] = $summary['wechat']+1;
                                 $date[$index]['wechat']= $date[$index]['wechat'] + 1;
                                 break;
                             
                             case 'fetch-member-account':
-                                $date['account'] = $date['account']+1;
+                                $summary['account'] = $summary['account']+1;
                                 $date[$index]['account']= $date[$index]['account'] + 1;
                                 
                                 break;
 
                             case 'verify-code-cellphone':
-                                $date['cellphone'] = $date['cellphone']+1;
+                                $summary['cellphone'] = $summary['cellphone']+1;
                                 $date[$index]['cellphone']= $date[$index]['cellphone'] + 1;
                                 
                                 break;
@@ -630,7 +621,8 @@
 
             }
 
-            echo json_encode(['status'=>'success','data'=>$date]);
+         
+            echo json_encode(['status'=>'success','data'=>$date,'summary'=>$summary]);
         }
 
 

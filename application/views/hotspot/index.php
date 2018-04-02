@@ -14,7 +14,7 @@
         <div class="row">
          
             <div class="col-lg-3">
-                <div class="widget style1 navy-bg" onclick="buyMsg();">
+                <div class="widget style1 navy-bg">
                     <div class="row">
 
                         <div class="col-xs-4">
@@ -22,9 +22,9 @@
 
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span>短信验证</span>
+                            <span>已发短信数</span>
 
-                            <h2 class="font-bold"><span id="message_count"></span> </h2>
+                            <h2 class="font-bold"><span id="message_total"></span> </h2>
                          
                         </div>
                         
@@ -52,8 +52,8 @@
                             <i class="fa fa-rss fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> 通用认证</span>
-                            <h2 class="font-bold" id="normal_count"></h2>
+                            <span> 短信认证</span>
+                            <h2 class="font-bold" id="message_count"></h2>
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                             <i class="fa fa-paper-plane fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> 总访问量 </span>
-                            <h2 class="font-bold" id="total_count"></h2>
+                            <span> 账号认证 </span>
+                            <h2 class="font-bold" id="account_count"></h2>
                         </div>
                     </div>
                 </div>
@@ -99,71 +99,6 @@
  // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
-        // 指定图表的配置项和数据
-        /*option = {
-                tooltip : {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-                },
-                toolbox: {
-                    show : true,
-                    feature : {
-                        mark : {show: true},
-                        dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                        restore : {show: true},
-                        saveAsImage : {show: true}
-                    }
-                },
-                calculable : true,
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : ['周一','周二','周三','周四','周五','周六','周日']
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
-                series : [
-                    {
-                        name:'邮件营销',
-                        type:'line',
-                        stack: '总量',
-                        data:[120, 132, 101, 134, 90, 230, 210]
-                    },
-                    {
-                        name:'联盟广告',
-                        type:'line',
-                        stack: '总量',
-                        data:[220, 182, 191, 234, 290, 330, 310]
-                    },
-                    {
-                        name:'视频广告',
-                        type:'line',
-                        stack: '总量',
-                        data:[150, 232, 201, 154, 190, 330, 410]
-                    },
-                    {
-                        name:'直接访问',
-                        type:'line',
-                        stack: '总量',
-                        data:[320, 332, 301, 334, 390, 330, 320]
-                    },
-                    {
-                        name:'搜索引擎',
-                        type:'line',
-                        stack: '总量',
-                        data:[820, 932, 901, 934, 1290, 1330, 1320]
-                    }
-                ]
-            };*/
-
 
 
         // 使用刚指定的配置项和数据显示图表。
@@ -181,6 +116,19 @@
             if(rest.status=='success'){
                 //alert(rest.status);              
                 test(rest.data);
+                           
+                $("#wechat_count").text(rest.summary.wechat);
+           
+
+                $("#message_count").text(rest.summary.cellphone);
+        
+
+                     
+                $("#message_total").text(rest.summary.total_message);
+            
+       
+                $("#account_count").text(rest.summary.account);
+                
 
             }
             
@@ -196,27 +144,8 @@
             var rest_cellphone=[];
             var i =0;
            
-            $.each(data,function(key,val){
+            $.each(data,function(key,val){               
                
-                if(key=='wechat'){                 
-                    $("#wechat_count").text(val);
-                    return true;
-                }
-
-                if(key=='message'){                 
-                    $("#message_count").text(val);
-                    return true;
-                }
-
-                if(key=='normal'){                 
-                    $("#normal_count").text(val);
-                    return true;
-                }
-
-                if(key=='total'){                 
-                    $("#total_count").text(val);
-                    return true;
-                }
 
                 rest[i]= key;
                 rest_total[i]= val['total'];
