@@ -128,7 +128,15 @@
                         <img src="{{item['thumb']}}" style="height:100%;width:100%;">
                     </div>
                 {% else %}
-                    No users have been found.
+                    <div class="swiper-slide">
+                        <img class="mod-simple-follow-page__banner-bg" src="{{template}}css//background.jpg" alt="">
+                    </div>
+                    <div class="mod-simple-follow-page__img-shadow"></div>
+                    <div class="mod-simple-follow-page__logo">
+                        <img class="mod-simple-follow-page__logo-img" src="{{template}}css/t.weixin.logo.png" alt="">
+                        <p class="mod-simple-follow-page__logo-name"></p>
+                        <p class="mod-simple-follow-page__logo-welcome">欢迎您</p>
+                    </div>
                 {% endfor %}
             </div>
             <!-- Add Pagination -->
@@ -166,9 +174,7 @@
                 {% for item in slider %}
                 <div class="swiper-slide">
                     <img src="{{item['thumb']}}" style="height:100%;width:100%;">
-                </div>
-                {% else %}
-                No users have been found.
+                </div>              
                 {% endfor %}
 
             </div>
