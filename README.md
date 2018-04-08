@@ -29,7 +29,7 @@
 		http://www.cloud-hotspot.org 
 		http://110.110.110.110	    
 	
-#Rewrite Rules
+# Rewrite Rules
 	
  Nginx:
   
