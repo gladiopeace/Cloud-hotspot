@@ -119,7 +119,8 @@ switch ($step) {
 
         if ($_GET['testdbpwd']) {
 
-            $conn = @mysqli_connect($_POST['dbHost'],$_POST['dbUser'], $_POST['dbPwd'],$_POST['dbName'],$_POST['dbPort']);
+           
+            $conn = @mysqli_connect($_POST['dbHost'],$_POST['dbUser'], $_POST['dbPwd'],'',$_POST['dbPort']);
 
             if ($conn) {
                 die("1");
@@ -149,8 +150,8 @@ switch ($step) {
             $password = trim($_POST['manager_pwd']);
             $email	  = trim($_POST['manager_email']);
             $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-            $server_url = $http_type . $_SERVER['HTTP_HOST'];
-            $conn = @mysqli_connect($dbHost,$dbUser, $dbPwd,$dbName,$dbPort);
+            $server_url = $http_type . $_SERVER['HTTP_HOST'];      
+            $conn = @mysqli_connect($dbHost,$dbUser, $dbPwd,'',$dbPort);
             if (!$conn) {
                 $arr['msg'] = "连接数据库失败!";
                 echo json_encode($arr);

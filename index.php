@@ -11,13 +11,10 @@
 		case 'testing':
 		case 'production':
 			ini_set('display_errors', 0);
-			if (version_compare(PHP_VERSION, '5.3', '>='))
-			{
-				error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-			}
-			else
-			{
-				error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+			if (version_compare(PHP_VERSION, '5.3', '>=')){
+				error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED & ~E_WARNING);
+			}else{								
+				error_reporting(E_ALL^E_NOTICE^E_WARNING);				
 			}
 		break;
 
@@ -27,10 +24,10 @@
 			exit(1); // EXIT_ERROR
 	}
 
+
 	$system_path = 'system';
 	$application_folder = 'application';
 	$view_folder = '';
-
 
 	if (defined('STDIN')){
 		chdir(dirname(__FILE__));
@@ -123,7 +120,5 @@
 		exit(3); // EXIT_CONFIG
 	}
 
-	error_reporting(-1);
-	ini_set('display_errors', 1);
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 	require_once BASEPATH.'core/CodeCore.php';
