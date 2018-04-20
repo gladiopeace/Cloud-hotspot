@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme id=""  version="0.0.1" engine="http://www.zjyouth.cn'" base='cloud-theme'>
+    <name>世贸天街</name>
+    <type>wechat</type>
+    <logo>@logo.png</logo>
+    <description>
+        Example For APICloud.
+    </description>
+    <author email="tech@zjyouth.cn" href="http://www.apicloud.com">Ethan.Yang</author>    
+    <github></github>
+    <access origin="*" />
+</theme>

@@ -290,6 +290,23 @@
             echo json_encode(array("status"=>"success","message"=>"ok"));
 
         }
+
+        public function themes_store(){
+            error_reporting(1);
+            ini_set('display_errors', 1);          
+            
+            $this->load->model('Theme_model', 'theme');
+
+            $themes = $this->theme->scanTheme();
+            
+            $data = array('result'=>$themes);
+            $this->load->library('twig');
+            $this->twig->display('hotspot/themes_store.php',$data);
+
+           
+
+        }
+
         public function screen(){
 
             $bid = $this->_organization['branch_id'];
