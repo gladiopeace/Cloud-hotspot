@@ -18,14 +18,16 @@
 	        <div class="m-b-sm">
 	                <img alt="image" src="{{v['picture']}}" style="width: 100px;height: 100px;">
 	        </div>
-	                <p class="font-bold">{{v['note']}}</p>
+	       <p class="font-bold">{{v['note']}}</p>
 
 	        <div class="text-center">
 
-                {% if v['system']==1 %}           
-                 系统内置 
+                {% if v['install']==1 %}   
+                  <br/>        
+                 已经安装
+                 <br/>
                 {% elseif v['install']==0 %}
-                    <a class="btn btn-defualt btn-white saving" data-theme="{{ data|json_encode(v['theme_data'])}}">安装</a>
+                    <a class="btn btn-defualt btn-white install" data-theme="{{v['data']['@attributes']['base']}}" data-name="{{v['name']}}" data-type="{{v['data']['type']}}" data-picture="{{v['picture']}}" data-note="{{v['data']['description']}}">安装</a>
                   
                 {% endif %}
               
@@ -56,27 +58,31 @@
           timeOut: 4000
       };
 
-
     
-      $(".saving").click(function(event) {
+      $(".install").click(function(event) {
+
         var $this = $(this);
-        var id = $this.data('id');
-      
-            
+        var name = $this.data('name');
+        var style = $this.data('theme');
+        var type = $this.data('type');
+        var note = $this.data('note');
+        var picture = $this.data('picture');
+        var data = {'name':name,'note':note,'type':type,'picture':picture,'style':style};
+        
         $.ajax({
-          url: '/hotspot/themes_update',
+          url: '/hotspot/install_theme',
           type: 'POST',
           dataType: 'json',
-          data: {'id':id,'accesskey':"{{accesskey}}",'type':"{{type}}"},
+          data: {'data':data},
         })
         .done(function(ret) {
             if(ret.status=='success'){
                 $(".saving").text('启用').removeClass('btn-primary').addClass('btn-white');
-                $this.text('已启用').addClass('btn-primary').removeClass('btn-white');
-                toastr.success('温馨提示:已经为您启用完成!');
+                $this.text('已启用').addClass('btn-primary').removeClass('btn-white').removeClass('install');
+                toastr.success('温馨提示:已经为您完成安装!');
 
             }else{
-              toastr.warning('错误提示:未能完成启用!');
+              toastr.warning('错误提示:未完成安装或主题早已安装，请重试!');
 
             }
         });

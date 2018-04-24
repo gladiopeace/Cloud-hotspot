@@ -25,14 +25,19 @@ class Theme_model extends CI_Model {
         		'theme'=>$v['theme'],
         		'name'=>$v['theme_data']['name'],
         		'picture'=>$v['theme_data']['picture'],
+        		'note'=>$v['theme_data']['note'],
         		'install'=>1,
         		'system'=>1,
         		'data'=>array()
         	);
+
+        	$installed[] = $v['theme'];
         }
 
         foreach ($dirs as $k => $theme){
-           
+           	
+        	if(in_array($theme, $installed)) continue;
+
             $dir = $path.$theme;
             if(is_dir($dir)){
                 if(is_file($dir.DIRECTORY_SEPARATOR.'config.xml')){
@@ -61,10 +66,12 @@ class Theme_model extends CI_Model {
                    		$themes[]=array(
                    			'theme'=>$theme,
                    			'name'=>$data['name'],
+                   			'note'=>$data['description'],
                    			'picture'=>$picture,
                    			'install'=>$flag,
                    			'system'=>$system,
                    			'data'=>$data
+
                    		);
                    }
                    
@@ -137,7 +144,18 @@ class Theme_model extends CI_Model {
 				return $rs;
 			}
 
-		}
+	}
+
+	public function install($data){
+		$installed= $this->get('themes',["*"],['style'=>$data['style']]);
+
+		if(false!=$installed) return 0;		
+		$data['status'] = 1;
+		$this->db->insert('themes', $data);
+		return $this->db->insert_id();
+		
+
+	}
 
 }
 

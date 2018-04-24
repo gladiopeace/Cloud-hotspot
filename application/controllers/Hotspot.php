@@ -224,7 +224,6 @@
 
             $data['result'] = $this->Portal_model->get([],'themes',array('type'=>$_type));
 
-
             //查找当前节点激活主题
             switch ($_type) {
                 case 1:
@@ -268,8 +267,7 @@
             }else{
                 $data['active'] = '';
             }
-
-
+                       
             $data['accesskey'] = $accesskey;
             $this->load->library('twig');
             $this->twig->display('hotspot/themes.php',$data);
@@ -300,10 +298,51 @@
             $themes = $this->theme->scanTheme();
             
             $data = array('result'=>$themes);
+
             $this->load->library('twig');
             $this->twig->display('hotspot/themes_store.php',$data);
 
            
+
+        }
+
+        public function install_theme(){
+
+            if($this->input->is_ajax_request()){
+
+                $data = $this->input->get_post('data', TRUE);
+
+                switch ($data['type']) {
+                    case 'wechat':
+                        $data['type'] = '3';
+                        break;
+
+                    case 'account':
+                        $data['type'] = '2';
+                        break;
+                    
+                    case 'cellphone':
+
+                        $data['type'] = '1';
+                        break;
+                    default:
+                        
+                        $data['type'] = '1';
+                        
+                        break;
+                }
+
+
+
+                $this->load->model('Theme_model', 'theme');
+                $res = $this->theme->install($data);
+                $flag = 'false';
+                if($res && $res>0) $flag = 'success';
+
+                
+                echo json_encode(array('status'=>$flag,'theme_id'=>$res));
+
+            }
 
         }
 
