@@ -335,19 +335,22 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     exit();
                 }
 
-                $password = $this->input->get_post('password');
+                $code = $this->input->get_post('password');
+
+                if(false==$code) $this->input->get_post('code');
 
                 $salt = $this->input->get_post('accesskey');
                 $this->load->model('Portal_model');
                 $where = [
-                    'code'      => $password,
+                    'code'      => $code,
                     'salt'      => $salt,
                     'cellphone' => $cellphone,
                     'expired >='=>time(),
                 ];
                 $this->load->model('Portal_model');
                 $result = $this->Portal_model->first(["code"],'message_code',$where);
-                if(!empty($result) && $result['code']==$password){
+                //echo $this->db->last_query();
+                if(!empty($result) && $result['code']==$code){
                     $status = 'success';
                     $code = 1;
                     $access_code = mt_rand(1,9).uniqid();

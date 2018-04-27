@@ -314,11 +314,11 @@
 
                 switch ($data['type']) {
                     case 'wechat':
-                        $data['type'] = '3';
+                        $data['type'] = '2';
                         break;
 
                     case 'account':
-                        $data['type'] = '2';
+                        $data['type'] = '3';
                         break;
                     
                     case 'cellphone':

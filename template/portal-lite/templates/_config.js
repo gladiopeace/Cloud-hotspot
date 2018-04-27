@@ -21,7 +21,7 @@ if(window.location.href.startsWith("http://localhost") || window.location.href.s
         countryCodeDisplayTimeStartup : 3000,
         loadingTimeButton : 1000,
         leavingPageTime : 3000,
-        leavingPageUrl : "http://www.shairport.com/",
+        leavingPageUrl : "http://www.cloudshotspot.com/",
         debugMode : 0,
     };
 }else{

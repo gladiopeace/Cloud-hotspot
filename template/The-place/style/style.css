@@ -1,0 +1,93 @@
+﻿/* 通用*/
+*{margin:0;padding:0;}
+body{ font-family: arial,微软雅黑; background:#151515; font-size: 12px;color:#676767; line-height:1.8;}
+a{color:#676767; text-decoration: none;}
+a:hover,a:active,a:focus{ background:none;text-decoration: none;color:#ee9700; }
+p,dt,ul,dl{margin:0; list-style:none;} label{ font-weight:normal}
+ label,.baidumap img{max-width:inherit !important;}
+.form-horizontal .form-group{padding:0;margin-left:0;margin-right:0;}
+.bg{background-image:url(../images/bg01.png);background-size:auto 100%;background-position:center center;background-repeat:no-repeat;height:737px;}
+
+.weixin {
+    background-image: url(../images/bg05.png);
+    text-align: center;
+    padding: 40px 30px 162px 30px;
+    background-position: center center;
+    background-repeat: repeat;
+    margin-top: 0px;
+    position: absolute;
+    z-index: 3;
+    display: none;
+    width: 93.4%;
+}
+.weixin.open{display:block}
+    .weixin.open p {
+        color:#000;font-size:14px;
+        margin-top:10px
+    }
+.content{background-image:url(../images/login02.png);text-align:center;padding:40px 30px 130px 30px;background-position:center center;background-repeat:repeat;margin-top:0px}
+.content input{color:#000;width:100%;height:40px;margin-bottom:30px;font-size:14px}
+/*.content input.bginput{background-image:url(../images/bg02.png);background-repeat:no-repeat;background-position:center right;}*/
+.content span{cursor:pointer}
+.content span:hover img{background:rgba(141, 128, 128, 0.48)}
+.content .btn{background-image:url(../images/bg03.png);background-repeat:no-repeat;background-color: #e67a45;background-position:center center;color:#fff;margin-top:-3px;display:block;line-height:22px;background-size:100% 100%;font-size:18px;word-spacing: 8px;
+    letter-spacing: 5px;}
+.content .btn-default{border-color:#e67a45;background-color:#e67a45}
+.content span{position:absolute;top:155px;right:55px;}
+.content span img.on03{}
+.login {font-size:16px;color:#fff}
+.login a{color:#fff}
+.login .col-xs-6,.login .col-md-6{vertical-align:middle;text-align:center;line-height:40px;width:49%}
+
+.login .on{background-image:url(../images/login03.png);background-repeat:repeat-x;background-position:center center}
+.login .on01{background-image:url(../images/login.png);background-repeat:repeat-x;background-position:center center}
+.login .on02{background-image:url(../images/bg05.png)}
+.advert ul{vertical-align:middle;}
+.advert ul li{margin:10px auto;text-align:center;display:block}
+/* 多图滚动 */
+	.scrollBox{ margin:0px auto; text-align:center;  }
+	.scrollBox .bd li{ width:100%; /*float:left;*/ font-size:14px; }
+	.scrollBox .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0); }  /* 去掉链接触摸高亮 */
+	.scrollBox .bd li img{ width:100%; background:url(../images/loading.gif) #fff center center no-repeat;  }
+
+	.scrollBox .hd{ height:20px; overflow:hidden; font-size:0; }
+	.scrollBox .hd ul{ display:inline-block; padding-top:5px;float:right }	
+	.scrollBox .hd li{ display:inline-block; width:8px; height:8px; background:url(../images/bullet.png)no-repeat center center; margin:0 5px; vertical-align:top; overflow:hidden; 
+	-webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; 
+	}
+	.scrollBox .hd .on{background:url(../images/bullet01.png)no-repeat center center;  }
+	.scrollBox .prev{display:inline-block; width:25px; height:20px; background:url(../images/icon01.png) no-repeat; overflow:hidden; margin:0 5px;  vertical-align:top;}
+    .scrollBox .prev:hover{ background:url(../images/icon01-1.png) no-repeat;}
+
+    .scrollBox .prev.dir{background:url(../images/icon01-1.png) no-repeat;}
+    .scrollBox .next{ display:inline-block; width:25px; height:20px; background:url(../images/icon02.png) no-repeat; overflow:hidden; margin:0 5px;  vertical-align:top; }
+     .scrollBox .next:hover{ background:url(../images/icon02-1.png) no-repeat;}
+       .scrollBox .next.dir01{background:url(../images/icon02-1.png) no-repeat;}
+       .container{position:absolute;top:40%;left:0;right:0px;z-index:2}
+@media(min-width:1200px) {
+    .container{width:1100px}
+}
+
+@media(max-width:768px) {
+    .bg{height:407px}
+    .scrollBox{ margin:20px auto; text-align:center;  }
+    .content {
+        padding:30px 15px 70px 15px
+    }
+    .content span{top:145px;right:45px}
+   .container{top:25%}
+}
+@media(min-width:568px) and (max-width:767px){
+ 
+   .container{top:37%}
+    
+}
+
+@media (min-width:769px) and (max-width:1024px){
+ 
+
+   .content {
+        padding:30px 15px 100px 15px
+    }
+     .content span{top:145px;right:45px}
+}

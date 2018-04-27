@@ -101,13 +101,13 @@
             dataType: 'json',
             data: {'accesskey':"{{config['salt']}}",'mac':"{{config['mac']}}",'auth_code':ret.access_code}
         })
-            .done(function(ret) {
-                console.log(ret);
-                if(ret.status=='success'){
-                    document.start.action=ret.ip; //'http://'+ret.ip+'/login';
-                    document.start.submit();//=ret.ip;
-                }
-            });
+        .done(function(ret) {
+            console.log(ret);
+            if(ret.status=='success'){
+                document.start.action=ret.ip; //'http://'+ret.ip+'/login';
+                document.start.submit();//=ret.ip;
+            }
+        });
 
     }
 </script>

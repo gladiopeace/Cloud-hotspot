@@ -215,7 +215,7 @@
 <link rel="stylesheet" href="{{template}}style/amazeui.min.css"/>
 <link rel="stylesheet" href="{{template}}style/swiper.min.css">
 <script src="{{template}}js/swiper.min.js"></script>
-<script src="{{template}}js/vue.min.js"></script>
+
 
 <script type="text/javascript">
 
