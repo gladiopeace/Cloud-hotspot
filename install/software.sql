@@ -1,13 +1,17 @@
-﻿# Host: localhost  (Version: 5.5.53)
-# Date: 2018-04-24 16:34:44
-# Generator: MySQL-Front 5.3  (Build 4.234)
+/*
+Software Name         : Cloud-Hotspot
+Software Version      : bete1
+Software Author       : Ethan Yang
+Software Site         : https://github.com/Youth-Network/Cloud-hotspot
+Database Server Type  : MYSQL
+*/
 
-/*!40101 SET NAMES utf8 */;
+SET FOREIGN_KEY_CHECKS=0;
 
-#
-# Structure for table "zh_access_auth"
-#
-
+-- ----------------------------
+-- Table structure for zh_access_auth
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_access_auth`;
 CREATE TABLE `zh_access_auth` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `accesskey` varchar(64) DEFAULT NULL,
@@ -18,34 +22,32 @@ CREATE TABLE `zh_access_auth` (
   `auth_time` varchar(32) DEFAULT NULL,
   `addtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '//update for the time',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_access_auth"
-#
+-- ----------------------------
+-- Records of zh_access_auth
+-- ----------------------------
 
-
-#
-# Structure for table "zh_config"
-#
-
+-- ----------------------------
+-- Table structure for zh_config
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_config`;
 CREATE TABLE `zh_config` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `config_name` varchar(255) DEFAULT NULL,
   `config_content` text,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_config"
-#
+-- ----------------------------
+-- Records of zh_config
+-- ----------------------------
 
-
-#
-# Structure for table "zh_hotspot_banner"
-#
-
+-- ----------------------------
+-- Table structure for zh_hotspot_banner
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_hotspot_banner`;
 CREATE TABLE `zh_hotspot_banner` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -59,17 +61,16 @@ CREATE TABLE `zh_hotspot_banner` (
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `accesskey` (`accesskey`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_hotspot_banner"
-#
+-- ----------------------------
+-- Records of zh_hotspot_banner
+-- ----------------------------
 
-
-#
-# Structure for table "zh_hotspot_branch"
-#
-
+-- ----------------------------
+-- Table structure for zh_hotspot_branch
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_hotspot_branch`;
 CREATE TABLE `zh_hotspot_branch` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '//id',
   `uid` int(10) NOT NULL COMMENT '//商家id',
@@ -96,17 +97,16 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_hotspot_branch"
-#
+-- ----------------------------
+-- Records of zh_hotspot_branch
+-- ----------------------------
 
-
-#
-# Structure for table "zh_hotspot_slider"
-#
-
+-- ----------------------------
+-- Table structure for zh_hotspot_slider
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_hotspot_slider`;
 CREATE TABLE `zh_hotspot_slider` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -119,17 +119,16 @@ CREATE TABLE `zh_hotspot_slider` (
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `accesskey` (`accesskey`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_hotspot_slider"
-#
+-- ----------------------------
+-- Records of zh_hotspot_slider
+-- ----------------------------
 
-
-#
-# Structure for table "zh_hotspot_users"
-#
-
+-- ----------------------------
+-- Table structure for zh_hotspot_users
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_hotspot_users`;
 CREATE TABLE `zh_hotspot_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '//id',
   `usercode` varchar(32) DEFAULT NULL,
@@ -143,17 +142,16 @@ CREATE TABLE `zh_hotspot_users` (
   `status` tinyint(1) NOT NULL COMMENT '//备注',
   `addtime` varchar(32) NOT NULL COMMENT '//增加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_hotspot_users"
-#
+-- ----------------------------
+-- Records of zh_hotspot_users
+-- ----------------------------
 
-
-#
-# Structure for table "zh_mail"
-#
-
+-- ----------------------------
+-- Table structure for zh_mail
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_mail`;
 CREATE TABLE `zh_mail` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -166,15 +164,14 @@ CREATE TABLE `zh_mail` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_mail"
-#
+-- ----------------------------
+-- Records of zh_mail
+-- ----------------------------
 
-
-#
-# Structure for table "zh_message_code"
-#
-
+-- ----------------------------
+-- Table structure for zh_message_code
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_message_code`;
 CREATE TABLE `zh_message_code` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) DEFAULT NULL,
@@ -188,17 +185,16 @@ CREATE TABLE `zh_message_code` (
   `expired` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
   `addtime` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`,`bid`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_message_code"
-#
+-- ----------------------------
+-- Records of zh_message_code
+-- ----------------------------
 
-
-#
-# Structure for table "zh_themes"
-#
-
+-- ----------------------------
+-- Table structure for zh_themes
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_themes`;
 CREATE TABLE `zh_themes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
@@ -211,16 +207,16 @@ CREATE TABLE `zh_themes` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_themes"
-#
-
-INSERT INTO `zh_themes` VALUES (1,'Portal主题','portal-lite',1,'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg','手机短信,SMS验证码',1,''),(2,'微信主题','wx-style',2,'http://image.cloudshotspot.com/20160108140229145223294947490.jpg','Wi-Fi via Wechat for free',1,''),(3,'帐号认证主题','account-hotspot',3,'http://d.5857.com/shiyiuyue_151102/008.jpg','Account for Wi-Fi',1,'');
-
-#
-# Structure for table "zh_themes_copyright"
-#
-
+-- ----------------------------
+-- Records of zh_themes
+-- ----------------------------
+INSERT INTO `zh_themes` VALUES ('1', 'Portal主题', 'portal-lite', '1', 'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg', '手机短信,SMS验证码', '1');
+INSERT INTO `zh_themes` VALUES ('2', '微信主题', 'wx-style', '2', 'http://image.cloudshotspot.com/20160108140229145223294947490.jpg', 'Wi-Fi via Wechat for free', '1');
+INSERT INTO `zh_themes` VALUES ('3', '帐号认证主题', 'account-hotspot', '3', 'http://d.5857.com/shiyiuyue_151102/008.jpg', 'Account for Wi-Fi', '1');
+-- ----------------------------
+-- Table structure for zh_themes_copyright
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_themes_copyright`;
 CREATE TABLE `zh_themes_copyright` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -238,17 +234,16 @@ CREATE TABLE `zh_themes_copyright` (
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `accesskey` (`accesskey`)
-) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_themes_copyright"
-#
+-- ----------------------------
+-- Records of zh_themes_copyright
+-- ----------------------------
 
-
-#
-# Structure for table "zh_user"
-#
-
+-- ----------------------------
+-- Table structure for zh_user
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_user`;
 CREATE TABLE `zh_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
@@ -282,17 +277,16 @@ CREATE TABLE `zh_user` (
   `job` varchar(32) NOT NULL,
   `addtime` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_user"
-#
+-- ----------------------------
+-- Records of zh_user
+-- ----------------------------
 
-
-#
-# Structure for table "zh_wifiapi"
-#
-
+-- ----------------------------
+-- Table structure for zh_wifiapi
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_wifiapi`;
 CREATE TABLE `zh_wifiapi` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -306,17 +300,16 @@ CREATE TABLE `zh_wifiapi` (
   `bssid` varchar(64) NOT NULL,
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_wifiapi"
-#
+-- ----------------------------
+-- Records of zh_wifiapi
+-- ----------------------------
 
-
-#
-# Structure for table "zh_youtu"
-#
-
+-- ----------------------------
+-- Table structure for zh_youtu
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_youtu`;
 CREATE TABLE `zh_youtu` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
@@ -327,9 +320,8 @@ CREATE TABLE `zh_youtu` (
   `download_url` varchar(128) NOT NULL,
   `addtime` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-#
-# Data for table "zh_youtu"
-#
-
+-- ----------------------------
+-- Records of zh_youtu
+-- ----------------------------
