@@ -1,9 +1,16 @@
 /*
-Software Name         : Cloud-Hotspot
-Software Version      : bete1
-Software Author       : Ethan Yang
-Software Site         : https://github.com/Youth-Network/Cloud-hotspot
-Database Server Type  : MYSQL
+Navicat MySQL Data Transfer
+
+Source Server         : Local
+Source Server Version : 50556
+Source Host           : 192.168.126.139:3306
+Source Database       : youtu
+
+Target Server Type    : MYSQL
+Target Server Version : 50556
+File Encoding         : 65001
+
+Date: 2018-05-03 11:03:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -97,7 +104,7 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_branch
@@ -199,20 +206,23 @@ CREATE TABLE `zh_themes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `style` varchar(64) NOT NULL,
-  `type` int(10) NOT NULL DEFAULT '0' COMMENT '//1为普通主题2为账号认证3.微信主题',
+  `type` int(10) NOT NULL DEFAULT '0' COMMENT '//1为普通主题3.为账号认证2.微信主题',
   `picture` varchar(128) NOT NULL,
   `note` varchar(64) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `addtime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `addtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('Portal主题','portal-lite',1,'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg','手机短信,SMS验证码',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('微信主题','wx-style',2,'http://image.cloudshotspot.com/20160108140229145223294947490.jpg','Wi-Fi via Wechat for free',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('帐号认证主题','account-hotspot',3,'http://d.5857.com/shiyiuyue_151102/008.jpg','Account for Wi-Fi',1);
+
 
 -- ----------------------------
 -- Records of zh_themes
 -- ----------------------------
-INSERT INTO `zh_themes` VALUES ('1', 'Portal主题', 'portal-lite', '1', 'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg', '手机短信,SMS验证码', '1');
-INSERT INTO `zh_themes` VALUES ('2', '微信主题', 'wx-style', '2', 'http://image.cloudshotspot.com/20160108140229145223294947490.jpg', 'Wi-Fi via Wechat for free', '1');
-INSERT INTO `zh_themes` VALUES ('3', '帐号认证主题', 'account-hotspot', '3', 'http://d.5857.com/shiyiuyue_151102/008.jpg', 'Account for Wi-Fi', '1');
+
 -- ----------------------------
 -- Table structure for zh_themes_copyright
 -- ----------------------------

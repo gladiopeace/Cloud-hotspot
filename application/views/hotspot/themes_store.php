@@ -25,10 +25,11 @@
                 {% if v['install']==1 %}   
                   <br/>        
                  已经安装
-                 <br/>
+                  <br/>
                 {% elseif v['install']==0 %}
-                    <a class="btn btn-defualt btn-white install" data-theme="{{v['data']['@attributes']['base']}}" data-name="{{v['name']}}" data-type="{{v['data']['type']}}" data-picture="{{v['picture']}}" data-note="{{v['data']['description']}}">安装</a>
-                  
+                    <br/>  
+                    <span class="btn btn-white btn-xs install" data-theme="{{v['data']['@attributes']['base']}}" data-name="{{v['name']}}" data-type="{{v['data']['type']}}" data-picture="{{v['picture']}}" data-note="{{v['data']['description']}}">安装 </span> 
+                    <br/>
                 {% endif %}
               
 	            
@@ -77,8 +78,9 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-                $(".saving").text('启用').removeClass('btn-primary').addClass('btn-white');
-                $this.text('已启用').addClass('btn-primary').removeClass('btn-white').removeClass('install');
+          
+
+                $this.text('已经安装').removeClass('btn-xs').removeClass('btn').removeClass('btn-white').removeClass('install');
                 toastr.success('温馨提示:已经为您完成安装!');
 
             }else{

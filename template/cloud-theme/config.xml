@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <theme id=""  version="0.0.1" engine="http://www.zjyouth.cn'" base='cloud-theme'>
-    <name>世贸天街</name>
+    <name>天街The Walk</name>
     <type>wechat</type>
     <logo>@logo.png</logo>
     <description>
-        Example For Cloud-Theme.
+        天街 The Walk Cloud-Theme.
     </description>
-    <author email="tech@zjyouth.cn" href="http://www.apicloud.com">Ethan.Yang</author>    
+    <author email="tech@zjyouth.cn" href="https://github.com/Ethan-Yami">Ethan.Yang</author>    
     <github></github>
     <access origin="*" />
 </theme>

@@ -1,0 +1,106 @@
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {color: #999;font-size:12px;line-height:26px;font-family:-Apple-System,Arial;letter-spacing:-1px;}
+.SECTION {padding:0;padding-top:15px;position:relative}
+.BOTTOM {TEXT-ALIGN:CENTER;HEIGHT:100%;padding-top:40px}
+.TOP {TEXT-ALIGN:CENTER;padding:4px;HEIGHT:40px}
+.SLIDE {padding:0;}
+.SLIDEIMG {WIDTH:100%;margin:0;}
+.BOX {-webkit-appearance: none;-moz-appearance: none;appearance: none;box-shadow:rgba(0, 0, 0, 0.6) 0 0px 3px;BACKGROUND-SIZE:16px 16px;BACKGROUND-REPEAT:NO-REPEAT;BACKGROUND-POSITION:6px CENTER;PADDING:0;BORDER:0;FONT-SIZE:12PX;FONT-WEIGHT:400;BORDER-RADIUS:15px;PADDING-LEFT:26px;height:26px;MARGIN-BOTTOM:15px;text-align:LEFT;}
+.SUBMIT {text-align:CENTER;PADDING:0;color:#fff;line-height:26px;height:28px;}
+.SUBMIT:hover {COLOR:orange}
+.BUTTON {CURSOR:DEFAULT;line-height:26px;vertical-align:middle;opacity:0.75}
+.BUTTON:hover {opacity:1}
+.INPUTBOX {COLOR:#666;background-color:#f0f0f0;line-height:26px;opacity:0.75}
+.INPUTBOX:hover {color:royalblue;opacity:1}
+.WCB {CURSOR:DEFAULT;line-height:26px;background-color:#50b848;COLOR:#fff;text-align:center;}
+.WCB:hover {color:orange;}
+.LOGO {width:120px;}
+.MSG {position:absolute;top:0;left:0;z-index:9;width:100%;height:22px;line-HEIGHT:22px;TEXT-ALIGN:center;color:white;background-color:orange;opacity:0.85;}
+.PG {width:270px;FONT-SIZE:12PX;FONT-WEIGHT:400;margin-bottom:15px;}
+.PT {text-align:center;font-weight:500;margin-bottom:10px;margin-left:-10px;}
+.PC {text-align:left;white-space:normal;font-weight:200;}
+.PM {text-align:left;font-style:italic;font-size:11px;font-weight:200;white-space:normal;}
+.TNC {WIDTH:100%;min-height:100%;COLOR:#333;left:0;BORDER:0.5px SOLID #ddd;FONT-SIZE:13px;PADDING:0;MARGIN:0;line-height:22px;position:relative;}
+.TNCB{CURSOR:pointer;WIDTH:100%;padding:1.5px;background:#eee;text-align:center;}
+.TNCB1 {BORDER-BOTTOM:0.5px #ddd solid;COLOR:#666;}
+.TNCB2 {BORDER-TOP:0.5px #ddd solid;COLOR:RoyalBlue;position:absolute;bottom:0}
+.TNCC {PADDING:10px;line-height:1.35em;FONT-SIZE:12px;margin-bottom: 15px}
+.CHKBOX{width:245px;}
+.USERNAME,.PASSWORD{width:240px;}
+
+html,
+body,
+header,
+footer,
+nav,
+article,
+section,
+aside,
+figure,
+time,
+code,
+div,
+p,
+ul,
+ol,
+li,
+dl,
+dd,
+dt,
+h1,
+h2,
+h3,
+table,
+tr,
+th,
+tbody,
+td,
+a,
+span,
+strong,
+em,
+small,
+form,
+label,
+input,
+textarea {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    border-spacing: 0;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    outline: none;
+}
+img{vertical-align: bottom}
+html,body{height:100%;}
+body {
+    font-family: -apple-system, 'PingFang SC', 'PingFang HK', 'Microsoft YaHei', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 300;
+}
+input {
+    appearansce: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+}
+#EXA_M{
+    position:relative; width:320px; height:auto; margin:0 auto;
+}
+.EXA_P{
+    width:304px;
+}
+#EXA_T{
+    position:absolute; left:0; top:0; display:none; width:100%; height:100%; background:#fff; OPACITY:0.95;
+    overflow:scroll; -webkit-overflow-scrolling:touch;
+}
+@media screen and (min-width: 648px) {
+    #EXA_M{position:absolute;top:0;left:100%;margin-left:-41%;padding-top:20px;height:100%;background-color:rgba(255,255,255,0.66);  }
+    #EXA_T{WIDTH:59%;}
+    .TNCC{margin-bottom: 46px;}
+    .TNCB{BORDER-BOTTOM:0.5px #ddd solid;}
+    .TNCB2{bottom: 30px;}
+}
