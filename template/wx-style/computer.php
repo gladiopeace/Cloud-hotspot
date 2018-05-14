@@ -30,13 +30,14 @@
             <img class="mod-simple-follow-page__banner-bg" src="{{item['thumb']}}" alt="">                   
         {% else %}
             <img class="mod-simple-follow-page__banner-bg" src="{{template}}css//background.jpg" alt="">
+            <div class="mod-simple-follow-page__img-shadow"></div>
+            <div class="mod-simple-follow-page__logo">
+                <img class="mod-simple-follow-page__logo-img" src="{{template}}css/t.weixin.logo.png" alt="">
+                <p class="mod-simple-follow-page__logo-name"></p>
+                <p class="mod-simple-follow-page__logo-welcome">欢迎您</p>
+            </div>
         {% endfor %}
-        <div class="mod-simple-follow-page__img-shadow"></div>
-        <div class="mod-simple-follow-page__logo">
-            <img class="mod-simple-follow-page__logo-img" src="{{template}}css/t.weixin.logo.png" alt="">
-            <p class="mod-simple-follow-page__logo-name"></p>
-            <p class="mod-simple-follow-page__logo-welcome">欢迎您</p>
-        </div>
+        
     </div>
     <div class="mod-simple-follow-page__attention">
         <p class="mod-simple-follow-page__attention-txt">欢迎使用微信连Wi-Fi</p>
