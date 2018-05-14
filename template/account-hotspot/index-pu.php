@@ -126,9 +126,7 @@
                  {% for item in banner %}
                      <div class="swiper-slide">
                          <img src="{{item['thumb']}}" style="height:100%;width:100%;">
-                     </div>
-                 {% else %}
-                        No users have been found.
+                     </div>         
                  {% endfor %}
 
             </div>
