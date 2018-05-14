@@ -26,7 +26,11 @@
 <body class="mod-simple-follow">
 <div class="mod-simple-follow-page" style="margin: 0 auto;max-width: 800px">
     <div class="mod-simple-follow-page__banner">
-        <img class="mod-simple-follow-page__banner-bg" src="{{template}}css//background.jpg" alt="">
+        {% for item in banner %}
+            <img class="mod-simple-follow-page__banner-bg" src="{{item['thumb']}}" alt="">                   
+        {% else %}
+            <img class="mod-simple-follow-page__banner-bg" src="{{template}}css//background.jpg" alt="">
+        {% endfor %}
         <div class="mod-simple-follow-page__img-shadow"></div>
         <div class="mod-simple-follow-page__logo">
             <img class="mod-simple-follow-page__logo-img" src="{{template}}css/t.weixin.logo.png" alt="">
