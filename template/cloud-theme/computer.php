@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta http-equiv="Expires" content="Sun Apr 22 2018 13:31:43 GMT">
   <meta name="viewport" content="width=320,user-scalable=0">
@@ -15,22 +17,104 @@
     isec = 0;
     var color = "RoyalBlue";
 
-   function checkMobile() {
-    var m = document.getElementById('Mobile');
-    if (m.value.match(remp) == null) {
-      m.focus();
-      alert("请正确填写手机号，正确格式为：\n中国国内手机：例如中国移动手机号码 13900000000。");
-      return false;
-    } else return true;
-   }
+    function checkMobile(){
+      var m=document.getElementById('Mobile');            
+      if(m.value.match(remp)==null){
+        m.focus();
+        alert("请正确填写手机号，正确格式为：\n中国国内手机：例如中国移动手机号码 13900000000。");
+        return false;
+      }
 
-   function checkKcode() {
-    var k = document.getElementById('K');
-    if (k.value.match(rekc) == null) {
-      k.focus();
+      isec = 10;
+      __S();
+      Message(m.value)
       return false;
-    } else return true;
-   }
+    }
+
+    function Message(cellphone){
+        var data = {        
+          cellphone: cellphone,
+          accesskey:"{{config['salt']}}",
+          mac:"{{config['mac']}}",
+          type: "sms"
+        };
+
+        $.ajax({
+            url:  "/portal/auth/fetch-code-cellphone",
+            type: 'POST',
+            dataType: 'json',
+            data:data,
+        })
+        .done(function(info) {
+            console.log(info);
+            if(info.status!='success'){
+              alert(info.message);
+            }
+        });
+    }
+
+
+    function Login(){
+        var m=document.getElementById('Mobile'); 
+        var k=document.getElementById('K');       
+        var verifyData = {
+          cellphone :m.value,
+          password:k.value,
+          accesskey:"{{config['salt']}}",
+          mac:"{{config['mac']}}",         
+        };
+
+        $.ajax({
+            url:  "/portal/auth/verify-code-cellphone",
+            type: 'POST',
+            dataType: 'json',
+            data:verifyData,
+        })
+        .done(function(info) {
+            console.log(info);
+            if(info.status=='success'){
+              console.log(info);
+              if(info.status=='success'){
+                  document.start.auth_code.value = info.access_code;
+                  verify(info);
+              }
+
+            }else{
+              alert('手机号码或验证码错误!');
+            }
+        });   
+
+    }
+
+    function verify(ret){
+
+        $.ajax({
+            url: '/portal/verify/wechat-auth',
+            type: 'POST',
+            dataType: 'json',
+            data: {'accesskey':"{{config['salt']}}",'mac':"{{config['mac']}}",'auth_code':ret.access_code}
+        })
+        .done(function(ret) {
+            console.log(ret);
+            if(ret.status=='success'){
+                document.start.action=ret.ip; //'http://'+ret.ip+'/login';
+                document.start.submit();//=ret.ip;
+            }
+        });
+
+    }
+
+
+    function checkKcode(){
+    
+      var k=document.getElementById('K');
+      if(k.value.match(rekc)==null){
+        k.focus();return false;
+      }
+      Login();
+      return false;
+    }
+
    function __F() {
     intvid = setInterval("var t=tdt;if(t.style.color=='orange')t.style.color='#666';else t.style.color='ORANGE';iv++;if(iv>5)clearInterval(intvid);", 500);
    }
@@ -144,10 +228,10 @@
 							</td>
 						</tr>
 						<tr>
-						<td valign="TOP" style="HEIGHT:35px;PADDING-BOTTOM:10px;" nowrap="" align="center" c="">
-							<form method="POST" action="http://172.16.200.5:38000/ck/" id="FormA" name="FormA" style="margin:0px" autocomplete="ON" onsubmit="return checkMobile();">
+						<td valign="TOP" style="height:35px;padding-bottom:10px;" nowrap="" align="center" c="">
+							<form method="POST" id="FormA" name="FormA" style="margin:0px" autocomplete="ON" onsubmit="return checkMobile();">
 								<input type="HIDDEN" name="GXP" value="aiahubm02lcd5on243bcsk15j3">
-								<input id="Mobile" class="BOX INPUTBOX" maxlength="21" name="Mobile" style="BACKGROUND-IMAGE:url({{template}}static/phone.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="填写手机号码"><input type="SUBMIT" class="BOX SUBMIT" id="SMSBUTTON" style="margin-left:0px;BACKGROUND-COLOR:#333;MARGIN-TOP:5px;WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;" value="获得短信验证码">
+								<input id="Mobile" class="BOX INPUTBOX" maxlength="21" name="Mobile" style="background-image: url({{template}}static/phone.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="填写手机号码"><input type="SUBMIT" class="BOX SUBMIT" id="SMSBUTTON" style="margin-left:0px;background-color: #333;MARGIN-TOP:5px;WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;" value="获得短信验证码">
 							</form>
 						</td>
 					</tr>
@@ -161,13 +245,13 @@
                     <b>使用者若要使用密码并登录无线网络，</b><br>我们将认为使用者已阅读并接受以下所有条款：                  </td>
                 </tr>
                 <tr>
-                  <td style="HEIGHT:50px" align="center">
-                    <form method="POST" action="http://172.16.200.5:38000/u/" id="FormB" name="FormB" onsubmit="return(document.getElementById(&#39;isok&#39;).checked&amp;&amp;checkKcode());" autocomplete="OFF">
-                      <div id="CHKBOX" class="BOX BUTTON" style="display:inline-block;BACKGROUND-IMAGE:url({{template}}static/ok.svg);background-color:white;width:268px;margin-bottom:15px;" onclick="C(this)">
-                        <input type="checkbox" value="1" id="isok" name="isok" checked="" style="DISPLAY:none"><span style="vertical-align:top">我已阅读并同意此</span><div class="BOX BUTTON" onclick="D(this)" style="vertical-align:top;margin:0px;float:right;box-shadow:none;display:inline-block;BACKGROUND-IMAGE:url({{template}}static/searchw.svg);WIDTH:143px;background-color:#555;color:white;OPACITY:1" id="TNCBUTTON">上网服务条款和条件</div></div>
+                  <td style="height:50px" align="center">
+                    <form method="POST" id="FormB" name="FormB" onsubmit="return(document.getElementById(&#39;isok&#39;).checked&amp;&amp;checkKcode());" autocomplete="OFF">
+                      <div id="CHKBOX" class="BOX BUTTON" style="display:inline-block;background-image:url({{template}}static/ok.svg);background-color:white;width:268px;margin-bottom:15px;" onclick="C(this)">
+                        <input type="checkbox" value="1" id="isok" name="isok" checked="" style="DISPLAY:none"><span style="vertical-align:top">我已阅读并同意此</span><div class="BOX BUTTON" onclick="D(this)" style="vertical-align:top;margin:0px;float:right;box-shadow:none;display:inline-block;background-image:url({{template}}static/searchw.svg);width:143px;background-color:#555;color:white;opacity: 1" id="TNCBUTTON">上网服务条款和条件</div></div>
                       <input type="HIDDEN" name="GXP" value="aiahubm02lcd5on243bcsk15j3">
                       <input type="HIDDEN" name="AN" value="">
-                      <input id="K" class="BOX INPUTBOX" maxlength="5" name="K" style="MARGIN-BOTTOM:10px;BACKGROUND-IMAGE:url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="5位短信验证码"><input type="SUBMIT" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;BACKGROUND-COLOR:#333;MARGIN-BOTTOM:15px;MIN-WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
+                      <input id="K" class="BOX INPUTBOX" maxlength="6" name="K" style="MARGIN-BOTTOM:10px;BACKGROUND-IMAGE:url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="5位短信验证码"><input type="SUBMIT" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;BACKGROUND-COLOR:#333;MARGIN-BOTTOM:15px;MIN-WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
                     </form>
                   </td>
                 </tr>
@@ -196,6 +280,13 @@
   </tr>
   </tbody>
 </table>
-
-
-</body></html>
+<div style="display: none">
+    <form action="" name="start" method="get">
+        <input type="hidden" name="auth_code">
+        <input type="hidden" name="salt" value="{{config['salt']}}">
+        <input type="submit">
+    </form>
+</div>
+<script type="text/javascript" src="{{template}}static/jquery.min.js"></script>
+</body>
+</html>

@@ -13,8 +13,105 @@
     var intvid=0;
     var iv=0,isec=0;
     var color="RoyalBlue";
-    function checkMobile(){var m=document.getElementById('Mobile');if(m.value.match(remp)==null){m.focus();alert("请正确填写手机号，正确格式为：\n中国国内手机：例如中国移动手机号码 13900000000。");return false;} else return true;}
-    function checkKcode(){var k=document.getElementById('K');if(k.value.match(rekc)==null){k.focus();return false;}else return true;}function __F(){intvid=setInterval("var t=tdt;if(t.style.color=='orange')t.style.color='#666';else t.style.color='ORANGE';iv++;if(iv>5)clearInterval(intvid);",500);}
+    function checkMobile(){
+      var m=document.getElementById('Mobile');            
+      if(m.value.match(remp)==null){
+        m.focus();
+        alert("请正确填写手机号，正确格式为：\n中国国内手机：例如中国移动手机号码 13900000000。");
+        return false;
+      }
+
+      isec = 10;
+      __S();
+      Message(m.value)
+      return false;
+    }
+
+    function Message(cellphone){
+        var data = {        
+          cellphone: cellphone,
+          accesskey:"{{config['salt']}}",
+          mac:"{{config['mac']}}",
+          type: "sms"
+        };
+
+        $.ajax({
+            url:  "/portal/auth/fetch-code-cellphone",
+            type: 'POST',
+            dataType: 'json',
+            data:data,
+        })
+        .done(function(info) {
+            console.log(info);
+            if(info.status!='success'){
+              alert(info.message);
+            }
+        });
+    }
+
+
+    function Login(){
+        var m=document.getElementById('Mobile'); 
+        var k=document.getElementById('K');       
+        var verifyData = {
+          cellphone :m.value,
+          password:k.value,
+          accesskey:"{{config['salt']}}",
+          mac:"{{config['mac']}}",         
+        };
+
+        $.ajax({
+            url:  "/portal/auth/verify-code-cellphone",
+            type: 'POST',
+            dataType: 'json',
+            data:verifyData,
+        })
+        .done(function(info) {
+            console.log(info);
+            if(info.status=='success'){
+              console.log(info);
+              if(info.status=='success'){
+                  document.start.auth_code.value = info.access_code;
+                  verify(info);
+              }
+
+            }else{
+              alert('手机号码或验证码错误!');
+            }
+        });   
+
+    }
+
+    function verify(ret){
+
+        $.ajax({
+            url: '/portal/verify/wechat-auth',
+            type: 'POST',
+            dataType: 'json',
+            data: {'accesskey':"{{config['salt']}}",'mac':"{{config['mac']}}",'auth_code':ret.access_code}
+        })
+        .done(function(ret) {
+            console.log(ret);
+            if(ret.status=='success'){
+                document.start.action=ret.ip; //'http://'+ret.ip+'/login';
+                document.start.submit();//=ret.ip;
+            }
+        });
+
+    }
+
+
+    function checkKcode(){
+    
+      var k=document.getElementById('K');
+      if(k.value.match(rekc)==null){
+        k.focus();return false;
+      }
+      Login();
+      return false;
+    }
+
+    function __F(){intvid=setInterval("var t=tdt;if(t.style.color=='orange')t.style.color='#666';else t.style.color='ORANGE';iv++;if(iv>5)clearInterval(intvid);",500);}
     function __S(){
       isec--;
       var _b = document.forms['FormA'].SMSBUTTON;
@@ -73,12 +170,12 @@
                 </tr>
                 <tr>
                   <td style="HEIGHT:50px" align="center">
-                    <form method="POST" action="http://172.16.200.5:38000/u/" id="FormB" name="FormB" onsubmit="return(document.getElementById(&#39;isok&#39;).checked&amp;&amp;checkKcode());" autocomplete="OFF">
-                      <div id="CHKBOX" class="BOX BUTTON" style="display:inline-block;BACKGROUND-IMAGE:url({{template}}static/ok.svg);background-color:white;width:268px;margin-bottom:15px;" onclick="C(this)">
-                        <input type="checkbox" value="1" id="isok" name="isok" checked="" style="DISPLAY:none"><span style="vertical-align:top">我已阅读并同意此</span><div class="BOX BUTTON" onclick="D(this)" style="vertical-align:top;margin:0px;float:right;box-shadow:none;display:inline-block;BACKGROUND-IMAGE:url({{template}}static/searchw.svg);WIDTH:143px;background-color:#555;color:white;OPACITY:1" id="TNCBUTTON">上网服务条款和条件</div></div>
+                    <form id="FormB" name="FormB" onsubmit="return(document.getElementById(&#39;isok&#39;).checked&amp;&amp;checkKcode());" autocomplete="OFF">
+                      <div id="CHKBOX" class="BOX BUTTON" style="display:inline-block;background-image: url({{template}}static/ok.svg);background-color:white;width:268px;margin-bottom:15px;" onclick="C(this)">
+                        <input type="checkbox" value="1" id="isok" name="isok" checked="" style="display:none"><span style="vertical-align:top">我已阅读并同意此</span><div class="BOX BUTTON" onclick="D(this)" style="vertical-align:top;margin:0px;float:right;box-shadow:none;display:inline-block;background-image: url({{template}}static/searchw.svg);width: 143px;background-color:#555;color:white;OPACITY:1" id="TNCBUTTON">上网服务条款和条件</div></div>
                       <input type="HIDDEN" name="GXP" value="aiahubm02lcd5on243bcsk15j3">
                       <input type="HIDDEN" name="AN" value="">
-                      <input id="K" class="BOX INPUTBOX" maxlength="5" name="K" style="MARGIN-BOTTOM:10px;BACKGROUND-IMAGE:url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="5位短信验证码"><input type="SUBMIT" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;BACKGROUND-COLOR:#333;MARGIN-BOTTOM:15px;MIN-WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
+                      <input id="K" class="BOX INPUTBOX" maxlength="6" name="K" style="margin-bottom: 10px;background-image:url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="6位短信验证码"><input type="submit" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;background-color: #333;margin-bottom:15px;min-width: 120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
                     </form>
                   </td>
                 </tr>
@@ -99,7 +196,7 @@
     </td>
   </tr>
   <tr>
-    <td style="HEIGHT:100%;vertical-align:bottom;padding:15px;" align="CENTER">
+    <td style="height: 100%;vertical-align:bottom;padding:15px;" align="CENTER">
       <svg width="66px" height="23px" style="opacity:0.7">
         <image xlink:href="{{template}}static/pb.svg" src="{{template}}static/pb.png" width="66px" height="23px"></image>
       </svg>
@@ -108,5 +205,13 @@
   </tbody>
 </table>
 
-
-</body></html>
+<div style="display: none">
+    <form action="" name="start" method="get">
+        <input type="hidden" name="auth_code">
+        <input type="hidden" name="salt" value="{{config['salt']}}">
+        <input type="submit">
+    </form>
+</div>
+<script type="text/javascript" src="{{template}}static/jquery.min.js"></script>
+</body>
+</html>
