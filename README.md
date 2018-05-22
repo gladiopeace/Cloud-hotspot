@@ -24,7 +24,7 @@
 			
 	 3. Install
 	    Open your computer browser and type the blow into it:
-		http://your-domain-name.com or http:your-server-ip-address
+		http://your-domain-name.com or http://your-server-ip-address
 		for example:
 		http://www.cloud-hotspot.org 
 		http://110.110.110.110	    

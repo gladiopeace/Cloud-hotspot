@@ -55,7 +55,7 @@
                         <input type="checkbox" value="1" id="isok" name="isok" checked="" style="DISPLAY:none"><span style="vertical-align:top">我已阅读并同意此</span><div class="BOX BUTTON" onclick="D(this)" style="vertical-align:top;margin:0px;float:right;box-shadow:none;display:inline-block;background-image:url({{template}}static/searchw.svg);width:143px;background-color:#555;color:white;opacity: 1" id="TNCBUTTON">上网服务条款和条件</div></div>
                       <input type="HIDDEN" name="GXP" value="aiahubm02lcd5on243bcsk15j3">
                       <input type="HIDDEN" name="AN" value="">
-                      <input id="K" class="BOX INPUTBOX" maxlength="6" name="K" style="MARGIN-BOTTOM:10px;BACKGROUND-IMAGE:url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="5位短信验证码"><input type="SUBMIT" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;BACKGROUND-COLOR:#333;MARGIN-BOTTOM:15px;MIN-WIDTH:120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
+                      <input id="K" class="BOX INPUTBOX" maxlength="6" name="K" style="margin-bottom: 10px;background-image: url({{template}}static/message.svg);width:120px;border-bottom-right-radius:0px;border-top-right-radius:0px;margin-right:0px;" type="tel" value="" placeholder="5位短信验证码"><input type="SUBMIT" class="BOX SUBMIT" value="点击连接上网" style="margin-left:0px;background-color: #333;margin-bottom: 15px;min-width: 120px;border-bottom-left-radius:0px;border-top-left-radius:0px;;">
                     </form>
                   </td>
                 </tr>
@@ -76,7 +76,7 @@
     </td>
   </tr>
   <tr>
-    <td style="HEIGHT:100%;vertical-align:bottom;padding:15px;" align="CENTER">
+    <td style="height: 100%;vertical-align:bottom;padding:15px;" align="CENTER">
       <svg width="66px" height="23px" style="opacity:0.7">
         <image xlink:href="{{template}}static/pb.svg" src="{{template}}static/pb.png" width="66px" height="23px"></image>
       </svg>
