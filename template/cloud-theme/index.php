@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
   
-  <meta http-equiv="Expires" content="Sun Apr 22 2018 13:31:43 GMT">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
   <meta name="viewport" content="width=320,user-scalable=0">
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>无线上网服务</title>
+  <title>{{copyright['title']}}</title>
   <link rel="stylesheet" href="{{template}}static/base.css">
   <script language="javascript">
     var remp=/^(00[1-9]\d{8,21}|17[0-9]\d{8}|13[0-9]\d{8}|14[0-9]\d{8}|15[0-9]\d{8}|18[0-9]\d{8})$/;

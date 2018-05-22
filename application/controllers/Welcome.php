@@ -7,13 +7,9 @@ class Welcome extends CI_Controller {
 		
 	public function __construct(){
 
-		parent::__construct();
+		parent::__construct();		
 		
-		
-		$this->load->library('session');
-
-		
-		$this->load->library('session');
+		$this->load->library('session');		
 		$this->_saler['username'] = $this->session->userdata('username');
 		$this->_saler['salt'] = $this->session->userdata('salt');
 		$this->_saler['id'] = $this->session->userdata('id');
