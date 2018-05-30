@@ -121,13 +121,11 @@ float: right; */
 
         <div class="main-footer">
 
-           <div style="text-align: center;padding:8px;color: blue;">
+          <!--  <div style="text-align: center;padding:8px;color: blue;">
                 <a href="http://www.zjyouth.cn/" target="_blank">宁波优思网络技术有限公司</a>&nbsp;&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">浙ICP备11008151号</a> 
-            </div>
+            </div> -->
             <ul class="inline links">
-
-                <li>Copyright © 2010 - 2016 Youth Network Technology Co.,Ltd All Rights Reserved.</li>
-              
+              <li>Copyright © 2014-<?php echo date('Y',time());?> Power by Cloud Hotspot</li>                      
             </ul>
         </div>
 
