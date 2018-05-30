@@ -294,12 +294,13 @@
             ini_set('display_errors', 1);          
             
             $this->load->model('Theme_model', 'theme');
-
+            $accesskey = $this->_organization['accesskey'];
             $themes = $this->theme->scanTheme();
-            
-            $data = array('result'=>$themes);
+           
+            $data = array('result'=>$themes,'accesskey'=>$accesskey);
 
             $this->load->library('twig');
+
             $this->twig->display('hotspot/themes_store.php',$data);
 
            
