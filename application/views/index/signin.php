@@ -36,8 +36,10 @@
   .menu__title{float:left;margin-top:-5px}
   .menu__link{display:block}
   .menu__logo{width:232px;height:46px}
-  .menu .btn_home,.menu .btn_share{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
+  .menu .btn_home,.menu .btn_language{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
+  select#language option[value="english"]{ background-image:url(/Public/images/english.png);}
+  select#language option[value="中文"] { background-image:url(/Public/images/chinese.png); }
   i.email{
   /*  clear: both;
     position: relative;
@@ -57,12 +59,11 @@
      <div class="menu">
       
       <div class="menu__content">
-        <img src="/Public/cloud-hotspot.png">
+        <img src="/Public/cloud-hotspot.png">       
        
-       
-        <select role="button" class="btn_share" id="login-btn">
-          <option>English</option><img src="/Public/images/english.png">
-          <option>中文<img src="/Public/images/chinese.png"></option>
+        <select role="button" class="btn_language" id="language">
+          <option style="background-image:url('/Public/images/english.png');">English</option>
+          <option style="background-image:url('/Public/images/chinese.png');">中文</option>
         </select>
       
     </div>

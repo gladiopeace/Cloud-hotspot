@@ -133,8 +133,8 @@ float: right; */
     </div>
 </div>
 
-<link href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-<script src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<link href="//cdn.bootcss.com/toastr.js/2.0.3/css/toastr.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/toastr.js/2.0.3/js/toastr.min.js"></script>
 
 <div id="box-bg" class="box-bg"></div>
 <script type="text/javascript">
