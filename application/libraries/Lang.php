@@ -81,7 +81,9 @@
 		$currentL = $this->currentL;	
 		
 		$this->CI->lang->load('signup',$ident['ident']);
+		
 		$data = $this->CI->lang->language;
+		$data['clang'] = $currentL;
 		/*
 		$data = array();
 		$data['sign_up'] = $this->CI->lang->line('sign_up');

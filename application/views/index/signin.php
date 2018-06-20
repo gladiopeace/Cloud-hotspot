@@ -39,7 +39,8 @@
   .menu .btn_home,.menu .btn_language{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
   select#language option[value="english"]{ background-image:url(/Public/images/english.png);}
-  select#language option[value="中文"] { background-image:url(/Public/images/chinese.png); }
+  select#language option[value="chinese"] { background-image:url(/Public/images/chinese.png); }
+  select{height:40px;width:120px;light-height:40px;text-aligh:center;
   i.email{
   /*  clear: both;
     position: relative;
@@ -60,10 +61,10 @@
       
       <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">       
-       
+        {{clang}}
         <select role="button" class="btn_language" id="language">
-          <option style="background-image:url('/Public/images/english.png');">English</option>
-          <option style="background-image:url('/Public/images/chinese.png');">中文</option>
+          <option value='en' {% if clang == 'en' %} selected="selected" {% endif %} style="background-image:url('/Public/images/english.png');">English</option>
+          <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %} style="background-image:url('/Public/images/chinese.png');">中文</option>
         </select>
       
     </div>
@@ -135,19 +136,11 @@
     $("#InputPassword").blur(function(event) {
 
       /* Act on the event */
-
       var password = $(this).val();
 
-      if(password==''){
-
-        return false;
-
-      }
-
-
+      if(password=='') return false;      
 
       if(password.length<6){
-
 
         $(event.target).siblings('i.pwd').html("<i class='fa error' style='color:red'>少于六位</i>");
 
@@ -157,8 +150,13 @@
         $(event.target).siblings('i.pwd').html("<i class='fa fa-check' style='color:green'>√</i>");
       }
 
+    });
 
-
+    $("#language").change(function(event) {
+      /* Act on the event */
+      let lang = $(this).children('option:selected').val();//这就是selected的值  
+      window.location.href="?lang="+lang;
+      
     });
 
     $("#InputPassword").focus(function(event) {

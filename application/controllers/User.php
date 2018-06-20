@@ -201,7 +201,8 @@
 	       		
 
 	       		$lang = $this->input->get('lang', TRUE);
-				
+				error_reporting(1);
+				ini_set('display_errors', 1);
 	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
 	       		$data = $this->Switch->sign_up();
 	   			
