@@ -27,6 +27,15 @@ class Welcome extends CI_Controller {
 			redirect('manage');
 		}
 		$data['profile'] = $this->_saler;
+
+
+		$this->lang->load('singup', 'chinese');
+
+		echo $this->lang->line('sign_up');
+
+		exit();
+
+
 		$this->load->view('welcome/index', $data, FALSE);
 		
 	}

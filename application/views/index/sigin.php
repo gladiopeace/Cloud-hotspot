@@ -5,20 +5,22 @@
 
     <meta name="renderer" content="webkit">   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <title>登录 - Cloud Hotspot</title>
+    <title>{{sign_in}} - Cloud Hotspot</title>
     <link rel="icon" href="/favicon.ico?t=20160511" type="image/x-icon" />
     <link href="/Public/global.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
     <style type="text/css">
     #switch_form{height: 40px;line-height: 40px;}
-    #switch_form ul li{height: 40px;margin-right: 140px;text-align: center;
+    #switch_form ul li{height: 40px;margin-right:118px;text-align: center;
       cursor: pointer;}
     #switch_form ul li h3{
       text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    color: #0c94de;
+      font-size: 18px;
+      font-weight: 400;
+      color: #0c94de;
     }
+    .pull-right{float: right;}
+    .pull-left{float: left;}
 
     .header .logo{float:left;}
     .header ul {float: right;width: 60%;border: 1px solid white;height:100%;margin: 0px;}
@@ -75,8 +77,8 @@
 
         <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/sigin"><h3>登录</h3></a></li>
-            <li><a href="/user/sigup"><h3>注册</a></h3></li>
+            <li><a href="/user/sigin"><h3>{{sign_in}}</h3></a></li>
+            <li><a href="/user/sigup"><h3>{{sign_up}}</a></h3></li>
           </ul>
         </div>
 
@@ -94,7 +96,7 @@
         <i class="pwd"></i>
         <div class="line advanced-line">
           <div class="remember-line">
-            <a class="abright" id='forget' href="javascript:void(0);">忘记密码?</a>
+            <a class="abright" id='forget' href="javascript:void(0);">{{reset_pass}}?</a>
           </div>
           <p class="error" id="verify"></p>
           <p class="error flash-error" id="error">
@@ -102,7 +104,7 @@
         </div>
 
         <div class="align-center line">
-          <button class="btn login" id="loginBtn" type="submit">确认登录</button>
+          <button class="btn login" id="loginBtn" type="submit">{{sign_in}}</button>
         </div>
       </form>
      
@@ -216,7 +218,7 @@
       var url = '/user/forget';
         layer.open({
           type: 2,
-          title: '忘记密码',
+          title: '{{reset_pass}}',
           area: ['480px', '280px'],
           fix: true, //不固定
           maxmin: true,

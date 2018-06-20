@@ -198,7 +198,18 @@
 			
 	       	if(empty($this->_saler['username']) || empty($this->_saler['salt']) || empty($this->_saler['id'])){
 
-                $this->load->view('index/sigin.php',array($this->_saler),FALSE);
+	       		
+
+	       		$lang = $this->input->get('lang', TRUE);
+				
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data = $this->Switch->sign_up();
+	   			
+  				$this->load->library('twig');
+				$this->twig->display('index/sigin.php',$data);
+	   			
+              
+
 			}else{				
 				redirect('manage');
 			}
