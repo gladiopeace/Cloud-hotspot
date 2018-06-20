@@ -87,8 +87,8 @@ float: right; */
         
          <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/sigin"><h3>登录</h3></a></li>
-            <li><a href="/user/sigup"><h3>注册</a></h3></li>
+            <li><a href="/user/signin"><h3>登录</h3></a></li>
+            <li><a href="/user/signup"><h3>注册</a></h3></li>
           </ul>
         </div>
         <input type="hidden" name="goto" value="">

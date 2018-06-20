@@ -20,7 +20,7 @@
 		}
 
         public function index(){
-            redirect('user/sigin');
+            redirect('user/signin');
         }
 
 		public function resetpwd(){
@@ -194,7 +194,7 @@
 		}
 
 
-		public function sigin(){
+		public function signin(){
 			
 	       	if(empty($this->_saler['username']) || empty($this->_saler['salt']) || empty($this->_saler['id'])){
 
@@ -206,7 +206,7 @@
 	       		$data = $this->Switch->sign_up();
 	   			
   				$this->load->library('twig');
-				$this->twig->display('index/sigin.php',$data);
+				$this->twig->display('index/signin.php',$data);
 	   			
               
 
@@ -216,7 +216,7 @@
 		}
 	
 	
-		public function sigup(){
+		public function signup(){
 			
 			if(!empty($this->_saler['username']) && empty($this->_saler['salt']) && empty($this->_saler['id']))	redirect('manage');
 
@@ -281,7 +281,7 @@
 					'salt'	=>	$salt,
 				);
 
-            $this->load->view('index/sigup',$data,FALSE);
+            $this->load->view('index/signup',$data,FALSE);
 
 			
 		}

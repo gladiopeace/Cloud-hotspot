@@ -36,7 +36,7 @@
   .menu__title{float:left;margin-top:-5px}
   .menu__link{display:block}
   .menu__logo{width:232px;height:46px}
-  .menu .btn_home,.menu .btn_share{display:block;float:right;margin-left:27px;line-height:40px;font-size:20px;text-decoration:none}
+  .menu .btn_home,.menu .btn_share{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
   i.email{
   /*  clear: both;
@@ -59,7 +59,11 @@
       <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">
        
-        <a href="/user/sigin" role="button" class="btn_share" id="login-btn">商家中心</a>
+       
+        <select role="button" class="btn_share" id="login-btn">
+          <option>English</option><img src="/Public/images/english.png">
+          <option>中文<img src="/Public/images/chinese.png"></option>
+        </select>
       
     </div>
   </div>
@@ -77,8 +81,8 @@
 
         <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/sigin"><h3>{{sign_in}}</h3></a></li>
-            <li><a href="/user/sigup"><h3>{{sign_up}}</a></h3></li>
+            <li><a href="/user/signin"><h3>{{sign_in}}</h3></a></li>
+            <li><a href="/user/signup"><h3>{{sign_up}}</a></h3></li>
           </ul>
         </div>
 
