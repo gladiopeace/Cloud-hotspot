@@ -326,14 +326,13 @@ float: right; */
       })
       .done(function(ret) {
         if(ret.status=='success'){
-          <?php 
-            if(!empty($from) && $from=='auth' && !empty($salt)){
-
-          ?>
-          window.location.href="/manage/index?from=auth&salt=<?php echo $salt;?>";
-          <?php }else{ ?>
+            
+          {% if from=='auth' and salt is not null %}
+              window.location.href="/manage/index?from=auth&salt={{salt}}";
+          {% else %}
               window.location.href="/manage/index";
-          <?php } ?>
+          {% endif %}
+         
                  
         }else if(ret.status=='false'){
           toastr.warning(ret.message); 

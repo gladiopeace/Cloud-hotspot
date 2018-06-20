@@ -7,5 +7,6 @@ $lang['account_fill'] = "邮箱/手机号";
 $lang['password_fill'] = "请输入密码";
 
 
+
 /* End of file upload_lang.php */
 /* Location: ./system/language/chinese/signup_lang.php */

@@ -270,21 +270,19 @@
                 }
                 exit();
             }
-			/*$from = $this->input->get('from');
+			$from = $this->input->get('from');
 			$salt = $this->input->get('salt');
-			$data = array(
-					'from' 	=> 	$from,
-					'salt'	=>	$salt,
-				);
-
-            $this->load->view('index/signup',$data,FALSE);*/
+			
 
 
 
        		$lang = $this->input->get('lang', TRUE);
        		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
        		$data = $this->Switch->sign_up();	   			
-				$this->load->library('twig');
+			$this->load->library('twig');
+			$data['salt'] = $salt;
+			$data['from'] = $from;
+
 			$this->twig->display('index/signup.php',$data);
 
 			
