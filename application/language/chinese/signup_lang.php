@@ -40,6 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['sign_up'] = "注册";
 $lang['sign_in'] = "登录";
 $lang['reset_pass'] = "忘记密码";
+$lang['account_fill'] = "邮箱/手机号";
+$lang['password_fill'] = "请输入密码";
 $lang['upload_file_exceeds_form_limit'] = "上传文件超出表单允许的最大长度.";
 $lang['upload_file_partial'] = "此文件仅有一部分被上传了.";
 $lang['upload_no_temp_directory'] = "找不到临时目录.";

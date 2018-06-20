@@ -6,7 +6,7 @@
     <meta name="renderer" content="webkit">   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <title>{{sign_in}} - Cloud Hotspot</title>
-    <link rel="icon" href="/favicon.ico?t=20160511" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link href="/Public/global.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
     <style type="text/css">
@@ -84,14 +84,11 @@
 
       
         <div id="manage">
-          <input type="text" name="email" id="InputEmail" placeholder="邮箱/手机号" value="" autocomplete="off"/>
+          <input type="text" name="email" id="InputEmail" placeholder="{{account_fill}}" value="" autocomplete="off"/>
           <i class="email"></i>  
         </div>
 
-
-        
-        <input type="password" name="password" id="InputPassword" placeholder="请输入密码" autocomplete="off"/>
-
+        <input type="password" name="password" id="InputPassword" placeholder="{{password_fill}}" autocomplete="off"/>
 
         <i class="pwd"></i>
         <div class="line advanced-line">
@@ -115,11 +112,11 @@
 <div class="footer">
     <div class="center-content">
 
-        <div class="main-footer">
-        
+        <div class="main-footer">        
             <ul class="inline links">
-                <li>Copyright © 2014-<?php echo date('Y',time());?> Power by Cloud Hotspot</li>              
+              <li>Copyright © 2014-{{ "now"|date("Y") }} Power by Cloud Hotspot</li>              
             </ul>
+
         </div>
     </div>
 </div>
@@ -178,7 +175,7 @@
 
           $.ajax({
 
-              url: "<?php echo site_url('component/ajax/sigup');?>",
+              url: "/component/ajax/sigup",
 
               type: 'POST',
               dataType: 'json',
@@ -269,7 +266,7 @@
           $("#error").html("<span style='color:red'>"+ret.message+"</span>");
         }
         if(ret.status=='ok'){
-          window.location.href="<?php echo site_url('manage/index');?>";
+          window.location.href="/manage/index";
         }
       });
       return false;

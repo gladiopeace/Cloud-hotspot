@@ -78,15 +78,16 @@
 	
 
 		$ident = $this->languages[$this->currentL];
-		$currentL = $this->currentL;
-	
+		$currentL = $this->currentL;	
 		
 		$this->CI->lang->load('signup',$ident['ident']);
+		$data = $this->CI->lang->language;
+		/*
 		$data = array();
 		$data['sign_up'] = $this->CI->lang->line('sign_up');
 		$data['sign_in'] = $this->CI->lang->line('sign_in');
 		$data['reset_pass'] = $this->CI->lang->line('reset_pass');
-
+		*/
 		return $data;
 	}
  
