@@ -38,9 +38,9 @@
   .menu__logo{width:232px;height:46px}
   .menu .btn_home,.menu .btn_language{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
-  select#language option[value="english"]{ background-image:url(/Public/images/english.png);}
-  select#language option[value="chinese"] { background-image:url(/Public/images/chinese.png); }
-  select{height:40px;width:120px;light-height:40px;text-aligh:center;
+  select#language option[value="english"]{ background-image:url(/Public/images/english.png);text-align: center;}
+  select#language option[value="chinese"] { background-image:url(/Public/images/chinese.png);text-align: center; }
+  select{height:40px;width:120px;line-height:40px;text-align: center;align-content: center;padding-left: 10px; }
   i.email{
   /*  clear: both;
     position: relative;
