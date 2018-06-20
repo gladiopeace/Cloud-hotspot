@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <meta name="renderer" content="webkit">   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
     <title>{{sign_in}} - Cloud Hotspot</title>
@@ -60,13 +59,11 @@
      <div class="menu">
       
       <div class="menu__content">
-        <img src="/Public/cloud-hotspot.png">       
-        {{clang}}
+        <img src="/Public/cloud-hotspot.png">           
         <select role="button" class="btn_language" id="language">
           <option value='en' {% if clang == 'en' %} selected="selected" {% endif %} style="background-image:url('/Public/images/english.png');">English</option>
           <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %} style="background-image:url('/Public/images/chinese.png');">中文</option>
-        </select>
-      
+        </select>      
     </div>
   </div>
 
@@ -75,20 +72,14 @@
 <div class="main signin">
   <div class="center-content special-content">
 
-
-
-    <div class="block special-block">
-      
+    <div class="block special-block">      
       <form method="POST" id="login" class="login-form" action="?" onsubmit="return check(this)">
-
         <div id="switch_form">
           <ul class="inline" style="height: 40px;">
             <li><a href="/user/signin"><h3>{{sign_in}}</h3></a></li>
             <li><a href="/user/signup"><h3>{{sign_up}}</a></h3></li>
           </ul>
-        </div>
-
-      
+        </div>      
         <div id="manage">
           <input type="text" name="email" id="InputEmail" placeholder="{{account_fill}}" value="" autocomplete="off"/>
           <i class="email"></i>  
@@ -152,28 +143,23 @@
 
     });
 
-    $("#language").change(function(event) {
-      /* Act on the event */
+    $("#language").change(function(event) {   
       let lang = $(this).children('option:selected').val();//这就是selected的值  
-      window.location.href="?lang="+lang;
-      
+      window.location.href="?lang="+lang;      
     });
 
     $("#InputPassword").focus(function(event) {
-
       $(this).siblings('i.pwd').html('');
-
-
     });
 
       $("#InputEmail").blur(function(event) {
           var email = $(this).val();
           if(email==''){
-              return false;
+            return false;
           }
           var type = 'email';
           if(testEmail(email)==false){
-              type = 'username';
+            type = 'username';
           }
 
           $.ajax({

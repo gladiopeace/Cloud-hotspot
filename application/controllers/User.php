@@ -201,15 +201,10 @@
 	       		
 
 	       		$lang = $this->input->get('lang', TRUE);
-				error_reporting(1);
-				ini_set('display_errors', 1);
 	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
-	       		$data = $this->Switch->sign_up();
-	   			
+	       		$data = $this->Switch->sign_in();	   			
   				$this->load->library('twig');
 				$this->twig->display('index/signin.php',$data);
-	   			
-              
 
 			}else{				
 				redirect('manage');
@@ -275,14 +270,22 @@
                 }
                 exit();
             }
-			$from = $this->input->get('from');
+			/*$from = $this->input->get('from');
 			$salt = $this->input->get('salt');
 			$data = array(
 					'from' 	=> 	$from,
 					'salt'	=>	$salt,
 				);
 
-            $this->load->view('index/signup',$data,FALSE);
+            $this->load->view('index/signup',$data,FALSE);*/
+
+
+
+       		$lang = $this->input->get('lang', TRUE);
+       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+       		$data = $this->Switch->sign_up();	   			
+				$this->load->library('twig');
+			$this->twig->display('index/signup.php',$data);
 
 			
 		}

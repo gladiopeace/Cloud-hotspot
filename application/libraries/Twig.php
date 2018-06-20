@@ -23,7 +23,7 @@ class Twig
         Twig_Autoloader::register();
 		$loader = new Twig_Loader_Filesystem($this->_template_dir);
 		$this->_twig = new Twig_Environment($loader, array(
-              //  'cache' => $this->_cache_dir,
+                'cache' => $this->_cache_dir,
                 'debug' => $debug,
 		));
         foreach(get_defined_functions() as $functions) {

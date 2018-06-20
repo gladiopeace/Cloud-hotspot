@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>注册 - Cloud Hotspot</title>
+    <title>{{sign_up}} - Cloud Hotspot</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <link rel="icon" href="/favicon.ico?t=20160511" type="image/x-icon" />
@@ -11,7 +11,7 @@
 
     <style type="text/css">
     #switch_form{height: 40px;line-height: 40px;}
-    #switch_form ul li{height: 40px;margin-right: 140px;text-align: center;
+    #switch_form ul li{height: 40px;margin-right: 118px;text-align: center;
       cursor: pointer;}
     #switch_form ul li h3{
       text-align: center;
@@ -34,8 +34,11 @@
   .menu__title{float:left;margin-top:-5px}
   .menu__link{display:block}
   .menu__logo{width:232px;height:46px}
-  .menu .btn_home,.menu .btn_share{display:block;float:right;margin-left:27px;line-height:40px;font-size:20px;text-decoration:none}
+   .menu .btn_home,.menu .btn_language{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
+  select#language option[value="english"]{ background-image:url(/Public/images/english.png);text-align: center;}
+  select#language option[value="chinese"] { background-image:url(/Public/images/chinese.png);text-align: center; }
+  select{height:40px;width:120px;line-height:40px;text-align: center;align-content: center;padding-left: 10px; }
   .getEmail{
     width: 88px;
     height: 35px;
@@ -70,7 +73,10 @@ float: right; */
      <div class="menu">
     <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">
-        <a href="/user/sigin" role="button" class="btn_share" id="login-btn">商家中心</a>      
+        <select role="button" class="btn_language" id="language">
+          <option value='en' {% if clang == 'en' %} selected="selected" {% endif %} style="background-image:url('/Public/images/english.png');">English</option>
+          <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %} style="background-image:url('/Public/images/chinese.png');">中文</option>
+        </select>     
     </div>
   </div>
 
@@ -87,13 +93,13 @@ float: right; */
         
          <div id="switch_form">
           <ul class="inline" style="height: 40px;">
-            <li><a href="/user/signin"><h3>登录</h3></a></li>
-            <li><a href="/user/signup"><h3>注册</a></h3></li>
+            <li><a href="/user/signin"><h3>{{sign_in}}</h3></a></li>
+            <li><a href="/user/signup"><h3>{{sign_up}}</a></h3></li>
           </ul>
         </div>
         <input type="hidden" name="goto" value="">
         <div style="position: static;">
-          <input type="text" name="account" id="account" placeholder="邮箱/手机号码" value="">      
+          <input type="text" name="account" id="account" placeholder="{{account_fill}}" value="">      
           <i class="email"></i> 
         </div>
         <div style="position: static;">
@@ -102,12 +108,12 @@ float: right; */
             <i class="emailCode"></i> 
             <input type="hidden" id="auth_salt" name="auth_salt" value="">
         </div>
-        <input type="password" name="password" id="password" placeholder="登录密码">
+        <input type="password" name="password" id="password" placeholder="{{password_fill}}">
         <i class="pwd"></i>         
         <input type="password" name="confirm" id="confirm" placeholder="确认密码">
         <i class="conf"></i>         
         <div class="align-center line">
-          <button class="btn login" id="submit" type="button">立即注册</button>
+          <button class="btn login" id="submit" type="button">{{sign_up}}</button>
          
         </div>
       </form>
@@ -125,7 +131,7 @@ float: right; */
                 <a href="http://www.zjyouth.cn/" target="_blank">宁波优思网络技术有限公司</a>&nbsp;&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">浙ICP备11008151号</a> 
             </div> -->
             <ul class="inline links">
-              <li>Copyright © 2014-<?php echo date('Y',time());?> Power by Cloud Hotspot</li>                      
+              <li>Copyright © 2014-{{ "now"|date("Y") }}  Power by Cloud Hotspot</li>                      
             </ul>
         </div>
 
@@ -159,9 +165,7 @@ float: right; */
     
     $("#account").blur(function(event) {
       var account = $(this).val();
-      if(account==''){
-        return false;
-      }
+      if(account=='') return false;      
 
       var p =Object.create(check);
       var flag = false;
@@ -196,6 +200,10 @@ float: right; */
       
     });
 
+    $("#language").change(function(event) {   
+      let lang = $(this).children('option:selected').val();//这就是selected的值  
+      window.location.href="?lang="+lang;      
+    });
 
     $("#code").blur(function(event) {
       var code = $(this).val();

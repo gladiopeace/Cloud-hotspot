@@ -83,13 +83,18 @@
 		$this->CI->lang->load('signup',$ident['ident']);
 		
 		$data = $this->CI->lang->language;
-		$data['clang'] = $currentL;
-		/*
-		$data = array();
-		$data['sign_up'] = $this->CI->lang->line('sign_up');
-		$data['sign_in'] = $this->CI->lang->line('sign_in');
-		$data['reset_pass'] = $this->CI->lang->line('reset_pass');
-		*/
+		$data['clang'] = $currentL;		
+		return $data;
+	}
+
+
+	function sign_in(){	
+
+		$ident = $this->languages[$this->currentL];
+		$currentL = $this->currentL;			
+		$this->CI->lang->load('signin',$ident['ident']);		
+		$data = $this->CI->lang->language;
+		$data['clang'] = $currentL;		
 		return $data;
 	}
  
