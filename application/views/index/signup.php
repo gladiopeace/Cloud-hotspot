@@ -110,7 +110,7 @@ float: right; */
         </div>
         <input type="password" name="password" id="password" placeholder="{{password_fill}}">
         <i class="pwd"></i>         
-        <input type="password" name="confirm" id="confirm" placeholder="确认密码">
+        <input type="password" name="confirm" id="confirm" placeholder="{{re_password_fill}}">
         <i class="conf"></i>         
         <div class="align-center line">
           <button class="btn login" id="submit" type="button">{{sign_up}}</button>

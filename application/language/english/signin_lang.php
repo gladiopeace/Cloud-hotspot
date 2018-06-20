@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['sign_up'] = "Sign up";
 $lang['sign_in'] = "Sign in";
 $lang['reset_pass'] = "Forgot password";
-$lang['account_fill'] = "Email/Cellphone";
+$lang['account_fill'] = "Email,phone";
 $lang['password_fill'] = "Password";
 
 /* End of file upload_lang.php */
