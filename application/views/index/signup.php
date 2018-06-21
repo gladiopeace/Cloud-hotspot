@@ -103,8 +103,8 @@ float: right; */
           <i class="email"></i> 
         </div>
         <div style="position: static;">
-            <input type="text" name="code" id="code" placeholder="验证码">
-            <span class="getEmail" id="vcode">获取验证码</span> 
+            <input type="text" name="code" id="code" placeholder="{{verify_code_fill}}">
+            <span class="getEmail" id="vcode">{{verify_code}}</span> 
             <i class="emailCode"></i> 
             <input type="hidden" id="auth_salt" name="auth_salt" value="">
         </div>

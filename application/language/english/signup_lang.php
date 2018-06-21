@@ -43,6 +43,8 @@ $lang['reset_pass'] = "Forgot password";
 $lang['account_fill'] = "Email,phone";
 $lang['password_fill'] = "Password";
 $lang['re_password_fill'] = "Re-type password";
+$lang['verify_code'] = "Get code";
+$lang['verify_code_fill'] = "Enter Verification code";
 
 
 /* End of file upload_lang.php */
