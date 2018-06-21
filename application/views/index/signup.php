@@ -282,12 +282,12 @@ float: right; */
 
 
     $("#submit").click(function(event) {    
-      var account = $("#account").val();
-      var verify = $("#code").val();
-      var password = $("#password").val();
-      var confirm = $("#confirm").val();
-      var flag = false;
-      var p =Object.create(check);
+      let account = $("#account").val();
+      let verify = $("#code").val();
+      let password = $("#password").val();
+      let confirm = $("#confirm").val();
+      let flag = false;
+      let p =Object.create(check);
       flag = p.mail(account);   
       if(!flag) flag = p.phone(account);  
       if(!flag){
@@ -342,9 +342,9 @@ float: right; */
     });
 
     $("#vcode").click(function(){
-      var account = $("#account").val();
-      var p =Object.create(check);
-      var flag = false;
+      let account = $("#account").val();
+      let p =Object.create(check);
+      let flag = false;
       flag = p.mail(account);
       if(!flag) flag = p.phone(account);
 
@@ -360,12 +360,12 @@ float: right; */
 
   var check = {
     mail:function(mail){
-      var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+      let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
           if(!reg.test(mail)) return false;
           return true;
     },
     phone:function(phone){
-      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; 
+      let myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; 
       if(!myreg.test(phone)) return false;
       return true;
     },
