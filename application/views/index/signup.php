@@ -38,7 +38,8 @@
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
   .btn_language{/*border: 1px solid silver; */clear: both;text-align: center;}
   .btn_language img{float: left;width: 38px;height: 24px;position:initial;margin-top: 8px;}
-  select{height:40px;width:80px;line-height:40px;text-align: center;align-content: center;padding-left: 8px; border: none;float: right;}
+  select{height:40px;width:76px;line-height:40px;text-align: center;align-content: center;padding-left: 8px; border: none;float: right;}
+  select option{text-align: center;}
   .getEmail{
     width: 88px;
     height: 35px;
