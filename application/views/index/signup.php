@@ -383,15 +383,15 @@ float: right; */
     startShow:function(){   
       this.intvalue ++;
       document.getElementById(this.controll).innerHTML="&nbsp;" + ((this.EndTime-this.intvalue)%60).toString()+"秒";
-       if(this.intvalue>=this.EndTime){
-            document.getElementById(this.controll).innerHTML="获取验证码";
-            this.endShow();
-          }
+      if(this.intvalue>=this.EndTime){
+        document.getElementById(this.controll).innerHTML="获取验证码";
+        this.endShow();
+      }
     },
     endShow:function(){
       window.clearTimeout(this.cont);
-          this.intvalue=0;
-          this.cont=null;
+      this.intvalue=0;
+      this.cont=null;
     },
     
 
