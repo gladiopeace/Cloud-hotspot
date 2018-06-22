@@ -219,8 +219,13 @@
 
                 $user = $this->Member_model->first('user',array("*"),array('id'=>$uid));
 
+                $lang = $this->input->get('lang', TRUE);
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data = $this->Switch->init('profile');
+	       		$data['bech'] = $user;
+	       		$data['do'] = $do;
                 $this->load->library('twig');
-                $this->twig->display('manage/setting.php',array('bech'=>$user,'do'=>$do));
+                $this->twig->display('manage/setting.php',$data);
             }
 
             if($op=='system'){
@@ -268,6 +273,14 @@
                 $email = $this->Member_model->Email_Account_Get();
                 $bech = $this->Member_model->Bech_Get();
                 //var_dump($aliyun);
+
+
+              /*  $lang = $this->input->get('lang', TRUE);
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data = $this->Switch->init('profile');
+	       		$data['bech'] = $user;
+	       		$data['do'] = $do;*/
+	       		
                 $this->load->library('twig');
                 $this->twig->display('manage/system.php',['qcloud'=>$qcloud,'aliyun'=>$aliyun,'email'=>$email,'bech'=>$bech]);
             }

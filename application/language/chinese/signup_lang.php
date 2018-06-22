@@ -9,7 +9,5 @@ $lang['re_password_fill'] = "确认密码";
 $lang['verify_code'] = "获取验证码";
 $lang['verify_code_fill'] = "输入验证码";
 
-
-
 /* End of file upload_lang.php */
 /* Location: ./system/language/chinese/signup_lang.php */

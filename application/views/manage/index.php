@@ -113,7 +113,7 @@
               &nbsp;&nbsp;
               {% if bech['level']=='8' or bech['level']=='6' %}
               <button class="btn btn-xs btn-info" id="system" type="button" data-do="system">
-                <i class="fa fa-cog fa-fw"></i>&nbsp;{{system}}</button>
+                <i class="fa fa-cog fa-fw fa-spin"></i>&nbsp;{{system}}</button>
               &nbsp;&nbsp;
               {% endif %}
               <button class="btn btn-xs btn-primary" onclick="window.location.href='/manage/logout'" type="button">

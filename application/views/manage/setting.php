@@ -17,7 +17,7 @@
                                 <br/>
 
                                 <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">机构名称</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{orginazation}}</label>
 
                                     <div class="col-sm-7 col-xs-7">
                                     <input type="text" id="company" name="data[company]" class="form-control" value="{{bech['company']}}">
@@ -28,7 +28,7 @@
 
 
                                  <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">联系人</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{contact}}</label>
 
                                     <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[truename]" class="form-control" value="{{bech['truename']}}">
@@ -39,7 +39,7 @@
 
 
                                  <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">联系电话</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{telephone}}</label>
 
                                     <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[cellphone]" class="form-control" value="{{bech['cellphone']}}">
@@ -49,7 +49,7 @@
                                 </div>
 
                                  <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">机构地址</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{address}}</label>
 
                                     <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[address]" class="form-control" value="{{bech['address']}}">
