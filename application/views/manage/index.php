@@ -109,15 +109,15 @@
               <i class="fa fa-rmb"></i>&nbsp;授权管理</button>
               &nbsp;&nbsp;              -->
               <button class="btn btn-xs btn-info" id="setting" type="button" data-do="change">
-              <i class="fa fa-pencil-square-o"></i>&nbsp;修改资料</button>
+              <i class="fa fa-pencil-square-o"></i>&nbsp;{{profile}}</button>
               &nbsp;&nbsp;
               {% if bech['level']=='8' or bech['level']=='6' %}
               <button class="btn btn-xs btn-info" id="system" type="button" data-do="system">
-                <i class="fa fa-setting"></i>&nbsp;系统配置</button>
+                <i class="fa fa-setting"></i>&nbsp;{{system}}</button>
               &nbsp;&nbsp;
               {% endif %}
               <button class="btn btn-xs btn-primary" onclick="window.location.href='/manage/logout'" type="button">
-              <i class="fa fa-sign-out"></i>&nbsp;退出系统</button>
+              <i class="fa fa-sign-out"></i>&nbsp;{{logout}}</button>
         </div>
 
       </div>
@@ -144,7 +144,7 @@
                   <br/>
                   <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
                   <br/>
-                  <h4>创建节点</h4>
+                  <h4>{{create_branch}}</h4>
               </div>
             </div>
       </div>
@@ -227,7 +227,7 @@
       var type = $(this).data('do');
       layer.open({
         type: 2,
-        title: '机构资料',
+        title: '{{profile}}',
         area: ['500px', '400px'],
         fix: true, //不固定
         maxmin: true,
@@ -240,7 +240,7 @@
         var type = $(this).data('do');
         layer.open({
             type: 2,
-            title: '系统配置',
+            title: '{{system}}',
             area: ['600px', '600px'],
             fix: true, //不固定
             maxmin: true,
