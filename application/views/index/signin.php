@@ -37,9 +37,9 @@
   .menu__logo{width:232px;height:46px}
   .menu .btn_home,.menu .btn_language{display:block;float:right;margin-left:27px;line-height:40px;text-decoration:none}
  /* .menu .btn_share{width:120px;height:40px;line-height:40px;background:#31c27c;border-radius:20px;text-align:center}body{background:#fff;color:#000}*/
-  select#language option[value="english"]{ background-image:url(/Public/images/english.png);text-align: center;}
-  select#language option[value="chinese"] { background-image:url(/Public/images/chinese.png);text-align: center; }
-  select{height:40px;width:120px;line-height:40px;text-align: center;align-content: center;padding-left: 10px; }
+  .btn_language{/*border: 1px solid silver; */clear: both;text-align: center;}
+  .btn_language img{float: left;width: 38px;height: 24px;position:initial;margin-top: 8px;}
+  select{height:40px;width:80px;line-height:40px;text-align: center;align-content: center;padding-left: 8px; border: none;float: right;}
   i.email{
   /*  clear: both;
     position: relative;
@@ -60,10 +60,15 @@
       
       <div class="menu__content">
         <img src="/Public/cloud-hotspot.png">           
-        <select role="button" class="btn_language" id="language">
-          <option value='en' {% if clang == 'en' %} selected="selected" {% endif %} style="background-image:url('/Public/images/english.png');">English</option>
-          <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %} style="background-image:url('/Public/images/chinese.png');">中文</option>
-        </select>      
+        
+        <div role="button" class="btn_language">
+          <img src="/Public/images/{% if clang=='en' %}english.png {% elseif clang=='zh' %}chinese.png{% endif %}">
+          <select id="language">
+            <option value='en' {% if clang == 'en' %} selected="selected" {% endif %}>English</option>
+            <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %}>中文</option>
+          </select>   
+        </div>
+           
     </div>
   </div>
 
