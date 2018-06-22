@@ -74,7 +74,7 @@
 
 
 
-	function sign_up(){
+	public function sign_up(){
 	
 
 		$ident = $this->languages[$this->currentL];
@@ -88,7 +88,7 @@
 	}
 
 
-	function sign_in(){	
+	public function sign_in(){	
 
 		$ident = $this->languages[$this->currentL];
 		$currentL = $this->currentL;			
@@ -96,6 +96,19 @@
 		$data = $this->CI->lang->language;
 		$data['clang'] = $currentL;		
 		return $data;
+	}
+
+	public function init($lang=''){
+
+		if(!$lang) return array();
+		$ident = $this->languages[$this->currentL];
+		$currentL = $this->currentL;			
+		$this->CI->lang->load($lang,$ident['ident']);		
+		$data = $this->CI->lang->language;
+		$data['clang'] = $currentL;		
+		return $data;
+
+
 	}
  
  }
