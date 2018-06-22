@@ -113,7 +113,7 @@
               &nbsp;&nbsp;
               {% if bech['level']=='8' or bech['level']=='6' %}
               <button class="btn btn-xs btn-info" id="system" type="button" data-do="system">
-                <i class="fa fa-setting"></i>&nbsp;{{system}}</button>
+                <i class="fa fa-cog fa-fw"></i>&nbsp;{{system}}</button>
               &nbsp;&nbsp;
               {% endif %}
               <button class="btn btn-xs btn-primary" onclick="window.location.href='/manage/logout'" type="button">
@@ -163,7 +163,7 @@
               <i class="fa fa-dropbox fa-5x" onclick="opens('/hotspot/index?accesskey={{v['salt']}}');"></i>
               <!-- <i class="fa fa-dropbox fa-5x" onclick="window.open('/store/index/portal?accesskey={{v['salt']}}','_blank')"></i> -->
               <h4>{{v['branch']}}</h4>
-              <span>{{ v['overdue']|date("Y年m月d日")}}</span>
+              <span>{{ v['overdue']|date("Y-m-d")}}</span>
           </div>        
         </div>
     
@@ -204,7 +204,7 @@
         var url = '/manage/create/setup?&hash='+ok+'"';
         layer.open({
           type: 2,
-          title: '设置向导',
+          title: '{{create_branch}}',
           area: ['600px', '540px'],
           fix: true, //不固定
           maxmin: true,
