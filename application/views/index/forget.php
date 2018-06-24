@@ -49,7 +49,7 @@
                       <div class="input-group">
                         
                         <input class="form-control" name="data[code]" type="text" placeholder="{{verify_fill}}">
-                        <div class="input-group-addon" style="width: 88px;text-align: center;color: white;cursor: pointer;background-color: #47B347;" id="getEmail">{{verify_code}}</div>
+                        <div class="input-group-addon" data-lock='wait' style="width: 88px;text-align: center;color: white;cursor: pointer;background-color: #47B347;" id="getEmail">{{verify_code}}</div>
                       </div>
                     </div>
                
@@ -152,9 +152,19 @@
 
     $("#getEmail").click(function(event) {
       /* Act on the event */
-      var account = $('#email_add').val();
+      
+      let lock = $(this).data('lock');
+
+      if(lock!='wait') return false;
+
+      $(this).data('lock', 'locked');
+
+      let account = $('#email_add').val();
+
+      timer2=window.setInterval("startShow()",1000);
      
-      var p=check;//Object.create(check);
+      let p=check;//Object.create(check);
+
       flag = p.mail(account);   
       if(!flag) flag = p.phone(account);  
       if(!flag){
@@ -173,8 +183,7 @@
       })
       .done(function(ret) {
         if(ret.status=='success'){
-          toastr.success("已成功发送验证码!");
-          timer2=window.setInterval("startShow()",1000);
+          toastr.success("已成功发送验证码!");          
         }
         if(ret.status=='false'){
             /*swal({
@@ -202,7 +211,8 @@
         intvalue ++;
         document.getElementById("getEmail").innerHTML="&nbsp;" + ((EndTime-intvalue)%60).toString()+"秒后重新获取";
         if(intvalue>=EndTime){
-          document.getElementById("getEmail").innerHTML="获取验证码";
+          $(this).data('lock', 'locked');
+          document.getElementById("getEmail").innerHTML="{{verify_code}}";          
           endShow();
         }
     }
