@@ -196,18 +196,17 @@
 
 		public function signin(){
 			
-	       	if(empty($this->_saler['username']) || empty($this->_saler['salt']) || empty($this->_saler['id'])){
-
-	       		
-
-	       		$lang = $this->input->get('lang', TRUE);
+	       	if(!empty($this->_saler['username']) 
+	       		&& !empty($this->_saler['salt']) 
+	       		&& !empty($this->_saler['id'])
+	       	){
+	       		redirect('manage');
+			}else{		
+				$lang = $this->input->get('lang', TRUE);
 	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
 	       		$data = $this->Switch->sign_in();	   			
   				$this->load->library('twig');
-				$this->twig->display('index/signin.php',$data);
-
-			}else{				
-				redirect('manage');
+				$this->twig->display('index/signin.php',$data);					
 			}
 		}
 	
@@ -272,9 +271,6 @@
             }
 			$from = $this->input->get('from');
 			$salt = $this->input->get('salt');
-			
-
-
 
        		$lang = $this->input->get('lang', TRUE);
        		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
@@ -775,10 +771,12 @@
 		      	exit();
 		    }
 
-		  	$this->load->view('index/forget');
-		    
 
-
+		    $lang = $this->input->get('lang', TRUE);
+       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+       		$data = $this->Switch->init('forget');	   			
+			$this->load->library('twig');
+			$this->twig->display('index/forget',$data);
 		}
 
 		public function emailVerify(){
