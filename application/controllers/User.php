@@ -771,12 +771,13 @@
 		      	exit();
 		    }
 
-
+		    error_reporting(-1);
+			ini_set('display_errors', 1);
 		    $lang = $this->input->get('lang', TRUE);
        		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
-       		$data = $this->Switch->init('forget');	   			
+       		$data = $this->Switch->init('resetpass');	   			
 			$this->load->library('twig');
-			$this->twig->display('index/forget',$data);
+			$this->twig->display('index/forget.php',$data);
 		}
 
 		public function emailVerify(){

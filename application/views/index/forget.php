@@ -35,31 +35,31 @@
             <form class="form-horizontal" id="post">
                 <br/>
                   <div class="form-group">
-                  <label class="col-sm-3 col-xs-3 text-center">商户号</label>
+                  <label class="col-sm-3 col-xs-3 text-center">{{account}}</label>
 
                     <div class="col-sm-8 col-xs-8">
-                    <input type="text" name="data[account]" class="form-control" id="email_add" value="" placeholder="邮箱/手机号码">
+                    <input type="text" name="data[account]" class="form-control" id="email_add" value="" placeholder="{{account_fill}}">
                   </div>
 
                    
                 </div>
                 <div class="form-group">
-                   <label class="col-sm-3 col-xs-3 text-center">验证码</label>
+                   <label class="col-sm-3 col-xs-3 text-center">{{verify}}</label>
                     <div class="col-sm-8 col-xs-8">
                       <div class="input-group">
                         
-                        <input class="form-control" name="data[code]" type="text" placeholder="输入验证码">
-                        <div class="input-group-addon" style="width: 88px;text-align: center;color: white;cursor: pointer;background-color: #47B347;" id="getEmail">获取验证码</div>
+                        <input class="form-control" name="data[code]" type="text" placeholder="{{verify_fill}}">
+                        <div class="input-group-addon" style="width: 88px;text-align: center;color: white;cursor: pointer;background-color: #47B347;" id="getEmail">{{verify_code}}</div>
                       </div>
                     </div>
                
                 </div>
 
                   <div class="form-group">
-                  <label class="col-sm-3 col-xs-3 text-center">重置密码</label>
+                  <label class="col-sm-3 col-xs-3 text-center">{{password}}</label>
 
                     <div class="col-sm-8 col-xs-8">
-                    <input type="password" name="data[password]" placeholder="输入重置密码" class="form-control" value="">
+                    <input type="password" name="data[password]" placeholder="{{password_fill}}" class="form-control" value="">
                   </div>
 
                    
@@ -70,7 +70,7 @@
                
                 <div class="form-group">
                     <div class="col-sm-12 col-sm-offset-12 text-center">   
-                      <button class="btn btn-success" id="saving" type="button">确认重置</button>
+                      <button class="btn btn-success" id="saving" type="button">{{submit}}</button>
                   </div>                                  
 
               </div>
