@@ -23,20 +23,18 @@ class Welcome extends CI_Controller {
 
 	public function index(){
 
-		if(!empty($this->_saler['username']) && !empty($this->_saler['salt']) && !empty($this->_saler['id'])){
-			redirect('manage');
+		if(!empty($this->_saler['username']) 
+       		&& !empty($this->_saler['salt']) 
+       		&& !empty($this->_saler['id'])
+       	){
+       		redirect('manage');
+		}else{		
+			$lang = $this->input->get('lang', TRUE);
+       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+       		$data = $this->Switch->sign_in();	   			
+				$this->load->library('twig');
+			$this->twig->display('index/signin.php',$data);					
 		}
-		$data['profile'] = $this->_saler;
-
-
-		$this->lang->load('singup', 'chinese');
-
-		echo $this->lang->line('sign_up');
-
-		exit();
-
-
-		$this->load->view('welcome/index', $data, FALSE);
 		
 	}
 
