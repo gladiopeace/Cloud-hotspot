@@ -162,6 +162,10 @@ class Portal_model extends CI_Model {
 		}else{
 			$themes = $this->first(array("style"),"themes",array('type'=>$themeType));			
 		}
+
+		if(empty($themes)){
+			$themes = array('style' =>'cloud-theme');
+		}
 	   	
 	   	$this->load->library('user_agent');
 
