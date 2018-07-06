@@ -209,10 +209,6 @@ class Portal_model extends CI_Model {
 	public function wecaht_wifi($where){
 
 		$api = $this->first(array('*'),'wifiapi',$where);
-		//var_dump($api);
-		
-		
-
 		if (empty($api))
 			$api = array(
 				'ssid'		=>	'mikrotik',
@@ -223,8 +219,7 @@ class Portal_model extends CI_Model {
 
 			);
 			 		
-		return $api;
-		
+		return $api;		
 	}
 
 
