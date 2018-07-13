@@ -1,0 +1,21 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,h5,h6,hr,menu,p,blockquote,ol,ul,dl,dd,td,th,figure,pre,button,input,textarea{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}
+address,cite,dfn,em,var{font-style:normal;}
+code,kbd,pre,samp,tt{font-family:"Courier New",Courier,monospace;}
+button,input,select,textarea{font-size:100%;}
+fieldset,img{border:0;}
+ol,ul{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+a,a:hover{text-decoration:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';}
+label,button,input[type="button"],input[type="reset"],input[type="submit"],input[type="password"]{cursor:pointer;}
+del{text-decoration:line-through;}
+ins{text-decoration:none;}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help;}
+mark{background-color:yellow;}
+input[type=submit],input[type=button],input[type=text],input[type=password]{-webkit-appearance:none;box-sizing:content-box;border:0;border-radius:0;box-shadow: none;}
+body{font-family: Helvetica,STHeiti STXihei,Microsoft JhengHei,Microsoft YaHei,Tohoma,Arial;font-size:14px;line-height: 1.5;}
+.clearfix:after{clear:both;display: block;content: "...";visibility: hidden;height: 0;font-size: 0;}
+.clearfix{*zoom:1;}
