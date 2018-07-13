@@ -2,7 +2,7 @@
   
   This is an open-source software
   
-  Support SMS(Cellphone Message),Member Account,Wechat Wi-Fi For RouterOS hotspot
+  Support SMS(Cellphone Message),Member Account,Wechat Wi-Fi For Mikrotik & Ubiquiti Hotspot Portal
 
 # Requirements
   PHP 5.3 +  & MYSQL 5.x + & Nginx Or Apache
