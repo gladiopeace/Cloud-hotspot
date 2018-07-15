@@ -41,16 +41,17 @@
                 <div class="page">
                     <h3>创建一个节点<br/><em>请填写您要增加的节点信息，用于管理。</em></h3>
                     <p>
-                        <label>节点品牌：</label>
-                        <input type="radio" name="brand">Mikrotik
+                        <label>{{brand}}：</label>
                         <input type="radio" name="brand">Ubiquiti
+                        <input type="radio" name="brand">Mikrotik
+                       
                     </p>
                     <p>
-                        <label>节点名称：</label>
+                        <label>{{site}}：</label>
                         <input type="text" class="input" id="branch" name="data[branch]" placeholder="请输入节点名称,例:云热点测试"/>
                     </p>
-                    <p><label>IP地址：</label><input type="text" class="input" id="ip" name="data[ip]" placeholder="请输入IP地址,例:192.168.88.1" value="192.168.88.1"/></p>
-                    <p><label>认证完成跳转URL：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
+                    <p><label>{{ip}}：</label><input type="text" class="input" id="ip" name="data[ip]" placeholder="请输入IP地址,例:192.168.88.1" value="192.168.88.1"/></p>
+                    <p><label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
                     <div class="btn_nav">
                         <input type="button" class="next right" value="下一步&raquo;" />
                     </div>

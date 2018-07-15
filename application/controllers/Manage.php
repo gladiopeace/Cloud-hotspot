@@ -107,22 +107,16 @@
 					$bid = $this->Member_model->insert('hotspot_branch',$branch);
 
 					$_data = array('branch'=>$branch['branch'],'salt'=>$branch['salt'],'overdue'=>date("Y-m-d",$nexttime));
-
 					echo json_encode(array('status'=>"success",'id'=>$bid,'data'=>$_data));
-
-
 					exit();
 				}
 
-
-				$this->load->library('user_agent');
-				$this->load->library('twig');
-				if ($this->agent->is_mobile()){
-					$this->twig->display('manage/createM.php');					
-				}else{
-					$this->twig->display('manage/create.php');
-				}	
-				
+				$lang = $this->input->get('lang', TRUE);
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data = $this->Switch->init('createsite');
+				$this->load->library('twig');			
+				$this->twig->display('manage/create.php',$data);
+								
 			}
 
 

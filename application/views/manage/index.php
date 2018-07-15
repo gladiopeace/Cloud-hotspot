@@ -205,7 +205,7 @@
         layer.open({
           type: 2,
           title: '{{create_branch}}',
-          area: ['700px', '588px'],
+          area: ['680px', '588px'],
           fix: true, //不固定
           maxmin: true,
           content: url
