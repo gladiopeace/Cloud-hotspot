@@ -1,6 +1,6 @@
 <?php
 
-	define('ENVIRONMENT','production');
+	define('ENVIRONMENT','development');
 	switch (ENVIRONMENT)
 	{
 		case 'development':
