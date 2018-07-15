@@ -32,11 +32,21 @@
         <button style="display:none;" style="border:0px" class="mod-simple-follow-page__attention-btn" id="regbtn"onclick="r_apply()">立即上网</button>
     </div>
 </div>
+<script src="/Public/jquery.min.js"></script>
 <script type="text/javascript">
 	function apply(){
 
-
+		$.ajax({
+			url: '/guest/api/',
+			type: 'POST',
+			dataType: 'json',
+			data: {param1: 'value1'},
+		})
+		.done(function() {
+			console.log("success");
+		});
 		
+
 	}
 </script>
 </body>
