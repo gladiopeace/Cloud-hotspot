@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png"/>
+	<title>注册页面_仿酒仙网手机WAP注册登录页面模板下载 - JS代码网</title>
+	<meta name="keywords" content="手机网站模板,WAP网站模板,微官网网站模板,微网站模板,手机微信网站,WebApp模板,手机注册登录页模板" />
+	<meta name="description" content="JS代码网为广大WEB开发者提供手机网站模板,WAP网站模板,微官网微网站模板下载" />		
+	<link href="css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="css/head.css" rel="stylesheet" type="text/css" />
+	<link href="css/foot.css" rel="stylesheet" type="text/css" />
+	<link rel='stylesheet' type='text/css' href='css/signup.css' />	
+	<script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery.autocomplete.js" type="text/javascript"></script>
+	<script src="js/jquery.touchScroll.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	var _hmt=_hmt||[];(function(){var e=document.createElement("script");e.src="../hm.baidu.com/hm.js@a2556ae81a5c2fce55bad2142712ec10";
+	var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+	
+	document.write('<div id="global_loading" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: #eee;z-index:999"><div style="width: 100px;height: 75px;margin:auto;top:50%;position:relative"><span style="display:block;float:left;width:32px;height:32px;background:url(/images/spacer.gif);margin-top:-5px;"></span>&nbsp;&nbsp;加载中...</div></div>');
+	
+	function readSN(){
+		window.wst.readSN();
+	}
+	
+	function callBackSN(sn){
+		var url = "servers/goods/get_goods_code/";
+		$.get(url,{sn:sn},function(data){
+			if(data.success>0){
+				window.location='goods/view/'+data.result;
+			}else{
+				alert(data.error);
+			}
+		},'JSON');
+	}
+	</script>
+	
+
+</head>
+<body> 
+	<div class="header" id="header">
+		<a class="back" href="javascript:history.back();"></a>
+		<span class="headline">注册</span>
+		<a class="search" href="search@r=search"></a>
+	</div>
+	<section class="signup_m">
+<!-- <div class='bread_new'>手机号注册</div> -->
+		<div class="form">
+	<form method="post" action="" onsubmit="return false;">
+				<ul>
+			<li>
+			<input class='tipInput' tiptext='步骤1/2:填写手机号' type="text" placeholder="" value="" name="user_mob">	
+			</li>
+			<li><input id='btn_getcode' type="submit" class="btn" value="获取较验码" /></li>
+		</ul>
+		
+		<script type='text/javascript'>
+		$(function(){
+			$("#btn_getcode").click(function(e){
+				var mobile=$("input[name=user_mob]").val();
+				e.preventDefault();
+				$.post('../ajax',{mobile:mobile,act:'send_code',is_reg:'1'},function(data){
+					//判断发送是否成功
+					if(data.success>0){
+						window.location='m2';
+					}else{
+						alert(data.error);
+					}
+				},'JSON')
+			});
+		});
+		</script>
+			
+		</form>
+	</div>
+
+	
+	
+</section>
+<!--页面底部-->
+	<div class="foot">
+		<!--页脚第一行快速定位区域begin-->
+		<div class="bottom">
+			<div class="inner">
+				<a class="btn-back back" href="javascript:history.back();"><i></i>返回</a>
+				<!--<a class="download" href="/home/app" target="_blank">客户端下载<i></i></a>-->
+				<a class="btn-top" style=" width:40%;" id="btn-top"  href="#">下载客户端<i style="width: 18px;background-position: -16px 0;margin: 9px auto auto 8px;"></i></a>
+				<!--客户端下载旧链接
+				<a class="btn-top" style=" width:40%;" id="btn-top"  href="http://m.jiuxian.com/home/app">下载客户端<i style="width: 18px;background-position: -16px 0;margin: 9px auto auto 8px;"></i></a>-->
+				<a class="btn-top" id="btn-top" href="#">回顶部<i></i></a>
+			</div>
+		</div>
+		<!--页脚第一行快速定位区域end-->
+
+		<div class="jump">
+			<!--页脚第二行快速跳转begin-->
+<style>
+ul,li{list-style:none;margin:0;padding:0}
+.nones{ display:none;}
+.jxplus{position:fixed;bottom:35px;left:0;padding-left:10px;z-index:99;-webkit-user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-transform:translate3d(0,0,0);}
+.jxplus .circle{position:absolute;left:30px;bottom:5px;width:195px;height:auto;/*overflow:hidden;*/-webkit-transition:all linear .15s}
+.jxplus .circle.shows{opacity:1;-webkit-transform: translate(20px,0px) scale(1);pointer-events: auto;}
+.jxplus .circle.hides{opacity:0;-webkit-transform:translate(-90px,0px) scaleX(0.1);pointer-events:none}
+.jxbtn.on{ background:url(images/homedaohang/jx2.png) no-repeat; width:42px; height:42px;}
+.jxbtn.off{background:url(images/homedaohang/jx1.png) no-repeat; width:42px; height:42px;}
+.jxicons{width:260px; height:36px;position: absolute;left:-16px; bottom: -2px;background:url(images/homedaohang/bg.png) no-repeat;}
+.jxicons ul{ padding-left:14px;}
+.jxicons li{margin:8px 14px 0 14px; width:20px; height:20px; float:left}
+.jxicons li._category,li.cart,li.myjx{ margin-top:10px;}/**/
+.jxicons li a,.jxicons li a:hover{ width:100%; height:100%; display:block;}
+.jxicons li a{ background:url(images/homedaohang/icons1.png) no-repeat }
+.jxicons li a:hover{background:url(images/homedaohang/icons2.png) no-repeat }
+li._home a:hover,li._home a{ background-position:-14px -8px;}
+li._category a:hover,li._category a{ background-position:-60px -10px;}
+li.find a:hover,li.find a{ background-position:-105px -7px;}
+li.cart a:hover,li.cart a{ background-position:-151px -8px;}
+li.myjx a:hover,li.myjx a{background-position:-198px -8px;}
+#J_Shade{width:100%;height:100%;position:fixed;top:0;left:0;background:#000;opacity:.2;-webkit-transform:translate3d(0,0,0);z-index:97}
+</style>
+     
+<script type="text/javascript">
+$(document).ready(function() { 
+	$('.jxbtn').click(function (){
+		$('#J_Shade').toggleClass('nones');
+		$('.circle').toggleClass('shows');
+		$('.circle').toggleClass('hides');
+		$('.jxbtn').toggleClass('off');
+		$('.jxbtn').toggleClass('on');
+		return false; 
+	});
+
+	$('body').click(function (){
+		var x = $('.circle').css('opacity');
+		if(x==1){
+			$('.circle').removeClass('shows').addClass('hides');
+			$('.jxbtn').removeClass('on').addClass('off');
+			$('#J_Shade').addClass('nones');
+		}
+	});
+}); 
+</script>
+
+<div class="nav clearfix">
+			<!--页脚第二行快速跳转end-->
+
+			<!--页脚第三行版本选择begin -->
+			<div class="version">
+<!--				<a class="normal" href="javascript:set_view('wap')">标准版</a>-->
+				<a class="home" href="#">首页</a>
+				<!--<a class="contact" href="/contact">联系我们</a>-->
+				<a class="myjiuxian" href="#">我的酒仙</a>
+				<a class="cart_foot" href="#">购物车</a>
+			</div>
+			<!-- 页脚第三行版本选择end -->
+			
+		</div>
+	</div>
+	<div class="jxplus">
+		<div class="circle hides">
+			<div class="jxicons">
+				<ul>
+  					<li class="_home"><a href="home"></a></li>
+					<li class="_category"><a href="#"></a></li>
+					<li class="find"><a href="#"></a></li>
+					<li class="cart"><a href="#"></a></li>
+					<li class="myjx"><a href="#"></a></li>
+  				</ul>
+			</div>	
+		</div>
+  		<div class="jxbtn off" style=" position:absolute;bottom:0;left:5px; z-index:1001"></div>
+	</div>
+	<div id="J_Shade" class="nones" style=""></div>
+<script type="text/javascript">
+_ozuid="";//请客户配合为参数赋值
+</script>
+<script src="js/m_code.js" type="text/javascript"></script>
+<SCRIPT type="text/javascript">
+$("#btn-top").click(function(){
+
+	document.getElementsByTagName('body')[0].scrollTop = 0;
+});
+function set_view(id){
+	var url = "m";
+	window.location.href="t/"+id+"/?url="+url;
+}
+	</SCRIPT>
+
+
+	<script type="text/javascript">
+		var global_loading=document.getElementById("global_loading");
+		if(global_loading != null){
+			global_loading.parentNode.removeChild(global_loading);
+		}
+</script>
+</body>
+</html>
+
