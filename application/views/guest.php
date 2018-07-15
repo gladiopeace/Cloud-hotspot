@@ -36,7 +36,7 @@
 <script type="text/javascript">
 	function apply(){
 
-		$.ajax({
+		/*$.ajax({
 			url: '/guest/api/',
 			type: 'POST',
 			dataType: 'json',
@@ -44,7 +44,9 @@
 		})
 		.done(function() {
 			console.log("success");
-		});
+		});*/
+
+		alert('hello');
 		
 
 	}

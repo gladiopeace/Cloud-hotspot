@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>云热点节点设置向导</title>
     <style type="text/css">
-        #wizard {border:5px solid #789;font-size:12px;height:460px;margin:10px auto;width:570px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
+        #wizard {border:5px solid #789;font-size:12px;height:508px;margin:10px auto;width:580px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
         #wizard .items{width:20000px; clear:both; position:absolute;}
         #wizard .right{float:right;}
         #wizard #status{height:35px;background:#123;padding-left:25px !important;}
@@ -40,7 +40,15 @@
             <div class="items">
                 <div class="page">
                     <h3>创建一个节点<br/><em>请填写您要增加的节点信息，用于管理。</em></h3>
-                    <p><label>节点名称：</label><input type="text" class="input" id="branch" name="data[branch]" placeholder="请输入节点名称,例:云热点测试"/></p>
+                    <p>
+                        <label>节点品牌：</label>
+                        <input type="radio" name="brand">Mikrotik
+                        <input type="radio" name="brand">Ubiquiti
+                    </p>
+                    <p>
+                        <label>节点名称：</label>
+                        <input type="text" class="input" id="branch" name="data[branch]" placeholder="请输入节点名称,例:云热点测试"/>
+                    </p>
                     <p><label>IP地址：</label><input type="text" class="input" id="ip" name="data[ip]" placeholder="请输入IP地址,例:192.168.88.1" value="192.168.88.1"/></p>
                     <p><label>认证完成跳转URL：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
                     <div class="btn_nav">
