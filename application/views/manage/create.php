@@ -32,9 +32,10 @@
     <form action="#" method="post">
         <div id="wizard">
             <ul id="status">
-                <li class="active"><strong>1.</strong>创建节点</li>
-                <li><strong>2.</strong>填写用户</li>
-                <li><strong>3.</strong>完成</li>
+                <li class="active"><strong>1.</strong>{{step1}}</li>
+                <li><strong>2.</strong>{{step2}}</li>
+                <li><strong>3.</strong>{{step3}}</li>
+                <li><strong>4.</strong>{{step4}}</li>
             </ul>
 
             <div class="items">
@@ -61,6 +62,18 @@
                         <label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
                     <div class="btn_nav">
                         <input type="button" class="next right" value="下一步&raquo;" />
+                    </div>
+                </div>
+                <div class="page">
+                    <h3>填写用户信息<br/><em>请填写ROS hotspot中的用户名与密码。<br/><span style="color:red;">此用户与hotspot中要一致ip->hotspot->users->+</span></em></h3>
+                    <p><label>用户名</label><input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  /></p>
+                    <p><label>密&nbsp;&nbsp;码</label><input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/></p>
+                    <p><label>确认密码：</label><input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/></p>
+
+                    <div class="btn_nav">
+                        <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
+                        <input type="button" class="right" id="sub" value="下一步&raquo;" />
+                        <input type="hidden" class="next" id="success"/>
                     </div>
                 </div>
                 <div class="page">
