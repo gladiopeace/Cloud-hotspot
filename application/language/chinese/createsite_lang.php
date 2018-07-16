@@ -1,8 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-$lang['step_1'] = "Sign up";
-$lang['sign_in'] = "Sign in";
 $lang['brand'] = "品牌类型";
 $lang['site'] = "站点名称";
 $lang['redirect'] = "跳转 URL";

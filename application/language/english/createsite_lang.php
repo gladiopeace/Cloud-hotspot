@@ -1,8 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-$lang['step_1'] = "Sign up";
-$lang['sign_in'] = "Sign in";
 $lang['brand'] = "Brand type";
 $lang['site'] = "Site name";
 $lang['redirect'] = "Redirect URL";
