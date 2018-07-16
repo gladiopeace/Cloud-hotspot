@@ -65,10 +65,22 @@
                     </div>
                 </div>
                 <div class="page">
-                    <h3>填写用户信息<br/><em>请填写ROS hotspot中的用户名与密码。<br/><span style="color:red;">此用户与hotspot中要一致ip->hotspot->users->+</span></em></h3>
-                    <p><label>用户名</label><input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  /></p>
-                    <p><label>密&nbsp;&nbsp;码</label><input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/></p>
-                    <p><label>确认密码：</label><input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/></p>
+                    <h3>
+                        填写用户信息<br/>
+                        <em>请填写ROS hotspot中的用户名与密码。</em>
+                    </h3>
+                    <p>
+                        <label id='user-text'>{{user_ubnt}}:</label>
+                        <input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  />
+                    </p>
+                    <p>
+                        <label id='pass-text'>{{pass_ubnt}}:</label>
+                        <input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/>
+                    </p>
+                    <p>
+                        <label>{{pass_confirm}}：</label>
+                        <input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/>
+                    </p>
 
                     <div class="btn_nav">
                         <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
@@ -202,17 +214,23 @@
             /* Act on the event */
             let type = $(this).val();//$('input[name="brand"]:checked').val();
             let mikrotik = $("#brand-ip").data('mikrotik');
-            let ubnt = $("#brand-ip").data('ubnt');
-            let message = ubnt;
-        /*    if(type=='ubnt'){
-               
-            }else */
+            let ubnt = $("#brand-ip").data('ubnt');         
+            let user_ubnt = "{{user_ubnt}}";
+            let user_mikrotik = "{{user_mikrotik}}";
+            let pass_ubnt = "{{pass_ubnt}}";
+            let pass_mikrotik = "{{pass_mikrotik}}";
             if(type=='mikrotik'){
-                message = mikrotik;
-                //$("#brand-ip").text(mikrotk);               
+              
+               $("#brand-ip").text(mikrotik);   
+               $("#user-text").text(user_mikrotik);        
+               $("#pass-text").text(pass_mikrotik);        
+            }else if(type=='ubnt'){
+               $("#brand-ip").text(ubnt);   
+               $("#user-text").text(user_ubnt);        
+               $("#pass-text").text(pass_ubnt);  
             }
             console.log(message);
-            $("#brand-ip").text(message);
+            
             console.log(type);
         });
     });

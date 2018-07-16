@@ -10,9 +10,13 @@ $lang['step1'] = "Site Info";
 $lang['step2'] = "Account Info";
 $lang['step3'] = "Device Info";
 $lang['step4'] = "Success";
+$lang['user_mikrotik'] = "Username of the Hotspot";
+$lang['pass_mikrotik'] = "Password of the Hotspot";
+$lang['user_ubnt'] = "Username of the Unifi Controller";
+$lang['pass_ubnt'] = "Password of the Unifi Controller ";
+$lang['pass_confirm'] = "Confirm password";
 $lang['re_password_fill'] = "Re-enter password";
-$lang['verify_code'] = "Get code";
-$lang['verify_code_fill'] = "Enter Verification code";
+
 
 
 /* End of file upload_lang.php */
