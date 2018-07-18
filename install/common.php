@@ -80,6 +80,7 @@ function getEnglish(){
 		'environment'	=>'Environment',
 		'server'		=>'Server Information',
 		'installation'	=>'Installation',
+		'submit'	=>'Submit',
 
 
 
@@ -99,7 +100,7 @@ function getChinese(){
 		'environment'	=>'检测环境',
 		'server'		=>'服务器',
 		'installation'	=>'安装程序',
-
+		'submit'	=>'立即安装',
 
 
 	];

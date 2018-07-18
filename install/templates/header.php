@@ -4,8 +4,8 @@
     <div class="version">
     	Language:
     	<select onchange="window.location.href=this.value;">
-    		<option value="?lang=zh"<?php if($dictionary['currentL']=='zh'){?> selected="selected"<?php }?>>中文</option>
-    		<option value="?lang=en"<?php if($dictionary['currentL']=='en'){?> selected="selected"<?php }?>>English</option>
+    		<option value="?<?php echo $_SERVER['QUERY_STRING'];?>&lang=zh"<?php if($dictionary['currentL']=='zh'){?> selected="selected"<?php }?>>中文</option>
+    		<option value="?<?php echo $_SERVER['QUERY_STRING'];?>&lang=en"<?php if($dictionary['currentL']=='en'){?> selected="selected"<?php }?>>English</option>
     	</select>
     </div>
   </div>

@@ -93,8 +93,8 @@
         </table>
         <div id="J_response_tips" style="display:none;"></div>
       </div>
-      <div class="bottom tac"> <a href="./index.php?step=2" class="btn">上一步</a>
-        <button type="submit" class="btn btn_submit J_install_btn">创建数据</button>
+      <div class="bottom tac"> <a href="./index.php?step=2" class="btn"><?php echo $dictionary['previous'];?></a>
+        <button type="submit" class="btn btn_submit J_install_btn"><?php echo $dictionary['submit'];?></button>
       </div>
     </form>
   </section>
