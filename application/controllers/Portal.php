@@ -629,6 +629,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                 'salt'          =>  $data['branch']['salt'],
                 'mac'           =>  $id,
             );
+
+           
           
             $this->load->library('twig');
             $this->twig->setPath();
@@ -638,7 +640,17 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
         public function go(){
 
             $salt = $this->input->get_post('salt');
-            $data = array('salt'=>$salt);
+            $authCode = $this->input->get_post('auth_code');
+
+            $this->load->model('Portal_model');
+            $data = $this->Portal_model->first(
+                array('*'),
+                'access_auth',
+                array('access_code'=>$authCode)
+            );
+           
+            $data['mac'] = $data['device_mac'];
+            $data['salt'] =$data['accesskey'];
             $this->load->library('twig');
             $this->twig->display('hotspot/init/init.php', $data);
 

@@ -386,8 +386,29 @@ class Portal_model extends CI_Model {
     }
 
     public function sendAuthorization($mac,$site='',$unifiKey=array()){
-	
+		
+		$config = array(
+			'user'=>$unifiKey['username'], 
+			'password'=>$unifiKey['password'],
+			'baseurl' => 'https://'.$unifiKey['ip'].':8443',
+			'site' => $site,
+			'version' => '5.8.24',
+			'ssl_verify' => false
+		);
 
+		
+    	$this->load->library('Client', $config, 'UnifiClient');
+		$this->UnifiClient->set_debug(true);    	
+		$this->UnifiClient->login();
+		/**
+		 * then we authorize the device for the requested duration
+		 */
+		$auth_result =$this->UnifiClient->authorize_guest($mac, 240);
+		/**
+		 * provide feedback in json format
+		 */
+		echo json_encode($auth_result, JSON_PRETTY_PRINT);
+    	exit();
 
       	 //Config
         $server   = 'https://'.$unifiKey['ip'].':8443/';

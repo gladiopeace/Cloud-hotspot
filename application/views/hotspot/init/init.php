@@ -35,7 +35,7 @@
 <div style="display: none;">
 
     <form name="redirect" action="/portal/index" method="get">
-        <input type="hidden" name="mac" value="hotspot-init-test">
+        <input type="hidden" name="mac" value="{{mac}}">
         <input type="hidden" name="ip" value="$(ip)">
         <input type="hidden" name="hostname" value="$(hostname)">
         <input type="hidden" name="username" value="$(username)">
@@ -90,7 +90,7 @@
        	if(typeof($_GET["auth_code"])=='string' && $_GET["auth_code"]!=''){
             $.showLoading('正在连接中');
             var Url = '/portal/TextTokenSalt';
-            var PostData = {'accesskey': '{{salt}}','mac':'hotspot-init-test','auth_code':$_GET['auth_code']};
+            var PostData = {'accesskey': '{{salt}}','mac':{{mac}},'auth_code':$_GET['auth_code']};
             var chapId = '';
             var chapChallenge = '';
             <!-- $(if chap-id) //-->
