@@ -43,23 +43,23 @@
                     <h3>{{step1_title}}</h3>
                     <p>
                         <label>{{brand}}：</label>
-                        <input type="radio" class="brand-type" value="ubnt" checked="checked" name="brand">Ubiquiti
-                        <input type="radio" class="brand-type" value="mikrotik" name="brand">Mikrotik
+                        <input type="radio" class="brand-type" value="ubnt" checked="checked" name="data[brand]">Ubiquiti
+                        <input type="radio" class="brand-type" value="mikrotik" name="data[brand]">Mikrotik
                        
                     </p>
                     <p>
                         <label>{{site}}：</label>
-                        <input type="text" class="input" id="branch" name="data[branch]" placeholder="请输入节点名称,例:云热点测试"/>
+                        <input type="text" class="input" id="branch" name="data[branch]" placeholder=""/>
                     </p>
 
                     <p>
                         <label id="brand-ip" data-ubnt='{{ip_ubnt}}' data-mikrotik='{{ip_mikrotik}}'>{{ip_ubnt}}：</label>
-                        <input type="text" class="input" id="ip" name="data[ip]" placeholder="请输入IP地址,例:192.168.88.1" value="192.168.88.1"/>
+                        <input type="text" class="input" id="ip" name="data[ip]" placeholder="" value="192.168.88.1"/>
                     </p>
                    
 
                     <p>
-                        <label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
+                        <label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="http://www.google.com" value="http://www.google.com"/></p>
                     <div class="btn_nav">
                         <input type="button" class="next right" value="下一步&raquo;" />
                     </div>
@@ -68,15 +68,15 @@
                     <h3>{{step2_title}}</h3>
                     <p>
                         <label id='user-text'>{{user_ubnt}}:</label>
-                        <input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  />
+                        <input type="text" class="input" id="user" name="user[username]" placeholder=""  />
                     </p>
                     <p>
                         <label id='pass-text'>{{pass_ubnt}}:</label>
-                        <input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/>
+                        <input type="password" id="pass" class="input" name="user[password]"  placeholder=""/>
                     </p>
                     <p>
                         <label>{{pass_confirm}}：</label>
-                        <input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/>
+                        <input type="password" id="pass1" class="input" name="user[confirm]" placeholder=""/>
                     </p>
 
                     <div class="btn_nav">
@@ -87,12 +87,12 @@
                 <div class="page">
                     <h3>{{step3_title}}<br/></h3>
                     <p>                       
-                        <textarea rows="18" name="ap" cols="68"></textarea>
+                        <textarea rows="18" id="ap" name="ap" cols="68"></textarea>
                     </p>
 
                     <div class="btn_nav">
                         <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="next right" value="下一步&raquo;" />
+                        <input type="button" class="right apply" value="下一步&raquo;" />
                         <input type="hidden" class="next" id="success"/>
                     </div>
                 </div>
@@ -163,29 +163,16 @@
                 }
             }
         });
-        $("#sub").click(function(){
+        $(".apply").click(function(){
 
-            var user = $("#user").val();
-            if(user==""){
-                alert("请输入用户名！");
-                $("#user").focus();
-                return false;
-            }
-            var pass = $("#pass").val();
-            var pass1 = $("#pass1").val();
-            if(pass==""){
-                alert("请输入密码！");
-                $("#pass").focus();
-                return false;
-            }
-            if(pass1 != pass){
-                alert("两次密码不一致！");
-                $("#pass1").focus();
+            let ap = $("#ap").val();
 
+            if(ap==''){
+                alert("The AP's MAC address can not be empty!");
                 return false;
             }
 
-            var data = $("form").serialize();
+            let data = $("form").serialize();
 
             $.ajax({
                 url: "?",
@@ -225,8 +212,7 @@
                $("#user-text").text(user_ubnt);        
                $("#pass-text").text(pass_ubnt);  
             }
-            console.log(message);
-            
+                        
             console.log(type);
         });
     });

@@ -76,17 +76,14 @@
 	 			if($this->input->post()){
 
 					$data = $this->input->post('data');
-
-					$_uid = $this->_organization['id'];
-
 					$user = $this->input->post('user');
+					$ap = $this->input->post('ap');
+				
+					$aps = explode('@', $ap);
 
-					
-
-					$this->load->model('Member_model');	
-
-
-
+				
+					$_uid = $this->_organization['id'];
+					$this->load->model('Member_model');
 					$branch['branch'] = $data['branch'];
 					$branch['uid'] = $_uid;
 					/*$branch['organization_id'] = $_uid;*/
@@ -106,6 +103,11 @@
 
 					$bid = $this->Member_model->insert('hotspot_branch',$branch);
 
+					foreach ($aps as $k => $mac) {
+						$tmp = array('user_id'=>$_uid,'branch_id'=>$bid,'mac'=>$mac);
+						$this->Member_model->insert('hotspot_ap',$tmp);
+					}
+					echo 'hello';
 					$_data = array('branch'=>$branch['branch'],'salt'=>$branch['salt'],'overdue'=>date("Y-m-d",$nexttime));
 					echo json_encode(array('status'=>"success",'id'=>$bid,'data'=>$_data));
 					exit();
@@ -121,67 +123,7 @@
 
 
 		}
-
-		public function payment(){
-			$ops = array('alipay','wxpay');
-			$op = $this->uri->segment(3);
-			$op = $op ? $op : "alipay";
-			if(!in_array($op,$ops)) exit();
-
-	        $uid = $this->_organization['id'];
-			if($op=='alipay'){
-
-				$this->load->model('Member_model');
-				$payment = $this->Member_model->first('user',array("alipay_payment"),array('id'=>$uid));
-				if(!empty($payment['alipay_payment'])){
-					$payment = json_decode($payment['alipay_payment'],true);
-					$payment['islock']='true';
-				}else{
-					$payment =array(
-	    			'app_auth_token'	=>"",
-	    			'auth_app_id'		=>"",
-	    			'user_id'			=>"",
-	    			'islock'			=>"false",
-	    			);
-				}
-
-				$data['data']=$payment;
-				$data['type'] = $op;
-
-				$this->load->view('manage/payment_alipay', $data, FALSE);
-			}
-
-			if($op=="wxpay"){
-				$this->load->model('Member_model');
-
-				if($this->input->post()){
-					$payment = $this->input->post('data');
-					$data = json_encode($payment);
-					$this->Member_model->update(array('wxpay_payment'=>$data),'user',array('id'=>$uid));
-					echo json_encode(['status'=>"success"]);
-					exit();
-				}
-
-				$payment = $this->Member_model->first('user',array("wxpay_payment"),array('id'=>$uid));
-				if(!empty($payment['wxpay_payment'])){
-					$payment = json_decode($payment['wxpay_payment'],true);
-				}else{
-					$payment =array(
-	    			'sub_mch_id'	=>	"",
-	    			'sub_appid'		=>	"",
-	    			'sub_appsecret'	=>	""	,
-	    			);
-				}
-
-				$data['data']=$payment;
-				$data['type'] = $op;
-
-				$this->load->view('manage/payment_wxpay', $data, FALSE);
-			}
-			
-			
-
-		}
+		
 
 		public function setting(){
 
