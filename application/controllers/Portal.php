@@ -39,6 +39,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             $this->twig->setPath();
             $this->twig->display($data['themes'], $data);
         }
+
+
 		public function api(){
 			$op = $this->uri->segment(3);
 			if(!in_array($op, array('init','login','config'))) die();
@@ -607,6 +609,29 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             }
         }              
 
+        public function guest(){        
+
+
+            $id = $this->input->get_post('id'); //user's mac address
+            $ap = $this->input->get_post('ap'); //AP mac
+            $ssid = $this->input->get_post('ssid'); //ssid the user is on (POST 2.3.2)
+            $time =  $this->input->get_post('t');  //time the user attempted a request of the portal
+            $refURL = $this->input->get_post('url'); //url the user attempted to reach
+            
+            $site = $this->uri->segment(3);
+            $this->load->model('Portal_model');
+            $data = $this->Portal_model->apToSite($ap);
+           
+            $data['config'] = array(
+                'ip'            => $data['branch']['access_info']['ip'],//
+                'salt'          =>  $data['branch']['salt'],
+                'mac'           =>  $id,
+            );
+          
+            $this->load->library('twig');
+            $this->twig->setPath();
+            $this->twig->display($data['themes'], $data);
+        }
 		
 	}
 	        
