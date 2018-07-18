@@ -107,7 +107,7 @@
 						$tmp = array('user_id'=>$_uid,'site_id'=>$bid,'mac'=>$mac);
 						$this->Member_model->insert('hotspot_ap',$tmp);
 					}
-					echo 'hello';
+				
 					$_data = array('branch'=>$branch['branch'],'salt'=>$branch['salt'],'overdue'=>date("Y-m-d",$nexttime));
 					echo json_encode(array('status'=>"success",'id'=>$bid,'data'=>$_data));
 					exit();

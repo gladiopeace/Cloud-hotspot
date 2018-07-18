@@ -58,10 +58,10 @@ DROP TABLE IF EXISTS `zh_hotspot_ap`;
 CREATE TABLE `zh_hotspot_ap` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
-  `branch_id` int(10) NOT NULL,
+  `site_id` int(10) NOT NULL,
   `mac` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `branch` (`branch_id`,`mac`) USING BTREE
+  UNIQUE KEY `branch` (`site_id`,`mac`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
