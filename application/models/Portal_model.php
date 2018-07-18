@@ -389,51 +389,6 @@ class Portal_model extends CI_Model {
 	
 
 
-		/*$unifiServer = 'https://'.$unifiKey['ip'].':8443/';
-	    $unifiUser = $unifiKey['username'];
-	    $unifiPass =  $unifiKey['password'];*/
-
-	    /*// Start Curl for login
-	    $ch = curl_init();
-	    // We are posting data
-	    curl_setopt($ch, CURLOPT_POST, TRUE);
-	    // Set up cookies
-	    $cookie_file = "/tmp/unifi_cookie";
-	    curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
-	    curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
-	    // Allow Self Signed Certs
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-	    // Force SSL3 only
-	    curl_setopt($ch, CURLOPT_SSLVERSION, 3);
-	    // Login to the UniFi controller
-	    curl_setopt($ch, CURLOPT_URL, "$unifiServer/login");
-	    curl_setopt($ch, CURLOPT_POSTFIELDS,
-	        "login=login&username=$unifiUser&password=$unifiPass");
-	    // send login command
-	    $res1 = curl_exec ($ch);
-	    var_dump($res1);
-
-	    // Send user to authorize and the time allowed
-	    $data = json_encode(array(
-	        'cmd'=>'authorize-guest',
-	        'mac'=>$mac,
-	        'minutes'=>$minutes));
-
-	    // Send the command to the API
-	    curl_setopt($ch, CURLOPT_URL, $unifiServer.'/api/cmd/stamgr');
-	    curl_setopt($ch, CURLOPT_POSTFIELDS, 'json='.$data);
-	    curl_exec ($ch);
-
-	    // Logout of the UniFi Controller
-	    curl_setopt($ch, CURLOPT_URL, $unifiServer.'/logout');
-	    curl_exec ($ch);
-	    curl_close ($ch);
-	    unset($ch);*/
-
-
-
-      	
       	 //Config
         $server   = 'https://'.$unifiKey['ip'].':8443/';
         $user     = $unifiKey['username'];
@@ -469,7 +424,7 @@ class Portal_model extends CI_Model {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         $result = curl_exec($ch);
         curl_close($ch);
-        var_dump($result);
+        //var_dump($result);
 
 
         // Send user to authorize and the time allowed
@@ -497,7 +452,7 @@ class Portal_model extends CI_Model {
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         $result = curl_exec($ch);
         curl_close($ch);
-        var_dump($result);
+        //var_dump($result);
 
         //Logout
         $ch = curl_init();
