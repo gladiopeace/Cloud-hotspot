@@ -40,7 +40,7 @@
 
             <div class="items">
                 <div class="page">
-                    <h3>创建一个节点<br/><em>请填写您要增加的节点信息，用于管理。</em></h3>
+                    <h3>{{step1_title}}</h3>
                     <p>
                         <label>{{brand}}：</label>
                         <input type="radio" class="brand-type" value="ubnt" checked="checked" name="brand">Ubiquiti
@@ -65,10 +65,7 @@
                     </div>
                 </div>
                 <div class="page">
-                    <h3>
-                        填写用户信息<br/>
-                        <em>请填写ROS hotspot中的用户名与密码。</em>
-                    </h3>
+                    <h3>{{step2_title}}</h3>
                     <p>
                         <label id='user-text'>{{user_ubnt}}:</label>
                         <input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  />
@@ -84,19 +81,18 @@
 
                     <div class="btn_nav">
                         <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="right" id="sub" value="下一步&raquo;" />
-                        <input type="hidden" class="next" id="success"/>
+                        <input type="button" class="next right" value="下一步&raquo;" />                 
                     </div>
                 </div>
                 <div class="page">
-                    <h3>填写用户信息<br/><em>请填写ROS hotspot中的用户名与密码。<br/><span style="color:red;">此用户与hotspot中要一致ip->hotspot->users->+</span></em></h3>
-                    <p><label>用户名</label><input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  /></p>
-                    <p><label>密&nbsp;&nbsp;码</label><input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/></p>
-                    <p><label>确认密码：</label><input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/></p>
+                    <h3>{{step3_title}}<br/></h3>
+                    <p>                       
+                        <textarea rows="18" name="ap" cols="68"></textarea>
+                    </p>
 
                     <div class="btn_nav">
                         <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="right" id="sub" value="下一步&raquo;" />
+                        <input type="button" class="next right" value="下一步&raquo;" />
                         <input type="hidden" class="next" id="success"/>
                     </div>
                 </div>
@@ -129,14 +125,14 @@
             },
             onBeforeSeek:function(event,i){
                 if(i==1){
-                    var user = $("#branch").val();
+                    let user = $("#branch").val();
                     if(user==""){
                         alert("节点名不能为空！");
                         $("#branch").focus();
                         return false;
                     }
-                    var ip = $("#ip").val();
-                    var url = $("#url").val();
+                    let ip = $("#ip").val();
+                    let url = $("#url").val();
                     if(ip==""){
                         alert("ip地址不能为空！");
                         return false;
@@ -148,13 +144,13 @@
                 }
 
                 if(i==2){
-                    var user = $("#user").val();
+                    let user = $("#user").val();
                     if(user==""){
                         alert("请输入用户名！");
                         return false;
                     }
-                    var pass = $("#pass").val();
-                    var pass1 = $("#pass1").val();
+                    let pass = $("#pass").val();
+                    let pass1 = $("#pass1").val();
                     if(pass==""){
                         alert("请输入密码！");
                         return false;
