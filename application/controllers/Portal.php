@@ -119,6 +119,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 		}
 
         public function TextTokenSalt(){
+          
             header('Access-Control-Allow-Origin:*');
             $salt = $this->input->get_post('accesskey');
             $mac = $this->input->get_post('mac');
@@ -260,11 +261,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             $this->load->model('Portal_model');
             $data = $this->Portal_model->branch(array('salt'=>$salt));
-            var_dump($data);
-            exit();
+           
             $ip ='http://'.$data["access_info"]['ip'].'/login';
  
-            if($mac=='hotspot-init-test') $ip = '/hotspot/preview';           
+            if($mac=='hotspot-init-test' || $data['brand']=='ubnt') $ip = '/portal/go';           
             $url = $data["access_info"]['url'];
             $data = array(
                 'type'=> $data['type'],
@@ -633,6 +633,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             $this->load->library('twig');
             $this->twig->setPath();
             $this->twig->display($data['themes'], $data);
+        }
+
+        public function go(){
+
+            $salt = $this->input->get_post('salt');
+            $data = array('salt'=>$salt);
+            $this->load->library('twig');
+            $this->twig->display('hotspot/init/init.php', $data);
+
         }
 		
 	}

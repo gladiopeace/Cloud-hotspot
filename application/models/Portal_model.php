@@ -318,6 +318,14 @@ class Portal_model extends CI_Model {
             $this->load->library('Aes');
             $ip = $data["access_info"]['ip'];
             $pass  = md5('mikrotik');
+
+            //For ubnt auth
+            if($data['brand']=='ubnt'){
+
+            	$this->sendAuthorization($mac,$data['site_name'],$data["access_info"]);
+            	
+            } 
+
             $username = $this->aes->encrypt($data["access_info"]['username'],$pass);
             $password = $this->aes->encrypt($data["access_info"]['password'],$pass);
             $url = $data["access_info"]['url'];
@@ -375,6 +383,141 @@ class Portal_model extends CI_Model {
 	    if(empty($ap)) self::message('unauthorized access');
 	    $siteData = $this->init($ap['site_id'],'ubnt');
 	    return $siteData; 
+    }
+
+    public function sendAuthorization($mac,$site='',$unifiKey=array()){
+	
+
+
+		/*$unifiServer = 'https://'.$unifiKey['ip'].':8443/';
+	    $unifiUser = $unifiKey['username'];
+	    $unifiPass =  $unifiKey['password'];*/
+
+	    /*// Start Curl for login
+	    $ch = curl_init();
+	    // We are posting data
+	    curl_setopt($ch, CURLOPT_POST, TRUE);
+	    // Set up cookies
+	    $cookie_file = "/tmp/unifi_cookie";
+	    curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+	    curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
+	    // Allow Self Signed Certs
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+	    // Force SSL3 only
+	    curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+	    // Login to the UniFi controller
+	    curl_setopt($ch, CURLOPT_URL, "$unifiServer/login");
+	    curl_setopt($ch, CURLOPT_POSTFIELDS,
+	        "login=login&username=$unifiUser&password=$unifiPass");
+	    // send login command
+	    $res1 = curl_exec ($ch);
+	    var_dump($res1);
+
+	    // Send user to authorize and the time allowed
+	    $data = json_encode(array(
+	        'cmd'=>'authorize-guest',
+	        'mac'=>$mac,
+	        'minutes'=>$minutes));
+
+	    // Send the command to the API
+	    curl_setopt($ch, CURLOPT_URL, $unifiServer.'/api/cmd/stamgr');
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, 'json='.$data);
+	    curl_exec ($ch);
+
+	    // Logout of the UniFi Controller
+	    curl_setopt($ch, CURLOPT_URL, $unifiServer.'/logout');
+	    curl_exec ($ch);
+	    curl_close ($ch);
+	    unset($ch);*/
+
+
+
+      	
+      	 //Config
+        $server   = 'https://'.$unifiKey['ip'].':8443/';
+        $user     = $unifiKey['username'];
+        $password = $unifiKey['password'];
+        $expire_mins = 240;
+	    
+       /* $site     = $this->site;*/
+        $cookie_file_path = FCPATH. '/data/unifi_cookie';
+
+        // Login
+        $data = json_encode(
+            array(
+                  'username' => $user,
+                  'password' => $password,
+            )
+        );
+
+
+        // Start Curl for login
+        $ch = curl_init();
+        // We are posting data
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        // Set up cookies
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+        curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+        // Allow Self Signed Certs
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_SSLVERSION, '1');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // Login to the UniFi controller
+        curl_setopt($ch, CURLOPT_URL, $server . "/api/login");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        var_dump($result);
+
+
+        // Send user to authorize and the time allowed
+        $data = json_encode(
+                            array(
+                                  'cmd' => 'authorize-guest',
+                                  'mac' => $mac,
+                                  'minutes' => $expire_mins,
+                                  )
+                            );
+        $ch = curl_init();
+        // We are posting data
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        // Set up cookies
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+        curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+        // Allow Self Signed Certs
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_SSLVERSION, '1');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // Make the API Call
+        curl_setopt($ch, CURLOPT_URL, $server . '/api/s/' . $site . '/cmd/stamgr');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'json=' . $data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $result = curl_exec($ch);
+        curl_close($ch);
+        var_dump($result);
+
+        //Logout
+        $ch = curl_init();
+        // We are posting data
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        // Set up cookies
+        curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+        curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+        // Allow Self Signed Certs
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_SSLVERSION, '1');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // Make the API Call
+        curl_setopt($ch, CURLOPT_URL, $server . '/api/logout');
+        curl_exec($ch);
+        curl_close($ch);    
+
+
+
     }
 
 	private static function message($info){

@@ -115,6 +115,7 @@
             data: PostData
         })
         .done(function(ret) {
+            alert(ret);
             //解密
             var userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
             var passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
