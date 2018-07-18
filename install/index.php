@@ -1,5 +1,13 @@
 <?php
 
+
+header('Content-Type: text/html; charset=UTF-8');
+date_default_timezone_set('PRC');
+error_reporting(E_ALL & ~E_NOTICE);
+
+require_once 'common.php';
+$dictionary = getLanguage();
+
 if (file_exists('./install.lock')) {
     echo '
 		<html>
@@ -12,15 +20,19 @@ if (file_exists('./install.lock')) {
         </html>';
     exit;
 }
+
+
+
+
+
 @set_time_limit(1000);
 if (phpversion() <= '5.3.0')
     set_magic_quotes_runtime(0);
 if ('5.2.0' > phpversion())
     exit('您的php版本过低，不能安装本软件，请升级到5.2.0或更高版本再安装，谢谢！');
 
-date_default_timezone_set('PRC');
-error_reporting(E_ALL & ~E_NOTICE);
-header('Content-Type: text/html; charset=UTF-8');
+
+
 define('SITEDIR', _dir_path(substr(dirname(__FILE__), 0, -8)));
 define("SIMPLEWIND_CMF_VERSION", '20180720');
 //数据库

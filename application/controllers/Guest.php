@@ -22,7 +22,7 @@ class Guest extends CI_Controller {
         $site = $this->uri->segment(3);
         $this->load->model('Portal_model');
         $data = $this->Portal_model->apToSite($ap);
-       
+
         $data['config'] = array(
             'ip'            => $data['branch']['access_info']['ip'],//
             'salt'          =>  $data['branch']['salt'],
@@ -32,18 +32,7 @@ class Guest extends CI_Controller {
         $this->load->library('twig');
         $this->twig->setPath();
         $this->twig->display($data['themes'], $data);
-        
-        /*
-
-		$this->load->library('twig');
-    	$this->twig->display('guest.php');	*/		
-
     }
 
-    public function auth(){
-
-
-    	
-    }
 }
         

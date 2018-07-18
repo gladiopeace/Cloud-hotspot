@@ -11,9 +11,9 @@
   <section class="section">
     <div class="step">
       <ul>
-        <li class="current"><em>1</em>检测环境</li>
-        <li><em>2</em>创建数据</li>
-        <li><em>3</em>完成安装</li>
+        <li class="current"><em>1</em><?php echo $dictionary['environment'];?></li>
+        <li><em>2</em><?php echo $dictionary['server'];?></li>
+        <li><em>3</em><?php echo $dictionary['installation'];?></li>
       </ul>
     </div>
     <div class="server">
@@ -98,7 +98,7 @@ foreach($folder as $dir){
 ?>   
       </table>
     </div>
-    <div class="bottom tac"> <a href="./index.php?step=2" class="btn">重新检测</a><a href="javascript:void(0);" onclick="verifyConfig();" class="btn">下一步</a> </div>
+    <div class="bottom tac"> <a href="./index.php?step=2" class="btn"><?php echo $dictionary['recheck'];?></a><a href="javascript:void(0);" onclick="verifyConfig();" class="btn"><?php echo $dictionary['next'];?></a> </div>
   </section>
 </div>
 <?php require './templates/footer.php';?>
