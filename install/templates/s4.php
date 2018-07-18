@@ -12,9 +12,9 @@
   <section class="section">
     <div class="step">
       <ul>
-        <li class="on"><em>1</em>检测环境</li>
-        <li class="on"><em>2</em>创建数据</li>
-        <li class="current"><em>3</em>完成安装</li>
+        <li class="on"><em>1</em><?php echo $dictionary['environment'];?></li>
+        <li class="on"><em>2</em><?php echo $dictionary['server'];?></li>
+        <li class="current"><em>3</em><?php echo $dictionary['installation'];?></li>
       </ul>
     </div>
     <div class="install" id="log">
