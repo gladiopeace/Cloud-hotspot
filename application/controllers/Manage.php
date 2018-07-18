@@ -104,7 +104,7 @@
 					$bid = $this->Member_model->insert('hotspot_branch',$branch);
 
 					foreach ($aps as $k => $mac) {
-						$tmp = array('user_id'=>$_uid,'branch_id'=>$bid,'mac'=>$mac);
+						$tmp = array('user_id'=>$_uid,'site_id'=>$bid,'mac'=>$mac);
 						$this->Member_model->insert('hotspot_ap',$tmp);
 					}
 					echo 'hello';

@@ -116,11 +116,22 @@ class Portal_model extends CI_Model {
 	}
 
 
-	public function init($key){
+	public function init($key,$flag='mikrotik'){
+		
+		switch ($flag) {
+			case 'mikrotik':
+				$site = array('salt'=>$key);
+				break;
+			
+			case 'ubnt':
+				$site = array('id'=>$key);
+				# code...
+				break;		
+		}
 
-	    $bech = $this->branch(array('salt'=>$key));//
-	    
-	    $where = array('accesskey'=>$key);
+
+	    $bech = $this->branch($site);//	    
+	    $where = array('accesskey'=>$bech['salt']);
 		$copyright = $this->first(array('*'),'themes_copyright',$where);
 
 		if (empty($copyright)){
@@ -187,7 +198,8 @@ class Portal_model extends CI_Model {
 			'static'	=> base_url(),		
 	   	);
 
-	   	return array_merge($result,$where);
+	   	$result = array_merge($result,$where);
+	   	return $result;
 
 
 	}
@@ -356,6 +368,13 @@ class Portal_model extends CI_Model {
         }
         return $data;
 
+    }
+
+    public function apToSite($mac){
+		$ap = $this->first(array('site_id'),'hotspot_ap',array('mac'=>$mac));		
+	    if(empty($ap)) self::message('unauthorized access');
+	    $siteData = $this->init($ap['site_id'],'ubnt');
+	    return $siteData; 
     }
 
 	private static function message($info){

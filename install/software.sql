@@ -62,7 +62,7 @@ CREATE TABLE `zh_hotspot_ap` (
   `mac` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `branch` (`branch_id`,`mac`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_ap
@@ -122,7 +122,7 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_branch
@@ -303,7 +303,7 @@ CREATE TABLE `zh_user` (
   `job` varchar(32) NOT NULL,
   `addtime` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_user
