@@ -235,10 +235,9 @@ CREATE TABLE `zh_themes` (
 -- ----------------------------
 -- Records of zh_themes
 -- ----------------------------
-INSERT INTO `zh_themes` VALUES ('1', 'Portal主题', 'portal-lite', '1', 'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg', '手机短信,SMS验证码', '1');
-INSERT INTO `zh_themes` VALUES ('2', '微信主题', 'wx-style', '2', 'http://image.cloudshotspot.com/20160108140229145223294947490.jpg', 'Wi-Fi via Wechat for free', '1');
-INSERT INTO `zh_themes` VALUES ('3', '帐号认证主题', 'account-hotspot', '3', 'http://d.5857.com/shiyiuyue_151102/008.jpg', 'Account for Wi-Fi', '1');
-
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('Portal主题','portal-lite',1,'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg','手机短信,SMS验证码',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('微信主题','wx-style',2,'http://image.cloudshotspot.com/20160108140229145223294947490.jpg','Wi-Fi via Wechat for free',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('帐号认证主题','account-hotspot',3,'http://d.5857.com/shiyiuyue_151102/008.jpg','Account for Wi-Fi',1);
 -- ----------------------------
 -- Table structure for zh_themes_copyright
 -- ----------------------------

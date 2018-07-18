@@ -85,6 +85,8 @@
 					$_uid = $this->_organization['id'];
 					$this->load->model('Member_model');
 					$branch['branch'] = $data['branch'];
+					$branch['brand'] = $data['brand'];
+					$branch['site_name'] = $data['branch'];
 					$branch['uid'] = $_uid;
 					/*$branch['organization_id'] = $_uid;*/
 					$access_info = array(

@@ -18,3 +18,4 @@ $lang['pass_ubnt'] = "Unifi Controller 密码";
 $lang['pass_confirm'] = "确认密码";
 $lang['re_password_fill'] = "请再次输入密码";
 $lang['step3_title'] = "物理设备";
+$lang['ap_fill'] = "站点仅接受从以下条目开始的无线AP的MAC地址请求。使用AT（@）符号分隔多个地址;例： 00:11:22:33:44:55@66:77:88:99:a1:a2";

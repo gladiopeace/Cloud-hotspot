@@ -87,7 +87,7 @@
                 <div class="page">
                     <h3>{{step3_title}}<br/></h3>
                     <p>                       
-                        <textarea rows="18" id="ap" name="ap" cols="68"></textarea>
+                        <textarea rows="18" id="ap" name="ap" cols="68" placeholder="{{ap_fill}}"></textarea>
                     </p>
 
                     <div class="btn_nav">

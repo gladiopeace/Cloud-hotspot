@@ -19,6 +19,7 @@ $lang['pass_ubnt'] = "Password of the Unifi Controller ";
 $lang['pass_confirm'] = "Confirm password";
 $lang['re_password_fill'] = "Re-enter password";
 $lang['step3_title'] = "AP's MAC";
+$lang['ap_fill'] = "The Site's Portal accept Request for addresses That start with following entries. Use at (@) to separate entries;Example:00:11:22:33:44:55@66:77:88:99:a1:a2";
 
 
 
