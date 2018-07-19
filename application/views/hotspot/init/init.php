@@ -114,21 +114,24 @@
             dataType: 'json',
             data: PostData
         })
-        .done(function(ret) {
-            alert(ret);
+        .done(function(ret) {           
             //解密
-            var userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
-            var passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
-            userName = userName.toString(CryptoJS.enc.Utf8);
-            passWord = passWord.toString(CryptoJS.enc.Utf8);
-            /*document.sendin.dst.value = ret.url;*/
-            document.sendin.username.value = userName;
-            if(chapId!='' && chapChallenge!='' && chapChallenge!=null && chapId!=null){
-                document.sendin.password.value =  hexMD5(chapId + passWord + chapChallenge);
-            }else{
-                document.sendin.password.value = passWord;
+            if(ret.brand=='mikrotik'){
+                
+                let userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
+                let passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
+                userName = userName.toString(CryptoJS.enc.Utf8);
+                passWord = passWord.toString(CryptoJS.enc.Utf8);
+                /*document.sendin.dst.value = ret.url;*/
+                document.sendin.username.value = userName;
+                if(chapId!='' && chapChallenge!='' && chapChallenge!=null && chapId!=null){
+                    document.sendin.password.value =  hexMD5(chapId + passWord + chapChallenge);
+                }else{
+                    document.sendin.password.value = passWord;
+                }
+                document.sendin.submit();
             }
-            document.sendin.submit();
+            
             redirectApp(ret);
             return false;
         });

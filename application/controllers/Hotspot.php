@@ -682,6 +682,13 @@
             echo json_encode(['status'=>'success','data'=>$date,'summary'=>$summary]);
         }
 
+        public function preview(){
+            $salt = $this->input->get_post('salt');
+            $data = array('salt'=>$salt,'mac'=>'test-mac-ap');
+            $this->load->library('twig');
+            $this->twig->display('hotspot/init/init.php', $data);
+        }
+
         
 
  	}
