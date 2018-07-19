@@ -106,7 +106,7 @@
         })
         .done(function(ret) {
             //解密
-            alert(JSON.stringify(ret));
+            //alert(JSON.stringify(ret));
             if(ret.brand=='mikrotik'){
                 var userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
                 var passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
