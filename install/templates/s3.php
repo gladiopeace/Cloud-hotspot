@@ -21,43 +21,43 @@
       <div class="server">
         <table width="100%">
           <tr>
-            <td class="td1" width="100">数据库信息</td>
+            <td class="td1" width="100"><?php echo $dictionary['database'];?></td>
             <td class="td1" width="200">&nbsp;</td>
             <td class="td1">&nbsp;</td>
           </tr>
 		  <tr>
-            <td class="tar">服务器：</td>
+            <td class="tar"><?php echo $dictionary['mysql_server'];?>：</td>
             <td><input type="text" name="dbhost" id="dbhost" value="localhost" class="input"></td>
             <td><div id="J_install_tip_dbhost"><span class="gray">数据库服务器地址，一般为localhost</span></div></td>
           </tr>
 
 		  <tr>
-            <td class="tar">端口：</td>
+            <td class="tar"><?php echo $dictionary['mysql_port'];?>：</td>
             <td><input type="text" name="dbport" id="dbport" value="3306" class="input"></td>
             <td><div id="J_install_tip_dbport"><span class="gray">数据库服务器端口，一般为3306</span></div></td>
           </tr>
 
             <tr>
-                <td class="tar">数据库名：</td>
+                <td class="tar"><?php echo $dictionary['database_name'];?>：</td>
                 <td><input type="text" name="dbname" id="dbname" value="youtu" class="input"></td>
                 <td><div id="J_install_tip_dbname"></div></td>
             </tr>
 
 
             <tr>
-                <td class="tar">表前缀：</td>
+                <td class="tar"><?php echo $dictionary['db_prefix'];?>：</td>
                 <td><input type="text" name="dbprefix" id="dbprefix" value="zh_" class="input"></td>
                 <td><div id="J_install_tip_dbprefix"><span class="gray">建议使用默认，同一数据库安装多个优思软件时需修改</span></div></td>
             </tr>
 
 
           <tr>
-            <td class="tar">用户名：</td>
+            <td class="tar"><?php echo $dictionary['db_user'];?>：</td>
             <td><input type="text" name="dbuser" id="dbuser" value="root" class="input"></td>
             <td><div id="J_install_tip_dbuser"></div></td>
           </tr>
           <tr>
-            <td class="tar">密码：</td>
+            <td class="tar"><?php echo $dictionary['db_pass'];?>：</td>
             <td><input type="text" name="dbpw" id="dbpw" value="" class="input" autoComplete="off" onblur="TestDbPwd()"></td>
             <td><div id="J_install_tip_dbpw"></div></td>
           </tr>
@@ -66,27 +66,27 @@
 	
         <table width="100%">
           <tr>
-            <td class="td1" width="100">系统管理信息</td>
+            <td class="td1" width="100"><?php echo $dictionary['user_info'];?></td>
             <td class="td1" width="200">&nbsp;</td>
             <td class="td1">&nbsp;</td>
           </tr>
           <tr>
-            <td class="tar">管理员帐号：</td>
+            <td class="tar"><?php echo $dictionary['administrator'];?>：</td>
             <td><input type="text" name="manager" value="admin" class="input"></td>
             <td><div id="J_install_tip_manager"></div></td>
           </tr>
           <tr>
-            <td class="tar">管理密码：</td>
+            <td class="tar"><?php echo $dictionary['ad_password'];?>：</td>
             <td><input type="text" name="manager_pwd" id="J_manager_pwd" class="input" autoComplete="off"></td>
             <td><div id="J_install_tip_manager_pwd"></div></td>
           </tr>
           <tr>
-            <td class="tar">确认密码：</td>
+            <td class="tar"><?php echo $dictionary['ad_confirm'];?>：</td>
             <td><input type="text" name="manager_ckpwd" class="input" autoComplete="off"></td>
             <td><div id="J_install_tip_manager_ckpwd"></div></td>
           </tr>
           <tr>
-            <td class="tar">Email：</td>
+            <td class="tar"><?php echo $dictionary['ad_email'];?>：</td>
             <td><input type="text" name="manager_email" class="input" value=""></td>
             <td><div id="J_install_tip_manager_email"></div></td>
           </tr>
