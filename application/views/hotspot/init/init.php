@@ -90,7 +90,7 @@
        	if(typeof($_GET["auth_code"])=='string' && $_GET["auth_code"]!=''){
             $.showLoading('正在连接中');
             var Url = '/portal/TextTokenSalt';
-            var PostData = {'accesskey': '{{salt}}','mac':{{mac}},'auth_code':$_GET['auth_code']};
+            var PostData = {'accesskey': '{{salt}}','mac':"{{mac}}",'auth_code':$_GET['auth_code']};
             var chapId = '';
             var chapChallenge = '';
             <!-- $(if chap-id) //-->
