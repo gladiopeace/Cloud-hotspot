@@ -10,6 +10,9 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-Control" content="no-cache"/>
+    <script type="text/javascript" src="/Public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/Public/js/app.min.js"></script>
+    <script type="text/javascript" src="/Public/js/wifi.js"></script>
     <link rel="stylesheet" href="/Public/css/app.min.css">
     <link rel="stylesheet" href="/Public/css/ui.min.css">
     <style type="text/css">.weui-toast{margin-left: 0;}</style>
@@ -53,60 +56,47 @@
     <form name="sendin" action="$(link-login-only)" method="post" target="login_area">
         <input type="hidden" name="username" />
         <input type="hidden" name="password" />
-        <!--<input type="hidden" name="dst" value="$(link-orig)" />-->
+
         <input type="hidden" name="popup" value="false" />
     </form>
 
 	<iframe src="" name="login_area"></iframe>  
-</div> 
+</div>
 
-<script type="text/javascript" src="/Public/js/aes.js"></script>
-<script type="text/javascript" src="/Public/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Public/js/app.min.js"></script>
-<script type="text/javascript" src="/Public/js/wifi.js"></script>
-<!-- $(if chap-id) //-->
-	<script type="text/javascript" src="/Public/js/md5.js"></script>
-<!-- $(endif) //-->
-	<script type="text/javascript">
-	<!--
-	var $_GET = (function(){
-		var url = window.document.location.href.toString();
-		var u = url.split("?");
-		if(typeof(u[1]) == "string"){
-			u = u[1].split("&");
-			var get = {};
-			for(var i in u){
-				var j = u[i].split("=");
-				get[j[0]] = j[1];
-			}
-			return get;
-		} else {
-			return {};
-		}
-	})();
-
-	window.onload =function(){
-
-       	if(typeof($_GET["auth_code"])=='string' && $_GET["auth_code"]!=''){
+<script type="text/javascript">
+    <!--
+    var $_GET = (function(){
+        var url = window.document.location.href.toString();
+        var u = url.split("?");
+        if(typeof(u[1]) == "string"){
+            u = u[1].split("&");
+            var get = {};
+            for(var i in u){
+                var j = u[i].split("=");
+                get[j[0]] = j[1];
+            }
+            return get;
+        } else {
+            return {};
+        }
+    })();
+    window.onload =function(){
+        if(typeof($_GET["auth_code"])=='string' && $_GET["auth_code"]!=''){
             $.showLoading('正在连接中');
             var Url = '/portal/TextTokenSalt';
-            var PostData = {'accesskey': '{{salt}}','mac':"{{mac}}",'auth_code':$_GET['auth_code']};
+            var PostData = {'accesskey': '{{salt}}','mac':'{{mac}}','auth_code':$_GET['auth_code']};
             var chapId = '';
             var chapChallenge = '';
-            <!-- $(if chap-id) //-->
-                    chapId = '$(chap-id)';
-                    chapChallenge =  '$(chap-challenge)';
-            <!-- $(endif) //-->
+          
             initTokenSalt(Url,PostData,chapId,chapChallenge);
-			return false;
-		}else{
+            return false;
+        }else{
             setTimeout(function() {
                 document.redirect.submit();
             }, 2000);
-			
-		}
-	}
-
+            
+        }
+    }
     function initTokenSalt(Url,PostData,chapId,chapChallenge){
         $.ajax({
             url: Url,
@@ -114,12 +104,12 @@
             dataType: 'json',
             data: PostData
         })
-        .done(function(ret) {           
+        .done(function(ret) {
             //解密
+            alert(JSON.stringify(ret));
             if(ret.brand=='mikrotik'){
-                
-                let userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
-                let passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
+                var userName  = CryptoJS.AES.decrypt(ret.username, ret.pass);
+                var passWord  = CryptoJS.AES.decrypt(ret.password, ret.pass);
                 userName = userName.toString(CryptoJS.enc.Utf8);
                 passWord = passWord.toString(CryptoJS.enc.Utf8);
                 /*document.sendin.dst.value = ret.url;*/
@@ -131,15 +121,13 @@
                 }
                 document.sendin.submit();
             }
-            
+           
             redirectApp(ret);
             return false;
         });
-
     }
-
-	//-->
-	</script>
+    //-->
+    </script>
 
 </body>
 </html>

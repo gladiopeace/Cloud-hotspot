@@ -651,7 +651,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
            
             $data['mac'] = $data['device_mac'];
             $data['salt'] =$data['accesskey'];
-            
+        
             $this->load->library('twig');
             $this->twig->display('hotspot/init/init.php', $data);
 

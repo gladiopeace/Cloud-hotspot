@@ -321,7 +321,7 @@ class Portal_model extends CI_Model {
 
             //For ubnt auth
             if($data['brand']=='ubnt' && $mac!='test-mac-ap'){
-            	$this->sendAuthorization($mac,$data['site_name'],$data["access_info"]);
+            	$data['unifi'] =$this->sendAuthorization($mac,$data['site_name'],$data["access_info"]);
             } 
 
             $username = $this->aes->encrypt($data["access_info"]['username'],$pass);
@@ -368,6 +368,7 @@ class Portal_model extends CI_Model {
                 'url'=>$url,
                 'pass'=>$pass,
                 'brand'=>$data['brand'],
+                'd2'=>$data,
             );
 
         }else{
