@@ -61,7 +61,7 @@
                     <p>
                         <label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="http://www.google.com" value="http://www.google.com"/></p>
                     <div class="btn_nav">
-                        <input type="button" class="next right" value="下一步&raquo;" />
+                        <input type="button" class="next right" value="{{next}}&raquo;" />
                     </div>
                 </div>
                 <div class="page">
@@ -80,8 +80,8 @@
                     </p>
 
                     <div class="btn_nav">
-                        <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="next right" value="下一步&raquo;" />                 
+                        <input type="button" class="prev" style="float:left" value="&laquo;{{previous}}" />
+                        <input type="button" class="next right" value="{{next}}&raquo;" />                 
                     </div>
                 </div>
                 <div class="page">
@@ -91,8 +91,8 @@
                     </p>
 
                     <div class="btn_nav">
-                        <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="right apply" value="下一步&raquo;" />
+                        <input type="button" class="prev" style="float:left" value="&laquo;{{previous}}" />
+                        <input type="button" class="right apply" value="{{next}}&raquo;" />
                         <input type="hidden" class="next" id="success"/>
                     </div>
                 </div>

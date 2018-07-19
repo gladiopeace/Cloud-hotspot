@@ -105,6 +105,7 @@ CREATE TABLE `zh_hotspot_branch` (
   `brand` varchar(32) DEFAULT NULL,
   `type` varchar(324) NOT NULL,
   `branch` varchar(32) NOT NULL COMMENT '//标题',
+  `site_name` varchar(32) NOT NULL COMMENT '//标题',
   `address` varchar(64) NOT NULL,
   `access_info` text NOT NULL,
   `point` varchar(32) NOT NULL,
