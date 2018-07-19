@@ -19,31 +19,31 @@
     <div class="server">
       <table width="100%">
         <tr>
-          <td class="td1">环境检测</td>
-          <td class="td1" width="25%">推荐配置</td>
-          <td class="td1" width="25%">当前状态</td>
-          <td class="td1" width="25%">最低要求</td>
+          <td class="td1"><?php echo $dictionary['check']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['recommended']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['current']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['at_least']; ?></td>
         </tr>
         <tr>
-          <td>操作系统</td>
+          <td><?php echo $dictionary['os']; ?></td>
           <td>类UNIX</td>
           <td><span class="correct_span">&radic;</span> <?php echo $os; ?></td>
           <td>不限制</td>
         </tr>
         <tr>
-          <td>PHP版本</td>
+          <td><?php echo $dictionary['php']; ?></td>
           <td>>5.6.x</td>
           <td><span class="correct_span">&radic;</span> <?php echo $phpv; ?></td>
           <td>5.3.0</td>
         </tr>
         <tr>
-          <td>Mysql版本（client）</td>
+          <td><?php echo $dictionary['mysql']; ?></td>
           <td>>5.x.x</td>
           <td><?php echo $mysql; ?></td>
           <td>4.2</td>
         </tr>
         <tr>
-          <td>附件上传</td>
+          <td><?php echo $dictionary['upload_file']; ?></td>
           <td>>2M</td>
           <td><?php echo $uploadSize; ?></td>
           <td>不限制</td>
@@ -58,9 +58,9 @@
       </table>
       <table width="100%">
         <tr>
-          <td class="td1">目录、文件权限检查</td>
-          <td class="td1" width="25%">写入</td>
-          <td class="td1" width="25%">读取</td>
+          <td class="td1"><?php echo $dictionary['directory']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['read']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['write']; ?></td>
         </tr>
 <?php
 foreach($folder as $dir){

@@ -80,8 +80,18 @@ function getEnglish(){
 		'environment'	=>'Environment',
 		'server'		=>'Server Information',
 		'installation'	=>'Installation',
-		'submit'	=>'Submit',
-
+		'submit'		=>'Submit',
+		'check'			=>'Check',
+		'recommended'	=>'Recommended',
+		'current'		=>'Current',
+		'at_least'		=>'At Least',
+		'directory'		=>'Permission Of Directories',
+		'read'			=>'Read',
+		'write'			=>'Write',
+		'os'			=>'OS',
+		'php'			=>'PHP Version',
+		'mysql'			=>'Mysql Version(Client)',
+		'upload_file'	=>"Upload max file's size",
 
 
 	];
@@ -101,6 +111,18 @@ function getChinese(){
 		'server'		=>'服务器',
 		'installation'	=>'安装程序',
 		'submit'	=>'立即安装',
+		'check'			=>'环境检测',
+		'recommended'	=>'推荐配置',
+		'current'		=>'当前状态',
+		'at_least'		=>'最低要求',
+		'directory'		=>'目录权限检查',
+		'read'			=>'读取',
+		'write'			=>'写入',
+		'os'			=>'操作系统',
+		'php'			=>'PHP版本',
+		'mysql'			=>'Mysql版本(Client)',
+		'upload_file'	=>"附件上传",
+
 
 
 	];
