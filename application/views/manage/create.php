@@ -97,9 +97,9 @@
                     </div>
                 </div>
                 <div class="page">
-                    <h3>完成向导<br/><em>成功将节点相关信息生成。</em></h3>
+                    <h3>完成向导<br/><em>成功将站点相关信息生成。</em></h3>
                     <h4>恭喜您！</h4>
-                    <p>请点击“下载”按钮下载节点文件。</p>
+                    <p id="mikrotik-down">请点击“下载”按钮下载节点文件。</p>
 
                     <br/>
                     <br/>
@@ -206,11 +206,14 @@
               
                $("#brand-ip").text(mikrotik);   
                $("#user-text").text(user_mikrotik);        
-               $("#pass-text").text(pass_mikrotik);        
+               $("#pass-text").text(pass_mikrotik);
+               $("#mikrotik-down").show();        
             }else if(type=='ubnt'){
                $("#brand-ip").text(ubnt);   
                $("#user-text").text(user_ubnt);        
-               $("#pass-text").text(pass_ubnt);  
+               $("#pass-text").text(pass_ubnt); 
+               $("#mikrotik-down").hide();        
+
             }
                         
             console.log(type);

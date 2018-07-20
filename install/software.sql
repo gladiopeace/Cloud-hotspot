@@ -102,7 +102,7 @@ CREATE TABLE `zh_hotspot_branch` (
   `normal_tid` int(10) NOT NULL COMMENT '//主题ID',
   `wechat_tid` int(10) NOT NULL COMMENT '//微信主题id',
   `account_tid` int(11) NOT NULL,
-  `brand` varchar(32) DEFAULT NULL,
+  `brand` varchar(32) NOT NULL,
   `type` varchar(324) NOT NULL,
   `branch` varchar(32) NOT NULL COMMENT '//标题',
   `site_name` varchar(32) NOT NULL COMMENT '//标题',
