@@ -57,7 +57,7 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">节点密码</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" placeholder="请输入节点密码" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
+                                    <input type="password" placeholder="请输入节点密码" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         <span></span>
