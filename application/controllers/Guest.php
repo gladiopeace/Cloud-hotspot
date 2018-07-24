@@ -10,7 +10,7 @@ class Guest extends CI_Controller {
         $json = json_encode(['status'=>0,'message'=>'Access Deny!']);
         return $json;
     }
-
+    
     public function s(){
 
         $id = $this->input->get_post('id'); //user's mac address
