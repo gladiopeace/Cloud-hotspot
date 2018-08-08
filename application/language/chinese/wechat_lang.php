@@ -3,10 +3,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $lang['title'] = "微信连Wi-Fi";
 $lang['shop_name'] = "门店名称";
+$lang['shop_name_fill'] = "请输入门店名称";
 $lang['ssid'] = "SSID";
+$lang['ssid_fill'] = "请输入SSID";
 $lang['appid'] = "Appid";
+$lang['appid_fill'] = "请输入Appid";
 $lang['shopid'] = "Shopid";
+$lang['shopid_fill'] = "请输入Shopid";
 $lang['secretkey'] = "SecretKey";
+$lang['secretkey_fill'] = "请输入SecretKey";
 $lang['save'] = "保存";
 
 

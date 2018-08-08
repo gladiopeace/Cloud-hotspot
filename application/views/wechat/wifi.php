@@ -39,7 +39,7 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">{{dic['shop_name']}}</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" name="data[name]" class="form-control" value="{{result['name']}}"  placeholder="请输入店面名称">
+                                    <input type="text" name="data[name]" class="form-control" value="{{result['name']}}"  placeholder="{{dic['shop_name_fill']}}">
                                     </div>
 
                                     <div class="col-sm-5">
@@ -52,7 +52,7 @@
                                 <div class="form-group"><label class="col-sm-2 control-label">{{dic['ssid']}}:</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text"  name="data[ssid]" class="form-control" value="{{result['ssid']}}" placeholder="请输入SSID(网络名称)">
+                                    <input type="text"  name="data[ssid]" class="form-control" value="{{result['ssid']}}" placeholder="{{dic['ssid_fill']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -71,10 +71,10 @@
                                 </div> -->
                                   
                                   <div class="hr-line-dashed"></div>
-                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['ssid']}}:</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['appid']}}:</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" placeholder="请输入appid" class="form-control" name="data[appid]" value="{{result['appid']}}">
+                                    <input type="text" placeholder="{{dic['appid_fill']}}" class="form-control" name="data[appid]" value="{{result['appid']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         <span></span>
@@ -87,7 +87,7 @@
 
                                    <label class="col-sm-2 control-label">{{dic['shopid']}}:</label>
                                    <div class="col-sm-5">
-                                            <input type="text" name="data[shopid]" class="form-control" placeholder="请输入shopid" value="{{result['shopid']}}">
+                                            <input type="text" name="data[shopid]" class="form-control" placeholder="{{dic['shopid_fill']}}" value="{{result['shopid']}}">
                                     </div> 
                                     <div class="col-sm-5">
                                         
@@ -101,7 +101,7 @@
                                 <div class="form-group">
                                   <label class="col-sm-2 control-label">{{dic['secretkey']}}:</label>
                                     <div class="col-sm-5">
-                                         <input type="text" name="data[secretkey]" class="form-control" placeholder="请输入secretKey" value="{{result['secretkey']}}">
+                                         <input type="text" name="data[secretkey]" class="form-control" placeholder="{{dic['secretkey_fill']}}" value="{{result['secretkey']}}">
                                     </div>
                                                                       
                                     <div class="col-sm-5">
