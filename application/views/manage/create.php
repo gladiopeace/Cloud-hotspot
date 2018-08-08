@@ -99,7 +99,7 @@
                 <div class="page">
                     <h3>{{success_title}}<br/><em>{{success_sub_title}}</em></h3>
                     <h4>{{congratulations}}</h4>
-                    <div id="mikrotik-down">
+                    <div id="mikrotik-down" style="display: none;">
                         <p>{{mikrotik_download}}</p>
                         <p>{{mikrotik_tutorials}}</p>
                         <br/>
@@ -108,12 +108,19 @@
                         <div class="btn_nav">
                             <input type="hidden" id="download" value="">
                             <input type="button" value="{{download}}" onclick="downloads();"/>
+                            <input type="button" class="right" value="{{tutorial_mikrotik}}"/>        
                         </div>
                     </div>
 
-                    <div id="">
-                        
-
+                    <div id="ubnt-down">                        
+                        <p>{{ubiquiti_tutorials}}</p>                     
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="btn_nav">
+                            <input type="hidden" id="download" value="">                           
+                            <input type="button"  value="{{tutorial_unifi}}"/>        
+                        </div>
                     </div>
                    
                 </div>
@@ -210,18 +217,18 @@
             let user_mikrotik = "{{user_mikrotik}}";
             let pass_ubnt = "{{pass_ubnt}}";
             let pass_mikrotik = "{{pass_mikrotik}}";
-            if(type=='mikrotik'){
-              
+            if(type=='mikrotik'){              
                $("#brand-ip").text(mikrotik);   
                $("#user-text").text(user_mikrotik);        
                $("#pass-text").text(pass_mikrotik);
-               $("#mikrotik-down").show();        
+               $("#mikrotik-down").show();  
+               $("#ubnt-down").hide();        
             }else if(type=='ubnt'){
                $("#brand-ip").text(ubnt);   
                $("#user-text").text(user_ubnt);        
                $("#pass-text").text(pass_ubnt); 
                $("#mikrotik-down").hide();        
-
+               $("#ubnt-down").show();        
             }
                         
             console.log(type);
