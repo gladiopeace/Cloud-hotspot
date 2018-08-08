@@ -14,7 +14,7 @@
       <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>无线热点管理</h5>
+                            <h5>{{dic['title']}}</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -28,9 +28,12 @@
                                 </a>
                             </div>
                         </div>
+
+                        {{bech['brand']}}
+
                         <div class="ibox-content">
                             <form id="dataform" class="form-horizontal">
-                                <div class="form-group"><label class="col-sm-2 control-label">节点名称</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['site']}}</label>
 
                                     <div class="col-sm-5">
                                     <input type="text" name="data[branch]" class="form-control" value="{{bech['branch']}}">
@@ -43,10 +46,13 @@
                                 <div class="hr-line-dashed"></div>
                               
                                
-                                <div class="form-group"><label class="col-sm-2 control-label">节点用户</label>
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                    {{dic['user']}}
+                                  </label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" value="{{bech['access_info']['username']}}" class="form-control" name="access_info[username]">
+                                    <input type="text" value="{{bech['access_info']['username']}}" class="form-control" name="access_info[username]" placeholder="{% if bech['brand'] == 'mikrotik' %} {{dic['user_mikrotik']}} {% elseif bech['brand'] == 'ubnt' %} {{dic['user_ubnt']}} {% endif %}">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -54,10 +60,13 @@
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group"><label class="col-sm-2 control-label">节点密码</label>
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">                                  
+                                    {{dic['pass']}}
+                                  </label>
 
                                     <div class="col-sm-5">
-                                    <input type="password" placeholder="请输入节点密码" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
+                                    <input type="password" placeholder="{% if bech['brand'] =='mikrotik' %} {{ dic['pass_mikrotik'] }} {% elseif bech['brand'] == ubnt %} {{ dic['pass_ubnt'] }} {% endif %}" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         <span></span>
@@ -70,7 +79,7 @@
                                 <div class="hr-line-dashed"></div>
 
                                   <div class="form-group"><label class="col-sm-2 control-label">
-                                    IP地址
+                                    {{dic['ip']}}
                                   </label>
 
                                     <div class="col-sm-5">
@@ -85,7 +94,7 @@
                                 <div class="hr-line-dashed"></div>
 
                                   <div class="form-group">
-                                  <label class="col-sm-2 control-label">跳转 URL
+                                  <label class="col-sm-2 control-label">{{dic['redirect']}}
                                   </label>
 
                                     <div class="col-sm-5">
@@ -97,7 +106,28 @@
                                 
                                 <div class="hr-line-dashed"></div>
 
-                                  <div class="form-group"><label class="col-sm-2 control-label">认证方式</label>
+
+
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['brand']}}</label>
+
+                                    <div class="col-sm-5">
+
+                                      <input type="radio" name="data[brand]" {% if bech['brand']=='mikrotik' %} checked{% endif %} value="mikrotik">
+                                      Mikrotik
+                                      <input type="radio" name="data[brand]"{% if bech['brand']=='ubnt'%} checked{% endif %} value="ubnt">
+                                      Ubiquiti
+                                     
+                                    </div>
+                                    <div class="col-sm-5">
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+
+
+
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['authen_type']}}</label>
 
                                     <div class="col-sm-5">
 
@@ -116,6 +146,10 @@
                                 
                                 <div class="hr-line-dashed"></div>
 
+
+                             
+
+
                                  <div class="form-group"><label class="col-sm-2 control-label"></label>
 
                                     <div class="col-sm-5">
@@ -124,7 +158,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                        <button class="btn btn-success" onclick="preview();" type="button">预览</button>
                                         &nbsp;&nbsp;&nbsp;
-                                      <button class="btn btn-success" onclick="downloads();" type="button">下载节点</button>
+                                        <button class="btn btn-success" onclick="downloads();" type="button">下载节点</button>
                                     </div>
                                     <div class="col-sm-5">
                                         

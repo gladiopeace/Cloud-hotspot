@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$lang['title'] = "Site Manage - Cloud Hotspot";
 $lang['project_site'] = "Project Site";
 $lang['member_account'] = "Members Acc";
 $lang['access_log'] = "Access Log";

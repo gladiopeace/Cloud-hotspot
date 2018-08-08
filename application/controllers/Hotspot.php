@@ -41,6 +41,7 @@
            $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 	
+
 		
 			/*$this->redirect('/hotspot/base?accesskey='.$accesskey);*/
 			$this->load->library('twig');	
@@ -83,8 +84,9 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('projectsite');   
 
-			$this->load->library('twig');	
+            $this->load->library('twig');	
         	$this->twig->display('hotspot/base.php', $data);
         }
 

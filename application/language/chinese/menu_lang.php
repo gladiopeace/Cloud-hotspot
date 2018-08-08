@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$lang['project_site'] = "节点管理";
+$lang['title'] = "节点管理 - Cloud Hotspot";
+$lang['project_site'] = "节点信息";
 $lang['member_account'] = "会员账号";
 $lang['access_log'] = "访问日志";
 $lang['sms_log'] = "短信日志";
