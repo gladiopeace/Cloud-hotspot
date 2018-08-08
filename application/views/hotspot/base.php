@@ -154,11 +154,13 @@
 
                                     <div class="col-sm-5">
 
-                                       <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                                       <button class="btn btn-primary" id="saving" type="button">{{dic['save']}}</button>
                                         &nbsp;&nbsp;&nbsp;
-                                       <button class="btn btn-success" onclick="preview();" type="button">预览</button>
+                                       <button class="btn btn-success" onclick="preview();" type="button">{{dic['preview']}}</button>
                                         &nbsp;&nbsp;&nbsp;
-                                        <button class="btn btn-success" id='mikrotik-down' onclick="downloads();" type="button">下载节点</button>
+                                        {%  if bech['brand']=='mikrotik' %}
+                                        <button class="btn btn-success" id='mikrotik-down' onclick="downloads();" type="button">{{dic['download']}}</button>
+                                        {% endif %}
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -260,7 +262,7 @@
     var url = "/hotspot/preview?salt={{bech['salt']}}"
     layer.open({
       type: 2,
-      title: 'Wi-Fi Portal --预览',
+      title: "Wi-Fi Portal -- {{dic['preview']}}",
       shadeClose: true,
       shade: 0.8,
       area: ['368px', '580px'],

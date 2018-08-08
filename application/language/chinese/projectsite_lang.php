@@ -31,3 +31,6 @@ $lang['authen_type'] ='认证方式';
 $lang['wechat'] ='微信连Wi-Fi';
 $lang['sms'] ='SMS短信';
 $lang['member'] ='会员账号';
+$lang['save'] ='保存';
+$lang['preview'] ='预览';
+$lang['download'] ='下载';

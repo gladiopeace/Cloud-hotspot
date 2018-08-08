@@ -32,6 +32,9 @@ $lang['authen_type'] ='Authentication Type';
 $lang['wechat'] ='Wechat';
 $lang['sms'] ='SMS';
 $lang['member'] ='Member';
+$lang['save'] ='Save';
+$lang['preview'] ='Preview';
+$lang['download'] ='Download';
 
 
 /* End of file upload_lang.php */
