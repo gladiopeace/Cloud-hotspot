@@ -186,7 +186,7 @@ switch ($step) {
                 }
                 if (empty($n)) {
                     $arr['status'] = 'notice';
-                    $arr['msg'] = "成功创建数据库:{$dbName}<br>";
+                    $arr['msg'] = $dictionary['db_succ'].":{$dbName}<br>";
                     echo json_encode($arr);
                     exit;
                 }

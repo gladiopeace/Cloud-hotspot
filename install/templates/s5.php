@@ -11,7 +11,7 @@
   <?php require './templates/header.php';?>
   <section class="section">
     <div class="">
-      <div class="success_tip cc"> <a href="http://<?php echo $domain ?>" class="f16 b">安装完成，立即进行设置体验吧!</a>
+      <div class="success_tip cc"> <a href="http://<?php echo $domain ?>" class="f16 b"><?php echo $dictionary['software_succ'];?></a>
 		<p>为了您站点的安全，安装完成后即可将网站根目录下的“Install”文件夹删除。<p>
       </div>
       <div class=""> </div>

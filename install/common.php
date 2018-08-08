@@ -120,6 +120,9 @@ function getEnglish(){
 		'installing'	=>'installing software',
 		'db_no_connect'	=>'can not connect to the database',
 		'db_ver_low'	=>'Mysql Version is lower',
+		'db_succ'		=>'Successfully created the database',
+		'software_succ'	=>'Successfully Installed the software,then go to the system to create your site . Have fun!',
+
 
 
 
@@ -180,6 +183,9 @@ function getChinese(){
 		'installing'	=>'正在安装软件',
 		'db_no_connect'	=>'连接数据库失败',
 		'db_ver_low'	=>'数据库版本太低!',
+		'db_succ'		=>'成功创建数据库',
+		'software_succ'	=>'安装完成，立即进行设置体验吧!',
+		
 
 
 
