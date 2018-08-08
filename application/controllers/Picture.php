@@ -40,6 +40,10 @@
             $data['result'] = $results;
 
             $data['accesskey'] = $accesskey;
+             $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('picture/index.php',$data);
         }
@@ -82,6 +86,9 @@
 
 
             $data['accesskey'] = $this->_organization['accesskey'];
+             $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
 
             $this->load->library('twig');
             $this->twig->display('picture/upload.php',$data);
@@ -258,6 +265,11 @@
                 $results = $query->result_array();
 
                 $data['results'] = $results;
+
+                 $lang = $this->input->get('lang', TRUE);
+                $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+                $data['menu'] = $this->Switch->init('menu'); 
+                
                 $this->load->library('twig');
                 $this->twig->display('youtu/component.php',$data);
 

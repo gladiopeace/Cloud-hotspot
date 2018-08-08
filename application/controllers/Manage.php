@@ -47,18 +47,12 @@
 
 			$stores = $this->Member_model->get('hotspot_branch',['salt','branch','id'],['uid'=>$uid]);
 			$bech = $this->Member_model->first('user',["*"],['id'=>$uid]);
-			$data = array_merge($data,['result'=>$stores,'bech'=>$bech,'now'=>time()]);
+			$data = array_merge($data,['result'=>$stores,'bech'=>$bech,'now'=>time()]);			
+		
+            $this->load->library('twig');
+			$this->twig->display('manage/index.php',$data);
+
 			
-			$this->load->library('user_agent');
-			if ($this->agent->is_mobile()){
-				$this->load->library('twig');
-				$this->twig->display('manage/indexM.php',$data);
-			}else{
-                $this->load->library('twig');
-				$this->twig->display('manage/index.php',$data);
-
-			}
-
 	    }
 
 	    public function create(){

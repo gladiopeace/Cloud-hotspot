@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>云热点节点设置向导</title>
+    <title>create project'site</title>
     <style type="text/css">
         #wizard {border:5px solid #789;font-size:12px;height:508px;margin:10px auto;width:580px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
         #wizard .items{width:20000px; clear:both; position:absolute;}

@@ -36,7 +36,11 @@
                'branch_id'  =>  $bech['id'],              
            	);
            	//创建session	
-			$this->session->set_userdata($data);	    	
+			$this->session->set_userdata($data);	   
+
+           $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 	
 		
 			/*$this->redirect('/hotspot/base?accesskey='.$accesskey);*/
 			$this->load->library('twig');	
@@ -75,6 +79,11 @@
 			$bech = $this->Portal_model->branch(['salt'=>$accesskey]);
 			if(false==$bech || empty($bech)) $this->redirect('/manage');
 			$data =	['accesskey'=>$accesskey,'bech'=>$bech];
+
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
 			$this->load->library('twig');	
         	$this->twig->display('hotspot/base.php', $data);
         }
@@ -147,6 +156,9 @@
 
             $data = ['accesskey'=>$accesskey];
             $data['result'] = $results;
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
 
 
             $this->load->library('twig');
@@ -166,6 +178,9 @@
             $query = $this->Member_model->getall($config_p['per_page'],$offset,'access_auth',$where,array('addtime'=>'DESC','id'=>'ASC'));
             $data['accesskey'] = $accesskey;
             $data['result'] =  $query->result_array();
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
             //var_dump($data);
             $this->load->library('twig');
             $this->twig->display('hotspot/access_log.php',$data);
@@ -203,6 +218,10 @@
 
             $data['result'] = $result;
             $data['accesskey'] = $accesskey;
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('wechat/wifi.php',$data);
 
@@ -269,6 +288,10 @@
             }
                        
             $data['accesskey'] = $accesskey;
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/themes.php',$data);
         }
@@ -298,6 +321,10 @@
             $themes = $this->theme->scanTheme();
            
             $data = array('result'=>$themes,'accesskey'=>$accesskey);
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
 
             $this->load->library('twig');
 
@@ -361,6 +388,10 @@
             $results = $query->result_array();
             $data = ['accesskey'=>$accesskey];
             $data['result'] = $results;
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/screen.php', $data);
         }
@@ -377,6 +408,12 @@
                 exit();
             }
             $data['accesskey'] = $accesskey;
+
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
+
             $this->load->library('twig');
             $this->twig->display('hotspot/screen_add.php',$data);
         }
@@ -407,6 +444,11 @@
             }
 
             $data['accesskey'] = $accesskey;
+            
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/user_add.php', $data);
         }
@@ -447,6 +489,11 @@
             $data['user'] = $user;
             $data['accesskey'] = $accesskey;
 
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
+
             $this->load->library('twig');
             $this->twig->display('hotspot/users_modify.php', $data);
 
@@ -463,6 +510,11 @@
             $query = $this->Member_model->getall($config_p['per_page'],$offset,'message_code',$where,array('addtime'=>'DESC','id'=>'ASC'));
             $data['result'] = $query->result_array();
             $data['accesskey'] = $accesskey;
+
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/message_log.php',$data);
 
@@ -486,6 +538,10 @@
 
             $data['result'] = $_slider;
             $data['accesskey'] = $accesskey;
+
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
 
             $this->load->library('twig');
             $this->twig->display('hotspot/screen_update.php',$data);
@@ -515,6 +571,11 @@
             $results = $query->result_array();
             $data = ['accesskey'=>$accesskey];
             $data['result'] = $results;
+            
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/banner.php', $data);
         }
@@ -536,6 +597,11 @@
 
             $data['bid'] = $bid;
             $data['accesskey'] = $accesskey;
+
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/banner_add.php',$data);
         }
@@ -557,6 +623,10 @@
             $data['bid'] = $bid;
             $data['result'] = $_slider;
             $data['accesskey'] = $accesskey;
+            
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
 
             $this->load->library('twig');
             $this->twig->display('hotspot/banner_update.php',$data);
@@ -609,6 +679,10 @@
 
             $data['bid'] = $bid;
             $data['accesskey'] = $accesskey;
+            $lang = $this->input->get('lang', TRUE);
+            $this->load->library('Lang', array('lang'=>$lang), 'Switch');
+            $data['menu'] = $this->Switch->init('menu'); 
+
             $this->load->library('twig');
             $this->twig->display('hotspot/themeset.php', $data);
 
