@@ -29,6 +29,9 @@ $lang['download'] = "Download";
 $lang['tutorial_unifi'] = "tutorials";
 $lang['tutorial_mikrotik'] = "tutorials";
 $lang['authen_type'] ='Authentication Type';
+$lang['wechat'] ='Wechat';
+$lang['sms'] ='SMS';
+$lang['member'] ='Member';
 
 
 /* End of file upload_lang.php */

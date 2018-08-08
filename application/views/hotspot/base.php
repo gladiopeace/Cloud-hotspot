@@ -27,9 +27,7 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             </div>
-                        </div>
-
-                        {{bech['brand']}}
+                        </div>                     
 
                         <div class="ibox-content">
                             <form id="dataform" class="form-horizontal">
@@ -47,12 +45,13 @@
                               
                                
                                 <div class="form-group">
-                                  <label class="col-sm-2 control-label">
-                                    {{dic['user']}}
+                                  <label class="col-sm-2 control-label" id='user-lable'>
+                                    {% if bech['brand'] == 'mikrotik' %} {{dic['user_mikrotik']}} {% elseif bech['brand'] == 'ubnt' %} {{dic['user_ubnt']}} {% endif %}
+                                    
                                   </label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" value="{{bech['access_info']['username']}}" class="form-control" name="access_info[username]" placeholder="{% if bech['brand'] == 'mikrotik' %} {{dic['user_mikrotik']}} {% elseif bech['brand'] == 'ubnt' %} {{dic['user_ubnt']}} {% endif %}">
+                                    <input type="text" id='user-text' value="{{bech['access_info']['username']}}" class="form-control" name="access_info[username]" placeholder="{% if bech['brand'] == 'mikrotik' %} {{dic['user_mikrotik']}} {% elseif bech['brand'] == 'ubnt' %} {{dic['user_ubnt']}} {% endif %}">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -61,12 +60,13 @@
 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                  <label class="col-sm-2 control-label">                                  
-                                    {{dic['pass']}}
+                                  <label class="col-sm-2 control-label" id="pass-lable">                                  
+                                    {% if bech['brand'] =='mikrotik' %} {{ dic['pass_mikrotik'] }} {% elseif bech['brand'] =='ubnt' %} {{ dic['pass_ubnt'] }} {% endif %}
+                                 
                                   </label>
 
                                     <div class="col-sm-5">
-                                    <input type="password" placeholder="{% if bech['brand'] =='mikrotik' %} {{ dic['pass_mikrotik'] }} {% elseif bech['brand'] == ubnt %} {{ dic['pass_ubnt'] }} {% endif %}" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
+                                    <input type="password" id='pass-text' placeholder="{% if bech['brand'] =='mikrotik' %} {{ dic['pass_mikrotik'] }} {% elseif bech['brand'] =='ubnt' %} {{ dic['pass_ubnt'] }} {% endif %}" class="form-control" name="access_info[password]" value="{{bech['access_info']['password']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         <span></span>
@@ -78,12 +78,13 @@
                                 
                                 <div class="hr-line-dashed"></div>
 
-                                  <div class="form-group"><label class="col-sm-2 control-label">
-                                    {{dic['ip']}}
+                                  <div class="form-group"><label class="col-sm-2 control-label" id='ip-lable'>
+                                    {% if bech['brand'] =='mikrotik' %} {{ dic['ip_mikrotik'] }} {% elseif bech['brand'] =='ubnt' %} {{ dic['ip_ubnt'] }} {% endif %}
+                                   
                                   </label>
 
                                     <div class="col-sm-5">
-                                      <input type="text" class="form-control" name="access_info[ip]" value="{{bech['access_info']['ip']}}">
+                                      <input type="text" class="form-control" id="ip-text" placeholder="{% if bech['brand'] =='mikrotik' %} {{ dic['ip_mikrotik'] }} {% elseif bech['brand'] =='ubnt' %} {{ dic['ip_ubnt'] }} {% endif %}" name="access_info[ip]" value="{{bech['access_info']['ip']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -112,9 +113,9 @@
 
                                     <div class="col-sm-5">
 
-                                      <input type="radio" name="data[brand]" {% if bech['brand']=='mikrotik' %} checked{% endif %} value="mikrotik">
+                                      <input class="brand-type" type="radio" name="data[brand]" {% if bech['brand']=='mikrotik' %} checked{% endif %} value="mikrotik">
                                       Mikrotik
-                                      <input type="radio" name="data[brand]"{% if bech['brand']=='ubnt'%} checked{% endif %} value="ubnt">
+                                      <input class="brand-type" type="radio" name="data[brand]"{% if bech['brand']=='ubnt'%} checked{% endif %} value="ubnt">
                                       Ubiquiti
                                      
                                     </div>
@@ -132,12 +133,11 @@
                                     <div class="col-sm-5">
 
                                       <input type="radio" name="data[type]" {% if bech['type']=='normal' or bech['type']=='' %} checked{% endif %} value="normal">
-                                      通用认证
+                                      {{ dic['sms'] }}
                                       <input type="radio" value="account" name="data[type]"{% if bech['type']=='account'%} checked{% endif %}>
-                                      帐号认证
+                                      {{ dic['member'] }}                                    
                                       <input type="radio" value="wechat" name="data[type]" {% if bech['type']=='wifi' or bech['type']=='wechat' %} checked{% endif %}>
-                                      微信连Wi-Fi
-                                           
+                                      {{ dic['wechat'] }}                                           
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -158,7 +158,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                        <button class="btn btn-success" onclick="preview();" type="button">预览</button>
                                         &nbsp;&nbsp;&nbsp;
-                                        <button class="btn btn-success" onclick="downloads();" type="button">下载节点</button>
+                                        <button class="btn btn-success" id='mikrotik-down' onclick="downloads();" type="button">下载节点</button>
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -192,9 +192,7 @@
           timeOut: 4000
       };
 
-      $("#saving").click(function(event) {
-        /* Act on the event */
-           //toastr.success('温馨提示:已经为您保存完成!');
+      $("#saving").click(function(event) {  
 
         $.ajax({
           url: '?',
@@ -210,9 +208,45 @@
               toastr.warning('温馨提示:已经为您保存完成!');
 
             }
-        });
-        
+        });        
       });
+
+
+
+
+      $(".brand-type").click(function(event) {
+            console.log('eeeeee');
+            /* Act on the event */
+            let type = $(this).val();//$('input[name="brand"]:checked').val();          
+            let user_ubnt = "{{dic['user_ubnt']}}";
+            let user_mikrotik = "{{dic['user_mikrotik']}}";
+            let pass_ubnt = "{{dic['pass_ubnt']}}";
+            let pass_mikrotik = "{{dic['pass_mikrotik']}}";
+            let ip_mikrotik = "{{dic['ip_mikrotik']}}";
+            let ip_ubnt = "{{dic['ip_ubnt']}}";
+            if(type=='mikrotik'){              
+               $("#user-lable").text(user_mikrotik);        
+               $("#pass-lable").text(pass_mikrotik);
+               $("#user-text").text(user_mikrotik);        
+               $("#pass-text").text(pass_mikrotik);
+               $("#ip-text").text(ip_mikrotik);
+               $("#ip-lable").text(ip_mikrotik);               
+               $("#mikrotik-down").show();  
+               
+            }else if(type=='ubnt'){
+              $("#user-lable").text(user_ubnt);        
+               $("#pass-lable").text(pass_ubnt); 
+               $("#user-text").text(user_ubnt);        
+               $("#pass-text").text(pass_ubnt); 
+               $("#ip-lable").text(ip_ubnt);
+               $("#ip-text").text(ip_ubnt);
+               $("#mikrotik-down").hide();        
+               
+            }
+                        
+            console.log(type);
+        });
+
 
     })
 

@@ -27,3 +27,7 @@ $lang['ubiquiti_tutorials'] = "请点击“教程”按钮学习如何配置Ubiq
 $lang['download'] = "下载";
 $lang['tutorial_unifi'] = "教程";
 $lang['tutorial_mikrotik'] = "教程";
+$lang['authen_type'] ='认证方式';
+$lang['wechat'] ='微信连Wi-Fi';
+$lang['sms'] ='SMS短信';
+$lang['member'] ='会员账号';
