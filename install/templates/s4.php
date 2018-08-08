@@ -21,7 +21,7 @@
       <ul id="loginner">
       </ul>
     </div>
-    <div class="bottom tac"> <a href="javascript:;" class="btn_old"><img src="./images/install/loading.gif" align="absmiddle" />&nbsp;正在安装...</a> </div>
+    <div class="bottom tac"> <a href="javascript:;" class="btn_old"><img src="./images/install/loading.gif" align="absmiddle" />&nbsp;<?php echo $dictionary['installing']?>...</a> </div>
   </section>
   <script type="text/javascript">
 var n=0;

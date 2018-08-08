@@ -102,8 +102,8 @@ function getEnglish(){
 		'user_info'		=>'User Setting',
 		'administrator'	=>'Administrator',
 		'ad_password'	=>'Password',
-		'ad_confirm'	=>'Confirm',
-		'ad_email'		=>'Email',
+		'ad_confirm'	=>'Confirm passwd',
+		'ad_email'		=>'Email address',
 		'os_type'		=>'Unix-like',
 		'no_write'		=>'can\'t wtrite',
 		'no_read'		=>'can\'t Read',
@@ -113,7 +113,14 @@ function getEnglish(){
 		'user_tips'		=>'Administrator Account can not be empty',
 		'pass_tips'		=>'Password can not be empty',
 		'confirm_tips'	=>'Confirm password can not be empty',
-		'confirm_tips'	=>'Confirm password can not be empty',
+		'wrong_pass_t'	=>'The specified passwords do not match',
+		'email_tips'	=>'The email address can not be empty.',
+		'wrong_email_t'	=>'Please enter a valid Email address.',
+		'manager'		=>'Administrator have all the permissions of this site',
+		'installing'	=>'installing software',
+		'db_no_connect'	=>'can not connect to the database',
+		'db_ver_low'	=>'Mysql Version is lower',
+
 
 
 
@@ -166,6 +173,15 @@ function getChinese(){
 		'user_tips'		=>'管理员帐号不能为空',
 		'pass_tips'		=>'密码不能为空',
 		'confirm_tips'	=>'确认密码不能为空',
+		'wrong_pass_t'	=>'两次输入的密码不一致。请重新输入',
+		'email_tips'	=>'邮箱地址不能为空',
+		'wrong_email_t'	=>'请输入正确的电子邮箱地址',
+		'manager'		=> '创始人帐号，拥有站点后台所有管理权限',
+		'installing'	=>'正在安装软件',
+		'db_no_connect'	=>'连接数据库失败',
+		'db_ver_low'	=>'数据库版本太低!',
+
+
 
 
 

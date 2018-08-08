@@ -145,7 +145,7 @@ $(function(){
 		dbpw : '',
 		dbname : '',
 		dbprefix : '建议使用默认，同一数据库安装多个时需修改',
-		manager : '创始人帐号，拥有站点后台所有管理权限',
+		manager : '<?php echo $dictionary['manager'];?>',
 		manager_pwd : '',
 		manager_ckpwd : '',
 		sitename : '',
@@ -266,12 +266,12 @@ $(function(){
 				required	: '<?php echo $dictionary['pass_tips'];?>'
 			},
 			manager_ckpwd: {
-				required	: '重复密码不能为空',
-				equalTo : '两次输入的密码不一致。请重新输入'
+				required	:'<?php echo $dictionary['confirm_tips'];?>',
+				equalTo : '<?php echo $dictionary['wrong_pass_t'];?>'
 			},
 			manager_email: {
-				required	: 'Email不能为空',
-				email : '请输入正确的电子邮箱地址'
+				required	: '<?php echo $dictionary['email_tips'];?>',
+				email : '<?php echo $dictionary['wrong_email_t'];?>'
 			}
 		},
 		submitHandler:function(form) {

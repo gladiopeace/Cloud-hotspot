@@ -165,14 +165,14 @@ switch ($step) {
             $server_url = $http_type . $_SERVER['HTTP_HOST'];      
             $conn = @mysqli_connect($dbHost,$dbUser, $dbPwd,'',$dbPort);
             if (!$conn) {
-                $arr['msg'] = "连接数据库失败!";
+                $arr['msg'] = $dictionary['db_no_connect'];
                 echo json_encode($arr);
                 exit;
             }
             $conn->query("SET NAMES 'utf8'"); //,character_set_client=binary,sql_mode='';
             $version =$conn->server_version;
             if ($version < 4.1) {
-                $arr['msg'] = '数据库版本太低!';
+                $arr['msg'] = $dictionary['db_ver_low'];//'数据库版本太低!';
                 echo json_encode($arr);
                 exit;
             }
