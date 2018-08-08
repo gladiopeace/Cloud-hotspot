@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                 <h5>访问记录</h5>                  
+                <h5>访问记录</h5>                  
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -61,7 +61,6 @@
                 <thead>
                 <tr>
                     <td>序号</td>
-
                     <td>授权码</td>
                     <td>MAC地址</td>
                     <td>授权类型</td>

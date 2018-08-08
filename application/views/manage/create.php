@@ -97,17 +97,25 @@
                     </div>
                 </div>
                 <div class="page">
-                    <h3>完成向导<br/><em>成功将站点相关信息生成。</em></h3>
-                    <h4>恭喜您！</h4>
-                    <p id="mikrotik-down">请点击“下载”按钮下载节点文件。</p>
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <div class="btn_nav">
-                        <input type="hidden" id="download" value="">
-                        <input type="button" value="下载" onclick="downloads();"/>
+                    <h3>{{success_title}}<br/><em>{{success_sub_title}}</em></h3>
+                    <h4>{{congratulations}}</h4>
+                    <div id="mikrotik-down">
+                        <p>{{mikrotik_download}}</p>
+                        <p>{{mikrotik_tutorials}}</p>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="btn_nav">
+                            <input type="hidden" id="download" value="">
+                            <input type="button" value="{{download}}" onclick="downloads();"/>
+                        </div>
                     </div>
+
+                    <div id="">
+                        
+
+                    </div>
+                   
                 </div>
             </div>
         </div>

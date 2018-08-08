@@ -17,7 +17,7 @@
                                 <br/>
 
                                 <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">{{orginazation}}</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{organization}}</label>
 
                                     <div class="col-sm-7 col-xs-7">
                                     <input type="text" id="company" name="data[company]" class="form-control" value="{{bech['company']}}">
