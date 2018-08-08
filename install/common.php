@@ -104,6 +104,13 @@ function getEnglish(){
 		'ad_password'	=>'Password',
 		'ad_confirm'	=>'Confirm',
 		'ad_email'		=>'Email',
+		'os_type'		=>'Unix-like',
+		'no_write'		=>'can\'t wtrite',
+		'no_read'		=>'can\'t Read',
+		'fix_list'		=>'please fix the list of the promble below',
+		'enable'		=>'Enable',
+		'installed'		=>'Installed',
+
 
 
 	];
@@ -146,6 +153,12 @@ function getChinese(){
 		'ad_password'	=>'密码',	
 		'ad_confirm'	=>'确认密码',
 		'ad_email'		=>'邮箱地址',
+		'os_type'		=>'类Unix',
+		'no_write'		=>'不可写',	
+		'no_read'		=>'不可读',	
+		'fix_list'		=>'请解决以下问题',
+		'enable'		=>'开启',
+		'installed'		=>'已安装',
 
 
 

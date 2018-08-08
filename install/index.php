@@ -98,7 +98,7 @@ switch ($step) {
             $gd = '<font color=green>[√]On</font> ' . $tmp['GD Version'];
         }
         if (function_exists('mysqli_connect')) {
-            $mysql = '<span class="correct_span">&radic;</span> 已安装';
+            $mysql = '<span class="correct_span">&radic;</span>'.$dictionary['installed'];
         } else {
             $mysql = '<span class="correct_span error_span">&radic;</span> 出现错误';
             $Errors[]='请确认MySQL服务器支持Mysqli扩展!';

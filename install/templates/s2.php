@@ -26,7 +26,7 @@
         </tr>
         <tr>
           <td><?php echo $dictionary['os']; ?></td>
-          <td>类UNIX</td>
+          <td><?php echo $dictionary['os_type']; ?></td>
           <td><span class="correct_span">&radic;</span> <?php echo $os; ?></td>
           <td>不限制</td>
         </tr>
@@ -70,18 +70,18 @@ foreach($folder as $dir){
     $write='';
     $flag = false;
 	 if(TestWrite($Testdir)){
-	     $w = '<span class="correct_span">&radic;</span>可写 ';
+	     $w = '<span class="correct_span">&radic;</span>'.$dictionary['write'];
 	 }else{
-         $write = '写';
-	     $w = '<span class="correct_span error_span">&radic;</span>不可写 ';
+         $write = $dictionary['write'];
+	     $w = '<span class="correct_span error_span">&radic;</span>'.$dictionary['no_write'];
 		 $err++;
          $flag = true;;
 	 }
 	if(is_readable($Testdir)){
-	     $r = '<span class="correct_span">&radic;</span>可读' ;
+	     $r = '<span class="correct_span">&radic;</span>'.$dictionary['read'];
 	 }else{
-         $read ='读';
-	     $r = '<span class="correct_span error_span">&radic;</span>不可读';
+        $read = $dictionary['read'];
+	     $r = '<span class="correct_span error_span">&radic;</span>'.$dictionary['no_read'];
 		 $err++;
          $flag = true;;
 	 }
@@ -113,7 +113,7 @@ foreach($folder as $dir){
         var flag = "<?php echo $err;?>";
 
         if(flag>0){
-            var List = "<center style='margin-top:10px;color:red;'>请解决以下问题:</center><div style='margin:0 auto;margin-left:40px;margin-top:10px;font-size:14px;'><?php
+            var List = "<center style='margin-top:10px;color:red;'><?php echo $dictionary['fix_list'];?>:</center><div style='margin:0 auto;margin-left:40px;margin-top:10px;font-size:14px;'><?php
                 foreach($Errors as $k=>$v){
                     echo ($k+1).'.'.$v.'<br/>';
                 } ?></div>";
