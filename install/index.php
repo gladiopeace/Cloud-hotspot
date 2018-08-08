@@ -112,7 +112,7 @@ switch ($step) {
             $uploadSize = '<span class="correct_span error_span">&radic;</span>禁止上传';
         }
         if (function_exists('session_start')) {
-            $session = '<span class="correct_span">&radic;</span> 支持';
+            $session = '<span class="correct_span">&radic;</span>'.$dictionary['enable'];
         } else {
             $Errors[]='请确认php服务器支持Session!';
             $session = '<span class="correct_span error_span">&radic;</span> 不支持';

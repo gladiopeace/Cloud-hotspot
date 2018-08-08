@@ -260,10 +260,10 @@ $(function(){
 				required	: '数据库表前缀不能为空'
 			},
 			manager: {
-				required	: '管理员帐号不能为空'
+				required	: '<?php echo $dictionary['user_tips'];?>'
 			},
 			manager_pwd: {
-				required	: '密码不能为空'
+				required	: '<?php echo $dictionary['pass_tips'];?>'
 			},
 			manager_ckpwd: {
 				required	: '重复密码不能为空',

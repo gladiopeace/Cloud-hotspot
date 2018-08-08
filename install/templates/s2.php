@@ -28,7 +28,7 @@
           <td><?php echo $dictionary['os']; ?></td>
           <td><?php echo $dictionary['os_type']; ?></td>
           <td><span class="correct_span">&radic;</span> <?php echo $os; ?></td>
-          <td>不限制</td>
+          <td>Linux</td>
         </tr>
         <tr>
           <td><?php echo $dictionary['php']; ?></td>
@@ -46,13 +46,13 @@
           <td><?php echo $dictionary['upload_file']; ?></td>
           <td>>2M</td>
           <td><?php echo $uploadSize; ?></td>
-          <td>不限制</td>
+          <td>2M</td>
         </tr>
         <tr>
-          <td>session</td>
-          <td>开启</td>
+          <td>Session</td>
+          <td><?php echo $dictionary['enable']; ?></td>
           <td><?php echo $session; ?></td>
-          <td>开启</td>
+          <td><?php echo $dictionary['enable']; ?></td>
         </tr>
 
       </table>

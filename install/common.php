@@ -110,6 +110,10 @@ function getEnglish(){
 		'fix_list'		=>'please fix the list of the promble below',
 		'enable'		=>'Enable',
 		'installed'		=>'Installed',
+		'user_tips'		=>'Administrator Account can not be empty',
+		'pass_tips'		=>'Password can not be empty',
+		'confirm_tips'	=>'Confirm password can not be empty',
+		'confirm_tips'	=>'Confirm password can not be empty',
 
 
 
@@ -159,6 +163,9 @@ function getChinese(){
 		'fix_list'		=>'请解决以下问题',
 		'enable'		=>'开启',
 		'installed'		=>'已安装',
+		'user_tips'		=>'管理员帐号不能为空',
+		'pass_tips'		=>'密码不能为空',
+		'confirm_tips'	=>'确认密码不能为空',
 
 
 
