@@ -70,12 +70,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-4 col-xs-4 text-center" data-enable="{{qcloud[enable]}}">开关</label>
+                            <label class="col-sm-4 col-xs-4 text-center" data-enable="{{qcloud[enable]}}">{{dic['switch']}}</label>
 
                             <div class="col-sm-7 col-xs-7">
 
                                 <div class="switch" id="QcloudSms">
-                                    <input type="checkbox" name="data[enable]" checked data-on-text="启用" data-off-text="关闭"/>
+                                    <input type="checkbox" name="data[enable]" checked data-on-text="{{dic['enable']}}" data-off-text="{{dic['enable']}}"/>
                                 </div>
                             </div>
 
@@ -90,7 +90,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12 col-sm-offset-12 text-center">
-                                <button class="btn btn-success saving" data-form="Qcloud-post" type="button">保存信息</button>
+                                <button class="btn btn-success saving" data-form="Qcloud-post" type="button">{{dic['save']}}</button>
                             </div>
 
                         </div>
@@ -148,12 +148,12 @@
 
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center" data-enable="{{aliyun[enable]}}">开关</label>
+                                <label class="col-sm-4 col-xs-4 text-center" data-enable="{{aliyun[enable]}}">{{dic['switch']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
 
                                     <div class="switch" id="AliyunSms">
-                                        <input type="checkbox" name="data[enable]" checked data-on-text="启用" data-off-text="关闭"/>
+                                        <input type="checkbox" name="data[enable]" checked data-on-text="{{dic['enable']}}" data-off-text="{{dic['disable']}}"/>
                                     </div>
                                 </div>
 
@@ -169,7 +169,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-12 col-sm-offset-12 text-center">
-                                    <button class="btn btn-success saving" data-form="Aliyun-post" type="button">保存信息</button>
+                                    <button class="btn btn-success saving" data-form="Aliyun-post" type="button">{{dic['save']}}</button>
                                 </div>
 
                             </div>
@@ -191,7 +191,7 @@
                             <br/>
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">SMTP服务器</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['smtp_server']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" id="company" name="data[smtp_server]" class="form-control" value="{{email['smtp_server']}}">
@@ -202,7 +202,7 @@
 
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">SMTP端口号</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['smtp_port']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[smtp_port]" class="form-control" value="{{email['smtp_port']}}">
@@ -213,7 +213,7 @@
 
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">用户名</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['username']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[username]" class="form-control" value="{{email['username']}}">
@@ -223,7 +223,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">密码</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['password']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[password]" class="form-control" value="{{email['password']}}">
@@ -233,12 +233,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center" data-enable="{{aliyun[enable]}}">SSL加密</label>
+                                <label class="col-sm-4 col-xs-4 text-center" data-enable="{{aliyun[enable]}}">{{dic['ssl']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
 
                                     <div class="switch" id="Email">
-                                        <input type="checkbox" name="data[ssl]" checked data-on-text="启用" data-off-text="关闭"/>
+                                        <input type="checkbox" name="data[ssl]" checked data-on-text="{{dic['enable']}}" data-off-text="{{dic['disable']}}"/>
                                     </div>
                                 </div>
 
@@ -253,7 +253,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-12 col-sm-offset-12 text-center">
-                                    <button class="btn btn-success saving" data-form="Email-post" type="button">保存信息</button>
+                                    <button class="btn btn-success saving" data-form="Email-post" type="button">{{dic['save']}}</button>
                                 </div>
 
                             </div>
@@ -309,7 +309,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-12 col-sm-offset-12 text-center">
-                                    <button class="btn btn-success saving" data-form="bech-post" type="button">保存信息</button>
+                                    <button class="btn btn-success saving" data-form="bech-post" type="button">{{dic['save']}}</button>
                                 </div>
                             </div>
                             <input type="hidden" name="do" value="Bech">
