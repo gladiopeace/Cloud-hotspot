@@ -12,7 +12,7 @@ $lang['disable'] = "Disable";
 $lang['skip'] = "Skip Ad";
 $lang['allow'] = "Allow";
 $lang['forbidden'] = "Forbidden";//Allow Forbidden
-$lang['save'] = "save";
+$lang['save'] = "Save";
 $lang['verify_code_fill'] = "Enter Verification code";
 
 
