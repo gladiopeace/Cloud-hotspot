@@ -687,6 +687,7 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('themeinfo'); 
 
             $this->load->library('twig');
             $this->twig->display('hotspot/themeset.php', $data);

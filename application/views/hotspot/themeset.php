@@ -14,7 +14,7 @@
       <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>主题设置</h5>
+                            <h5>{{dic['theme_info']}}</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -36,7 +36,7 @@
                            
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">
-                                    标题名称
+                                    {{dic['theme_title']}}
                                   </label>
 
                                     <div class="col-sm-5">
@@ -52,7 +52,7 @@
 
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">
-                                    公司名称
+                                    {{dic['company_name']}}
                                   </label>
 
                                     <div class="col-sm-5">
@@ -69,14 +69,14 @@
 
                               <div class="form-group">
                                   <label class="col-sm-2 control-label">
-                                  广告时间
+                                  {{dic['ad_time']}}
                                   </label>
 
                                     <div class="col-sm-5">
                                     <input type="text" class="form-control" name="data[number]" value="{{ret['number']}}">
                                     </div>
                                     <div class="col-sm-5">
-                                        只填写数字
+                                         {{dic['ad_time_t']}}
                                     </div>
                               </div>
                                 
@@ -85,13 +85,13 @@
 
 
                                   
-                                <div class="form-group"><label class="col-sm-2 control-label">广告功能</label>
+                                <div class="form-group"><label class="col-sm-2 control-label"> {{dic['ad']}}</label>
 
                                     <div class="col-sm-5">
                                     <input type="radio" name="data[screen]" {% if ret['screen']=='accept' or ret['screen']=='' %} checked{% endif %} value="accept">
-                                      开启
+                                       {{dic['enable']}}
                                       <input type="radio" value="deny" name="data[screen]" {% if ret['screen']=='deny'%} checked{% endif %} >
-                                     关闭
+                                      {{dic['disable']}}
                                      
                                     </div>
                                     <div class="col-sm-5">
@@ -105,16 +105,16 @@
                                 <div class="hr-line-dashed"></div>
 
                                   <div class="form-group"><label class="col-sm-2 control-label">
-                                   跳过广告
+                                    {{dic['skip']}}
                                   </label>
 
                                     <div class="col-sm-5">
                                      
 
                                      <input type="radio" name="data[type]" {% if ret['type']=='accept' or ret['type']=='' %} checked{% endif %} value="accept">
-                                      允许
+                                       {{dic['allow']}}
                                       <input type="radio" value="deny" name="data[type]" {% if ret['type']=='deny'%} checked{% endif %} >
-                                      禁止
+                                       {{dic['forbidden']}}
                                      
                                     </div>
                                     <div class="col-sm-5">
@@ -127,7 +127,7 @@
                               
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">   
-                                        <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                                        <button class="btn btn-primary" id="saving" type="button"> {{dic['save']}}</button>
                                     </div>
                                 </div>
                             </form>
