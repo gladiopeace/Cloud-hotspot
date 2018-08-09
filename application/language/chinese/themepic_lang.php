@@ -25,6 +25,12 @@ $lang['screen'] = "Screen Ad信息";
 $lang['photo'] = "相片";
 $lang['choose'] = "选择";
 $lang['library'] = "图片资料库";
+$lang['internet_pic'] = "网络图片";
+$lang['upload'] = "上传新图片";
+$lang['use'] = "选用";
+$lang['fetch'] = "提取";
+$lang['preview'] = "预览";
+$lang['example'] = "例:";
 
 
 

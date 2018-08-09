@@ -269,8 +269,8 @@
 
                  $lang = $this->input->get('lang', TRUE);
                 $this->load->library('Lang', array('lang'=>$lang), 'Switch');
-                $data['menu'] = $this->Switch->init('menu'); 
-                
+                /*$data['menu'] = $this->Switch->init('menu'); */
+                $data['dic'] = $this->Switch->init('themepic');                 
                 $this->load->library('twig');
                 $this->twig->display('youtu/component.php',$data);
 

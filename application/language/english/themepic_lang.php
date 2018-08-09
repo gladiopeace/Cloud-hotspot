@@ -22,6 +22,14 @@ $lang['screen'] = "Screen Ad Info";
 $lang['photo'] = "photo";
 $lang['choose'] = "Choose";
 $lang['library'] = "Pictures Library";
+$lang['upload'] = "Upload Picture";
+$lang['internet_pic'] = "Internet Picture";
+$lang['use'] = "Use it";
+$lang['fetch'] = "Fetch";
+$lang['preview'] = "Preview";
+$lang['example'] = "Example:";
+
+
 
 
 
