@@ -22,7 +22,7 @@
 
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span>已发短信数</span>
+                            <span>{{dic['sms_use']}}</span>
 
                             <h2 class="font-bold"><span id="message_total"></span> </h2>
                          
@@ -39,7 +39,7 @@
                             <i class="fa fa-wechat fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> 微信连Wi-Fi </span>
+                            <span> {{dic['wechat']}} </span>
                             <h2 class="font-bold" id="wechat_count"></h2>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             <i class="fa fa-rss fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> 短信认证</span>
+                            <span> {{dic['sms']}}</span>
                             <h2 class="font-bold" id="message_count"></h2>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             <i class="fa fa-paper-plane fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> 账号认证 </span>
+                            <span> {{dic['member']}}</span>
                             <h2 class="font-bold" id="account_count"></h2>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['总访问','微信连Wi-Fi','手机认证','账号认证']
+                    data:["{{dic['total']}}","{{dic['wechat']}}","{{dic['sms']}}","{{dic['member']}}"]
                 },
                 toolbox: {
                     show : true,
@@ -189,26 +189,26 @@
                 ],
                 series : [
                     {
-                        name:'总访问',
+                        name:"{{dic['total']}}",
                         type:'line',
                         stack: '总量',
                         data:rest_total
                     },
                     {
-                        name:'微信连Wi-Fi',
+                        name:"{{dic['wechat']}}",
                         type:'line',
                         stack: '总量',
                         data:rest_wechat
                     }
                     ,
                     {
-                        name:'手机认证',
+                        name:"{{dic['sms']}}",
                         type:'line',
                         stack: '总量',
                         data:rest_cellphone
                     },
                     {
-                        name:'账号认证',
+                        name:"{{dic['member']}}",
                         type:'line',
                         stack: '总量',
                         data:rest_account

@@ -12,7 +12,7 @@
   <section class="section">
     <div class="">
       <div class="success_tip cc"> <a href="http://<?php echo $domain ?>" class="f16 b"><?php echo $dictionary['software_succ'];?></a>
-		<p><p>
+		<p><?php echo $dictionary['software_tips'];?><p>
       </div>
       <div class=""> </div>
     </div>
