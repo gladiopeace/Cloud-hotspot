@@ -122,7 +122,7 @@ function getEnglish(){
 		'db_ver_low'	=>'Mysql Version is lower',
 		'db_succ'		=>'the database was Successfully created ',
 		'software_succ'	=>'The software was Successfully installed!',
-		'software_tips'	=>'for security reasons,please remove the "Install" directory after the software installation!',
+		'software_tips'	=>'for security reasons,please remove the "Install" directory after this was done!',
 
 
 

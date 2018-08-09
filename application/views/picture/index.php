@@ -36,7 +36,7 @@
    
 
             <div class="ibox-title">
-                 <h5>图片资料库</h5>                  
+                 <h5>{{dic['library']}}</h5>                  
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -58,12 +58,12 @@
              <table class="table table-striped table-bordered table-hover  dataTable" id="editable" role="grid" aria-describedby="editable_info">
                 <thead>
                 <tr>
-                    <td>序号</td>
-                    <td>图片(点击预览)</td>                    
+                    <td>{{dic['id']}}</td>
+                    <td>{{dic['picture']}}</td>                    
                     <td>URL</td>
                     
-                    <td>上传时间</td>
-                    <td>操作</td>
+                    <td>{{dic['upload_date']}}</td>
+                    <td>{{dic['manage']}}</td>
                 </tr>
             </thead>
             <tbody>
@@ -87,7 +87,7 @@
 
             <td>
             
-            <a href="javascript:void(0);" onclick="del('{{v['id']}}');" class="btn btn-success">删除</button>
+            <a href="javascript:void(0);" onclick="del('{{v['id']}}');" class="btn btn-success">{{dic['del']}}</button>
 
             </td>            
             </tr>

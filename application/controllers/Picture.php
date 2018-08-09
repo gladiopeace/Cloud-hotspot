@@ -43,7 +43,7 @@
              $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
-
+            $data['dic'] = $this->Switch->init('themepic'); 
             $this->load->library('twig');
             $this->twig->display('picture/index.php',$data);
         }
@@ -64,20 +64,21 @@
                 $new = $path.'/'.$img_id;
 
                 $flag = move_uploaded_file($file['tmp_name'],$new);
-
+             
+                $site_url = base_url();
                 if ($flag){
                     $imgdata = array(
                         'uid' =>$uid,
                         'img_id' => $new,
-                        'url' => '/'.$new,
+                        'url' =>$site_url.$new,
                         'api_url' =>$new,
-                        'download_url' => $new,
+                        'download_url' => $site_url.$new,
                         'addtime' => time(),
                     );
 
                     $this->load->model('Member_model');
                     $last_id = $this->Member_model->insert('youtu', $imgdata);
-                    $_data = array('file_name'=>$new,'img'=>"<img src='/".$imgdata['url']."'/>",'id'=>$last_id);
+                    $_data = array('file_name'=>$new,'img'=>"<img src='".$imgdata['url']."'/>",'id'=>$last_id);
                     echo json_encode($_data);
 
                 }

@@ -8,6 +8,7 @@ $lang['id'] = "ID";
 $lang['username'] = "Username";
 $lang['add_date'] = "Created Date";
 $lang['end_date'] = "Expiry Date";
+$lang['upload_date'] = "Upload Date";
 $lang['manage'] = "Manage";
 $lang['edit'] = "Edit";
 $lang['del'] = "Delete";
@@ -20,7 +21,7 @@ $lang['screens'] = "Screen Ad";
 $lang['screen'] = "Screen Ad Info";
 $lang['photo'] = "photo";
 $lang['choose'] = "Choose";
-$lang['library'] = "picture library";
+$lang['library'] = "Pictures Library";
 
 
 
