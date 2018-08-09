@@ -120,8 +120,9 @@ function getEnglish(){
 		'installing'	=>'installing software',
 		'db_no_connect'	=>'can not connect to the database',
 		'db_ver_low'	=>'Mysql Version is lower',
-		'db_succ'		=>'Successfully created the database',
-		'software_succ'	=>'Successfully Installed the software,then go to the system to create your site . Have fun!',
+		'db_succ'		=>'the database was Successfully created ',
+		'software_succ'	=>'The software was Successfully installed!',
+		'software_tips'	=>'for security reasons,please remove the "Install" directory after the software installation!',
 
 
 
@@ -185,6 +186,7 @@ function getChinese(){
 		'db_ver_low'	=>'数据库版本太低!',
 		'db_succ'		=>'成功创建数据库',
 		'software_succ'	=>'安装完成，立即进行设置体验吧!',
+		'software_tips'	=>'为了您站点的安全，安装完成后即可将网站根目录下的“Install”文件夹删除。',
 		
 
 
