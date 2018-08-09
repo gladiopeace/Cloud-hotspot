@@ -13,9 +13,7 @@ $lang['edit'] = "修改";
 $lang['del'] = "删除";
 $lang['save'] = "保存";
 $lang['pass'] = "密 码";
-$lang['pass'] = "Password";
-$lang['sort'] = "Sort";
-$lang['title'] = "Title";
+$lang['sort'] = "排序";
 $lang['picture'] = "图片(点击预览)";
 $lang['members'] = "会员管理";
 $lang['member'] = "会员账号";
@@ -24,7 +22,10 @@ $lang['id'] = "ID";
 $lang['username'] = "用户名";
 $lang['screens'] = "Screen Ad管理";
 $lang['screen'] = "Screen Ad信息";
-$lang['title'] = "标题";
+$lang['photo'] = "相片";
+$lang['choose'] = "选择";
+$lang['library'] = "图片资料库";
+
 
 
 

@@ -18,7 +18,10 @@ $lang['title'] = "Title";
 $lang['picture'] = "Picture(Click to preview)";
 $lang['screens'] = "Screen Ad";
 $lang['screen'] = "Screen Ad Info";
-$lang['title'] = "Title";
+$lang['photo'] = "photo";
+$lang['choose'] = "Choose";
+$lang['library'] = "picture library";
+
 
 
 

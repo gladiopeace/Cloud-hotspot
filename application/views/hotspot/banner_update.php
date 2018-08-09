@@ -20,7 +20,7 @@
       <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Banner 图片修改</h5>
+                            <h5>{{dic['banner']}}</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -46,13 +46,13 @@
   
 
                         <div class="form-group news">
-                          <label class="col-sm-2 control-label">封面:</label>
+                          <label class="col-sm-2 control-label">{{dic['photo']}}:</label>
                           <div class="col-sm-5">
                           <div class="input-group">
                             <input type="text" class="form-control" name="data[thumb]" id="fechurl" value="{{result['thumb']}}">  
 
                           
-                            <div class="input-group-addon pic_s" style="background-color:#5eb95e;color: white;"><i class="fa fa-picture-o"></i> 选择</div>
+                            <div class="input-group-addon pic_s" style="background-color:#5eb95e;color: white;"><i class="fa fa-picture-o"></i>&nbsp;{{dic['choose']}}</div>
                             </div>
                           </div>
                        
@@ -74,7 +74,7 @@
                       <div class="hr-line-dashed"></div>
 
                     <div class="form-group news">
-                    <label class="col-sm-2 control-label">标题:</label>
+                    <label class="col-sm-2 control-label">{{dic['title']}}:</label>
                     <div class="col-sm-5">
                       <input type="text" name="data[title]" class="form-control" placeholder="请输入回复标题" value="{{result['title']}}">
                     </div>
@@ -83,7 +83,7 @@
                     <div class="hr-line-dashed"></div>
 
               <div class="form-group news">
-              <label class="col-sm-2 control-label">排序:</label>
+              <label class="col-sm-2 control-label">{{dic['sort']}}:</label>
               <div class="col-sm-5">
                 <input type="text" name="data[order]" class="form-control" placeholder="请输入回复内容" value="{{result['order']}}">
               </div>
@@ -91,7 +91,7 @@
 
 
             <div class="form-group news">
-              <label class="col-sm-2 control-label">点击URL:</label>
+              <label class="col-sm-2 control-label">URL:</label>
               <div class="col-sm-5">
                 <input type="text" name="data[url]" class="form-control" placeholder="请输入点击URL" value="{{result['url']}}">
               </div>
@@ -103,7 +103,7 @@
           
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-2">   
-                    <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                    <button class="btn btn-primary" id="saving" type="button">{{dic['save']}}</button>
                 </div>
             </div>
 
@@ -205,7 +205,7 @@
     var url = '/picture/component/init?field='+field+'&field_value='+field_value+'&hash='+ok+'"';
     layer.open({
       type: 2,
-      title: '图片资料库',
+      title: "{{dic['library']}}",
       area: ['664px', '560px'],
       fix: false, //不固定
       maxmin: true,
