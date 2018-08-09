@@ -162,6 +162,7 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('member'); 
 
 
             $this->load->library('twig');
@@ -423,9 +424,9 @@
         }
 
         public function users_add(){
-            $uid = $this->_organization['id'];
+            
+            $uid = $this->_organization['id'];            
             $accesskey = $this->_organization['accesskey'];
-
 
             if($this->input->Post()){
 
@@ -435,6 +436,7 @@
                 }
                 $this->load->model('Portal_model');
                 $data['accesskey'] = $accesskey;
+                $data['user_id'] = $uid;
                 $data['start_time'] = strtotime($data['start_time']);
                 $data['end_time'] = strtotime($data['end_time']);
 
@@ -452,6 +454,7 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('member'); 
 
             $this->load->library('twig');
             $this->twig->display('hotspot/user_add.php', $data);
@@ -489,17 +492,30 @@
                 exit();
 
             }
-            $user = $this->Portal_model->first(["*"],'hotspot_users',array('id'=>$id));
+            $user = $this->Portal_model->first(["*"],'hotspot_users',array('id'=>$id,'user_id'=>$uid));
             $data['user'] = $user;
             $data['accesskey'] = $accesskey;
 
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
-
+            $data['dic'] = $this->Switch->init('member');
 
             $this->load->library('twig');
             $this->twig->display('hotspot/users_modify.php', $data);
+
+        }
+
+          public function users_del(){
+
+            if(!$this->input->post()) exit();
+            $uid = $this->_organization['id'];
+            $id = $this->input->post('id');
+            $this->load->model('Member_model');
+            $where = ['id'=>$id,'user_id'=>$uid];
+            $res = $this->Member_model->delete($where,'hotspot_users');
+
+                echo json_encode(array('status' =>'success','message'=>'ok','res'=>$res));
 
         }
 

@@ -157,6 +157,7 @@ CREATE TABLE `zh_hotspot_slider` (
 DROP TABLE IF EXISTS `zh_hotspot_users`;
 CREATE TABLE `zh_hotspot_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '//id',
+  `user_id` int(10) NOT NULL,
   `usercode` varchar(32) DEFAULT NULL,
   `accesskey` int(64) NOT NULL,
   `name` varchar(64) NOT NULL COMMENT '//设备id',
@@ -167,8 +168,8 @@ CREATE TABLE `zh_hotspot_users` (
   `end_time` varchar(64) NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '//备注',
   `addtime` varchar(32) NOT NULL COMMENT '//增加时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`,`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_users
