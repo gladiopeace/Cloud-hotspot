@@ -212,9 +212,13 @@
 	       		$data = $this->Switch->init('profile');
 	       		$data['bech'] = $user;
 	       		$data['do'] = $do;*/
+	       		$lang = $this->input->get('lang', TRUE);
+	       		$data = ['qcloud'=>$qcloud,'aliyun'=>$aliyun,'email'=>$email,'bech'=>$bech];
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data['dic'] = $this->Switch->init('system');
 	       		
                 $this->load->library('twig');
-                $this->twig->display('manage/system.php',['qcloud'=>$qcloud,'aliyun'=>$aliyun,'email'=>$email,'bech'=>$bech]);
+                $this->twig->display('manage/system.php',$data);
             }
 
 		}
