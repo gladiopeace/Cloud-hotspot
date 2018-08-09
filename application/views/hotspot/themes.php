@@ -24,9 +24,9 @@
 
                 {% if v['id']==active %}
            
-                    <a class="btn btn-defualt btn-primary saving">已启用</a> 
+                    <a class="btn btn-defualt btn-primary saving">{{dic['activated']}}</a> 
                 {% else %}
-                    <a class="btn btn-defualt btn-white saving" data-id="{{v['id']}}">启用</a>
+                    <a class="btn btn-defualt btn-white saving" data-id="{{v['id']}}">{{dic['activate']}}</a>
                   
                 {% endif %}
               
@@ -72,8 +72,8 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-                $(".saving").text('启用').removeClass('btn-primary').addClass('btn-white');
-                $this.text('已启用').addClass('btn-primary').removeClass('btn-white');
+                $(".saving").text("{{dic['activate']}}").removeClass('btn-primary').addClass('btn-white');
+                $this.text("{{dic['activated']}}").addClass('btn-primary').removeClass('btn-white');
                 toastr.success('温馨提示:已经为您启用完成!');
 
             }else{

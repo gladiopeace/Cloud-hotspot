@@ -272,20 +272,11 @@
 
 
             if(!empty($_active)){
-                if($_type==1){
-                    $data['active'] = $_active['normal_tid'];
+                if($_type==1) $data['active'] = $_active['normal_tid'];
 
-                }
+                if($_type==2) $data['active'] = $_active['wechat_tid'];
 
-                if($_type==2){
-                    $data['active'] = $_active['wechat_tid'];
-
-                }
-
-                if($_type==3){
-                    $data['active'] = $_active['account_tid'];
-
-                }
+                if($_type==3) $data['active'] = $_active['account_tid'];
 
 
             }else{
@@ -296,7 +287,7 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
-
+            $data['dic'] = $this->Switch->init('themes');
             $this->load->library('twig');
             $this->twig->display('hotspot/themes.php',$data);
         }
@@ -318,9 +309,7 @@
         }
 
         public function themes_store(){
-            error_reporting(1);
-            ini_set('display_errors', 1);          
-            
+           
             $this->load->model('Theme_model', 'theme');
             $accesskey = $this->_organization['accesskey'];
             $themes = $this->theme->scanTheme();
@@ -329,13 +318,9 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
-
-
+            $data['dic'] = $this->Switch->init('themes');
             $this->load->library('twig');
-
             $this->twig->display('hotspot/themes_store.php',$data);
-
-           
 
         }
 
