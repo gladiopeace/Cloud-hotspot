@@ -185,6 +185,8 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('log'); 
+            
             //var_dump($data);
             $this->load->library('twig');
             $this->twig->display('hotspot/access_log.php',$data);
@@ -518,6 +520,7 @@
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
             $data['menu'] = $this->Switch->init('menu'); 
+            $data['dic'] = $this->Switch->init('log'); 
 
             $this->load->library('twig');
             $this->twig->display('hotspot/message_log.php',$data);

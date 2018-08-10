@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>访问记录</h5>                  
+                <h5>{{dic['access_log']}}</h5>                  
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -60,12 +60,12 @@
              <table class="table table-striped table-bordered table-hover  dataTable" id="editable" role="grid" aria-describedby="editable_info">
                 <thead>
                 <tr>
-                    <td>序号</td>
-                    <td>授权码</td>
-                    <td>MAC地址</td>
-                    <td>授权类型</td>
-                    <td>授权时间</td>
-                    <td>生成时间</td>
+                    <td>{{dic['id']}}</td>
+                    <td>{{dic['auth_code']}}</td>
+                    <td>{{dic['mac']}}</td>
+                    <td>{{dic['auth_type']}}</td>
+                    <td>{{dic['auth_time']}}</td>
+                    <td>{{dic['created_time']}}</td>
 
                 </tr>
             </thead>
@@ -78,11 +78,11 @@
           <td>{{v['device_mac']}}</td>
           <td>
           {% if v['auth_type']=='fetch-wechat-code' %}
-                微信连Wi-Fi
+              {{dic['fetch-wechat-code']}}
           {% elseif v['auth_type']=='fetch-member-account' %}
-                账号登录授权
+              {{dic['fetch-member-account']}}                
           {% elseif v['auth_type']=='verify-code-cellphone' %}
-                手机验证授权
+              {{dic['verify-code-cellphone']}}                                
           {% endif %}
           </td>
 
@@ -90,7 +90,7 @@
             {% if v['auth_type'] %}
                 {{v['auth_time']|date('Y-m-d H:i:s')}}
             {% else %}
-                未完成授权
+              {{dic['uncomplete']}}
             {% endif %}
         </td>
 
