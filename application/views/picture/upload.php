@@ -256,7 +256,7 @@
                 // 添加“添加文件”的按钮，
                 uploader.addButton({
                     id: '#filePicker2',
-                    label: '继续添加'
+                    label: "{{dic['choose']}}"
                 });
 
                 uploader.on('ready', function() {
@@ -520,13 +520,13 @@
 
                         case 'paused':
                             $progress.show();
-                            $upload.text( '继续上传' );
+                            $upload.text( "{{dic['upload']}}" );
                             break;
 
                         case 'confirm':
                             $progress.hide();
                             $( '#filePicker2' ).removeClass( 'element-invisible' );
-                            $upload.text( '开始上传' );
+                            $upload.text(  "{{dic['upload']}}");
 
                             stats = uploader.getStats();
                             if ( stats.successNum && !stats.uploadFailNum ) {
@@ -539,8 +539,8 @@
                             if ( stats.successNum ) {
                                // alert( '上传成功' );
                                 swal({
-                                    title: "完成!",
-                                    text: "恭喜您上传完成!",
+                                    title: "{{dic['success_t']}}!",
+                                    text: "{{dic['success_up']}}!",
                                     type: "success"
                                 });
                             } else {

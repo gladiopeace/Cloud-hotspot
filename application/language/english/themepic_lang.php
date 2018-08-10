@@ -35,6 +35,9 @@ $lang['success'] = "Tips:Success!";
 $lang['false'] = "Tips:False,try again!";
 $lang['success_t'] = "Success";
 $lang['false_t'] = "False";
+$lang['success_up'] = "Tips:Successfully uploaded!";
+$lang['false_up'] = "Tips:upload false!";
+
 
 
 

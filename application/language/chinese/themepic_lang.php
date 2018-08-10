@@ -38,6 +38,8 @@ $lang['success'] = "温馨提示:已经为您保存完成!";
 $lang['false'] = "错误提示:保存失败!";
 $lang['success_t'] = "完成";
 $lang['false_t'] = "失败";
+$lang['success_up'] = "温馨提示:已经上传完成!";
+$lang['false_up'] = "错误提示:上传失败!";
 
 
 

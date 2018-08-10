@@ -162,8 +162,6 @@
      });
 
       $("#saving").click(function(event) {
-        /* Act on the event */
-           //toastr.success('温馨提示:已经为您保存完成!');
 
         $.ajax({
           url: '?',
@@ -173,10 +171,10 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-              toastr.success('温馨提示:已经为您保存完成!');
+              toastr.success("{{dic['success']}}");
 
             }else{
-              toastr.warning('温馨提示:没有修改任何数据!');
+              toastr.warning("{{dic['false']}}");
 
             }
         });
@@ -184,13 +182,7 @@
       });
 
     })
-
-    function libs(field,field_value){
-      var ok = Math.random();
-      popWin.showWin("680","560","图片资料库",'{{base_url}}/member/youtu/test?field='+field+'&field_value='+field_value+'&hash='+ok+'"');
-
-   }
-                  
+  
                
 
 </script>
