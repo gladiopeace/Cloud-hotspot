@@ -27,7 +27,7 @@
                 <div class="queueList">
                     <div id="dndArea" class="placeholder">
                         <div id="filePicker"></div>
-                        <p>或将照片拖到这里，单次最多可选300张</p>
+                        <p>{{dic['upload_more']}}</p>
                     </div>
                 </div>
                 <div class="statusBar" style="display:none;">
@@ -36,7 +36,7 @@
                         <span class="percentage"></span>
                     </div><div class="info"></div>
                     <div class="btns">
-                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                        <div id="filePicker2"></div><div class="uploadBtn">{{dic['upload']}}</div>
                     </div>
                 </div>
             </div>

@@ -28,6 +28,9 @@ $lang['use'] = "Use it";
 $lang['fetch'] = "Fetch";
 $lang['preview'] = "Preview";
 $lang['example'] = "Example:";
+$lang['drag_once'] = "Or drag a photo here to upload, only 1 photo.";
+$lang['drag_more'] = "or drag some photos here to upload, Most 300 photos.";
+$lang['upload'] = "Upload";
 
 
 

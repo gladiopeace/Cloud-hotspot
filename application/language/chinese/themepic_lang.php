@@ -31,6 +31,9 @@ $lang['use'] = "选用";
 $lang['fetch'] = "提取";
 $lang['preview'] = "预览";
 $lang['example'] = "例:";
+$lang['drag_once'] = "或将照片拖到这里,单次可选1张";
+$lang['drag_more'] = "或将照片拖到这里,单次可选300张";
+$lang['upload'] = "开始上传";
 
 
 
