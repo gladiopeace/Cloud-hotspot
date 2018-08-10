@@ -174,16 +174,16 @@
         .done(function(ret) {
             if(ret.status=='success'){
               swal({
-                  title: "完成!",
-                  text: "已经为您保存完成!",
+                  title: "{{success_t}}",
+                  text: "{{success}}",
                   type: "success"
               });
 
 
             }else{
              swal({
-                  title: "失败!",
-                  text: "保存失败,请重试!",
+                  title: "{{false_t}}",
+                  text: "{{false}}",
                   type: "warning"
               });
 
@@ -194,14 +194,12 @@
       });
 
   });
-
   
 
   
 
   function libs(field,field_value){
     var ok = Math.random();
-
     var url = '/picture/component/init?field='+field+'&field_value='+field_value+'&hash='+ok+'"';
     layer.open({
       type: 2,
@@ -214,25 +212,6 @@
 
  }
 
-
- $("#post").submit(function(){
-   $.ajax({
-     url: '?',
-     type: 'POST',
-     dataType: 'json',
-     data:$(this).serialize(),
-   })
-   .done(function(ret) {
-     if(ret.status=='success'){
-       alert('增加完成!');
-       window.location.reload();
-     }else{
-       alert('增加失败,请重试!');
-     }
-   });
-   return false;
- });
-           
 
 </script>
 

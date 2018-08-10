@@ -13,7 +13,8 @@ $lang['shopid_fill'] = "Please enter the Shopid";
 $lang['secretkey'] = "SecretKey";
 $lang['secretkey_fill'] = "Please entere the SecretKey";
 $lang['save'] = "Save";
-
+$lang['success'] = "Tips:Success!";
+$lang['false'] = "Tips:False,try again!";
 
 
 /* End of file upload_lang.php */

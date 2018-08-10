@@ -14,6 +14,10 @@ $lang['allow'] = "Allow";
 $lang['forbidden'] = "Forbidden";//Allow Forbidden
 $lang['save'] = "Save";
 $lang['verify_code_fill'] = "Enter Verification code";
+$lang['success'] = "Tips:Success!";
+$lang['false'] = "Tips:False,try again!";
+$lang['success_t'] = "Success";
+$lang['false_t'] = "False";
 
 
 /* End of file upload_lang.php */

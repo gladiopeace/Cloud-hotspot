@@ -50,7 +50,7 @@
 
         toastr.options = {
 
-          positionClass: "toast-top-center",//弹出窗的位置
+          positionClass: "toast-top-center",
           closeButton: true,
        /*   progressBar: true,*/
           showMethod: 'slideDown',
@@ -74,10 +74,10 @@
             if(ret.status=='success'){
                 $(".saving").text("{{dic['activate']}}").removeClass('btn-primary').addClass('btn-white');
                 $this.text("{{dic['activated']}}").addClass('btn-primary').removeClass('btn-white');
-                toastr.success('温馨提示:已经为您启用完成!');
+                toastr.success("{{dic['success']}}");
 
             }else{
-              toastr.warning('错误提示:未能完成启用!');
+              toastr.warning("{{dic['false']}}");
 
             }
         });

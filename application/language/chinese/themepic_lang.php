@@ -34,6 +34,10 @@ $lang['example'] = "例:";
 $lang['drag_once'] = "或将照片拖到这里,单次可选1张";
 $lang['drag_more'] = "或将照片拖到这里,单次可选300张";
 $lang['upload'] = "开始上传";
+$lang['success'] = "温馨提示:已经为您保存完成!";
+$lang['false'] = "错误提示:保存失败!";
+$lang['success_t'] = "完成";
+$lang['false_t'] = "失败";
 
 
 

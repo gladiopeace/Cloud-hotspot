@@ -14,6 +14,10 @@ $lang['allow'] = "允许";
 $lang['forbidden'] = "禁止";//Allow Forbidden
 $lang['save'] = "保存";//Allow Forbidden
 $lang['verify_code_fill'] = "Enter Verification code";
+$lang['success'] = "温馨提示:已经为您保存完成!";
+$lang['false'] = "错误提示:保存失败!";
+$lang['success_t'] = "完成";
+$lang['false_t'] = "失败";
 
 
 /* End of file upload_lang.php */

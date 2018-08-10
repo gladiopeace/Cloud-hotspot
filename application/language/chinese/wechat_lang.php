@@ -13,6 +13,8 @@ $lang['shopid_fill'] = "请输入Shopid";
 $lang['secretkey'] = "SecretKey";
 $lang['secretkey_fill'] = "请输入SecretKey";
 $lang['save'] = "保存";
+$lang['success'] = "温馨提示:已经为您保存完成!";
+$lang['false'] = "错误提示:保存失败!";
 
 
 
