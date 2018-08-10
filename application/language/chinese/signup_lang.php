@@ -15,6 +15,7 @@ $lang['wrong_email']='请输入有效的邮箱地址.';
 $lang['password_wrong'] = "密码至少6位";
 $lang['wrong_pass_t'] ='两次密码不一致';
 $lang['pass_tips'] = '密码不能为空';
+$lang['code_has_been_sent'] = "验证码发送完成,请查收!";
 
 /* End of file upload_lang.php */
 /* Location: ./system/language/chinese/signup_lang.php */

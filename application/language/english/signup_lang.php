@@ -16,6 +16,7 @@ $lang['wrong_email']='Please enter a valid Email address.';
 $lang['password_wrong'] = "Password must be at least 6 characters";
 $lang['wrong_pass_t'] ='The specified passwords do not match';
 $lang['pass_tips'] = 'Password can not be empty';
+$lang['code_has_been_sent'] = "A verification code has been sent to your email address.";
 
 
 /* End of file upload_lang.php */

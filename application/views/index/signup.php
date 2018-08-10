@@ -187,7 +187,7 @@ float: right; */
       .done(function(ret) {
         if(ret.status=='ok'){
           $(event.target).siblings('i.email').html("<i style='color:green'>{{ok}}</i>");
-          /*$(event.target).siblings('p').append("<span style='color:green;'>可以使用</span>");*/
+        
         }else if(ret.status=='message'){          
           $(event.target).siblings('i.email').html("<i style='color:red'>{{taken}}</i>");          
         }else{
@@ -295,7 +295,7 @@ float: right; */
 
       if(verify==''){
         $("#code").focus();     
-        toastr.warning("请输入验证码!"); 
+        toastr.warning("{{verify_code_fill}}"); 
         return false;
       }
 
@@ -346,7 +346,7 @@ float: right; */
       if(!flag) flag = p.phone(account);
 
       if(!flag){
-        toastr.warning("手机号码或邮箱地址错误!");  
+        toastr.warning("{{wrong_email}}");  
         $("#account").focus();
         return false;
       }
@@ -376,9 +376,9 @@ float: right; */
     cont:null,
     startShow:function(){   
       this.intvalue ++;
-      document.getElementById(this.controll).innerHTML="&nbsp;" + ((this.EndTime-this.intvalue)%60).toString()+"秒";
+      document.getElementById(this.controll).innerHTML="&nbsp;" + ((this.EndTime-this.intvalue)%60).toString()+"s";
       if(this.intvalue>=this.EndTime){
-        document.getElementById(this.controll).innerHTML="获取验证码";
+        document.getElementById(this.controll).innerHTML="{{verify_code}}";
         this.endShow();
       }
     },
@@ -403,7 +403,7 @@ float: right; */
       .done(function(ret) {
         if(ret.status=='success'){
           c.cont = window.setInterval("c.startShow()",1000);
-          toastr.success("验证码发送完成,请查收!");      
+          toastr.success("{{code_has_been_sent}}");
         }else{
           toastr.warning(ret.message);  
         }
@@ -413,13 +413,12 @@ float: right; */
   }
 
  function testEmail(str){
-     var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-     if(reg.test(str)){
+    var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if(reg.test(str)){
       return true;
-     }else{
+    }else{
       return false;
-     }
-
+    }
  }
 
 </script>
