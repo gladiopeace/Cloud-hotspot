@@ -27,7 +27,7 @@
                 <div class="queueList">
                     <div id="dndArea" class="placeholder">
                         <div id="filePicker"></div>
-                        <p>{{dic['upload_more']}}</p>
+                        <p>{{dic['drag_more']}}</p>
                     </div>
                 </div>
                 <div class="statusBar" style="display:none;">
@@ -193,7 +193,7 @@
                 uploader = WebUploader.create({
                     pick: {
                         id: '#filePicker',
-                        label: '点击选择图片'
+                        label: "{{dic['choose']}}"
                     },
                     formData: {
                         uid: 123
