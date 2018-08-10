@@ -5,7 +5,7 @@ $lang['sms_log'] = "SMS Log";
 $lang['access_log'] = "Access Log";
 $lang['id'] = "ID";
 $lang['cellphone'] = "Cellphone";
-$lang['message'] = "message";
+$lang['message'] = "Message";
 $lang['mac'] = "MAC's address";
 $lang['status'] = "Status";
 $lang['date'] = "Date";
@@ -16,5 +16,8 @@ $lang['craeted_time'] = "Created Time";
 $lang['fetch-wechat-code'] = "Wi-Fi via Wechat";
 $lang['fetch-member-account'] = "Wi-Fi via Member";
 $lang['verify-code-cellphone'] = "Wi-Fi via SMS";
+$lang['uncomplete'] = "Uncomplete";
+$lang['success'] = "Success";
+$lang['false'] = "False";
 
 

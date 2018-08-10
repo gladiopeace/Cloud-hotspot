@@ -16,6 +16,8 @@ $lang['craeted_time'] = "生成时间";
 $lang['fetch-wechat-code'] = "微信连Wi-Fi";
 $lang['fetch-member-account'] = "会员登录授权";
 $lang['verify-code-cellphone'] = "SMS短信授权";
-$lang['uncomplete'] = "Uncomplete";
+$lang['uncomplete'] = "未授权";
+$lang['success'] = "成功";
+$lang['false'] = "失败";
 
 
