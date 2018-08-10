@@ -129,7 +129,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">签名</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['sign']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[sign_name]" class="form-control" value="{{aliyun['sign_name']}}">
@@ -139,7 +139,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-4 col-xs-4 text-center">模板CODE</label>
+                                <label class="col-sm-4 col-xs-4 text-center">{{dic['template_code']}}</label>
 
                                 <div class="col-sm-7 col-xs-7">
                                     <input type="text" name="data[template_code]" class="form-control" value="{{aliyun['template_code']}}">
@@ -355,8 +355,8 @@
              if(ret.status=='success'){
              parent.$('#company_place').text($("#company").val());
              swal({
-             title: "完成!",
-             text: "已经为您保存完成!",
+             title: "{{dic['success']}}",
+             text: "{{dic['success_tip']}}",
              type: "success"
              });
 

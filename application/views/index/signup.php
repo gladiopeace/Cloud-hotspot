@@ -106,17 +106,17 @@ float: right; */
           <input type="text" name="account" id="account" placeholder="{{account_fill}}" value="">      
           <i class="email"></i> 
         </div>
-        <br/>
+        
         <div style="position: static;">
             <input type="text" name="code" id="code" placeholder="{{verify_code_fill}}">
             <span class="getEmail" id="vcode">{{verify_code}}</span> 
             <i class="emailCode"></i> 
             <input type="hidden" id="auth_salt" name="auth_salt" value="">
         </div>
-        <br/>
+       
         <input type="password" name="password" id="password" placeholder="{{password_fill}}">
         <i class="pwd"></i>
-        <br/>                 
+                    
         <input type="password" name="confirm" id="confirm" placeholder="{{re_password_fill}}">
         <i class="conf"></i>         
         <div class="align-center line">

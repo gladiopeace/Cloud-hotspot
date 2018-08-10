@@ -5,11 +5,13 @@ $lang['qcloud'] = "Qcloud SMS";
 $lang['aliyun'] = "Aliyun SMS";
 $lang['email'] = "Email System";
 $lang['lisence'] = "Product Lisence ";
-$lang['smtp_server'] = "SMTP SERVER";
+$lang['smtp_server'] = "SMTP Server";
 $lang['smtp_port'] = "SMTP Port";
 $lang['username'] = "Username";
 $lang['password'] = "Password";
 $lang['ssl'] = "SSL";
+$lang['template_code'] = "template Code";
+$lang['sign'] = "Sign";
 $lang['enable'] = "Enable";
 $lang['disable'] = "Disable";
 $lang['switch'] = "Switch";
@@ -34,6 +36,8 @@ $lang['use'] = "Use it";
 $lang['fetch'] = "Fetch";
 $lang['preview'] = "Preview";
 $lang['example'] = "Example:";
+$lang['success'] = "Success";
+$lang['success_tip'] = "it has been successfully saved!";
 
 
 

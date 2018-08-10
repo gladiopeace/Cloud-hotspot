@@ -61,7 +61,7 @@
                                 
                                 <div class="form-group">
                                     <div class="col-sm-12 col-sm-offset-12 text-center">   
-                                      <button class="btn btn-success" id="saving" type="button">保存信息</button>
+                                      <button class="btn btn-success" id="saving" type="button">{{save}}</button>
                                     </div>
 
                                 </div>
@@ -92,8 +92,8 @@
         if(ret.status=='success'){            
              parent.$('#company_place').text($("#company").val());
              swal({
-                  title: "完成!",
-                  text: "已经为您保存完成!",
+                  title: "{{success}}",
+                  text: "{{success_tip}}",
                   type: "success"
               });
 

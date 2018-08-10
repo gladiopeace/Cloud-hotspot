@@ -13,6 +13,8 @@ $lang['ssl'] = "SSL加密";
 $lang['enable'] = "开启";
 $lang['disable'] = "关闭";
 $lang['switch'] = "开关";
+$lang['template_code'] = "模板Code";
+$lang['sign'] = "签名";
 $lang['add_date'] = "Created Date";
 $lang['end_date'] = "Expiry Date";
 $lang['upload_date'] = "Upload Date";
@@ -34,6 +36,9 @@ $lang['use'] = "Use it";
 $lang['fetch'] = "Fetch";
 $lang['preview'] = "Preview";
 $lang['example'] = "Example:";
+$lang['success'] = "完成";
+$lang['success_tip'] = "已经为您保存完成!";
+
 
 
 
