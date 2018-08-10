@@ -20,7 +20,6 @@
     }
     .pull-right{float: right;}
     .pull-left{float: left;}
-
     .header .logo{float:left;}
     .header ul {float: right;width: 60%;border: 1px solid white;height:100%;margin: 0px;}
     .header ul li{display: inline-block;width: 80px;height: 100%;line-height: 80px;}
@@ -50,7 +49,6 @@
     font-size: 12px;
   }
   i.pwd{font-size-adjust: 12px;}
-
     </style>
   </head>
 <body style="overflow:hidden;">
@@ -60,16 +58,14 @@
      <div class="menu">
       
       <div class="menu__content">
-        <img src="/Public/cloud-hotspot.png">           
-        
+        <img src="/Public/cloud-hotspot.png">
         <div role="button" class="btn_language">
           <img src="/Public/images/{% if clang=='en' %}english.png {% elseif clang=='zh' %}chinese.png{% endif %}">
           <select id="language">
             <option value='en' {% if clang == 'en' %} selected="selected" {% endif %}>English</option>
             <option value='zh' {% if clang == 'zh' %} selected="selected" {% endif %}>中文</option>
           </select>   
-        </div>
-           
+        </div>           
     </div>
   </div>
 
@@ -90,9 +86,8 @@
           <input type="text" name="email" id="InputEmail" placeholder="{{account_fill}}" value="" autocomplete="off"/>
           <i class="email"></i>  
         </div>
-
+        <br/>
         <input type="password" name="password" id="InputPassword" placeholder="{{password_fill}}" autocomplete="off"/>
-
         <i class="pwd"></i>
         <div class="line advanced-line">
           <div class="remember-line">
@@ -114,12 +109,10 @@
 
 <div class="footer">
     <div class="center-content">
-
         <div class="main-footer">        
             <ul class="inline links">
               <li>Copyright © 2014-{{ "now"|date("Y") }} Power by Cloud Hotspot</li>              
             </ul>
-
         </div>
     </div>
 </div>
@@ -139,7 +132,7 @@
 
       if(password.length<6){
 
-        $(event.target).siblings('i.pwd').html("<i class='fa error' style='color:red'>少于六位</i>");
+        $(event.target).siblings('i.pwd').html("<i class='fa error' style='color:red'>{{password_wrong}}</i>");
 
         return false;
 
@@ -150,7 +143,7 @@
     });
 
     $("#language").change(function(event) {   
-      let lang = $(this).children('option:selected').val();//这就是selected的值  
+      let lang = $(this).children('option:selected').val();
       window.location.href="?lang="+lang;      
     });
 
@@ -158,61 +151,45 @@
       $(this).siblings('i.pwd').html('');
     });
 
-      $("#InputEmail").blur(function(event) {
-          var email = $(this).val();
-          if(email==''){
-            return false;
-          }
-          var type = 'email';
-          if(testEmail(email)==false){
-            type = 'username';
-          }
+    $("#InputEmail").blur(function(event) {
+        var email = $(this).val();
+        if(email==''){
+          return false;
+        }
+        var type = 'email';
+        if(testEmail(email)==false){
+          type = 'username';
+        }
 
-          $.ajax({
-
-              url: "/component/ajax/sigup",
-
-              type: 'POST',
-              dataType: 'json',
-              data: {'type':type,'email':email},
-
-          })
-          .done(function(message) {
-
-              if(message.status=='ok'){
-
-                  $(event.target).siblings('i.email').html("<i style='color:green;'>√</i>");
-
-
-              }else if(message.status=='message'){
-                  $(event.target).siblings('i.email').html("<i style='color:red;'>×</i>");
-
-              }
-
-          });
-
-      });
-
-
-
-    $("#InputEmail").focus(function(event) {
-
-      $(this).siblings('i.email').html('');
-
-      $(this).siblings('i.email').html('');
+        $.ajax({
+            url: "/component/ajax/sigup",
+            type: 'POST',
+            dataType: 'json',
+            data: {'type':type,'email':email},
+        })
+        .done(function(message) {
+            if(message.status=='ok'){
+              $(event.target).siblings('i.email').html("<i style='color:green;'>√</i>");
+            }else if(message.status=='message'){
+              $(event.target).siblings('i.email').html("<i style='color:red;'>×</i>");
+            }
+        });
 
     });
 
+    $("#InputEmail").focus(function(event) {
+      $(this).siblings('i.email').html('');
+      $(this).siblings('i.email').html('');
+    });
 
-     $("#forget").click(function(event) {
-      /* Act on the event */
+    $("#forget").click(function(event) {
 
       var url = '/user/forget';
         layer.open({
           type: 2,
           title: '{{reset_pass}}',
           area: ['480px', '280px'],
-          fix: true, //不固定
+          fix: true,
           maxmin: true,
           content: url
         });
@@ -232,21 +209,18 @@
 
 
     function check (form) {
-
-      
-
-        if(!form['email'].value){
-          $("i.email").html("<span style='color:red'>不能为空</span>");
-          return false;
-        }
-
+      if(!form['email'].value){
+        $("i.email").html("<span style='color:red'>{{empty_tip}}</span>");
+        return false;
+      }
 
       if(!form['password'].value){
-        $("#InputPassword").siblings('i.pwd').html("<i style='color:red'>输入密码</i>");
+        $("#InputPassword").siblings('i.pwd').html("<i style='color:red'>{{empty_tip}}</i>");
         return false;
+      }
 
-      }else if(form['password'].length<6){
-        $("#InputPassword").siblings('i.pwd').html("<i style='color:red'>密码不能少于6位!</i>");
+      if(form['password'].length<6){
+        $("#InputPassword").siblings('i.pwd').html("<i style='color:red'>{{password_wrong}}</i>");
         return false;
       }
 
@@ -270,19 +244,12 @@
 
 
   function testEmail(str){
-
-      var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-
-      if(reg.test(str)){
-
-          return true;
-
-      }else{
-
-          return false;
-
-      }
-
+    var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if(reg.test(str)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 
