@@ -20,7 +20,6 @@
                 'message':'正在为您接入互联网',                
                 'tips':'正在连接',                
             }
-
             var en = {
                 'title':'Welcome You',
                 'message':'It\'s onnecting to the Internet',
@@ -43,7 +42,6 @@
             return currentLang;
         }
         var dictionary = getCurrentLang();
-
     </script>
     <script type="text/javascript" src="/Public/js/jquery.min.js"></script>
     <script type="text/javascript" src="/Public/js/app.min.js"></script>
@@ -118,7 +116,6 @@
     window.onload =function(){
         $("#tpl_title").text(dictionary.title);
         $("#tpl_message").text(dictionary.message);
-
         if(typeof($_GET["auth_code"])=='string' && $_GET["auth_code"]!=''){
             $.showLoading(dictionary.tips);
             var Url = '/portal/TextTokenSalt';
