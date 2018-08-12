@@ -92,25 +92,38 @@
                                 </div>
                                 <input name="id" type="hidden" value="{{bech['id']}}" id="download_id"/>
                                 <input name="salt" type="hidden" value="{{bech['salt']}}"/>
+                                
                                 <div class="hr-line-dashed"></div>
-
-                                  <div class="form-group">
-                                  <label class="col-sm-2 control-label">{{dic['redirect']}}
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                    {{dic['redirect']}}
                                   </label>
 
                                     <div class="col-sm-5">
                                     <input type="text" class="form-control" name="access_info[url]" value="{{bech['access_info']['url']}}"></div>
+                                    <div class="col-sm-5">                                        
+                                    </div>
+                                </div>
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                    {{dic['ap']}}
+                                  </label>
+
                                     <div class="col-sm-5">
-                                        
+                                    <textarea></textarea>
+                                    </div>
+                                    <div class="col-sm-5">                                        
                                     </div>
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
 
-
-
-                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['brand']}}</label>
-
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                  {{dic['brand']}}
+                                  </label>
                                     <div class="col-sm-5">
 
                                       <input class="brand-type" type="radio" name="data[brand]" {% if bech['brand']=='mikrotik' %} checked{% endif %} value="mikrotik">
@@ -126,12 +139,11 @@
                                 
                                 <div class="hr-line-dashed"></div>
 
-
-
-                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['authen_type']}}</label>
-
+                                <div class="form-group">
+                                  <label class="col-sm-2 control-label">
+                                    {{dic['authen_type']}}
+                                  </label>
                                     <div class="col-sm-5">
-
                                       <input type="radio" name="data[type]" {% if bech['type']=='normal' or bech['type']=='' %} checked{% endif %} value="normal">
                                       {{ dic['sms'] }}
                                       <input type="radio" value="account" name="data[type]"{% if bech['type']=='account'%} checked{% endif %}>
@@ -145,15 +157,9 @@
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
-
-
-                             
-
-
-                                 <div class="form-group"><label class="col-sm-2 control-label"></label>
-
+                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
                                     <div class="col-sm-5">
-
                                        <button class="btn btn-primary" id="saving" type="button">{{dic['save']}}</button>
                                         &nbsp;&nbsp;&nbsp;
                                        <button class="btn btn-success" onclick="preview();" type="button">{{dic['preview']}}</button>

@@ -156,7 +156,8 @@
                 }
                 document.sendin.submit();
             }
-           
+        /*    console.log(ret);
+            return false;*/
             redirectApp(ret);
             return false;
         });

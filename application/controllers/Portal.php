@@ -290,14 +290,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             if($op=='fetch-code-cellphone'){
 
                 $cellphone = $this->input->get_post('cellphone');
-
                 if(!preg_match("/1[34578]{1}\d{9}$/",$cellphone)){
                     $status = 'notice';
                     $access_code ='-5';
                     echo json_encode(array('status'=>$status,'code'=>$access_code));
                     exit();
                 }
-
                 $salt = $this->input->get_post('accesskey');
                 $mac = $this->input->get_post('mac');
                 $code='';
@@ -358,7 +356,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     $status = 'success';
                     $code = 1;
                     $access_code = mt_rand(1,9).uniqid();
-                    $insert_data = ['accesskey'=>$salt,'access_code'=>$access_code,'request_data'=>json_encode($result),'auth_type'=>'verify-code-cellphone'];
+                    $insert_data = ['accesskey'=>$salt,'access_code'=>$access_code,'request_data'=>json_encode($result),'device_mac'=>$mac,'auth_type'=>'verify-code-cellphone'];
                     $this->Portal_model->create('access_auth',$insert_data);
 
                 }else{
@@ -397,7 +395,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         
                     }else{
                         $access_code = mt_rand(1,9).uniqid();
-                        $insert_data = ['accesskey'=>$accesskey,'access_code'=>$access_code,'request_data'=>json_encode($account),'auth_type'=>'fetch-member-account'];
+                        $insert_data = ['accesskey'=>$accesskey,'access_code'=>$access_code,'request_data'=>json_encode($account),'device_mac'=>$mac,'auth_type'=>'fetch-member-account'];
                         $this->Portal_model->create('access_auth',$insert_data);
                         $echo = array(
                             'status'=>"success",

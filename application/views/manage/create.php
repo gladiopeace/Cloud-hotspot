@@ -119,7 +119,7 @@
                         <br/>
                         <div class="btn_nav">
                             <input type="hidden" id="download" value="">                           
-                            <input type="button"  value="{{tutorial_unifi}}"/>        
+                            <input type="button" onclick="tutorial('https://www.cloudshotspot.com/blog/configure-unifi-controller.html')" value="{{tutorial_unifi}}"/>        
                         </div>
                     </div>
                    
@@ -245,7 +245,10 @@
         var id  = $("#download").val();
         $('body').append("<iframe style='display:none;' src='/hotspot/downtest?id="+id+"'></iframe>" );
 
+    }
 
+    function tutorial(url){
+       window.open(url,"_blank");
     }
 </script>
 
