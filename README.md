@@ -3,6 +3,17 @@
   This is an open-source software
   
   Support SMS(Cellphone Message),Member Account,Wechat Wi-Fi For Mikrotik & Ubiquiti Hotspot Portal
+  
+  Tutorial for ubiquiti network:
+   1. create a site in cloud hotspot
+    https://www.cloudshotspot.com/blog/create-a-site-for-ubiquitis-devices.html
+   
+   2.Configure Unifi Controller
+    https://www.cloudshotspot.com/blog/configure-unifi-controller.html
+    
+  
+  Tutorial for how to install install the Cloud-Hotspot
+  https://www.cloudshotspot.com/blog/how-to-install-cloud-hotspot-software-guide.html
 
 # Requirements
   PHP 5.3 +  & MYSQL 5.x + & Nginx Or Apache
@@ -48,4 +59,9 @@ Apache :
 	RewriteEngine on  
 	RewriteCond $1 !^(index\.php|images|data|install|template|Public|robots\.txt) 
 	RewriteRule ^(.*)$ /index.php/$1 [L]
+	
+	
+Screen Short
+
+
 	
