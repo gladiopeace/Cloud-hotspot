@@ -5,8 +5,11 @@
   Support SMS(Cellphone Message),Member Account,Wechat Wi-Fi For Mikrotik & Ubiquiti Hotspot Portal
   
   Tutorial for ubiquiti network:
+  
   1.Install the Cloud-Hotspot https://www.cloudshotspot.com/blog/how-to-install-cloud-hotspot-software-guide.html
-  2. create a site in cloud hotspot https://www.cloudshotspot.com/blog/create-a-site-for-ubiquitis-devices.html
+  
+ 2. create a site in cloud hotspot https://www.cloudshotspot.com/blog/create-a-site-for-ubiquitis-devices.html
+  
   3.Configure Unifi Controller https://www.cloudshotspot.com/blog/configure-unifi-controller.html
     
   
