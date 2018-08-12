@@ -22,7 +22,7 @@
             }
             var en = {
                 'title':'Welcome You',
-                'message':'It\'s onnecting to the Internet',
+                'message':'It\'s connecting to the Internet',
                 'tips':'Connecting',
             }
             var currentLang = {};
@@ -161,14 +161,8 @@
             return false;
         });
     }
-
  
     //-->
     </script>
-
-
-
-
-
 </body>
 </html>
