@@ -40,7 +40,6 @@ class Portal_model extends CI_Model {
 
 			$this->db->insert($table, $data);
 
-
 			switch ($type) {
 				case 'rows':
 					return $this->db->affected_rows();
@@ -54,6 +53,19 @@ class Portal_model extends CI_Model {
 					return $this->db->affected_rows();
 					break;
 			}
+
+	}
+
+	
+	public function delete($where=array(),$db){
+
+
+		foreach ($where as $key => $value) {
+			$this->db->where($key,$value);
+		}
+		$this->db->delete($db);
+
+		return $this->db->affected_rows();
 
 	}
 

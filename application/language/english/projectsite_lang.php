@@ -35,6 +35,8 @@ $lang['member'] ='Member';
 $lang['save'] ='Save';
 $lang['preview'] ='Preview';
 $lang['download'] ='Download';
+$lang['ap'] ="AP address";
+$lang['ap_fill'] = "The Site's Portal accept Request for addresses That start with following entries. Use at (@) to separate entries;Example:00:11:22:33:44:55@66:77:88:99:a1:a2";
 
 
 /* End of file upload_lang.php */

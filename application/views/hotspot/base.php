@@ -110,9 +110,8 @@
                                   <label class="col-sm-2 control-label">
                                     {{dic['ap']}}
                                   </label>
-
                                     <div class="col-sm-5">
-                                    <textarea></textarea>
+                                    <textarea rows="6" id="ap" name="ap" cols="66" placeholder="{{dic['ap_fill']}}">{% for v in ap %}{{v['mac']}}{% if loop.last == FALSE %}@{% endif %}{% endfor %}</textarea>
                                     </div>
                                     <div class="col-sm-5">                                        
                                     </div>

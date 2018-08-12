@@ -52,7 +52,8 @@
 	
  	    public function base(){
 
-            $orginazation = $this->_organization;
+            $organization = $this->_organization;
+         
 
 			$this->load->model('Portal_model');;
 			
@@ -61,6 +62,31 @@
 				$id = $this->input->post('id');
 				$salt = $this->input->post('salt');
 				$data = $this->input->post('data');
+				$apPost = trim($this->input->post('ap'));
+				
+				$apPost = explode('@', $apPost);
+			
+				$apDB =$aps = $this->Portal_model->get(array("mac"),'hotspot_ap',['site_id'=>$organization['branch_id'],'user_id'=>$organization['id']]);
+
+				$apDbCut =  array_reduce($apDB, function ($result, $value) {
+				    return array_merge($result, array_values($value));
+				}, array());
+				
+				$oldAp = array_diff($apDbCut, $apPost);
+				
+				$newAp = array_diff($apPost,$apDbCut );
+				
+				foreach ($newAp as $k => $v) {
+					if(empty($v) || $v=='') continue;
+					$tmp = array('mac'=>$v,'site_id'=>$organization['branch_id'],'user_id'=>$organization['id']);
+					$this->Portal_model->create('hotspot_ap',$tmp);
+				}
+
+				foreach ($oldAp as $k => $v) {
+					$tmp = array('mac'=>$v,'site_id'=>$organization['branch_id'],'user_id'=>$organization['id']);
+					$this->Portal_model->delete($tmp,'hotspot_ap');
+				}
+
 				$data['access_info'] = json_encode($this->input->post('access_info'));
 
 				if(empty($data['wechat'])) $data['wechat'] = '0';
@@ -79,8 +105,10 @@
 			}
 			$accesskey = $this->input->get('accesskey');
 			$bech = $this->Portal_model->branch(['salt'=>$accesskey]);
+			$aps = $this->Portal_model->get(array("*"),'hotspot_ap',['site_id'=>$organization['branch_id'],'user_id'=>$organization['id']]);
+
 			if(false==$bech || empty($bech)) $this->redirect('/manage');
-			$data =	['accesskey'=>$accesskey,'bech'=>$bech];
+			$data =	['accesskey'=>$accesskey,'bech'=>$bech,'ap'=>$aps];
 
             $lang = $this->input->get('lang', TRUE);
             $this->load->library('Lang', array('lang'=>$lang), 'Switch');
@@ -413,7 +441,7 @@
             
             $uid = $this->_organization['id'];            
             $accesskey = $this->_organization['accesskey'];
-            
+
             if($this->input->Post()){
 
                 $data = $this->input->post('data');
