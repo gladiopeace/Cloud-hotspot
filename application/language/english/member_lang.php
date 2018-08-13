@@ -14,6 +14,11 @@ $lang['del'] = "Delete";
 $lang['save'] = "Save";
 $lang['pass'] = "Password";
 $lang['pass_t'] = "If you want to change the password,please fill it .";
+$lang['success'] = "Tips:Success!";
+$lang['false'] = "Tips:False,try again!";
+$lang['success_t'] = "Success";
+$lang['false_t'] = "False";
+
 
 
 

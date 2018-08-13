@@ -14,3 +14,7 @@ $lang['del'] = "删除";
 $lang['save'] = "保存";
 $lang['pass'] = "密 码";
 $lang['pass_t'] = "如要修改密码请填写,不需要为空!";
+$lang['success'] = "温馨提示:已经为您保存完成!";
+$lang['false'] = "错误提示:保存失败!";
+$lang['success_t'] = "完成";
+$lang['false_t'] = "失败";

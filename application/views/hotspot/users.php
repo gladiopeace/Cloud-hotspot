@@ -4,23 +4,7 @@
   <meta charset="UTF-8">
     {{ parent() }}
    <style media="screen">
-        .main{width: 800px;min-height: 400px;border: 1px solid #ccc;padding-bottom: 60px;}
-        .menu {background: #eee;padding: 20px;}
-        .menu input{width: 80%;display: inline;margin-right: 16px;}
-        .menu a{margin: 5px;}
-        .menu .sub{
-            margin-top:20px;padding-left:80px;background:url('{{base_url}}/Public/static/images/bg_repno.gif') no-repeat -245px -545px;
-        }
-        .menu .sub input{width: 76%;}
-
-        .radio.inline{
-        display: inline-block;
-
-        }
-
-
-        #footer{width: 800px;height: 60px;border: 1px solid #ccc;position: relative;top: -60px;line-height: 60px;text-align: center;}
-        #footer a {margin: 10px;}
+        .main{width:800px;min-height:400px;border:1px solid#ccc;padding-bottom:60px}.menu{background:#eee;padding:20px}.menu input{width:80%;display:inline;margin-right:16px}.menu a{margin:5px}.menu.sub{margin-top:20px;padding-left:80px;background:url('{{base_url}}/Public/static/images/bg_repno.gif')no-repeat-245px-545px}.menu.sub input{width:76%}.radio.inline{display:inline-block}#footer{width:800px;height:60px;border:1px solid#ccc;position:relative;top:-60px;line-height:60px;text-align:center}#footer a{margin:10px}
     </style>
 {% endblock %}
 
@@ -151,10 +135,9 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-              toastr.success('温馨提示:已经为您保存完成!');
-
+              toastr.success("{{dic['success_t']}}");
             }else{
-              toastr.warning('温馨提示:没有修改任何数据!');
+              toastr.warning("{{dic['false_t']}}");
 
             }
         });
@@ -176,7 +159,9 @@ function del(id){
   .done(function(ret) {
     if(ret.status=='success'){
       $("#del"+id).remove();
-       toastr.success('温馨提示:已经为您删除完成!');
+      toastr.success("{{dic['success_t']}}");
+    }else{
+      toastr.warning("{{dic['false_t']}}");
     }
   });
   

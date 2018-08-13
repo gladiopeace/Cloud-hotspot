@@ -36,3 +36,5 @@ $lang['preview'] ='预览';
 $lang['download'] ='下载';
 $lang['ap'] ="AP 物理地址";
 $lang['ap_fill'] = "站点仅接受从以下条目开始的无线AP的MAC地址请求。使用AT（@）符号分隔多个地址;例： 00:11:22:33:44:55@66:77:88:99:a1:a2";
+$lang['success'] = "成功";
+$lang['false'] = "失败";

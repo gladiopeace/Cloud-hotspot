@@ -191,8 +191,7 @@
     $(function(){
 
         toastr.options = {
-
-          positionClass: "toast-top-center",//弹出窗的位置
+          positionClass: "toast-top-center",
           closeButton: true,
        /*   progressBar: true,*/
           showMethod: 'slideDown',
@@ -209,18 +208,13 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-              toastr.success('温馨提示:已经为您保存完成!');
-
+              toastr.success("{{dic['success']}}");
             }else{
-              toastr.warning('温馨提示:已经为您保存完成!');
-
+              toastr.warning("{{dic['false']}}");
             }
         });        
       });
-
-
-
-
+      
       $(".brand-type").click(function(event) {
             console.log('eeeeee');
             /* Act on the event */

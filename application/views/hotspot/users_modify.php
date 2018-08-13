@@ -101,8 +101,8 @@
 
 
 {% block script %}
-<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 <script src="//cdn.bootcss.com/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
 
 <script type="text/javascript">
@@ -114,8 +114,7 @@
     
 
       $("#saving").click(function(event) {
-        /* Act on the event */
-           //toastr.success('温馨提示:已经为您保存完成!');
+     
 
         $.ajax({
           url: '?',
@@ -124,29 +123,31 @@
           data: $("#dataform").serialize(),
         })
         .done(function(ret) {
-            if(ret.status=='success'){
-              swal({
-                  title: "完成!",
-                  text: "已经为您保存完成!",
-                  type: "success"
-              });
+           if(ret.status=='success'){
+            swal({
+                title: "{{dic['success_t']}}",
+                text: "{{dic['success']}}",
+                type: "success"
+            },function(){
+              window.location.reload();
+            });
 
-            }else{
-               swal({
-                  title: "失败!",
-                  text: "保存失败,请重试!",
-                  type: "warning"
-              });
+          }else{
+             swal({
+                title: "{{dic['false_t']}}",
+                text: "{{dic['false']}}",
+                type: "warning"
+            });
 
-            }
+          }
         });
         
       });
 
     })
 
-      $(document).ready(function(){
-          $(".form_datetime").datepicker({format: 'yyyy-mm-dd'});
+    $(document).ready(function(){
+      $(".form_datetime").datepicker({format: 'yyyy-mm-dd'});
     });
 
 
