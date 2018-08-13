@@ -103,14 +103,19 @@
     }
     $("#saving").click(function(event) {
       
-      var account = $('#email_add').val();
+      let account = $('#email_add').val();
+
+      if(account =='' || account ==null){
+          toastr.warning("{{wrong_email_t}}");  
+      }
      
-      var p=check;//Object.create(check);
+      let p=check;//Object.create(check);
+
       flag = p.mail(account);   
       if(!flag) flag = p.phone(account);  
       if(!flag){
         $("#account").focus();
-        toastr.warning("手机号码或邮箱地址错误!");  
+        toastr.warning("{{wrong_email_t}}");  
         return false;
       }
       //return false;
@@ -122,26 +127,9 @@
       })
       .done(function(ret) {
         if(ret.status=='success'){ 
-            toastr.success("新密码重置完成,请登录!");             
-             //parent.$('#company_place').text($("#company").val());
-             /* swal({
-                  title: "注册完成!",
-                  //text: "请等待我们的审核!",
-                  text: "商户号已发送至邮箱,请查收!",
-                  type: "success"
-              });*/
-
+          toastr.success("新密码重置完成,请登录!");                       
         }else{
-          
-            /* swal({
-                  title: "注册失败!",
-                    text: ret.message,
-                  type: "info"
-              });*/
-            //swal("邮箱地址格式错误!");
-            toastr.warning(ret.message);             
-
-          
+          toastr.warning(ret.message);                       
         }
         //console.log("success");
       });
@@ -157,7 +145,7 @@
 
       if(lock!='wait') return false;
 
-      $(this).data('lock', 'locked');
+     
 
       let account = $('#email_add').val();
 
@@ -169,11 +157,12 @@
       if(!flag) flag = p.phone(account);  
       if(!flag){
         $("#account").focus();
-        toastr.warning("手机号码或邮箱地址错误!");  
+        toastr.warning("{{wrong_email_t}}");  
         return false;
       }
-      
+ 
       toastr.info("正在为您请求中,请等待……");    
+      $(this).data('lock', 'locked');
       timer2=window.setInterval("startShow()",1000);
       $.ajax({
         url: '/component/restByCode/get',
@@ -209,7 +198,7 @@
 
     function startShow(){
         intvalue ++;
-        document.getElementById("getEmail").innerHTML="&nbsp;" + ((EndTime-intvalue)%60).toString()+"秒后重新获取";
+        document.getElementById("getEmail").innerHTML="&nbsp;" + ((EndTime-intvalue)%60).toString()+"S";
         if(intvalue>=EndTime){
           $(this).data('lock', 'locked');
           document.getElementById("getEmail").innerHTML="{{verify_code}}";          
