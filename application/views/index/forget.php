@@ -106,7 +106,9 @@
       let account = $('#email_add').val();
 
       if(account =='' || account ==null){
-          toastr.warning("{{wrong_email_t}}");  
+        $("#account").focus();
+        toastr.warning("{{email_tips}}"); 
+        return false; 
       }
      
       let p=check;//Object.create(check);
