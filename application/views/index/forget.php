@@ -2,30 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Cloud Hotspot</title>
+  <title>Reset Password -- Cloud Hotspot</title>
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style type="text/css">
-
-  .select{
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-
-  }
-
+  .select{height:34px;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid#ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out.15s,-webkit-box-shadow ease-in-out.15s;-o-transition:border-color ease-in-out.15s,box-shadow ease-in-out.15s;transition:border-color ease-in-out.15s,box-shadow ease-in-out.15s}
   </style>
 </head>
 <body>
@@ -40,7 +22,6 @@
                     <div class="col-sm-8 col-xs-8">
                     <input type="text" name="data[account]" class="form-control" id="email_add" value="" placeholder="{{account_fill}}">
                   </div>
-
                    
                 </div>
                 <div class="form-group">
@@ -129,7 +110,7 @@
       })
       .done(function(ret) {
         if(ret.status=='success'){ 
-          toastr.success("新密码重置完成,请登录!");                       
+          toastr.success("{{succ_reset}}");                       
         }else{
           toastr.warning(ret.message);                       
         }
@@ -145,13 +126,9 @@
       
       let lock = $(this).data('lock');
 
-      if(lock!='wait') return false;
+      if(lock!='wait') return false;     
 
-     
-
-      let account = $('#email_add').val();
-
-      
+      let account = $('#email_add').val();      
      
       let p=check;//Object.create(check);
 
@@ -163,7 +140,7 @@
         return false;
       }
  
-      toastr.info("正在为您请求中,请等待……");    
+      toastr.info("{{wait_tips}}");    
       $(this).data('lock', 'locked');
       timer2=window.setInterval("startShow()",1000);
       $.ajax({
@@ -174,18 +151,11 @@
       })
       .done(function(ret) {
         if(ret.status=='success'){
-          toastr.success("已成功发送验证码!");          
+          toastr.success("{{succ_code}}");          
         }
-        if(ret.status=='false'){
-            /*swal({
-                title: "注册失败!",
-                text: ret.message,
-                type: "info"
-            });*/
+        if(ret.status=='false'){         
           toastr.warning(ret.message);    
-
         }
-
        
       });
       
