@@ -29,7 +29,7 @@
                     <div class="col-sm-8 col-xs-8">
                       <div class="input-group">
                         
-                        <input class="form-control" name="data[code]" type="text" placeholder="{{verify_fill}}">
+                        <input class="form-control" id="email_code" name="data[code]" type="text" placeholder="{{verify_fill}}">
                         <div class="input-group-addon" data-lock='wait' style="width: 88px;text-align: center;color: white;cursor: pointer;background-color: #47B347;" id="getEmail">{{verify_code}}</div>
                       </div>
                     </div>
@@ -40,7 +40,7 @@
                   <label class="col-sm-3 col-xs-3 text-center">{{password}}</label>
 
                     <div class="col-sm-8 col-xs-8">
-                    <input type="password" name="data[password]" placeholder="{{password_fill}}" class="form-control" value="">
+                    <input type="password" id="email_pass" name="data[password]" placeholder="{{password_fill}}" class="form-control" value="">
                   </div>
 
                    
@@ -85,10 +85,24 @@
     $("#saving").click(function(event) {
       
       let account = $('#email_add').val();
+      let pasword = $("#email_pass").val();
+      let code = $("#email_code").val();
 
       if(account =='' || account ==null){
-        $("#account").focus();
+        $("#email_add").focus();
         toastr.warning("{{email_tips}}"); 
+        return false; 
+      }
+
+      if(code=='' || code == null){
+        $("#email_code").focus();
+        toastr.warning("{{verify_fill_t}}"); 
+        return false; 
+      }
+      
+      if(password=='' || password == null){
+        $("#email_pass").focus();
+        toastr.warning("{{pass_tips}}"); 
         return false; 
       }
      

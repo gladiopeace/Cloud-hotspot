@@ -14,6 +14,7 @@ $lang['email_tips']	= 'The email address can not be empty.';
 $lang['succ_reset']="Your password has been successfully reset.";
 $lang['wait_tips']="Please Wait.....";
 $lang['succ_code'] = 'The code has been sent to your e-mail address';
-
+$lang['pass_tips'] = 'Password can not be empty';
+$lang['verify_fill_t'] = "Verification code can not be empty.";
 
 

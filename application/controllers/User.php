@@ -701,24 +701,30 @@
 		public function forget(){
 
 
+			$lang = $this->input->get('lang', TRUE);
+       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+       		$data = $this->Switch->init('resetpass');	   		
+
 			if($this->input->post()){
 		      	$data = $this->input->post('data');
 
 		      	$newpass = trim($data['password']);
-		      	if(empty($data['password'])){
-		      		echo json_encode(["status"=>"false","message"=>"请输入密码!"]);
-					exit();
-		      	}
 
 		      	if(empty($data['account'])){
-		      		echo json_encode(["status"=>"false","message"=>"请输入商户号!"]);
+		      		echo json_encode(["status"=>"false","message"=>$data['email_tips']]);
+					exit();
+		      	}
+	
+		      	if(empty($data['code'])){
+		      		echo json_encode(["status"=>"false","message"=>$data['verify_fill_t']]);
 					exit();
 		      	}
 
-		      	if(empty($data['code'])){
-		      		echo json_encode(["status"=>"false","message"=>"请输入验证码!"]);
+		      	if(empty($data['password'])){
+		      		echo json_encode(["status"=>"false","message"=>$data['pass_tips']]);
 					exit();
 		      	}
+
 
 		      	$account = trim($data['account']);
 				$code = trim($data['code']);
@@ -740,7 +746,7 @@
 				} 
 
 				if(!$flag){
-					echo json_encode(["status"=>"false","message"=>"手机号码或邮箱地址错误!"]);
+					echo json_encode(["status"=>"false","message"=>$data['wrong_email_t']]);
 					exit();
 				}
 
@@ -752,7 +758,7 @@
 				}				
 
 				if(empty($_user)){
-		        	echo json_encode(array("status"=>"false","message"=>"用户不存在!"));												
+		        	echo json_encode(array("status"=>"false","message"=>"The email didn't register"));												
 					exit();
 				}
 
@@ -763,7 +769,7 @@
 					}elseif ($type=='phone') {
 						$_user = $this->member_model->update(array('password'=>md5($newpass)),'user',array("cellphone="=>$account));					
 					}	
-					echo json_encode(['status'=>"success",'message'=>'重置完成!']);
+					echo json_encode(['status'=>"success",'message'=>$data['succ_reset']]);
 				}else{
 					echo json_encode(['status'=>"false"]);
 				}
@@ -771,11 +777,7 @@
 		      	exit();
 		    }
 
-		    error_reporting(-1);
-			ini_set('display_errors', 1);
-		    $lang = $this->input->get('lang', TRUE);
-       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
-       		$data = $this->Switch->init('resetpass');	   			
+		    	
 			$this->load->library('twig');
 			$this->twig->display('index/forget.php',$data);
 		}

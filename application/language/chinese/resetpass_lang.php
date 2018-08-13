@@ -14,4 +14,7 @@ $lang['email_tips']	= '邮箱地址不能为空';
 $lang['succ_reset']="新密码重置完成.";
 $lang['wait_tips']="请等待.....";
 $lang['succ_code'] = '验证码已成功发送至您的邮箱!';
+$lang['pass_tips'] = '密码不能为空!';
+$lang['verify_fill_t'] = "验证码不能为空!";
+
 
