@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html><head lang="zh-CN"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-    <title>微信连Wi-Fi</title>
+<html>
+    <head lang="zh-CN">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+    <title>{{copyright['title']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript"> 
+        function getCurrentLang(){
+            var TestLang = navigator.languages && navigator.languages[0] ||
+               navigator.language ||
+               navigator.userLanguage;   
+            var zh = {
+                'title':'欢迎使用Wi-Fi',
+                'welcome':'欢迎您',
+                'connect':'一键连接上网',                
+                'tips':'正在连接',                
+            }
+            var en = {
+                'title':'Welcome to use our Wi-Fi',
+                'welcome':'Welcome You',
+                'connect':'Connect',                
+                'tips':'正在连接',  
+            }
+            var currentLang = {};
+            var prefixLang = TestLang.substr(0, 2); 
+
+            switch(prefixLang){
+                case "en":
+                    currentLang = en;
+                    break;
+                case "zh":
+                    currentLang = zh;
+                    break;
+                default:
+                    currentLang = en;
+                    break;
+            }          
+            return currentLang;
+        }
+        var dictionary = getCurrentLang();
+    </script>
 
     <link rel="stylesheet" href="{{template}}css/style-simple-follow.css">
     <style>
@@ -114,6 +150,12 @@
             }
         });
 
+    }
+
+    window.onload = function(){
+        $(".mod-simple-follow-page__attention-txt").text(dictionary.title);
+        $(".mod-simple-follow-page__attention-btn").text(dictionary.connect);
+        $(".mod-simple-follow-page__logo-welcome").text(dictionary.welcome);
     }
 </script>
 </body>

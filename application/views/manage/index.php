@@ -2,7 +2,7 @@
 {% block head %}
 	<meta charset="UTF-8">
     <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
-    <title>节点管理</title>
+    <title>{{title}}</title>
     {{ parent() }}
   
     <style type="text/css">
@@ -94,12 +94,12 @@
       
               <i class="fa fa-windows fa-5x"></i>
               <br/>
-              <h5>机构名称:
+              <h5>{{organization}}:
                 <span id="company_place">
                 {% if bech['company']!='' %}
                   {{bech['company']}}
                 {% else %}
-                  宁波优思网络技术有限公司
+                  {{company}}
                 {% endif %}
                 </span>
               </h5>
@@ -205,7 +205,7 @@
         layer.open({
           type: 2,
           title: '{{create_branch}}',
-          area: ['600px', '540px'],
+          area: ['680px', '588px'],
           fix: true, //不固定
           maxmin: true,
           content: url

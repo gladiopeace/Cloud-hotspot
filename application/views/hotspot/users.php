@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                 <h5>帐号管理</h5>                  
+                 <h5>{{dic['members']}}</h5>                  
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -60,12 +60,12 @@
              <table class="table table-striped table-bordered table-hover  dataTable" id="editable" role="grid" aria-describedby="editable_info">
                 <thead>
                 <tr>
-                    <td>序号</td>
+                    <td>{{dic['id']}}</td>
                   <!--   <td>用户名</td>  -->                   
-                    <td>用户名</td>
-                    <td>开始时间</td>
-                    <td>过期时间</td>
-                    <td>操作</td>
+                    <td>{{dic['username']}}</td>
+                    <td>{{dic['start_date']}}</td>
+                    <td>{{dic['end_date']}}</td>
+                    <td>{{dic['manage']}}</td>
                 </tr>
             </thead>
             <tbody>
@@ -81,12 +81,12 @@
           <td>{{v['end_time']|date("Y-m-d") }}</td>
             
 
-          <td>
-            <a href="/hotspot/usersupdate?accesskey={{accesskey}}&token={{v['id']}}" class="btn btn-success">修改</a>
-            <a href="javascript:void(0);" onclick="del('{{v['id']}}');" class="btn btn-success">删除</a>
+            <td>
+              <a href="/hotspot/usersupdate?accesskey={{accesskey}}&token={{v['id']}}" class="btn btn-success">{{dic['edit']}}</a>
+              <a href="javascript:void(0);" onclick="del('{{v['id']}}');" class="btn btn-success">{{dic['del']}}</a>
 
-          </td>            
-            </tr>
+            </td>            
+          </tr>
 
             {% endfor %}
             
@@ -96,7 +96,7 @@
             <div class="row">
             <div class="col-sm-6">
 
-                <a href="/hotspot/users_add?accesskey={{accesskey}}" class="btn btn-primary ">增加用户</a>
+                <a href="/hotspot/users_add?accesskey={{accesskey}}" class="btn btn-primary ">{{dic['add']}}</a>
             </div>
             <div class="col-sm-6">
             <div class="dataTables_paginate paging_simple_numbers" id="editable_paginate"><ul class="pagination">

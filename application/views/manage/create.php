@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>云热点节点设置向导</title>
+    <title>create project'site</title>
     <style type="text/css">
-        #wizard {border:5px solid #789;font-size:12px;height:460px;margin:10px auto;width:570px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
+        #wizard {border:5px solid #789;font-size:12px;height:508px;margin:10px auto;width:580px;overflow:hidden;position:relative;-moz-border-radius:5px;-webkit-border-radius:5px;}
         #wizard .items{width:20000px; clear:both; position:absolute;}
         #wizard .right{float:right;}
         #wizard #status{height:35px;background:#123;padding-left:25px !important;}
@@ -32,45 +32,97 @@
     <form action="#" method="post">
         <div id="wizard">
             <ul id="status">
-                <li class="active"><strong>1.</strong>创建节点</li>
-                <li><strong>2.</strong>填写用户</li>
-                <li><strong>3.</strong>完成</li>
+                <li class="active"><strong>1.</strong>{{step1}}</li>
+                <li><strong>2.</strong>{{step2}}</li>
+                <li><strong>3.</strong>{{step3}}</li>
+                <li><strong>4.</strong>{{step4}}</li>
             </ul>
 
             <div class="items">
                 <div class="page">
-                    <h3>创建一个节点<br/><em>请填写您要增加的节点信息，用于管理。</em></h3>
-                    <p><label>节点名称：</label><input type="text" class="input" id="branch" name="data[branch]" placeholder="请输入节点名称,例:云热点测试"/></p>
-                    <p><label>IP地址：</label><input type="text" class="input" id="ip" name="data[ip]" placeholder="请输入IP地址,例:192.168.88.1" value="192.168.88.1"/></p>
-                    <p><label>认证完成跳转URL：</label><input type="text" class="input" id="url" name="data[url]" placeholder="跳转URL,例:http://www.baidu.com" value="http://www.baidu.com"/></p>
+                    <h3>{{step1_title}}</h3>
+                    <p>
+                        <label>{{brand}}：</label>
+                        <input type="radio" class="brand-type" value="ubnt" checked="checked" name="data[brand]">Ubiquiti
+                        <input type="radio" class="brand-type" value="mikrotik" name="data[brand]">Mikrotik
+                       
+                    </p>
+                    <p>
+                        <label>{{site}}：</label>
+                        <input type="text" class="input" id="branch" name="data[branch]" placeholder=""/>
+                    </p>
+
+                    <p>
+                        <label id="brand-ip" data-ubnt='{{ip_ubnt}}' data-mikrotik='{{ip_mikrotik}}'>{{ip_ubnt}}：</label>
+                        <input type="text" class="input" id="ip" name="data[ip]" placeholder="" value="192.168.88.1"/>
+                    </p>
+                   
+
+                    <p>
+                        <label>{{redirect}}：</label><input type="text" class="input" id="url" name="data[url]" placeholder="http://www.google.com" value="http://www.google.com"/></p>
                     <div class="btn_nav">
-                        <input type="button" class="next right" value="下一步&raquo;" />
+                        <input type="button" class="next right" value="{{next}}&raquo;" />
                     </div>
                 </div>
                 <div class="page">
-                    <h3>填写用户信息<br/><em>请填写ROS hotspot中的用户名与密码。<br/><span style="color:red;">此用户与hotspot中要一致ip->hotspot->users->+</span></em></h3>
-                    <p><label>用户名</label><input type="text" class="input" id="user" name="user[username]" placeholder="请输入用户名,例:user1"  /></p>
-                    <p><label>密&nbsp;&nbsp;码</label><input type="password" id="pass" class="input" name="user[password]"  placeholder="请输入密码"/></p>
-                    <p><label>确认密码：</label><input type="password" id="pass1" class="input" name="user[confirm]" placeholder="请输入确认密码"/></p>
+                    <h3>{{step2_title}}</h3>
+                    <p>
+                        <label id='user-text'>{{user_ubnt}}:</label>
+                        <input type="text" class="input" id="user" name="user[username]" placeholder=""  />
+                    </p>
+                    <p>
+                        <label id='pass-text'>{{pass_ubnt}}:</label>
+                        <input type="password" id="pass" class="input" name="user[password]"  placeholder=""/>
+                    </p>
+                    <p>
+                        <label>{{pass_confirm}}：</label>
+                        <input type="password" id="pass1" class="input" name="user[confirm]" placeholder=""/>
+                    </p>
 
                     <div class="btn_nav">
-                        <input type="button" class="prev" style="float:left" value="&laquo;上一步" />
-                        <input type="button" class="right" id="sub" value="下一步&raquo;" />
+                        <input type="button" class="prev" style="float:left" value="&laquo;{{previous}}" />
+                        <input type="button" class="next right" value="{{next}}&raquo;" />                 
+                    </div>
+                </div>
+                <div class="page">
+                    <h3>{{step3_title}}<br/></h3>
+                    <p>                       
+                        <textarea rows="18" id="ap" name="ap" cols="68" placeholder="{{ap_fill}}"></textarea>
+                    </p>
+
+                    <div class="btn_nav">
+                        <input type="button" class="prev" style="float:left" value="&laquo;{{previous}}" />
+                        <input type="button" class="right apply" value="{{next}}&raquo;" />
                         <input type="hidden" class="next" id="success"/>
                     </div>
                 </div>
                 <div class="page">
-                    <h3>完成向导<br/><em>成功将节点相关信息生成。</em></h3>
-                    <h4>恭喜您！</h4>
-                    <p>请点击“下载”按钮下载节点文件。</p>
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <div class="btn_nav">
-                        <input type="hidden" id="download" value="">
-                        <input type="button" value="下载" onclick="downloads();"/>
+                    <h3>{{success_title}}<br/><em>{{success_sub_title}}</em></h3>
+                    <h4>{{congratulations}}</h4>
+                    <div id="mikrotik-down" style="display: none;">
+                        <p>{{mikrotik_download}}</p>
+                        <p>{{mikrotik_tutorials}}</p>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="btn_nav">
+                            <input type="hidden" id="download" value="">
+                            <input type="button" value="{{download}}" onclick="downloads();"/>
+                            <input type="button" class="right" value="{{tutorial_mikrotik}}"/>        
+                        </div>
                     </div>
+
+                    <div id="ubnt-down">                        
+                        <p>{{ubiquiti_tutorials}}</p>                     
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="btn_nav">
+                            <input type="hidden" id="download" value="">                           
+                            <input type="button" onclick="tutorial('https://www.cloudshotspot.com/blog/configure-unifi-controller.html')" value="{{tutorial_unifi}}"/>        
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -88,14 +140,14 @@
             },
             onBeforeSeek:function(event,i){
                 if(i==1){
-                    var user = $("#branch").val();
+                    let user = $("#branch").val();
                     if(user==""){
                         alert("节点名不能为空！");
                         $("#branch").focus();
                         return false;
                     }
-                    var ip = $("#ip").val();
-                    var url = $("#url").val();
+                    let ip = $("#ip").val();
+                    let url = $("#url").val();
                     if(ip==""){
                         alert("ip地址不能为空！");
                         return false;
@@ -107,13 +159,13 @@
                 }
 
                 if(i==2){
-                    var user = $("#user").val();
+                    let user = $("#user").val();
                     if(user==""){
                         alert("请输入用户名！");
                         return false;
                     }
-                    var pass = $("#pass").val();
-                    var pass1 = $("#pass1").val();
+                    let pass = $("#pass").val();
+                    let pass1 = $("#pass1").val();
                     if(pass==""){
                         alert("请输入密码！");
                         return false;
@@ -126,29 +178,16 @@
                 }
             }
         });
-        $("#sub").click(function(){
+        $(".apply").click(function(){
 
-            var user = $("#user").val();
-            if(user==""){
-                alert("请输入用户名！");
-                $("#user").focus();
-                return false;
-            }
-            var pass = $("#pass").val();
-            var pass1 = $("#pass1").val();
-            if(pass==""){
-                alert("请输入密码！");
-                $("#pass").focus();
-                return false;
-            }
-            if(pass1 != pass){
-                alert("两次密码不一致！");
-                $("#pass1").focus();
+            let ap = $("#ap").val();
 
+            if(ap==''){
+                alert("The AP's MAC address can not be empty!");
                 return false;
             }
 
-            var data = $("form").serialize();
+            let data = $("form").serialize();
 
             $.ajax({
                 url: "?",
@@ -168,6 +207,32 @@
 
 
         });
+
+        $(".brand-type").click(function(event) {
+            /* Act on the event */
+            let type = $(this).val();//$('input[name="brand"]:checked').val();
+            let mikrotik = $("#brand-ip").data('mikrotik');
+            let ubnt = $("#brand-ip").data('ubnt');         
+            let user_ubnt = "{{user_ubnt}}";
+            let user_mikrotik = "{{user_mikrotik}}";
+            let pass_ubnt = "{{pass_ubnt}}";
+            let pass_mikrotik = "{{pass_mikrotik}}";
+            if(type=='mikrotik'){              
+               $("#brand-ip").text(mikrotik);   
+               $("#user-text").text(user_mikrotik);        
+               $("#pass-text").text(pass_mikrotik);
+               $("#mikrotik-down").show();  
+               $("#ubnt-down").hide();        
+            }else if(type=='ubnt'){
+               $("#brand-ip").text(ubnt);   
+               $("#user-text").text(user_ubnt);        
+               $("#pass-text").text(pass_ubnt); 
+               $("#mikrotik-down").hide();        
+               $("#ubnt-down").show();        
+            }
+                        
+            console.log(type);
+        });
     });
 
 
@@ -180,7 +245,10 @@
         var id  = $("#download").val();
         $('body').append("<iframe style='display:none;' src='/hotspot/downtest?id="+id+"'></iframe>" );
 
+    }
 
+    function tutorial(url){
+       window.open(url,"_blank");
     }
 </script>
 

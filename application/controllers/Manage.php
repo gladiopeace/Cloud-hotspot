@@ -47,18 +47,12 @@
 
 			$stores = $this->Member_model->get('hotspot_branch',['salt','branch','id'],['uid'=>$uid]);
 			$bech = $this->Member_model->first('user',["*"],['id'=>$uid]);
-			$data = array_merge($data,['result'=>$stores,'bech'=>$bech,'now'=>time()]);
+			$data = array_merge($data,['result'=>$stores,'bech'=>$bech,'now'=>time()]);			
+		
+            $this->load->library('twig');
+			$this->twig->display('manage/index.php',$data);
+
 			
-			$this->load->library('user_agent');
-			if ($this->agent->is_mobile()){
-				$this->load->library('twig');
-				$this->twig->display('manage/indexM.php',$data);
-			}else{
-                $this->load->library('twig');
-				$this->twig->display('manage/index.php',$data);
-
-			}
-
 	    }
 
 	    public function create(){
@@ -76,18 +70,17 @@
 	 			if($this->input->post()){
 
 					$data = $this->input->post('data');
-
-					$_uid = $this->_organization['id'];
-
 					$user = $this->input->post('user');
+					$ap = $this->input->post('ap');
+				
+					$aps = explode('@', $ap);
 
-					
-
-					$this->load->model('Member_model');	
-
-
-
+				
+					$_uid = $this->_organization['id'];
+					$this->load->model('Member_model');
 					$branch['branch'] = $data['branch'];
+					$branch['brand'] = $data['brand'];
+					$branch['site_name'] = $data['branch'];
 					$branch['uid'] = $_uid;
 					/*$branch['organization_id'] = $_uid;*/
 					$access_info = array(
@@ -106,88 +99,27 @@
 
 					$bid = $this->Member_model->insert('hotspot_branch',$branch);
 
-					$_data = array('branch'=>$branch['branch'],'salt'=>$branch['salt'],'overdue'=>date("Y-m-d",$nexttime));
-
-					echo json_encode(array('status'=>"success",'id'=>$bid,'data'=>$_data));
-
-
-					exit();
-				}
-
-
-				$this->load->library('user_agent');
-				$this->load->library('twig');
-				if ($this->agent->is_mobile()){
-					$this->twig->display('manage/createM.php');					
-				}else{
-					$this->twig->display('manage/create.php');
-				}	
+					foreach ($aps as $k => $mac) {
+						$tmp = array('user_id'=>$_uid,'site_id'=>$bid,'mac'=>$mac);
+						$this->Member_model->insert('hotspot_ap',$tmp);
+					}
 				
-			}
-
-
-		}
-
-		public function payment(){
-			$ops = array('alipay','wxpay');
-			$op = $this->uri->segment(3);
-			$op = $op ? $op : "alipay";
-			if(!in_array($op,$ops)) exit();
-
-	        $uid = $this->_organization['id'];
-			if($op=='alipay'){
-
-				$this->load->model('Member_model');
-				$payment = $this->Member_model->first('user',array("alipay_payment"),array('id'=>$uid));
-				if(!empty($payment['alipay_payment'])){
-					$payment = json_decode($payment['alipay_payment'],true);
-					$payment['islock']='true';
-				}else{
-					$payment =array(
-	    			'app_auth_token'	=>"",
-	    			'auth_app_id'		=>"",
-	    			'user_id'			=>"",
-	    			'islock'			=>"false",
-	    			);
-				}
-
-				$data['data']=$payment;
-				$data['type'] = $op;
-
-				$this->load->view('manage/payment_alipay', $data, FALSE);
-			}
-
-			if($op=="wxpay"){
-				$this->load->model('Member_model');
-
-				if($this->input->post()){
-					$payment = $this->input->post('data');
-					$data = json_encode($payment);
-					$this->Member_model->update(array('wxpay_payment'=>$data),'user',array('id'=>$uid));
-					echo json_encode(['status'=>"success"]);
+					$_data = array('branch'=>$branch['branch'],'salt'=>$branch['salt'],'overdue'=>date("Y-m-d",$nexttime));
+					echo json_encode(array('status'=>"success",'id'=>$bid,'data'=>$_data));
 					exit();
 				}
 
-				$payment = $this->Member_model->first('user',array("wxpay_payment"),array('id'=>$uid));
-				if(!empty($payment['wxpay_payment'])){
-					$payment = json_decode($payment['wxpay_payment'],true);
-				}else{
-					$payment =array(
-	    			'sub_mch_id'	=>	"",
-	    			'sub_appid'		=>	"",
-	    			'sub_appsecret'	=>	""	,
-	    			);
-				}
-
-				$data['data']=$payment;
-				$data['type'] = $op;
-
-				$this->load->view('manage/payment_wxpay', $data, FALSE);
+				$lang = $this->input->get('lang', TRUE);
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data = $this->Switch->init('createsite');
+				$this->load->library('twig');			
+				$this->twig->display('manage/create.php',$data);
+								
 			}
-			
-			
+
 
 		}
+		
 
 		public function setting(){
 
@@ -280,9 +212,13 @@
 	       		$data = $this->Switch->init('profile');
 	       		$data['bech'] = $user;
 	       		$data['do'] = $do;*/
+	       		$lang = $this->input->get('lang', TRUE);
+	       		$data = ['qcloud'=>$qcloud,'aliyun'=>$aliyun,'email'=>$email,'bech'=>$bech];
+	       		$this->load->library('Lang', array('lang'=>$lang), 'Switch');
+	       		$data['dic'] = $this->Switch->init('system');
 	       		
                 $this->load->library('twig');
-                $this->twig->display('manage/system.php',['qcloud'=>$qcloud,'aliyun'=>$aliyun,'email'=>$email,'bech'=>$bech]);
+                $this->twig->display('manage/system.php',$data);
             }
 
 		}

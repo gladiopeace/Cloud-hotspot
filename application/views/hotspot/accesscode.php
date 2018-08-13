@@ -18,53 +18,37 @@
   
    <div class="row">
       <div class="col-md-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>系统设备号</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                            
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <form id="dataform" class="form-horizontal">
-                              
-
-
-                               <div class="form-group"><label class="col-sm-2 control-label">设备号</label>
-
-                                    <div class="col-sm-5">
-                                    <input id="accesskey" onclick="CopyIt('accesskey');" type="text" name="data[title]" class="form-control" value="{{accesscode}}">
-                                    </div>
-
-                                    
-                                </div>
-
-
-
-                                <div class="hr-line-dashed"></div>
-
-
-
-                               
-                                
-                             
-                              
-                          
-                            </form>
-
-                        </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>系统设备号</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                    
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
                     </div>
-  </div>
-  </div>
+                </div>
+                <div class="ibox-content">
+                    <form id="dataform" class="form-horizontal">
+                       <div class="form-group">
+                          <label class="col-sm-2 control-label">设备号</label>
+                            <div class="col-sm-5">
+                              <input id="accesskey" onclick="CopyIt('accesskey');" type="text" name="data[title]" class="form-control" value="{{accesscode}}">
+                            </div>                                    
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                    </form>
+
+                </div>
+            </div>
+      </div>
+    </div>
   
 {% endblock %}
 

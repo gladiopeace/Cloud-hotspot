@@ -1,5 +1,13 @@
 <?php
 
+
+header('Content-Type: text/html; charset=UTF-8');
+date_default_timezone_set('PRC');
+error_reporting(E_ALL & ~E_NOTICE);
+
+require_once 'common.php';
+$dictionary = getLanguage();
+
 if (file_exists('./install.lock')) {
     echo '
 		<html>
@@ -12,15 +20,19 @@ if (file_exists('./install.lock')) {
         </html>';
     exit;
 }
+
+
+
+
+
 @set_time_limit(1000);
 if (phpversion() <= '5.3.0')
     set_magic_quotes_runtime(0);
 if ('5.2.0' > phpversion())
     exit('您的php版本过低，不能安装本软件，请升级到5.2.0或更高版本再安装，谢谢！');
 
-date_default_timezone_set('PRC');
-error_reporting(E_ALL & ~E_NOTICE);
-header('Content-Type: text/html; charset=UTF-8');
+
+
 define('SITEDIR', _dir_path(substr(dirname(__FILE__), 0, -8)));
 define("SIMPLEWIND_CMF_VERSION", '20180720');
 //数据库
@@ -86,7 +98,7 @@ switch ($step) {
             $gd = '<font color=green>[√]On</font> ' . $tmp['GD Version'];
         }
         if (function_exists('mysqli_connect')) {
-            $mysql = '<span class="correct_span">&radic;</span> 已安装';
+            $mysql = '<span class="correct_span">&radic;</span>'.$dictionary['installed'];
         } else {
             $mysql = '<span class="correct_span error_span">&radic;</span> 出现错误';
             $Errors[]='请确认MySQL服务器支持Mysqli扩展!';
@@ -100,7 +112,7 @@ switch ($step) {
             $uploadSize = '<span class="correct_span error_span">&radic;</span>禁止上传';
         }
         if (function_exists('session_start')) {
-            $session = '<span class="correct_span">&radic;</span> 支持';
+            $session = '<span class="correct_span">&radic;</span>'.$dictionary['enable'];
         } else {
             $Errors[]='请确认php服务器支持Session!';
             $session = '<span class="correct_span error_span">&radic;</span> 不支持';
@@ -153,14 +165,14 @@ switch ($step) {
             $server_url = $http_type . $_SERVER['HTTP_HOST'];      
             $conn = @mysqli_connect($dbHost,$dbUser, $dbPwd,'',$dbPort);
             if (!$conn) {
-                $arr['msg'] = "连接数据库失败!";
+                $arr['msg'] = $dictionary['db_no_connect'];
                 echo json_encode($arr);
                 exit;
             }
             $conn->query("SET NAMES 'utf8'"); //,character_set_client=binary,sql_mode='';
             $version =$conn->server_version;
             if ($version < 4.1) {
-                $arr['msg'] = '数据库版本太低!';
+                $arr['msg'] = $dictionary['db_ver_low'];//'数据库版本太低!';
                 echo json_encode($arr);
                 exit;
             }
@@ -174,7 +186,7 @@ switch ($step) {
                 }
                 if (empty($n)) {
                     $arr['status'] = 'notice';
-                    $arr['msg'] = "成功创建数据库:{$dbName}<br>";
+                    $arr['msg'] = $dictionary['db_succ'].":{$dbName}<br>";
                     echo json_encode($arr);
                     exit;
                 }

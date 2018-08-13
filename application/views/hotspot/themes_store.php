@@ -24,11 +24,11 @@
 
                 {% if v['install']==1 %}   
                   <br/>        
-                 已经安装
+                 {{dic['installed']}}
                   <br/>
                 {% elseif v['install']==0 %}
                     <br/>  
-                    <span class="btn btn-white btn-xs install" data-theme="{{v['data']['@attributes']['base']}}" data-name="{{v['name']}}" data-type="{{v['data']['type']}}" data-picture="{{v['picture']}}" data-note="{{v['data']['description']}}">安装 </span> 
+                    <span class="btn btn-white btn-xs install" data-theme="{{v['data']['@attributes']['base']}}" data-name="{{v['name']}}" data-type="{{v['data']['type']}}" data-picture="{{v['picture']}}" data-note="{{v['data']['description']}}">{{dic['install']}} </span> 
                     <br/>
                 {% endif %}
               

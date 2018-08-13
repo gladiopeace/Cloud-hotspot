@@ -11,56 +11,56 @@
   <section class="section">
     <div class="step">
       <ul>
-        <li class="current"><em>1</em>检测环境</li>
-        <li><em>2</em>创建数据</li>
-        <li><em>3</em>完成安装</li>
+        <li class="current"><em>1</em><?php echo $dictionary['environment'];?></li>
+        <li><em>2</em><?php echo $dictionary['server'];?></li>
+        <li><em>3</em><?php echo $dictionary['installation'];?></li>
       </ul>
     </div>
     <div class="server">
       <table width="100%">
         <tr>
-          <td class="td1">环境检测</td>
-          <td class="td1" width="25%">推荐配置</td>
-          <td class="td1" width="25%">当前状态</td>
-          <td class="td1" width="25%">最低要求</td>
+          <td class="td1"><?php echo $dictionary['check']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['recommended']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['current']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['at_least']; ?></td>
         </tr>
         <tr>
-          <td>操作系统</td>
-          <td>类UNIX</td>
+          <td><?php echo $dictionary['os']; ?></td>
+          <td><?php echo $dictionary['os_type']; ?></td>
           <td><span class="correct_span">&radic;</span> <?php echo $os; ?></td>
-          <td>不限制</td>
+          <td>Linux</td>
         </tr>
         <tr>
-          <td>PHP版本</td>
+          <td><?php echo $dictionary['php']; ?></td>
           <td>>5.6.x</td>
           <td><span class="correct_span">&radic;</span> <?php echo $phpv; ?></td>
           <td>5.3.0</td>
         </tr>
         <tr>
-          <td>Mysql版本（client）</td>
+          <td><?php echo $dictionary['mysql']; ?></td>
           <td>>5.x.x</td>
           <td><?php echo $mysql; ?></td>
           <td>4.2</td>
         </tr>
         <tr>
-          <td>附件上传</td>
+          <td><?php echo $dictionary['upload_file']; ?></td>
           <td>>2M</td>
           <td><?php echo $uploadSize; ?></td>
-          <td>不限制</td>
+          <td>2M</td>
         </tr>
         <tr>
-          <td>session</td>
-          <td>开启</td>
+          <td>Session</td>
+          <td><?php echo $dictionary['enable']; ?></td>
           <td><?php echo $session; ?></td>
-          <td>开启</td>
+          <td><?php echo $dictionary['enable']; ?></td>
         </tr>
 
       </table>
       <table width="100%">
         <tr>
-          <td class="td1">目录、文件权限检查</td>
-          <td class="td1" width="25%">写入</td>
-          <td class="td1" width="25%">读取</td>
+          <td class="td1"><?php echo $dictionary['directory']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['read']; ?></td>
+          <td class="td1" width="25%"><?php echo $dictionary['write']; ?></td>
         </tr>
 <?php
 foreach($folder as $dir){
@@ -70,18 +70,18 @@ foreach($folder as $dir){
     $write='';
     $flag = false;
 	 if(TestWrite($Testdir)){
-	     $w = '<span class="correct_span">&radic;</span>可写 ';
+	     $w = '<span class="correct_span">&radic;</span>'.$dictionary['write'];
 	 }else{
-         $write = '写';
-	     $w = '<span class="correct_span error_span">&radic;</span>不可写 ';
+         $write = $dictionary['write'];
+	     $w = '<span class="correct_span error_span">&radic;</span>'.$dictionary['no_write'];
 		 $err++;
          $flag = true;;
 	 }
 	if(is_readable($Testdir)){
-	     $r = '<span class="correct_span">&radic;</span>可读' ;
+	     $r = '<span class="correct_span">&radic;</span>'.$dictionary['read'];
 	 }else{
-         $read ='读';
-	     $r = '<span class="correct_span error_span">&radic;</span>不可读';
+        $read = $dictionary['read'];
+	     $r = '<span class="correct_span error_span">&radic;</span>'.$dictionary['no_read'];
 		 $err++;
          $flag = true;;
 	 }
@@ -98,7 +98,7 @@ foreach($folder as $dir){
 ?>   
       </table>
     </div>
-    <div class="bottom tac"> <a href="./index.php?step=2" class="btn">重新检测</a><a href="javascript:void(0);" onclick="verifyConfig();" class="btn">下一步</a> </div>
+    <div class="bottom tac"> <a href="./index.php?step=2" class="btn"><?php echo $dictionary['recheck'];?></a><a href="javascript:void(0);" onclick="verifyConfig();" class="btn"><?php echo $dictionary['next'];?></a> </div>
   </section>
 </div>
 <?php require './templates/footer.php';?>
@@ -113,7 +113,7 @@ foreach($folder as $dir){
         var flag = "<?php echo $err;?>";
 
         if(flag>0){
-            var List = "<center style='margin-top:10px;color:red;'>请解决以下问题:</center><div style='margin:0 auto;margin-left:40px;margin-top:10px;font-size:14px;'><?php
+            var List = "<center style='margin-top:10px;color:red;'><?php echo $dictionary['fix_list'];?>:</center><div style='margin:0 auto;margin-left:40px;margin-top:10px;font-size:14px;'><?php
                 foreach($Errors as $k=>$v){
                     echo ($k+1).'.'.$v.'<br/>';
                 } ?></div>";

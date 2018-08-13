@@ -3,7 +3,7 @@
 <head>
   {% block head %}
     <meta charset="utf-8">
-    <title></title>
+    <title>{{menu['title']}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -26,49 +26,48 @@
                 </li>     
                 <li {% if active_now=='branch' %} class="active" {% endif %}>
                    
-                    <a href="javascript:void(0);"><i class="fa fa-rss"></i> <span class="nav-label">无线热点管理</span><span class="fa arrow"></span></a>
+                    <a href="javascript:void(0);"><i class="fa fa-rss"></i> <span class="nav-label">{{menu['project_site']}}</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/hotspot/base?accesskey={{accesskey}}">节点参数</a></li>
-                        <li><a href="/hotspot/users?accesskey={{accesskey}}">帐户管理</a></li>
-                        <li><a href="/hotspot/access?accesskey={{accesskey}}">访问日志</a></li>                   
-                      
-                        <li><a href="/hotspot/message?accesskey={{accesskey}}">短信日志</a></li>
+                        <li><a href="/hotspot/base?accesskey={{accesskey}}">{{menu['project_site']}}</a></li>
+                        <li><a href="/hotspot/users?accesskey={{accesskey}}">{{menu['member_account']}}</a></li>
+                        <li><a href="/hotspot/access?accesskey={{accesskey}}">{{menu['access_log']}}</a></li>
+                        <li><a href="/hotspot/message?accesskey={{accesskey}}">{{menu['sms_log']}}</a></li>
                     </ul>
                 
                 </li>
 
                 
                 <li {% if active_now=='wechat' %} class="active" {% endif %}>
-                    <a href="/hotspot/wechat?accesskey={{accesskey}}"><i class="fa fa-wechat"></i> <span class="nav-label">微信连Wi-Fi</span><span class="fa arrow"></span></a>
+                    <a href="/hotspot/wechat?accesskey={{accesskey}}"><i class="fa fa-wechat"></i> <span class="nav-label">Wechat via Wi-Fi</span><span class="fa arrow"></span></a>
                 </li>
    
                <li {% if active_now=='themes' %} class="active" {% endif %}>
-                    <a href=""><i class="fa fa-send"></i> <span class="nav-label">节点主题</span><span class="label label-info pull-right"></span></a>
+                    <a href=""><i class="fa fa-send"></i> <span class="nav-label">Themes</span><span class="label label-info pull-right"></span></a>
                
                      <ul class="nav nav-second-level collapse">
-                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=2">微信主题</a></li>
-                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=3">帐号主题</a></li>
-                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=1">通用主题</a></li>
-                        <li><a href="/hotspot/themes_store?accesskey={{accesskey}}">主题商店</a></li>                        
+                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=2">{{menu['theme_wechat']}}</a></li>
+                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=3">{{menu['theme_member']}}</a></li>
+                        <li><a href="/hotspot/themes?accesskey={{accesskey}}&token=1">{{menu['theme_sms']}}</a></li>
+                        <li><a href="/hotspot/themes_store?accesskey={{accesskey}}">{{menu['theme_install']}}</a></li>                        
                     </ul>
                 </li>
                
                  <li {% if active_now=='theme' %} class="active" {% endif %}>
-                    <a href=""><i class="fa fa-magic"></i> <span class="nav-label">广告管理</span><span class="label label-info pull-right"></span></a>
+                    <a href=""><i class="fa fa-magic"></i> <span class="nav-label">Setting</span><span class="label label-info pull-right"></span></a>
                
                      <ul class="nav nav-second-level collapse">
                         <li><a href="/hotspot/screen?accesskey={{accesskey}}">Screen Ad</a></li>
-                        <li><a href="/hotspot/banner?accesskey={{accesskey}}">Banner图片</a></li>
-                        <li><a href="/hotspot/themeset?accesskey={{accesskey}}">广告设置</a></li>
+                        <li><a href="/hotspot/banner?accesskey={{accesskey}}">Banner</a></li>
+                        <li><a href="/hotspot/themeset?accesskey={{accesskey}}">{{menu['theme_setting']}}</a></li>
                         
                     </ul>
                 </li>
                
                 <li {% if active_now=='picture' %} class="active" {% endif %}>
-                    <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">图片资料库</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Pictures</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/picture/upload?accesskey={{accesskey}}">上传图片</a></li>
-                        <li><a href="/picture/manage?accesskey={{accesskey}}">图片管理</a></li>
+                        <li><a href="/picture/upload?accesskey={{accesskey}}">{{menu['upload_pic']}}</a></li>
+                        <li><a href="/picture/manage?accesskey={{accesskey}}">{{menu['pictures']}}</a></li>
                
                     </ul>
                 </li>

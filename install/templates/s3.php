@@ -11,9 +11,9 @@
   <section class="section">
     <div class="step">
       <ul>
-        <li class="on"><em>1</em>检测环境</li>
-        <li class="current"><em>2</em>创建数据</li>
-        <li><em>3</em>完成安装</li>
+        <li class="on"><em>1</em><?php echo $dictionary['environment'];?></li>
+        <li class="current"><em>2</em><?php echo $dictionary['server'];?></li>
+        <li><em>3</em><?php echo $dictionary['installation'];?></li>
       </ul>
     </div>
     <form id="J_install_form" action="index.php?step=4" method="post">
@@ -21,43 +21,43 @@
       <div class="server">
         <table width="100%">
           <tr>
-            <td class="td1" width="100">数据库信息</td>
+            <td class="td1" width="100"><?php echo $dictionary['database'];?></td>
             <td class="td1" width="200">&nbsp;</td>
             <td class="td1">&nbsp;</td>
           </tr>
 		  <tr>
-            <td class="tar">服务器：</td>
+            <td class="tar"><?php echo $dictionary['mysql_server'];?>：</td>
             <td><input type="text" name="dbhost" id="dbhost" value="localhost" class="input"></td>
             <td><div id="J_install_tip_dbhost"><span class="gray">数据库服务器地址，一般为localhost</span></div></td>
           </tr>
 
 		  <tr>
-            <td class="tar">端口：</td>
+            <td class="tar"><?php echo $dictionary['mysql_port'];?>：</td>
             <td><input type="text" name="dbport" id="dbport" value="3306" class="input"></td>
             <td><div id="J_install_tip_dbport"><span class="gray">数据库服务器端口，一般为3306</span></div></td>
           </tr>
 
             <tr>
-                <td class="tar">数据库名：</td>
+                <td class="tar"><?php echo $dictionary['database_name'];?>：</td>
                 <td><input type="text" name="dbname" id="dbname" value="youtu" class="input"></td>
                 <td><div id="J_install_tip_dbname"></div></td>
             </tr>
 
 
             <tr>
-                <td class="tar">表前缀：</td>
+                <td class="tar"><?php echo $dictionary['db_prefix'];?>：</td>
                 <td><input type="text" name="dbprefix" id="dbprefix" value="zh_" class="input"></td>
                 <td><div id="J_install_tip_dbprefix"><span class="gray">建议使用默认，同一数据库安装多个优思软件时需修改</span></div></td>
             </tr>
 
 
           <tr>
-            <td class="tar">用户名：</td>
+            <td class="tar"><?php echo $dictionary['db_user'];?>：</td>
             <td><input type="text" name="dbuser" id="dbuser" value="root" class="input"></td>
             <td><div id="J_install_tip_dbuser"></div></td>
           </tr>
           <tr>
-            <td class="tar">密码：</td>
+            <td class="tar"><?php echo $dictionary['db_pass'];?>：</td>
             <td><input type="text" name="dbpw" id="dbpw" value="" class="input" autoComplete="off" onblur="TestDbPwd()"></td>
             <td><div id="J_install_tip_dbpw"></div></td>
           </tr>
@@ -66,35 +66,35 @@
 	
         <table width="100%">
           <tr>
-            <td class="td1" width="100">系统管理信息</td>
+            <td class="td1" width="100"><?php echo $dictionary['user_info'];?></td>
             <td class="td1" width="200">&nbsp;</td>
             <td class="td1">&nbsp;</td>
           </tr>
           <tr>
-            <td class="tar">管理员帐号：</td>
+            <td class="tar"><?php echo $dictionary['administrator'];?>：</td>
             <td><input type="text" name="manager" value="admin" class="input"></td>
             <td><div id="J_install_tip_manager"></div></td>
           </tr>
           <tr>
-            <td class="tar">管理密码：</td>
+            <td class="tar"><?php echo $dictionary['ad_password'];?>：</td>
             <td><input type="text" name="manager_pwd" id="J_manager_pwd" class="input" autoComplete="off"></td>
             <td><div id="J_install_tip_manager_pwd"></div></td>
           </tr>
           <tr>
-            <td class="tar">确认密码：</td>
+            <td class="tar"><?php echo $dictionary['ad_confirm'];?>：</td>
             <td><input type="text" name="manager_ckpwd" class="input" autoComplete="off"></td>
             <td><div id="J_install_tip_manager_ckpwd"></div></td>
           </tr>
           <tr>
-            <td class="tar">Email：</td>
+            <td class="tar"><?php echo $dictionary['ad_email'];?>：</td>
             <td><input type="text" name="manager_email" class="input" value=""></td>
             <td><div id="J_install_tip_manager_email"></div></td>
           </tr>
         </table>
         <div id="J_response_tips" style="display:none;"></div>
       </div>
-      <div class="bottom tac"> <a href="./index.php?step=2" class="btn">上一步</a>
-        <button type="submit" class="btn btn_submit J_install_btn">创建数据</button>
+      <div class="bottom tac"> <a href="./index.php?step=2" class="btn"><?php echo $dictionary['previous'];?></a>
+        <button type="submit" class="btn btn_submit J_install_btn"><?php echo $dictionary['submit'];?></button>
       </div>
     </form>
   </section>
@@ -145,7 +145,7 @@ $(function(){
 		dbpw : '',
 		dbname : '',
 		dbprefix : '建议使用默认，同一数据库安装多个时需修改',
-		manager : '创始人帐号，拥有站点后台所有管理权限',
+		manager : '<?php echo $dictionary['manager'];?>',
 		manager_pwd : '',
 		manager_ckpwd : '',
 		sitename : '',
@@ -260,18 +260,18 @@ $(function(){
 				required	: '数据库表前缀不能为空'
 			},
 			manager: {
-				required	: '管理员帐号不能为空'
+				required	: '<?php echo $dictionary['user_tips'];?>'
 			},
 			manager_pwd: {
-				required	: '密码不能为空'
+				required	: '<?php echo $dictionary['pass_tips'];?>'
 			},
 			manager_ckpwd: {
-				required	: '重复密码不能为空',
-				equalTo : '两次输入的密码不一致。请重新输入'
+				required	:'<?php echo $dictionary['confirm_tips'];?>',
+				equalTo : '<?php echo $dictionary['wrong_pass_t'];?>'
 			},
 			manager_email: {
-				required	: 'Email不能为空',
-				email : '请输入正确的电子邮箱地址'
+				required	: '<?php echo $dictionary['email_tips'];?>',
+				email : '<?php echo $dictionary['wrong_email_t'];?>'
 			}
 		},
 		submitHandler:function(form) {

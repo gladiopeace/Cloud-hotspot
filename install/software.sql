@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
+Source Server         : Local_copy
 Source Server Version : 50556
 Source Host           : 192.168.126.139:3306
-Source Database       : youtu
+Source Database       : ubiquiti-mikrotik
 
 Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-05-03 11:03:54
+Date: 2018-07-18 15:50:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,6 +52,23 @@ CREATE TABLE `zh_config` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for zh_hotspot_ap
+-- ----------------------------
+DROP TABLE IF EXISTS `zh_hotspot_ap`;
+CREATE TABLE `zh_hotspot_ap` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL,
+  `site_id` int(10) NOT NULL,
+  `mac` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `branch` (`site_id`,`mac`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zh_hotspot_ap
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for zh_hotspot_banner
 -- ----------------------------
 DROP TABLE IF EXISTS `zh_hotspot_banner`;
@@ -81,11 +98,14 @@ DROP TABLE IF EXISTS `zh_hotspot_branch`;
 CREATE TABLE `zh_hotspot_branch` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '//id',
   `uid` int(10) NOT NULL COMMENT '//商家id',
+  `salt` varchar(64) NOT NULL COMMENT '//密钥',
   `normal_tid` int(10) NOT NULL COMMENT '//主题ID',
   `wechat_tid` int(10) NOT NULL COMMENT '//微信主题id',
   `account_tid` int(11) NOT NULL,
+  `brand` varchar(32) NOT NULL,
   `type` varchar(324) NOT NULL,
   `branch` varchar(32) NOT NULL COMMENT '//标题',
+  `site_name` varchar(32) NOT NULL COMMENT '//标题',
   `address` varchar(64) NOT NULL,
   `access_info` text NOT NULL,
   `point` varchar(32) NOT NULL,
@@ -93,7 +113,6 @@ CREATE TABLE `zh_hotspot_branch` (
   `weibo` tinyint(1) NOT NULL,
   `wechat` tinyint(1) NOT NULL,
   `overdue` varchar(64) NOT NULL,
-  `salt` varchar(64) NOT NULL COMMENT '//密钥',
   `accesscode` varchar(64) NOT NULL,
   `message_total` int(10) NOT NULL DEFAULT '10' COMMENT '//短信余额',
   `notice` tinyint(1) DEFAULT NULL,
@@ -104,7 +123,7 @@ CREATE TABLE `zh_hotspot_branch` (
   KEY `salt` (`salt`),
   KEY `salt_2` (`salt`),
   KEY `salt_3` (`salt`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_branch
@@ -138,6 +157,7 @@ CREATE TABLE `zh_hotspot_slider` (
 DROP TABLE IF EXISTS `zh_hotspot_users`;
 CREATE TABLE `zh_hotspot_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '//id',
+  `user_id` int(10) NOT NULL,
   `usercode` varchar(32) DEFAULT NULL,
   `accesskey` int(64) NOT NULL,
   `name` varchar(64) NOT NULL COMMENT '//设备id',
@@ -148,8 +168,8 @@ CREATE TABLE `zh_hotspot_users` (
   `end_time` varchar(64) NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '//备注',
   `addtime` varchar(32) NOT NULL COMMENT '//增加时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`,`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_hotspot_users
@@ -212,17 +232,14 @@ CREATE TABLE `zh_themes` (
   `status` tinyint(4) NOT NULL,
   `addtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('Portal主题','portal-lite',1,'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg','手机短信,SMS验证码',1);
-INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('微信主题','wx-style',2,'http://image.cloudshotspot.com/20160108140229145223294947490.jpg','Wi-Fi via Wechat for free',1);
-INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('帐号认证主题','account-hotspot',3,'http://d.5857.com/shiyiuyue_151102/008.jpg','Account for Wi-Fi',1);
-
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_themes
 -- ----------------------------
-
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('Portal主题','portal-lite',1,'http://image9.nphoto.net/news/image/201602/19e9354b45146c0a.jpg','手机短信,SMS验证码',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('微信主题','wx-style',2,'http://image.cloudshotspot.com/20160108140229145223294947490.jpg','Wi-Fi via Wechat for free',1);
+INSERT INTO `zh_themes` (`name`, `style`, `type`, `picture`, `note`, `status`) VALUES ('帐号认证主题','account-hotspot',3,'http://d.5857.com/shiyiuyue_151102/008.jpg','Account for Wi-Fi',1);
 -- ----------------------------
 -- Table structure for zh_themes_copyright
 -- ----------------------------
@@ -287,7 +304,7 @@ CREATE TABLE `zh_user` (
   `job` varchar(32) NOT NULL,
   `addtime` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zh_user

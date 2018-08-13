@@ -9,8 +9,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript"> 
+        function getCurrentLang(){
+            var TestLang = navigator.languages && navigator.languages[0] ||
+               navigator.language ||
+               navigator.userLanguage;   
+            var zh = {
+                'title':'欢迎使用Wi-Fi',
+                'welcome':'欢迎您',
+                'connect':'一键连接上网',                
+                'tips':'正在连接',                
+            }
+            var en = {
+                'title':'Welcome to use our Wi-Fi',
+                'welcome':'Welcome You',
+                'connect':'Connect',                
+                'tips':'正在连接',  
+            }
+            var currentLang = {};
+            var prefixLang = TestLang.substr(0, 2); 
 
- <style>
+            switch(prefixLang){
+                case "en":
+                    currentLang = en;
+                    break;
+                case "zh":
+                    currentLang = zh;
+                    break;
+                default:
+                    currentLang = en;
+                    break;
+            }          
+            return currentLang;
+        }
+        var dictionary = getCurrentLang();
+    </script>
+
+    <style>
     body{
        /* background:#eee;*/
     }
@@ -219,7 +254,7 @@
 
 <script type="text/javascript">
 
-
+    
     //渲染Banner
     var swiper = new Swiper('.swiper-container',{
         pagination: '.swiper-pagination',
@@ -300,6 +335,12 @@
         });
 
     }
+    window.onload = function(){
+        $(".mod-simple-follow-page__attention-txt").text(dictionary.title);
+        $(".mod-simple-follow-page__attention-btn").text(dictionary.connect);
+        $(".mod-simple-follow-page__logo-welcome").text(dictionary.welcome);
+    }
+
 </script>
 
 </html>

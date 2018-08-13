@@ -39,6 +39,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             $this->twig->setPath();
             $this->twig->display($data['themes'], $data);
         }
+
+
 		public function api(){
 			$op = $this->uri->segment(3);
 			if(!in_array($op, array('init','login','config'))) die();
@@ -117,6 +119,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 		}
 
         public function TextTokenSalt(){
+          
             header('Access-Control-Allow-Origin:*');
             $salt = $this->input->get_post('accesskey');
             $mac = $this->input->get_post('mac');
@@ -258,9 +261,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             $this->load->model('Portal_model');
             $data = $this->Portal_model->branch(array('salt'=>$salt));
+           
             $ip ='http://'.$data["access_info"]['ip'].'/login';
  
-            if($mac=='hotspot-init-test') $ip = '/hotspot/preview';           
+            if($mac=='hotspot-init-test' || $data['brand']=='ubnt') $ip = '/portal/go';           
             $url = $data["access_info"]['url'];
             $data = array(
                 'type'=> $data['type'],
@@ -286,14 +290,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             if($op=='fetch-code-cellphone'){
 
                 $cellphone = $this->input->get_post('cellphone');
-
                 if(!preg_match("/1[34578]{1}\d{9}$/",$cellphone)){
                     $status = 'notice';
                     $access_code ='-5';
                     echo json_encode(array('status'=>$status,'code'=>$access_code));
                     exit();
                 }
-
                 $salt = $this->input->get_post('accesskey');
                 $mac = $this->input->get_post('mac');
                 $code='';
@@ -354,7 +356,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                     $status = 'success';
                     $code = 1;
                     $access_code = mt_rand(1,9).uniqid();
-                    $insert_data = ['accesskey'=>$salt,'access_code'=>$access_code,'request_data'=>json_encode($result),'auth_type'=>'verify-code-cellphone'];
+                    $insert_data = ['accesskey'=>$salt,'access_code'=>$access_code,'request_data'=>json_encode($result),'device_mac'=>$mac,'auth_type'=>'verify-code-cellphone'];
                     $this->Portal_model->create('access_auth',$insert_data);
 
                 }else{
@@ -393,7 +395,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
                         
                     }else{
                         $access_code = mt_rand(1,9).uniqid();
-                        $insert_data = ['accesskey'=>$accesskey,'access_code'=>$access_code,'request_data'=>json_encode($account),'auth_type'=>'fetch-member-account'];
+                        $insert_data = ['accesskey'=>$accesskey,'access_code'=>$access_code,'request_data'=>json_encode($account),'device_mac'=>$mac,'auth_type'=>'fetch-member-account'];
                         $this->Portal_model->create('access_auth',$insert_data);
                         $echo = array(
                             'status'=>"success",
@@ -607,6 +609,51 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             }
         }              
 
+        public function guest(){        
+
+
+            $id = $this->input->get_post('id'); //user's mac address
+            $ap = $this->input->get_post('ap'); //AP mac
+            $ssid = $this->input->get_post('ssid'); //ssid the user is on (POST 2.3.2)
+            $time =  $this->input->get_post('t');  //time the user attempted a request of the portal
+            $refURL = $this->input->get_post('url'); //url the user attempted to reach
+            
+            $site = $this->uri->segment(3);
+            $this->load->model('Portal_model');
+            $data = $this->Portal_model->apToSite($ap);
+           
+            $data['config'] = array(
+                'ip'            => $data['branch']['access_info']['ip'],//
+                'salt'          =>  $data['branch']['salt'],
+                'mac'           =>  $id,
+            );
+
+           
+          
+            $this->load->library('twig');
+            $this->twig->setPath();
+            $this->twig->display($data['themes'], $data);
+        }
+
+        public function go(){
+
+            $salt = $this->input->get_post('salt');
+            $authCode = $this->input->get_post('auth_code');
+
+            $this->load->model('Portal_model');
+            $data = $this->Portal_model->first(
+                array('*'),
+                'access_auth',
+                array('access_code'=>$authCode)
+            );
+           
+            $data['mac'] = $data['device_mac'];
+            $data['salt'] =$data['accesskey'];
+        
+            $this->load->library('twig');
+            $this->twig->display('hotspot/init/init.php', $data);
+
+        }
 		
 	}
 	        

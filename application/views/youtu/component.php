@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Amaze UI Admin form Examples</title>
+  <title>{{dic['library']}}--Cloud Hotspot</title>
 
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
 
@@ -31,9 +31,9 @@
 
          <div class="am-tabs am-margin" data-am-tabs>
             <ul class="am-tabs-nav am-nav am-nav-tabs">
-              <li {% if op =='upload' %} class="am-active" {% endif %}><a href="#tab1">上传图片</a></li>
-              <li {% if op =='libs' %} class="am-active" {% endif %}><a href="#tab2">图片仓库</a></li>
-              <li><a href="#tab3">网络图片</a></li>
+              <li {% if op =='upload' %} class="am-active" {% endif %}><a href="#tab1">{{dic['upload']}}</a></li>
+              <li {% if op =='libs' %} class="am-active" {% endif %}><a href="#tab2">{{dic['library']}}</a></li>
+              <li><a href="#tab3">{{dic['internet_pic']}}</a></li>
             </ul>
 
             <div class="am-tabs-bd">
@@ -44,7 +44,7 @@
                         <div class="queueList">
                             <div id="dndArea" class="placeholder">
                                 <div id="filePicker"></div>
-                                <p>或将照片拖到这里，单次最多可选1张</p>
+                                <p>{{dic['drag_once']}}</p>
                             </div>
                         </div>
                         <div class="statusBar" style="display:none;">
@@ -53,7 +53,7 @@
                                 <span class="percentage"></span>
                             </div><div class="info"></div>
                             <div class="btns">
-                                <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                                <div id="filePicker2"></div><div class="uploadBtn">{{dic['upload']}}</div>
                             </div>
                         </div>
                     </div>
@@ -82,8 +82,8 @@
 
 
 
-                <a class="bnt preview">预览</a>
-                <a type="button" class="bnt choose">选用</a>
+                <a class="bnt preview">{{dic['preview']}}</a>
+                <a type="button" class="bnt choose">{{dic['use']}}</a>
                 <div id="prelib" data-am-widget="gallery" style="display:none;" data-am-gallery="{pureview:true}">
 
                 </div>
@@ -94,8 +94,8 @@
 
                 <div class="am-input-group am-input-group-success">
 
-                    <input type="text" class="am-form-field" id="fechurl" placeholder="图片的URL地址.例:http://www.bac.cn/hello.jpg">
-                    <span class="am-input-group-label" id="fech"><i class="am-icon-picture-o am-icon-fw"></i>提取</span>
+                    <input type="text" class="am-form-field" id="fechurl" placeholder="{{dic['example']}}http://www.bac.cn/hello.jpg">
+                    <span class="am-input-group-label" id="fech"><i class="am-icon-picture-o am-icon-fw"></i>&nbsp;{{dic['fetch']}}</span>
                 </div>
 
                    <div class="am-input-group" id='fechfield'>
@@ -103,7 +103,7 @@
                   </div>
 
 
-               <a class="bnt" id="fechchoose">确认选用</a>
+               <a class="bnt" id="fechchoose">{{dic['use']}}</a>
               </div>
 
             </div>
@@ -259,7 +259,7 @@
             uploader = WebUploader.create({
                 pick: {
                     id: '#filePicker',
-                    label: '点击选择图片'
+                    label: "{{dic['choose']}}"
                 },
                 formData: {
                     uid: 123

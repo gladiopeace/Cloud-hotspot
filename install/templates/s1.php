@@ -10,46 +10,45 @@
   <?php require './templates/header.php';?>
   <div class="section">
     <div class="main cc">
-      <pre class="pact" readonly="readonly">优思软件使用协议
+      <pre class="pact" readonly="readonly">
+软件使用协议
 
-宁波优思网络技术有限公司 版权所有(&copy;)2012-<?php echo date("Y")?><br/>
+版权所有(&copy;)2014-<?php echo date("Y")?>，优思网络保留所有权利。
 
-感谢您选择 优思软件, 希望我们的产品能够帮您把相关服务发展的更快、更好、更强！
+感谢您选择Cloud-Hotspot(云热点) 开源系统,希望我们的产品能够帮您把相关服务发展的更快、更好、更强。 
 
-优思软件遵循Apache2开源协议发布，并提供免费使用。
+为了使你正确并合法的使用本软件，请你在使用前务必阅读清楚下面的协议条款：
+
+一、本授权协议适用且仅适用于(Cloud-Hotspot. 以下简称云热点)系统任何版本，优思官方对本授权协议的最终解释权。
+
+二、协议许可的权利
+
+ 1.您可以在完全遵守本最终用户授权协议的基础上，将本软件应用于非商业用途，而不必支付软件版权授权费用。
+ 2.您可以在协议规定的约束和限制范围内修改云热点源代码或界面风格以适应您的网站要求。
+ 3.您拥有使用本软件构建的网站全部内容所有权，并独立承担与这些内容的相关法律义务。
+ 4.获得商业授权之后，您可以将本软件应用于商业用途，同时依据所购买的授权类型中确定的技术支持内容，自购买时刻起，在技术支持期限内拥有通过指定的方式获得指定范围内的技术支持服务。商业授权用户享有反映和提出意见的权力，相关意见将被作为首要考虑，但没有一定被采纳的承诺或保证。
+
+三、协议规定的约束和限制
+
+ 1.未获商业授权之前，不得将本软件用于商业用途（包括但不限于企业网站、经营性网站、以营利为目的或实现盈利的网站）。
+ 2.未经官方许可，不得对本软件或与之关联的商业授权进行出租、出售、抵押或发放子许可证。
+ 3.未经官方许可，禁止在云热点的整体或任何部分基础上以发展任何派生版本、修改版本或第三方版本用于重新分发。
+ 4.如果您未能遵守本协议的条款，您的授权将被终止，所被许可的权利将被收回，并承担相应法律责任。
+
+四、有限担保和免责声明
+
+ 1.本软件及所附带的文件是作为不提供任何明确的或隐含的赔偿或担保的形式提供的。
+ 2.用户出于自愿而使用本软件，您必须了解使用本软件的风险，在尚未购买产品技术服务之前，我们不承诺对免费用户提供任何形式的技术支持、使用担保，也不承担任何因使用本软件而产生问题的相关责任。
+ 3.电子文本形式的授权协议如同双方书面签署的协议一样，具有完全的和等同的法律效力。您一旦开始确认本协议并安装 Cloud-Hotspot，即被视为完全理解并接受本协议的各项条款，在享有上述条款授予的权力的同时，受到相关的约束和限制。协议许可范围以外的行为，将直接违反本授权协议并构成侵权，我们有权随时终止授权，责令停止损害，并保留追究相关责任的权力。
+ 4.如果本软件带有其它软件的整合API示范例子包，这些文件版权不属于本软件官方，并且这些文件是没经过授权发布的，请参考相关软件的使用许可合法的使用。
+
+ <br/>
 
 
-优思网络官网： http://www.zjyouth.cn
-
-
-Apache Licence是著名的非盈利开源组织Apache采用的协议。
-该协议鼓励代码共享和尊重原作者的著作权，允许代码修改，再作为开源或商业软件发布。需要满足的条件： 
-1． 需要给代码的用户一份Apache Licence ；
-2． 如果你修改了代码，需要在被修改的文件中说明；
-3． 在延伸的代码中（修改和有源代码衍生的代码中）需要带有原来代码中的协议，商标，专利声明和其他原来作者规定需要包含的说明；
-4． 如果再发布的产品中包含一个Notice文件，则在Notice文件中需要带有本协议内容。你可以在Notice中增加自己的许可，但不可以表现为对Apache Licence构成更改。 
-
-具体的协议参考：http://www.apache.org/licenses/LICENSE-2.0
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
-
-优思软件 免责声明
-  1、利用优思软件 构建的相关服务的任何信息内容以及导致的任何法律争议及后果，优思软件 官方不承担任何责任。
-  2、您一旦安装使用优思软件，即被视为完全理解并接受本协议的各项条款，在享有上述条款授予的权力的同时，受到相关的约束和限制。</pre>
+</pre>
     
     </div>
-    <div class="bottom tac"> <a href="./index.php?step=2" class="btn">接 受</a> </div>
+    <div class="bottom tac"> <a href="./index.php?step=2" class="btn"><?php echo $dictionary['accept'];?></a> </div>
   </div>
 </div>
 <?php require './templates/footer.php';?>

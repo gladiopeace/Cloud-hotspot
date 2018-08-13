@@ -20,7 +20,7 @@
       <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>微信连Wi-Fi</h5>
+                            <h5>{{dic['title']}}</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -36,10 +36,10 @@
                         </div>
                         <div class="ibox-content">
                             <form id="dataform" class="form-horizontal">
-                                <div class="form-group"><label class="col-sm-2 control-label">门店名称</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['shop_name']}}</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" name="data[name]" class="form-control" value="{{result['name']}}"  placeholder="请输入店面名称">
+                                    <input type="text" name="data[name]" class="form-control" value="{{result['name']}}"  placeholder="{{dic['shop_name_fill']}}">
                                     </div>
 
                                     <div class="col-sm-5">
@@ -49,10 +49,10 @@
                                 <div class="hr-line-dashed"></div>
                               
                                
-                                <div class="form-group"><label class="col-sm-2 control-label">网络SSID:</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['ssid']}}:</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text"  name="data[ssid]" class="form-control" value="{{result['ssid']}}" placeholder="请输入SSID(网络名称)">
+                                    <input type="text"  name="data[ssid]" class="form-control" value="{{result['ssid']}}" placeholder="{{dic['ssid_fill']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -71,10 +71,10 @@
                                 </div> -->
                                   
                                   <div class="hr-line-dashed"></div>
-                                <div class="form-group"><label class="col-sm-2 control-label">Appid:</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['appid']}}:</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" placeholder="请输入appid" class="form-control" name="data[appid]" value="{{result['appid']}}">
+                                    <input type="text" placeholder="{{dic['appid_fill']}}" class="form-control" name="data[appid]" value="{{result['appid']}}">
                                     </div>
                                     <div class="col-sm-5">
                                         <span></span>
@@ -85,9 +85,9 @@
 
                                   <div class="form-group">
 
-                                   <label class="col-sm-2 control-label">shopid:</label>
+                                   <label class="col-sm-2 control-label">{{dic['shopid']}}:</label>
                                    <div class="col-sm-5">
-                                            <input type="text" name="data[shopid]" class="form-control" placeholder="请输入shopid" value="{{result['shopid']}}">
+                                            <input type="text" name="data[shopid]" class="form-control" placeholder="{{dic['shopid_fill']}}" value="{{result['shopid']}}">
                                     </div> 
                                     <div class="col-sm-5">
                                         
@@ -99,9 +99,9 @@
                                 <div class="hr-line-dashed"></div>
 
                                 <div class="form-group">
-                                  <label class="col-sm-2 control-label">secretKey:</label>
+                                  <label class="col-sm-2 control-label">{{dic['secretkey']}}:</label>
                                     <div class="col-sm-5">
-                                         <input type="text" name="data[secretkey]" class="form-control" placeholder="请输入secretKey" value="{{result['secretkey']}}">
+                                         <input type="text" name="data[secretkey]" class="form-control" placeholder="{{dic['secretkey_fill']}}" value="{{result['secretkey']}}">
                                     </div>
                                                                       
                                     <div class="col-sm-5">
@@ -119,7 +119,7 @@
                               
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">   
-                                        <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                                        <button class="btn btn-primary" id="saving" type="button">{{dic['save']}}</button>
                                     </div>
                                 </div>
                             </form>
@@ -162,8 +162,6 @@
      });
 
       $("#saving").click(function(event) {
-        /* Act on the event */
-           //toastr.success('温馨提示:已经为您保存完成!');
 
         $.ajax({
           url: '?',
@@ -173,10 +171,10 @@
         })
         .done(function(ret) {
             if(ret.status=='success'){
-              toastr.success('温馨提示:已经为您保存完成!');
+              toastr.success("{{dic['success']}}");
 
             }else{
-              toastr.warning('温馨提示:没有修改任何数据!');
+              toastr.warning("{{dic['false']}}");
 
             }
         });
@@ -184,13 +182,7 @@
       });
 
     })
-
-    function libs(field,field_value){
-      var ok = Math.random();
-      popWin.showWin("680","560","图片资料库",'{{base_url}}/member/youtu/test?field='+field+'&field_value='+field_value+'&hash='+ok+'"');
-
-   }
-                  
+  
                
 
 </script>

@@ -38,7 +38,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
             <div class="ibox-title">
-                 <h5>短信发送记录</h5>                  
+                 <h5>{{dic['sms_log']}}</h5>                  
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
@@ -60,18 +60,18 @@
              <table class="table table-striped table-bordered table-hover  dataTable" id="editable" role="grid" aria-describedby="editable_info">
                 <thead>
                 <tr>
-                    <td>序号</td>
+                    <td>{{dic['id']}}</td>
             
 
-                    <td>手机号码</td>
+                    <td>{{dic['cellphone']}}</td>
 
-                    <td>短信内容</td>
-                    <td>MAC地址</td>
+                    <td>{{dic['message']}}</td>
+                    <td>{{dic['mac']}}</td>
 
 
-                    <td>状态</td>
+                    <td>{{dic['status']}}</td>
 
-                    <td>时间</td>
+                    <td>{{dic['date']}}</td>
                     
                 </tr>
             </thead>
@@ -94,16 +94,12 @@
 
 
               {% if v['status']==2 %}
-                <span class="label label-success">成功</span>
+                <span class="label label-success">{{v['success']}}</span>
               {% elseif v['status']==1 %}
-
-                <span class="label label-primary">成功</span>
-
-                {% else %}
-
-
-                <span class="label label-info">失败</span>
-                {% endif %}
+                <span class="label label-primary">{{v['success']}}</span>
+              {% else %}
+                <span class="label label-info">{{v['false']}}</span>
+              {% endif %}
 
             </td>
 

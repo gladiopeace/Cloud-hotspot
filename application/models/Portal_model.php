@@ -40,7 +40,6 @@ class Portal_model extends CI_Model {
 
 			$this->db->insert($table, $data);
 
-
 			switch ($type) {
 				case 'rows':
 					return $this->db->affected_rows();
@@ -54,6 +53,19 @@ class Portal_model extends CI_Model {
 					return $this->db->affected_rows();
 					break;
 			}
+
+	}
+
+	
+	public function delete($where=array(),$db){
+
+
+		foreach ($where as $key => $value) {
+			$this->db->where($key,$value);
+		}
+		$this->db->delete($db);
+
+		return $this->db->affected_rows();
 
 	}
 
@@ -116,11 +128,22 @@ class Portal_model extends CI_Model {
 	}
 
 
-	public function init($key){
+	public function init($key,$flag='mikrotik'){
+		
+		switch ($flag) {
+			case 'mikrotik':
+				$site = array('salt'=>$key);
+				break;
+			
+			case 'ubnt':
+				$site = array('id'=>$key);
+				# code...
+				break;		
+		}
 
-	    $bech = $this->branch(array('salt'=>$key));//
-	    
-	    $where = array('accesskey'=>$key);
+
+	    $bech = $this->branch($site);//	    
+	    $where = array('accesskey'=>$bech['salt']);
 		$copyright = $this->first(array('*'),'themes_copyright',$where);
 
 		if (empty($copyright)){
@@ -187,7 +210,8 @@ class Portal_model extends CI_Model {
 			'static'	=> base_url(),		
 	   	);
 
-	   	return array_merge($result,$where);
+	   	$result = array_merge($result,$where);
+	   	return $result;
 
 
 	}
@@ -306,6 +330,12 @@ class Portal_model extends CI_Model {
             $this->load->library('Aes');
             $ip = $data["access_info"]['ip'];
             $pass  = md5('mikrotik');
+
+            //For ubnt auth
+            if($data['brand']=='ubnt' && $mac!='test-mac-ap'){
+            	$data['unifi'] =$this->sendAuthorization($mac,$data['site_name'],$data["access_info"]);
+            } 
+
             $username = $this->aes->encrypt($data["access_info"]['username'],$pass);
             $password = $this->aes->encrypt($data["access_info"]['password'],$pass);
             $url = $data["access_info"]['url'];
@@ -349,12 +379,48 @@ class Portal_model extends CI_Model {
                 'password'=>$password,
                 'url'=>$url,
                 'pass'=>$pass,
+                'brand'=>$data['brand'],
+                'd2'=>$data,
             );
 
         }else{
             $data = array('status'=>0,'message'=>'Access Deny');
         }
         return $data;
+
+    }
+
+    public function apToSite($mac){
+		$ap = $this->first(array('site_id'),'hotspot_ap',array('mac'=>$mac));		
+	    if(empty($ap)) self::message('unauthorized access');
+	    $siteData = $this->init($ap['site_id'],'ubnt');
+	    return $siteData; 
+    }
+
+    public function sendAuthorization($mac,$site='',$unifiKey=array()){
+		
+		$config = array(
+			'user'=>$unifiKey['username'], 
+			'password'=>$unifiKey['password'],
+			'baseurl' => 'https://'.$unifiKey['ip'].':8443',
+			'site' => $site,
+			'version' => '5.8.24',
+			'ssl_verify' => false
+		);
+
+		
+    	$this->load->library('Client', $config, 'UnifiClient');
+		$this->UnifiClient->set_debug(false);    	
+		$this->UnifiClient->login();
+		/**
+		 * then we authorize the device for the requested duration
+		 */
+		$auth_result =$this->UnifiClient->authorize_guest($mac, 240);
+		/**
+		 * provide feedback in json format
+		 */
+		$result =  json_encode($auth_result, JSON_PRETTY_PRINT);
+    	return $result;
 
     }
 

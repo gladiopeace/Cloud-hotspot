@@ -27,7 +27,7 @@
                 <div class="queueList">
                     <div id="dndArea" class="placeholder">
                         <div id="filePicker"></div>
-                        <p>或将照片拖到这里，单次最多可选300张</p>
+                        <p>{{dic['drag_more']}}</p>
                     </div>
                 </div>
                 <div class="statusBar" style="display:none;">
@@ -36,7 +36,7 @@
                         <span class="percentage"></span>
                     </div><div class="info"></div>
                     <div class="btns">
-                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                        <div id="filePicker2"></div><div class="uploadBtn">{{dic['upload']}}</div>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@
                 uploader = WebUploader.create({
                     pick: {
                         id: '#filePicker',
-                        label: '点击选择图片'
+                        label: "{{dic['choose']}}"
                     },
                     formData: {
                         uid: 123
@@ -256,7 +256,7 @@
                 // 添加“添加文件”的按钮，
                 uploader.addButton({
                     id: '#filePicker2',
-                    label: '继续添加'
+                    label: "{{dic['choose']}}"
                 });
 
                 uploader.on('ready', function() {
@@ -520,13 +520,13 @@
 
                         case 'paused':
                             $progress.show();
-                            $upload.text( '继续上传' );
+                            $upload.text( "{{dic['upload']}}" );
                             break;
 
                         case 'confirm':
                             $progress.hide();
                             $( '#filePicker2' ).removeClass( 'element-invisible' );
-                            $upload.text( '开始上传' );
+                            $upload.text(  "{{dic['upload']}}");
 
                             stats = uploader.getStats();
                             if ( stats.successNum && !stats.uploadFailNum ) {
@@ -539,8 +539,8 @@
                             if ( stats.successNum ) {
                                // alert( '上传成功' );
                                 swal({
-                                    title: "完成!",
-                                    text: "恭喜您上传完成!",
+                                    title: "{{dic['success_t']}}!",
+                                    text: "{{dic['success_up']}}!",
                                     type: "success"
                                 });
                             } else {

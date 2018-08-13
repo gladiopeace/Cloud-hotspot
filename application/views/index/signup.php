@@ -106,14 +106,17 @@ float: right; */
           <input type="text" name="account" id="account" placeholder="{{account_fill}}" value="">      
           <i class="email"></i> 
         </div>
+        
         <div style="position: static;">
             <input type="text" name="code" id="code" placeholder="{{verify_code_fill}}">
             <span class="getEmail" id="vcode">{{verify_code}}</span> 
             <i class="emailCode"></i> 
             <input type="hidden" id="auth_salt" name="auth_salt" value="">
         </div>
+       
         <input type="password" name="password" id="password" placeholder="{{password_fill}}">
-        <i class="pwd"></i>         
+        <i class="pwd"></i>
+                    
         <input type="password" name="confirm" id="confirm" placeholder="{{re_password_fill}}">
         <i class="conf"></i>         
         <div class="align-center line">
@@ -121,7 +124,6 @@ float: right; */
          
         </div>
       </form>
-
     </div>
    
   </div>
@@ -129,11 +131,7 @@ float: right; */
 <div class="footer">
     <div class="center-content">
 
-        <div class="main-footer">
-
-          <!--  <div style="text-align: center;padding:8px;color: blue;">
-                <a href="http://www.zjyouth.cn/" target="_blank">宁波优思网络技术有限公司</a>&nbsp;&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" target="_blank">浙ICP备11008151号</a> 
-            </div> -->
+        <div class="main-footer">    
             <ul class="inline links">
               <li>Copyright © 2014-{{ "now"|date("Y") }}  Power by Cloud Hotspot</li>                      
             </ul>
@@ -177,7 +175,7 @@ float: right; */
       if(!flag) flag = p.phone(account);
 
       if(!flag){
-        $(event.target).siblings('i.email').html("<i style='color:red'>格式错误</i>");
+        $(event.target).siblings('i.email').html("<i style='color:red'>{{wrong_email}}</i>");
         return false;
       }
       $.ajax({
@@ -188,10 +186,10 @@ float: right; */
       })
       .done(function(ret) {
         if(ret.status=='ok'){
-          $(event.target).siblings('i.email').html("<i style='color:green'>可以注册</i>");
-          /*$(event.target).siblings('p').append("<span style='color:green;'>可以使用</span>");*/
+          $(event.target).siblings('i.email').html("<i style='color:green'>{{ok}}</i>");
+        
         }else if(ret.status=='message'){          
-          $(event.target).siblings('i.email').html("<i style='color:red'>已经注册</i>");          
+          $(event.target).siblings('i.email').html("<i style='color:red'>{{taken}}</i>");          
         }else{
           
           $(event.target).siblings('i.email').html("<i style='color:red'>"+ret.message+"</i>");          
@@ -205,7 +203,7 @@ float: right; */
     });
 
     $("#language").change(function(event) {   
-      let lang = $(this).children('option:selected').val();//这就是selected的值  
+      let lang = $(this).children('option:selected').val();
       window.location.href="?lang="+lang;      
     });
 
@@ -248,11 +246,10 @@ float: right; */
       }
 
       if(password.length<6){
-        $(event.target).siblings('i.pwd').html("<i style='color:red'>小于6位</i>");     
+        $(event.target).siblings('i.pwd').html("<i style='color:red'>{{password_wrong}}</i>");     
         return false;
       }else{
-        $(event.target).siblings('i.pwd').html("<i class='fa fa-check' style='color:green'>√</i>");      
-
+        $(event.target).siblings('i.pwd').html("<i class='fa fa-check' style='color:green'>√</i>");
       }
     });
 
@@ -268,8 +265,7 @@ float: right; */
       var confirm = $("#password").val();
     
       if(password!=confirm){
-        $(event.target).siblings('i.conf').html("<i style='color:red'>密码不一致!</i>"); 
-              
+        $(event.target).siblings('i.conf').html("<i style='color:red'>{{wrong_pass_t}}</i>");
         return false;
       }else{
         $(event.target).siblings('i.conf').html("<i class='fa fa-check' style='color:green'>√</i>");       
@@ -282,9 +278,6 @@ float: right; */
       $(this).siblings('i.conf').html('');
     });
 
-  
-
-
     $("#submit").click(function(event) {    
       let account = $("#account").val();
       let verify = $("#code").val();
@@ -296,24 +289,24 @@ float: right; */
       if(!flag) flag = p.phone(account);  
       if(!flag){
         $("#account").focus();
-        toastr.warning("格式错误!");  
+        toastr.warning("{{wrong_email}}");  
         return false;
       }
 
       if(verify==''){
         $("#code").focus();     
-        toastr.warning("请输入验证码!"); 
+        toastr.warning("{{verify_code_fill}}"); 
         return false;
       }
 
       if(password==''){
         $("#password").focus();     
-        toastr.warning("请输入密码!"); 
+        toastr.warning("{{pass_tips}}!"); 
         return false;
       }
 
       if(password!=confirm){
-        $("#confirm").siblings('i.conf').html("<i style='color:red'>密码不一致!</i>"); 
+        $("#confirm").siblings('i.conf').html("<i style='color:red'>{{wrong_pass_t}}!</i>"); 
               
         return false;
       }else{
@@ -353,7 +346,7 @@ float: right; */
       if(!flag) flag = p.phone(account);
 
       if(!flag){
-        toastr.warning("手机号码或邮箱地址错误!");  
+        toastr.warning("{{wrong_email}}");  
         $("#account").focus();
         return false;
       }
@@ -365,8 +358,8 @@ float: right; */
   var check = {
     mail:function(mail){
       let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-          if(!reg.test(mail)) return false;
-          return true;
+      if(!reg.test(mail)) return false;
+      return true;
     },
     phone:function(phone){
       let myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/; 
@@ -383,9 +376,9 @@ float: right; */
     cont:null,
     startShow:function(){   
       this.intvalue ++;
-      document.getElementById(this.controll).innerHTML="&nbsp;" + ((this.EndTime-this.intvalue)%60).toString()+"秒";
+      document.getElementById(this.controll).innerHTML="&nbsp;" + ((this.EndTime-this.intvalue)%60).toString()+"s";
       if(this.intvalue>=this.EndTime){
-        document.getElementById(this.controll).innerHTML="获取验证码";
+        document.getElementById(this.controll).innerHTML="{{verify_code}}";
         this.endShow();
       }
     },
@@ -400,9 +393,7 @@ float: right; */
 
   var c =Object.create(TC);
   function sms(account){
-
-    if(c.cont==null){
-        
+    if(c.cont==null){        
       $.ajax({
         url: '/component/verifyCode/get',
         type: 'POST',
@@ -412,7 +403,7 @@ float: right; */
       .done(function(ret) {
         if(ret.status=='success'){
           c.cont = window.setInterval("c.startShow()",1000);
-          toastr.success("验证码发送完成,请查收!");      
+          toastr.success("{{code_has_been_sent}}");
         }else{
           toastr.warning(ret.message);  
         }
@@ -422,19 +413,12 @@ float: right; */
   }
 
  function testEmail(str){
-
-     var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-
-     if(reg.test(str)){
-
-         return true;
-
-     }else{
-
-         return false;
-
-     }
-
+    var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if(reg.test(str)){
+      return true;
+    }else{
+      return false;
+    }
  }
 
 </script>

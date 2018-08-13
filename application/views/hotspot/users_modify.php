@@ -16,7 +16,7 @@
       <div class="col-md-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>用户修改</h5>
+                            <h5>{{dic['member']}}</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -33,10 +33,10 @@
                         <div class="ibox-content">
                             <form id="dataform" class="form-horizontal">
                                                             
-                                <div class="form-group"><label class="col-sm-2 control-label">用户名</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['username']}}</label>
 
                                     <div class="col-sm-5">
-                                    <input type="text" value="{{user['username']}}" class="form-control" name="data[username]">
+                                    <input type="text" value="{{user['username']}}" class="form-control">
                                     </div>
                                     <div class="col-sm-5">
                                         
@@ -44,20 +44,20 @@
                                 </div>
 
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group"><label class="col-sm-2 control-label">用户密码</label>
+                                <div class="form-group"><label class="col-sm-2 control-label">{{dic['pass']}}</label>
 
                                   <div class="col-sm-5">
                                   <input type="text" placeholder="" class="form-control" name="data[password]" value="">
                                   </div>
                                     <div class="col-sm-5">
-                                        <span>如要修改密码请填写,不需要为空!</span>
+                                        <span>{{dic['pass_t']}}</span>
                                     </div>
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
 
                                   <div class="form-group"><label class="col-sm-2 control-label">
-                                    开始时间
+                                    {{dic['start_date']}}
                                   </label>
                                     <div class="col-sm-5">
                                       <input type="text" class="form_datetime form-control" name="data[start_time]" value="{{user['start_time']|date('Y-m-d H:i:s')}}">
@@ -71,8 +71,7 @@
                                 <div class="hr-line-dashed"></div>
 
                                   <div class="form-group">
-                                  <label class="col-sm-2 control-label">结束时间
-                                  </label>
+                                  <label class="col-sm-2 control-label">{{dic['end_date']}}</label>
 
                                     <div class="col-sm-5">
                                     <input type="text" class="form_datetime form-control" name="data[end_time]"  value="{{user['end_time']|date('Y-m-d H:i:s')}}">
@@ -88,7 +87,7 @@
                               
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">   
-                                        <button class="btn btn-primary" id="saving" type="button">保  存</button>
+                                        <button class="btn btn-primary" id="saving" type="button">{{dic['save']}}</button>
                                     </div>
                                 </div>
                             </form>
