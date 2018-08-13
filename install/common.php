@@ -1,8 +1,11 @@
 <?php 
-
-
-
-
+/*
+*
+* Author:Ethan Yang
+* Email Address: ethan.yang.mi@gmail.com
+* 
+*
+*/
 
 function getLanguage(){
 
@@ -41,8 +44,7 @@ function getLanguage(){
 	switch ($lang) {
 		case 'zh':			
 			$dictionary = getChinese();
-			break;
-		
+			break;		
 		case 'en':
 			$dictionary = getEnglish();
 			break;
@@ -122,7 +124,7 @@ function getEnglish(){
 		'db_ver_low'	=>'Mysql Version is lower',
 		'db_succ'		=>'the database was Successfully created ',
 		'software_succ'	=>'The software was Successfully installed!',
-		'software_tips'	=>'for security reasons,please remove the "Install" directory after this was done!',
+		'software_tips'	=>'For security reasons,please remove the "Install" directory after this was done!',
 
 
 
@@ -194,8 +196,8 @@ function getChinese(){
 
 
 	];
-	return $dictionary;
 
+	return $dictionary;
 
 }
 

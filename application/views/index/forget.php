@@ -161,7 +161,7 @@
 
       let account = $('#email_add').val();
 
-      timer2=window.setInterval("startShow()",1000);
+      
      
       let p=check;//Object.create(check);
 
@@ -172,9 +172,9 @@
         toastr.warning("手机号码或邮箱地址错误!");  
         return false;
       }
-
+      
       toastr.info("正在为您请求中,请等待……");    
-
+      timer2=window.setInterval("startShow()",1000);
       $.ajax({
         url: '/component/restByCode/get',
         type: 'POST',

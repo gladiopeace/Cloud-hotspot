@@ -9,3 +9,4 @@ $lang['verify_fill'] = "请输入验证码";
 $lang['password_fill'] = "请输入新密码";
 $lang['password'] = "重置密码";
 $lang['submit'] = "确认重置";
+$lang['wrong_email_t']	= '请输入正确的电子邮箱地址';
