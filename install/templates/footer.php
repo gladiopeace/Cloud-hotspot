@@ -1,1 +1,0 @@
-<div class="footer"> &copy; 2014-<?php echo date("Y",time());?> <a href="http://www.zjyouth.cn" target="_blank">http://www.zjyouth.cn</a>　&& 优思软件　简单实用 </div>
